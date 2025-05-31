@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligent Chatbots - Valae AI</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #5046e5;
+            --primary-light: #7a71ff;
+            --secondary: #36b3d7;
+            --dark: #1a1a2e;
+            --light: #f6f9fc;
+            --gray: #687080;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 1.5rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo-icon {
+            margin-right: 0.5rem;
+            color: var(--primary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2.5rem;
+        }
+        
+        nav ul li a {
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background: var(--gradient);
+            color: white;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(80, 70, 229, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Mobile navigation */
+        .mobile-nav-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 10rem 0 5rem;
+            background: linear-gradient(to bottom right, #fafbff, #f0f3ff);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.2rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .hero-content p {
+            font-size: 1.15rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            max-width: 540px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .hero-image {
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .shape {
+            position: absolute;
+            opacity: 0.5;
+        }
+        
+        .shape-1 {
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(to right, rgba(122, 113, 255, 0.2), rgba(54, 179, 215, 0.2));
+            z-index: -1;
+        }
+        
+        .shape-2 {
+            bottom: -150px;
+            left: -50px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: linear-gradient(to right, rgba(54, 179, 215, 0.15), rgba(122, 113, 255, 0.15));
+            z-index: -1;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 5rem 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .section-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.35rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .feature-card p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Applications Section */
+        .applications {
+            padding: 5rem 0;
+            background-color: #f8f9ff;
+        }
+        
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+        
+        .app-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .app-img {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .app-content {
+            padding: 2.5rem;
+        }
+        
+        .app-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .app-content p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        .check-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .check-list li {
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: 0.8rem;
+            color: var(--gray);
+        }
+        
+        .check-list li:before {
+            content: "\f00c";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--primary);
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 5rem 0;
+        }
+        
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .process-img img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .process-steps {
+            counter-reset: step;
+        }
+        
+        .process-step {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .process-step:before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        
+        .process-step h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .process-step p {
+            color: var(--gray);
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 5rem 0;
+            background-color: #f8f9ff;
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .faq-question {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            font-weight: 600;
+        }
+        
+        .faq-answer {
+            color: var(--gray);
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 5rem 0;
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        /* Contact Form Section */
+        .contact-section {
+            padding: 5rem 0;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .contact-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-info p {
+            color: var(--gray);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 1.5rem;
+        }
+        
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+        }
+        
+        .footer-info p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            color: white;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero-grid,
+            .process-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-image,
+            .process-img {
+                order: -1;
+            }
+            
+            .features-grid,
+            .footer-top {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .app-grid,
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .features-grid,
+            .footer-top {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-nav-toggle {
+                display: block;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-header h2,
+            .contact-info h2,
+            .cta h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate {
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="nav-container container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <span>Valae</span>
+            </a>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#how-it-works">How it Works</a></li>
+                    <li><a href="index.html#testimonials">Testimonials</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="mobile-nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content animate">
+                <h1>Intelligent <span style="color: var(--primary);">Chatbots</span> That Transform Business</h1>
+                <p>Deploy AI-powered conversational agents that understand complex customer queries, access your business knowledge, and deliver exceptional experiences 24/7.</p>
+                <div class="hero-buttons">
+                    <a href="#demo" class="btn">Request Demo</a>
+                    <a href="#features" class="btn btn-outline">Explore Features</a>
+                </div>
+            </div>
+            <div class="hero-image animate delay-1">
+                <img src="https://aunoa.ai/wp-content/uploads/2024/05/tipos-de-chatbots.webp" alt="AI Chatbot Interface">
+            </div>
+        </div>
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="section-header animate">
+                <h2>Cutting-Edge Chatbot Capabilities</h2>
+                <p>Our intelligent chatbots leverage advanced AI technologies to deliver personalized, context-aware interactions that grow more effective over time.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card animate delay-1">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>State-of-the-Art AI</h3>
+                    <p>Powered by Microsoft Azure's most advanced AI models, delivering human-like understanding and responses.</p>
+                </div>
+                
+                <div class="feature-card animate delay-1">
+                    <div class="feature-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Knowledge Integration</h3>
+                    <p>Vector databases enable retrieval augmented generation (RAG) to access and leverage your company's proprietary knowledge.</p>
+                </div>
+                
+                <div class="feature-card animate delay-1">
+                    <div class="feature-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3>System Connectivity</h3>
+                    <p>Seamlessly connects to your existing systems via APIs to check real-time data like inventory, orders, and customer information.</p>
+                </div>
+                
+                <div class="feature-card animate delay-2">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Natural Conversations</h3>
+                    <p>Understands complex, multi-turn conversations with context retention and natural language processing.</p>
+                </div>
+                
+                <div class="feature-card animate delay-2">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Performance Analytics</h3>
+                    <p>Comprehensive dashboards track usage patterns, satisfaction rates, and resolution times to drive continuous improvement.</p>
+                </div>
+                
+                <div class="feature-card animate delay-2">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Enterprise Security</h3>
+                    <p>Bank-grade encryption, privacy controls, and compliance with regulatory standards keep your data secure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Applications Section -->
+    <section class="applications" id="applications">
+        <div class="container">
+            <div class="section-header animate">
+                <h2>Chatbot Solutions for Every Need</h2>
+                <p>From customer-facing support to internal knowledge assistants, our chatbots are designed to solve real business challenges.</p>
+            </div>
+            
+            <div class="app-grid">
+                <div class="app-card animate delay-1">
+                    <div class="app-img" style="background-image: url('https://techhive.media/blog/wp-content/uploads/2024/11/eecommerce-chatbot.webp')"></div>
+                    <div class="app-content">
+                        <h3>Customer Service Chatbots</h3>
+                        <p>Transform your customer support with AI agents that provide instant, accurate assistance to your customers 24/7.</p>
+                        <ul class="check-list">
+                            <li>Answer product questions and make recommendations</li>
+                            <li>Process orders and track shipments</li>
+                            <li>Handle returns and exchanges</li>
+                            <li>Resolve common issues without human intervention</li>
+                            <li>Seamlessly escalate to human agents when needed</li>
+                        </ul>
+                        <p><strong>Perfect for:</strong> E-commerce sites, service businesses, and any customer-facing website</p>
+                    </div>
+                </div>
+                
+                <div class="app-card animate delay-2">
+                    <div class="app-img" style="background-image: url('https://miro.medium.com/v2/resize:fit:1400/1*5GstIKsqrCnVCEA3WfUC6g.jpeg')"></div>
+                    <div class="app-content">
+                        <h3>Internal Knowledge Assistants</h3>
+                        <p>Empower your employees with AI assistants that make institutional knowledge instantly accessible and actionable.</p>
+                        <ul class="check-list">
+                            <li>Answer questions about company policies and procedures</li>
+                            <li>Access and summarize information from internal documents</li>
+                            <li>Assist with onboarding and training new employees</li>
+                            <li>Provide guidance on internal processes and systems</li>
+                            <li>Reduce time spent searching for information</li>
+                        </ul>
+                        <p><strong>Perfect for:</strong> HR departments, IT support, and knowledge management across any organization</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header animate">
+                <h2>Our Chatbot Implementation Process</h2>
+                <p>We take a strategic, collaborative approach to designing, building, and deploying chatbots that deliver real value.</p>
+            </div>
+            
+            <div class="process-grid">
+                <div class="process-img animate delay-1">
+                    <img src="https://www.cmswire.com/-/media/c1a82e71e39d4d24867839ecc3e8b7c3.jpeg" alt="Chatbot Implementation Process">
+                </div>
+                
+                <div class="process-steps animate delay-2">
+                    <div class="process-step">
+                        <h3>Discovery & Strategy</h3>
+                        <p>We analyze your business processes, identify high-value automation opportunities, and design a chatbot strategy aligned with your objectives.</p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <h3>Knowledge Integration</h3>
+                        <p>We collect, organize, and optimize your business knowledge, creating a robust foundation for your AI assistant to draw from.</p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <h3>System Connections</h3>
+                        <p>We integrate with your existing systems through secure APIs, enabling the chatbot to access real-time data and perform actions on your behalf.</p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <h3>Development & Testing</h3>
+                        <p>We build, train, and refine your chatbot, testing extensively to ensure it handles a wide range of scenarios effectively.</p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <h3>Deployment & Optimization</h3>
+                        <p>We launch your chatbot, monitor performance, and continuously improve based on real-world interactions and feedback.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header animate">
+                <h2>Frequently Asked Questions</h2>
+                <p>Get answers to common questions about our intelligent chatbot solutions.</p>
+            </div>
+            
+            <div class="faq-grid">
+                <div class="faq-item animate delay-1">
+                    <div class="faq-question">How long does it take to implement a chatbot?</div>
+                    <div class="faq-answer">Typical implementation timelines range from 4-8 weeks depending on complexity, knowledge base size, and required integrations. We'll provide a detailed timeline during our initial consultation.</div>
+                </div>
+                
+                <div class="faq-item animate delay-1">
+                    <div class="faq-question">Will the chatbot work with our existing systems?</div>
+                    <div class="faq-answer">Yes, our chatbots are designed to integrate with your current technology stack. We use standard APIs to connect with CRMs, e-commerce platforms, inventory systems, and custom internal tools.</div>
+                </div>
+                
+                <div class="faq-item animate delay-2">
+                    <div class="faq-question">How does the chatbot learn and improve over time?</div>
+                    <div class="faq-answer">Our chatbots continuously learn from interactions and feedback. We also provide regular updates based on performance analytics and changing business needs to ensure ongoing optimization.</div>
+                </div>
+                
+                <div class="faq-item animate delay-2">
+                    <div class="faq-question">What happens when the chatbot can't answer a question?</div>
+                    <div class="faq-answer">We implement seamless escalation protocols that transfer complex issues to human agents, ensuring customers never feel stuck. The system learns from these escalations to handle similar situations better in the future.</div>
+                </div>
+                
+                <div class="faq-item animate delay-3">
+                    <div class="faq-question">Is our business data secure with your chatbot solution?</div>
+                    <div class="faq-answer">Absolutely. We implement enterprise-grade security measures including encryption, secure API connections, role-based access controls, and compliance with industry standards like GDPR and CCPA.</div>
+                </div>
+                
+                <div class="faq-item animate delay-3">
+                    <div class="faq-question">How do you measure the success of a chatbot implementation?</div>
+                    <div class="faq-answer">We track key metrics like resolution rates, customer satisfaction scores, response times, and operational cost savings. We establish baseline KPIs at the start of the project and provide regular performance reports.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
