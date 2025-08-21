@@ -7,11 +7,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary: #5046e5;
-            --primary-light: #7a71ff;
-            --secondary: #36b3d7;
-            --dark: #1a1a2e;
-            --light: #f6f9fc;
+            --primary: #003017;
+            --primary-light: #1a4a2e;
+            --secondary: #BAD9A8;
+            --dark: #1A1D1B;
+            --light: #DFDCD7;
             --gray: #687080;
             --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
         }
@@ -51,7 +51,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(223, 220, 215, 0.95);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             transition: all 0.3s ease;
@@ -69,6 +69,7 @@
             align-items: center;
             font-size: 1.8rem;
             font-weight: 700;
+            color: var(--primary);
         }
         
         .logo-icon {
@@ -87,6 +88,7 @@
         
         nav ul li a {
             font-weight: 500;
+            color: var(--dark);
             transition: color 0.3s ease;
         }
         
@@ -97,8 +99,8 @@
         .btn {
             display: inline-block;
             padding: 0.8rem 1.8rem;
-            background: var(--gradient);
-            color: white;
+            background: var(--primary);
+            color: var(--secondary);
             border-radius: 4px;
             font-weight: 500;
             transition: all 0.3s ease;
@@ -108,7 +110,7 @@
         
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(80, 70, 229, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 48, 23, 0.3);
         }
         
         .btn-outline {
@@ -119,7 +121,7 @@
         
         .btn-outline:hover {
             background: var(--primary);
-            color: white;
+            color: var(--light);
         }
         
         /* Mobile navigation */
@@ -127,12 +129,13 @@
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
+            color: var(--primary);
         }
         
         /* Hero Section */
         .hero {
             padding: 10rem 0 3rem;
-            background: linear-gradient(to bottom right, #fafbff, #f0f3ff);
+            background: linear-gradient(to bottom right, var(--light), #d2cfca);
             position: relative;
             overflow: hidden;
         }
@@ -176,7 +179,7 @@
         
         .shape {
             position: absolute;
-            opacity: 0.5;
+            opacity: 0.3;
         }
         
         .shape-1 {
@@ -185,7 +188,7 @@
             width: 300px;
             height: 300px;
             border-radius: 50%;
-            background: linear-gradient(to right, rgba(122, 113, 255, 0.2), rgba(54, 179, 215, 0.2));
+            background: linear-gradient(to right, rgba(186, 217, 168, 0.4), rgba(0, 48, 23, 0.2));
             z-index: -1;
         }
         
@@ -195,14 +198,14 @@
             width: 400px;
             height: 400px;
             border-radius: 50%;
-            background: linear-gradient(to right, rgba(54, 179, 215, 0.15), rgba(122, 113, 255, 0.15));
+            background: linear-gradient(to right, rgba(0, 48, 23, 0.15), rgba(186, 217, 168, 0.3));
             z-index: -1;
         }
 
         /* Services Section */
-            .services {
+        .services {
             padding: 3rem 0 3rem;
-            background-color: #f8f9ff;
+            background-color: #f0ede8;
         }
         
         .services-grid {
@@ -217,11 +220,12 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
+            border: 1px solid rgba(186, 217, 168, 0.3);
         }
         
         .service-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 48, 23, 0.15);
         }
         
         .service-img {
@@ -237,6 +241,7 @@
         .service-content h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
+            color: var(--dark);
         }
         
         .service-content p {
@@ -251,6 +256,7 @@
         /* About Section */
         .about {
             padding: 3rem 0 3rem;
+            background-color: var(--light);
         }
         
         .section-header {
@@ -282,11 +288,12 @@
             padding: 2.5rem 2rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
+            border: 1px solid rgba(186, 217, 168, 0.3);
         }
         
         .feature-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 48, 23, 0.15);
         }
         
         .feature-icon {
@@ -298,13 +305,14 @@
             background: var(--gradient);
             border-radius: 50%;
             margin-bottom: 1.5rem;
-            color: white;
+            color: var(--primary);
             font-size: 1.5rem;
         }
         
         .feature-card h3 {
             font-size: 1.35rem;
             margin-bottom: 0.8rem;
+            color: var(--dark);
         }
         
         .feature-card p {
@@ -315,6 +323,7 @@
         /* How it Works */
         .how-it-works {
             padding: 3rem 0 3rem;
+            background-color: #f0ede8;
         }
         
         .steps {
@@ -331,7 +340,7 @@
             left: 0;
             width: 100%;
             height: 2px;
-            background: #e6e8f0;
+            background: var(--secondary);
             z-index: -1;
         }
         
@@ -345,7 +354,7 @@
             width: 50px;
             height: 50px;
             background: var(--gradient);
-            color: white;
+            color: var(--primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -360,6 +369,7 @@
         .step h3 {
             margin-bottom: 0.8rem;
             font-size: 1.25rem;
+            color: var(--dark);
         }
         
         .step p {
@@ -370,7 +380,7 @@
         /* Testimonials */
         .testimonials {
             padding: 3rem 0 3rem;
-            background-color: #f8f9ff;
+            background-color: var(--light);
         }
         
         .testimonial-grid {
@@ -385,6 +395,7 @@
             padding: 2rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             position: relative;
+            border: 1px solid rgba(186, 217, 168, 0.3);
         }
         
         .quote-icon {
@@ -392,8 +403,8 @@
             top: -15px;
             left: 20px;
             font-size: 2.5rem;
-            color: var(--primary-light);
-            opacity: 0.2;
+            color: var(--secondary);
+            opacity: 0.6;
         }
         
         .testimonial-text {
@@ -412,18 +423,19 @@
             height: 50px;
             border-radius: 50%;
             margin-right: 1rem;
-            background-color: #ddd;
+            background-color: var(--secondary);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
-            color: #fff;
+            color: var(--primary);
             background: var(--gradient);
         }
         
         .author-details h4 {
             font-size: 1.1rem;
             margin-bottom: 0.2rem;
+            color: var(--dark);
         }
         
         .author-details p {
@@ -434,20 +446,22 @@
         /* CTA Section */
         .cta {
             padding: 3rem 0 3rem;
-            background: var(--gradient);
-            color: white;
+            background: var(--primary);
+            color: var(--light);
             text-align: center;
         }
         
         .cta h2 {
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
+            color: var(--light);
         }
         
         .cta p {
             max-width: 700px;
             margin: 0 auto 2rem;
             opacity: 0.9;
+            color: var(--light);
         }
         
         .cta-buttons {
@@ -457,24 +471,30 @@
         }
         
         .cta .btn {
-            background: white;
+            background: var(--secondary);
+            color: var(--primary);
+        }
+        
+        .cta .btn:hover {
+            background: var(--light);
             color: var(--primary);
         }
         
         .cta .btn-outline {
             background: transparent;
-            border: 2px solid white;
-            color: white;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
         }
         
         .cta .btn-outline:hover {
-            background: white;
+            background: var(--secondary);
             color: var(--primary);
         }
         
         /* Contact Section */
         .contact {
             padding: 3rem 0 3rem;
+            background-color: var(--light);
         }
         
         .contact-grid {
@@ -486,6 +506,7 @@
         .contact-info h3 {
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
+            color: var(--dark);
         }
         
         .contact-info p {
@@ -509,6 +530,7 @@
             padding: 2.5rem;
             border-radius: 8px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(186, 217, 168, 0.3);
         }
         
         .form-group {
@@ -519,12 +541,13 @@
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
+            color: var(--dark);
         }
         
         .form-control {
             width: 100%;
             padding: 0.8rem 1rem;
-            border: 1px solid #ddd;
+            border: 1px solid rgba(186, 217, 168, 0.5);
             border-radius: 4px;
             font-size: 1rem;
             transition: border-color 0.3s;
@@ -543,7 +566,7 @@
         /* Footer */
         footer {
             background-color: var(--dark);
-            color: white;
+            color: var(--light);
             padding: 4rem 0 1.5rem;
         }
         
@@ -557,10 +580,11 @@
         .footer-info h3 {
             font-size: 1.5rem;
             margin-bottom: 1.2rem;
+            color: var(--light);
         }
         
         .footer-info p {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(223, 220, 215, 0.7);
             margin-bottom: 1.5rem;
         }
         
@@ -575,21 +599,22 @@
             justify-content: center;
             width: 36px;
             height: 36px;
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(186, 217, 168, 0.2);
             border-radius: 50%;
-            color: white;
+            color: var(--secondary);
             transition: all 0.3s;
         }
         
         .social-links a:hover {
-            background-color: var(--primary);
+            background-color: var(--secondary);
+            color: var(--primary);
             transform: translateY(-3px);
         }
         
         .footer-links h4 {
             font-size: 1.2rem;
             margin-bottom: 1.2rem;
-            color: white;
+            color: var(--light);
         }
         
         .footer-links ul {
@@ -601,20 +626,20 @@
         }
         
         .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(223, 220, 215, 0.7);
             transition: all 0.3s;
         }
         
         .footer-links a:hover {
-            color: white;
+            color: var(--secondary);
             padding-left: 5px;
         }
         
         .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(186, 217, 168, 0.2);
             padding-top: 1.5rem;
             text-align: center;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(223, 220, 215, 0.6);
             font-size: 0.9rem;
         }
         
@@ -671,10 +696,7 @@
     <header id="header">
         <div class="nav-container container">
             <a href="#" class="logo">
-                <div class="logo-icon">
-                    <i class="fas fa-brain"></i>
-                </div>
-                <span>Valae</span>
+                <img src="valae_logo.png" alt="Valae Logo" style="height: 40px; margin-right: 10px;">
             </a>
             
             <nav>
@@ -697,113 +719,217 @@
     <section class="hero" id="home">
         <div class="container hero-grid">
             <div class="hero-content">
-                <h1>Tailored <span style="color: var(--primary);">AI</span> Made Easy</h1>
-                <p>Valae helps businesses harness the power of AI to automate workflows, enhance customer experiences, and drive business efficiency.</p>
+                <h1><span style="color: var(--primary);">AI</span> brought down to earth</h1>
+                <p>AI doesn’t need to be complex. We work with your data, your processes, your goals — no jargon, no guesswork.</p>
                 <div class="hero-buttons">
-                    <a href="#services" class="btn">Explore Services</a>
-                    <a href="#contact" class="btn btn-outline">Get in Touch</a>
+                    <a href="#services" class="btn">Explore services</a>
+                    <a href="#contact" class="btn btn-outline">Get in touch</a>
                 </div>
             </div>
             <div class="hero-image">
-                <img src="https://www.montecarlodata.com/wp-content/uploads/2024/10/AI-data-engineer-1024x683.png" alt="AI Engineering visualization">
+                <img src="/Users/danielporder/Documents/Mango_AI_work/valae_website/version_2/hero_image.png" alt="AI Engineering visualization">
             </div>
         </div>
         <div class="shape shape-1"></div>
         <div class="shape shape-2"></div>
     </section>
 
-        <!-- Services Section -->
-        <section class="services" id="services">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Our AI Services</h2>
-                    <p>Leveraging the latest advancements in generative AI technology to create customized solutions for your business needs.</p>
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Practical AI, built for you</h2>
+                <p>From customer service automations to chatbots, our solutions deliver fast, measurable results.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1596526131083-e8c633c948d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')"></div>
+                    <div class="service-content">
+                        <h3>Email automation</h3>
+                        <p>Automate your email workflows with AI that can draft responses, categorize inquiries, and prioritize important communications.</p>
+                        <a href="#contact" class="btn">Learn More</a>
+                    </div>
                 </div>
                 
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-img" style="background-image: url('https://cdn.prod.website-files.com/605826c62e8de87de744596e/6064d721ba47d645037dc49d_The-2021-Guide-to-eCommerce-Email-Sequences-blog-cover.png')"></div>
-                        <div class="service-content">
-                            <h3>Email Automation</h3>
-                            <p>Automate your email workflows with AI that can draft responses, categorize inquiries, and prioritize important communications.</p>
-                            <a href="#contact" class="btn">Learn More</a>
-                        </div>
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1531746790731-6c087fecd65a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')"></div>
+                    <div class="service-content">
+                        <h3>Intelligent chatbots</h3>
+                        <p>Deploy conversational AI systems that understand complex queries, provide accurate information, and handle internal or external interactions 24/7.</p>
+                        <a href="#contact" class="btn">Learn More</a>
                     </div>
-                    
-                    <div class="service-card">
-                        <div class="service-img" style="background-image: url('https://aunoa.ai/wp-content/uploads/2024/05/tipos-de-chatbots.webp')"></div>
-                        <div class="service-content">
-                            <h3>Intelligent Chatbots</h3>
-                            <p>Deploy conversational AI systems that understand complex queries, provide accurate information, and handle internal or external interactions 24/7.</p>
-                            <a href="/chatbots" class="btn">Learn More</a>
-                        </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')"></div>
+                    <div class="service-content">
+                        <h3>AI-powered search</h3>
+                        <p>Implement AI-powered search that understands user intent and delivers more relevant results, helping employees and customers alike.</p>
+                        <a href="#contact" class="btn">Learn More</a>
                     </div>
-                    
-                    <div class="service-card">
-                        <div class="service-img" style="background-image: url('https://assets.bizclikmedia.net/1800/e7c33f9038f4234921abef553639e2cd:9388a2ddeb199fc407bbee9f9a64ffd9/gettyimages-1140687105.jpg')"></div>
-                        <div class="service-content">
-                            <h3>AI-powered Search</h3>
-                            <p>Implement AI-powered search that understands user intent and delivers more relevant results, helping employees and customers alike.</p>
-                            <a href="#contact" class="btn">Learn More</a>
-                        </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')"></div>
+                    <div class="service-content">
+                        <h3>Content generation</h3>
+                        <p>Create high-quality content at scale with AI, including marketing copy, visual assets, product descriptions, reports, and more.</p>
+                        <a href="#contact" class="btn">Learn More</a>
                     </div>
-                    
-                    <div class="service-card">
-                        <div class="service-img" style="background-image: url('https://d2c0db5b8fb27c1c9887-9b32efc83a6b298bb22e7a1df0837426.ssl.cf2.rackcdn.com/18159342-ai-content-generation-900x600.jpeg')"></div>
-                        <div class="service-content">
-                            <h3>Content Generation</h3>
-                            <p>Create high-quality content at scale with AI, including marketing copy, visual assets, product descriptions, reports, and more.</p>
-                            <a href="#contact" class="btn">Learn More</a>
-                        </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')"></div>
+                    <div class="service-content">
+                        <h3>Customer service agents</h3>
+                        <p>Transform your customer support with AI voice and chat agents that can resolve issues, answer questions, and escalate complex problems.</p>
+                        <a href="#contact" class="btn">Learn More</a>
                     </div>
-                    
-                    <div class="service-card">
-                        <div class="service-img" style="background-image: url('https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2024/10/AI-customer-service-agents-1680x1120-1.jpg?w=1024')"></div>
-                        <div class="service-content">
-                            <h3>Customer Service Agents</h3>
-                            <p>Transform your customer support with AI voice and chat agents that can resolve issues, answer questions, and escalate complex problems.</p>
-                            <a href="#contact" class="btn">Learn More</a>
-                        </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1518186285589-2f7649de83e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')"></div>
+                    <div class="service-content">
+                        <h3>Platform setup and management</h3>
+                        <p>Leverage third-party AI platforms by letting us handle setup, integration, and ongoing management—so you can focus on results.</p>
+                        <a href="#contact" class="btn">Learn More</a>
                     </div>
-                    
-                    <div class="service-card">
-                        <div class="service-img" style="background-image: url('https://www.binaryfolks.com/media/blog/Custom%20AI%20Development/body,P20image.png.pagespeed.ce.RIqJmQyGhm.png')"></div>
-                        <div class="service-content">
-                            <h3>Platform Setup and Management</h3>
-                            <p>Leverage third-party AI platforms by letting us handle setup, integration, and ongoing management—so you can focus on results.</p>
-                            <a href="#contact" class="btn">Learn More</a>
-                        </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')"></div>
+                    <div class="service-content">
+                        <h3>Data insights</h3>
+                        <p>Have a report to write every week? Let our AI summarize sales data, write the summary, and send it to your inbox.</p>
+                        <a href="#contact" class="btn">Learn More</a>
                     </div>
-    
-                    <div class="service-card">
-                        <div class="service-img" style="background-image: url('https://www.binaryfolks.com/media/blog/Custom%20AI%20Development/body,P20image.png.pagespeed.ce.RIqJmQyGhm.png')"></div>
-                        <div class="service-content">
-                            <h3>Data Analysis</h3>
-                            <p>Have a report to write every week? Let our AI summarize sales data, write the summary, and send it to your inbox.</p>
-                            <a href="#contact" class="btn">Learn More</a>
-                        </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')"></div>
+                    <div class="service-content">
+                        <h3>Personalized product recommendations</h3>
+                        <p>Add an AI layer that recommends the right product, size, or bundle for each customer — boosting sales and reducing returns.</p>
+                        <a href="#contact" class="btn">Learn More</a>
                     </div>
-    
-                    <div class="service-card">
-                        <div class="service-img" style="background-image: url('https://www.binaryfolks.com/media/blog/Custom%20AI%20Development/body,P20image.png.pagespeed.ce.RIqJmQyGhm.png')"></div>
-                        <div class="service-content">
-                            <h3>Personalized Product Recommendations</h3>
-                            <p>Add an AI layer that recommends the right product, size, or bundle for each customer — boosting sales and reducing returns.</p>
-                            <a href="#contact" class="btn">Learn More</a>
-                        </div>
-                    </div>
-    
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="clients" id="clients">
+        <div class="container">
+            <div class="section-header">
+                <h2>Who we've worked with</h2>
+                <p>Our team brings over 50 years of combined experience working with brands you know and trust.</p>
+            </div>
+            
+            <div class="clients-grid">
+                <div class="client-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Ikea_logo.svg/2560px-Ikea_logo.svg.png" alt="IKEA" />
+                </div>
+                <div class="client-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Toyota_logo_%28Red%29.svg/2560px-Toyota_logo_%28Red%29.svg.png" alt="Toyota" />
+                </div>
+                <div class="client-logo">
+                    <img src="https://pbs.twimg.com/profile_images/1225715648724131841/vhzEQ9ks_400x400.jpg" alt="Moco Museum" />
+                </div>
+                <div class="client-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Suzuki_logo_2025_%28vertical%29.svg" alt="Suzuki" />
+                </div>
+                <div class="client-logo">
+                    <img src="https://www.frillsallround.com/wp-content/uploads/2019/04/bugaboo-logo-1.png" alt="Bugaboo" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+    /* Clients Section */
+    .clients {
+        padding: 3rem 0;
+        background-color: var(--light);
+    }
+
+    .clients-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 2rem;
+        align-items: center;
+        margin-top: 2rem;
+    }
+
+    .client-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        border: 1px solid rgba(186, 217, 168, 0.2);
+        height: 100px;
+    }
+
+    .client-logo:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0, 48, 23, 0.1);
+    }
+
+    .client-logo img {
+        max-width: 100%;
+        max-height: 60px;
+        width: auto;
+        height: auto;
+        opacity: 0.8;
+        transition: all 0.3s ease;
+    }
+
+    .client-logo:hover img {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+
+    /* Responsive Styles for Clients */
+    @media (max-width: 992px) {
+        .clients-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .clients-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        
+        .client-logo {
+            padding: 1rem;
+            height: 80px;
+        }
+        
+        .client-logo img {
+            max-height: 50px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .clients-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+    </style>
 
     <!-- About Section -->
     <section class="about" id="about">
         <div class="container">
             <div class="section-header">
-                <h2>Why Choose Valae</h2>
-                <p>We deliver custom AI-powered solutions that solve real business challenges, providing you with the competitive edge in today's digital landscape.</p>
-            <!---ALTERNATIVE COPY: "We bring advanced AI to B2C businesses that don’t have the resources to go it alone. Our custom, practical solutions deliver immediate impact— leveling the playing field with simple, effective, and affordable technology.""-->
+                <h2>Why choose Valae</h2>
+                <p>Whether you’re starting or scaling, we embed with your team to deliver AI that actually works.</p>
             </div>
             
             <div class="features">
@@ -841,33 +967,33 @@
     <section class="how-it-works" id="how-it-works">
         <div class="container">
             <div class="section-header">
-                <h2>How We Deliver AI Value</h2>
-                <p>Our methodology ensures we deliver AI solutions that align with your business objectives and provide measurable results.</p>
+                <h2>Simple processes. Serious results.</h2>
+                <p>We guide you through every step, from discovery to deployment, so you get results, fast.</p>
             </div>
             
             <div class="steps">
                 <div class="step">
                     <div class="step-number">1</div>
-                    <h3>Discovery</h3>
-                    <p>We talk to you about your business, analyze it, and collaboratively identify opportunities with you.</p>
+                    <h3>Discover</h3>
+                    <p>We talk to you about your business, and collaboratively find opportunities.</p>
                 </div>
                 
                 <div class="step">
                     <div class="step-number">2</div>
-                    <h3>Strategy</h3>
-                    <p>We develop a customized AI implementation strategy tailored to your exact needs.</p>
+                    <h3>Design</h3>
+                    <p>We design customized AI strategies tailored to your exact needs.</p>
                 </div>
                 
                 <div class="step">
                     <div class="step-number">3</div>
-                    <h3>Development</h3>
-                    <p>We build, test, and refine your AI solutions to ensure optimal performance.</p>
+                    <h3>Develop</h3>
+                    <p>We build, test, and refine to ensure optimal performance.</p>
                 </div>
                 
                 <div class="step">
                     <div class="step-number">4</div>
-                    <h3>Deployment</h3>
-                    <p>We integrate the AI with your existing systems and processes, providing all neccessary training.</p>
+                    <h3>Deploy</h3>
+                    <p>We integrate AI with your systems and processes, providing training.</p>
                 </div>
             </div>
         </div>
@@ -876,41 +1002,129 @@
     <!-- CTA Section -->
     <section class="cta">
         <div class="container">
-            <h2>Ready to Transform Your Business with AI?</h2>
-            <p>Get in touch with our team to discuss how our generative AI services can help you achieve your business goals.</p>
+            <h2>Start your AI journey with confidence</h2>
+            <p>You don’t need a data team or a PhD to make AI work. We make it simple, practical, and designed for your business.</p>
             <div class="cta-buttons">
-                <a href="#contact" class="btn">Schedule a Consultation</a>
-                <a href="#services" class="btn btn-outline">Explore Services</a>
+                <a href="#contact" class="btn">Schedule a free consultation</a>
+                <a href="#services" class="btn btn-outline">Explore services</a>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <div class="contact-form">
-        <form action="https://formspree.io/f/mdkznjew" method="POST">
-            <div class="form-group">
-                <label for="name">Your Name</label>
-                <input type="text" id="name" name="name" class="form-control" required>
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get in Touch</h2>
+                <p>Ready to start your AI transformation? Contact us today to discuss your project.</p>
             </div>
             
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="_replyto" class="form-control" required>
+            <div class="contact-form">
+                <form action="https://formspree.io/f/mdkznjew" method="POST">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="_replyto" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">Company</label>
+                        <input type="text" id="company" name="company" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" class="form-control" required></textarea>
+                    </div>
+                
+                    <input type="hidden" name="_subject" value="New inquiry from valae.ai website">
+                    <input type="hidden" name="_redirect" value="https://valae.ai/thank-you.html">
+                
+                    <button type="submit" class="btn">Send Message</button>
+                </form>        
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-info">
+                    <h3>Valae</h3>
+                    <p>AI brought down to earth</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Email Automation</a></li>
+                        <li><a href="#services">Chatbots</a></li>
+                        <li><a href="#services">AI Search</a></li>
+                        <li><a href="#services">Content Generation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#how-it-works">How it Works</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
             </div>
             
-            <div class="form-group">
-                <label for="company">Company</label>
-                <input type="text" id="company" name="company" class="form-control">
+            <div class="footer-bottom">
+                <p>&copy; 2024 Valae. All rights reserved.</p>
             </div>
-            
-            <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" class="form-control" required></textarea>
-            </div>
-        
-            <input type="hidden" name="_subject" value="New inquiry from valae.ai website">
-            <input type="hidden" name="_redirect" value="https://valae.ai/thank-you.html">
-        
-            <button type="submit" class="btn">Send Message</button>
-        </form>        
-    </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(223, 220, 215, 0.98)';
+            } else {
+                header.style.backgroundColor = 'rgba(223, 220, 215, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
