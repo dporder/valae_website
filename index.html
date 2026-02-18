@@ -939,13 +939,6 @@ select.form-input option {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   pointer-events: none;
 }
-.pipeline-static-canvas {
-  position: absolute; inset: 0; z-index: 0;
-  width: 100%; height: 100%;
-  opacity: 0.03;
-  pointer-events: none;
-  border-radius: inherit;
-}
 .pipeline-grid {
   display: grid;
   grid-template-columns: 260px 1fr 220px;
@@ -2006,7 +1999,6 @@ select.form-input option {
         <div class="diagram-eyebrow-line"></div>
       </div>
       <div class="pipeline">
-        <canvas class="pipeline-static-canvas" id="pipelineStatic"></canvas>
         <div class="pipeline-grid">
           <div class="pipe-sources" id="pipeFiles">
             <div class="pipe-file"><div class="pipe-file-icon" style="background:rgba(100,160,255,0.1);"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 2h5l3 3v9a1 1 0 01-1 1H4a1 1 0 01-1-1V3a1 1 0 011-1z" stroke="rgba(100,160,255,0.8)" stroke-width="1.2"/><path d="M9 2v3h3" stroke="rgba(100,160,255,0.8)" stroke-width="1.2"/><path d="M5 7h6M5 9.5h6M5 12h4" stroke="rgba(100,160,255,0.8)" stroke-width="1" stroke-linecap="round"/></svg></div><div class="pipe-file-info"><div class="pipe-file-name">Documents</div><div class="pipe-file-meta">Word, PDF, TXT</div></div><div class="pipe-file-status"></div></div>
@@ -2068,7 +2060,7 @@ select.form-input option {
   <section class="section-tools">
     <div class="container">
       <div class="section-label">One foundation. Any tool.</div>
-      <h2 class="section-title">The AI brain powers<br><em>whatever AI tools you want.</em></h2>
+      <h2 class="section-title">The AI brain powers<br><em>whatever tools you want.</em></h2>
       <p class="section-sub">The foundation is the hard part. Once it's built, every tool you add runs on the same AI brain, faster and cheaper each time.</p>
       <!-- Three interface showcase cards -->
       <div class="tools-showcase">
@@ -2283,7 +2275,7 @@ Sarah</div>
           </div>
           <div class="proof-card-body">
             <div class="proof-client">Moco Museum</div>
-            <div class="proof-industry">Culture & Hospitality</div>
+            <div class="proof-industry">Culture and experiences</div>
             <div class="proof-stat">92% automated</div>
             <div class="proof-stat-label">customer service communications. Reply time reduced from 3 days to 3 minutes.</div>
             <div class="proof-read-more">Read case study <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
@@ -2295,7 +2287,7 @@ Sarah</div>
           </div>
           <div class="proof-card-body">
             <div class="proof-client">Mango Mobility</div>
-            <div class="proof-industry">Mobility & Assistive Tech</div>
+            <div class="proof-industry">Mobility and health</div>
             <div class="proof-stat">23 hrs/wk saved</div>
             <div class="proof-stat-label">with instant, source-cited answers.</div>
             <div class="proof-read-more">Read case study <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
@@ -2307,7 +2299,7 @@ Sarah</div>
           </div>
           <div class="proof-card-body">
             <div class="proof-client">IKEA</div>
-            <div class="proof-industry">Retail & E-commerce</div>
+            <div class="proof-industry">Retail and e-commerce</div>
             <div class="proof-stat">63 countries</div>
             <div class="proof-stat-label">with one global AI chatbot and instant customer service.</div>
           </div>
@@ -3122,49 +3114,6 @@ function showExchange(n) {
       }
       e.ctx.putImageData(e.img, 0, 0);
     });
-  }
-  requestAnimationFrame(draw);
-})();
-
-(function() {
-  const canvas = document.getElementById('pipelineStatic');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const scale = 1.7;
-  let w, h;
-
-  function resize() {
-    const rect = canvas.parentElement.getBoundingClientRect();
-    w = Math.ceil(rect.width / scale);
-    h = Math.ceil(rect.height / scale);
-    canvas.width = w;
-    canvas.height = h;
-  }
-
-  resize();
-  window.addEventListener('resize', resize);
-
-  const img = ctx.createImageData(w, h);
-  let lastFrame = 0;
-  const interval = 1000 / 12;
-
-  function draw(now) {
-    requestAnimationFrame(draw);
-    if (now - lastFrame < interval) return;
-    lastFrame = now;
-    if (canvas.width !== w || canvas.height !== h) resize();
-
-    const data = img.data;
-    const len = w * h;
-    for (let i = 0; i < len; i++) {
-      const v = (Math.random() * 255) | 0;
-      const idx = i << 2;
-      data[idx] = v;
-      data[idx + 1] = v;
-      data[idx + 2] = v;
-      data[idx + 3] = 255;
-    }
-    ctx.putImageData(img, 0, 0);
   }
   requestAnimationFrame(draw);
 })();
