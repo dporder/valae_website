@@ -2666,7 +2666,7 @@ Sarah</div>
           <textarea id="formPainPoint" class="form-input" placeholder="Where does your team lose the most time? What's frustrating?"></textarea>
         </div>
         <button type="submit" class="form-submit">
-          Continue to booking →
+          Submit
         </button>
       </form>
     </div>
@@ -2682,26 +2682,12 @@ Sarah</div>
       <div class="confirm-icon">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#BAD9A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
-      <h2 class="confirm-title">We've got your details.</h2>
-      <p class="confirm-sub">Now book a 30-minute discovery call. We'll review your submission beforehand so we can hit the ground running.</p>
+      <h2 class="confirm-title">Thank you!</h2>
+      <p class="confirm-sub">We've received your information and will be in touch within 24 hours.</p>
 
-      <div class="confirm-booking-embed">
-        <div class="form-progress" style="justify-content:center; margin-bottom: 24px;">
-          <div class="form-progress-step active"></div>
-          <div class="form-progress-step active"></div>
-        </div>
-        <p class="confirm-booking-placeholder">
-          <!-- Replace this with your Lemcal embed -->
-          Lemcal booking calendar will be embedded here.<br><br>
-          <a href="https://lemcal.com" target="_blank" style="color:var(--pistachio); text-decoration: underline; opacity: 0.7;">
-            Or click here to book directly →
-          </a>
-        </p>
-      </div>
-
-      <p class="confirm-note">
-        Can't find a time that works? We'll reach out within 24 hours to arrange something.
-      </p>
+      <button class="btn-primary" onclick="showPage('product')" style="font-size:16px; padding: 16px 36px; margin-top: 8px;">
+        ← Back to home
+      </button>
     </div>
   </div>
 </div>
@@ -2744,7 +2730,7 @@ function handleFormSubmit(e) {
     .catch(err => {
       console.error('Form submission error:', err);
       btn.disabled = false;
-      btn.textContent = 'Continue to booking →';
+      btn.textContent = 'Submit';
     });
 }
 

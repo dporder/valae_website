@@ -1,5 +1,6 @@
 const ATTIO_API_KEY = process.env.ATTIO_API_KEY;
 const ATTIO_BASE = "https://api.attio.com/v2";
+const ATTIO_LIST_ID = "2207449d-8c89-4f72-8ebb-ed61be1c50a0";
 
 async function attio(path, method, body) {
   const res = await fetch(`${ATTIO_BASE}${path}`, {
@@ -53,8 +54,18 @@ export async function POST(request) {
       },
     });
 
+    const recordId = person.data.id.record_id;
+
+    await attio(`/lists/${ATTIO_LIST_ID}/entries`, "POST", {
+      data: {
+        parent_record_id: recordId,
+        parent_object: "people",
+        entry_values: {},
+      },
+    });
+
     return new Response(
-      JSON.stringify({ success: true, recordId: person.data.id.record_id }),
+      JSON.stringify({ success: true, recordId }),
       { status: 200, headers: { "Content-Type": "application/json" } }
     );
   } catch (err) {
