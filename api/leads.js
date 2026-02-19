@@ -35,6 +35,8 @@ export default async function handler(req, res) {
     const firstName = nameParts[0];
     const lastName = nameParts.slice(1).join(" ") || "";
 
+    const description = [company, painPoint].filter(Boolean).join(" — ");
+
     const person = await attio(
       "/objects/people/records?matching_attribute=email_addresses",
       "PUT",
@@ -43,24 +45,11 @@ export default async function handler(req, res) {
           values: {
             email_addresses: [email],
             name: [{ first_name: firstName, last_name: lastName, full_name: fullName }],
-            ...(painPoint && { description: painPoint }),
+            description,
           },
         },
       }
     );
-
-    try {
-      await attio("/objects/companies/records?matching_attribute=domains", "PUT", {
-        data: {
-          values: {
-            name: [{ value: company }],
-            domains: [email.split("@")[1]],
-          },
-        },
-      });
-    } catch (companyErr) {
-      console.warn("Company assert failed (non-fatal):", companyErr.message);
-    }
 
     const recordId = person.data.id.record_id;
 
