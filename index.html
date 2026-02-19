@@ -446,6 +446,96 @@ a { text-decoration: none; color: inherit; }
   letter-spacing: 0.3px;
 }
 
+/* Tiers sequential timeline animation */
+.tier-timeline {
+  position: relative;
+  display: inline-block;
+}
+.tier-timeline::before {
+  content: '';
+  position: absolute;
+  inset: -5px -14px;
+  border-radius: 20px;
+  background: rgba(0, 48, 23, 0.06);
+  opacity: 0;
+}
+.tier-card:nth-child(1) .tier-timeline { animation: tl-text 7.5s ease infinite; }
+.tier-card:nth-child(2) .tier-timeline { animation: tl-text 7.5s ease 2.5s infinite; }
+.tier-card:nth-child(3) .tier-timeline { animation: tl-text 7.5s ease 5s infinite; }
+.tier-card:nth-child(1) .tier-timeline::before { animation: tl-pill 7.5s ease infinite; }
+.tier-card:nth-child(2) .tier-timeline::before { animation: tl-pill 7.5s ease 2.5s infinite; }
+.tier-card:nth-child(3) .tier-timeline::before { animation: tl-pill 7.5s ease 5s infinite; }
+@keyframes tl-text {
+  0%, 3% { opacity: 0.5; transform: scale(1); }
+  10% { opacity: 1; transform: scale(1.05); }
+  25% { opacity: 1; transform: scale(1.05); }
+  33%, 100% { opacity: 0.5; transform: scale(1); }
+}
+@keyframes tl-pill {
+  0%, 3% { opacity: 0; transform: scaleX(0.85); }
+  10% { opacity: 1; transform: scaleX(1); }
+  25% { opacity: 1; transform: scaleX(1); }
+  33% { opacity: 0; transform: scaleX(0.95); }
+  100% { opacity: 0; }
+}
+/* Traveling orb between cards */
+.tier-card:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -4px;
+  bottom: 40px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--forest);
+  box-shadow: 0 0 8px rgba(0,48,23,0.3), -6px 0 10px rgba(0,48,23,0.12);
+  opacity: 0;
+}
+.tier-card:nth-child(1)::after { animation: tl-orb 7.5s ease infinite; }
+.tier-card:nth-child(2)::after { animation: tl-orb 7.5s ease 2.5s infinite; }
+@keyframes tl-orb {
+  0%, 25% { opacity: 0; right: -4px; }
+  29% { opacity: 0.7; right: -4px; }
+  36% { opacity: 0.7; right: -20px; }
+  40% { opacity: 0; right: -24px; }
+  100% { opacity: 0; }
+}
+/* Tiers header row with CTA */
+.tiers-header-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+.tiers-header-row .section-sub { margin-bottom: 0; }
+.tiers-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--forest);
+  background: transparent;
+  border: 1.5px solid rgba(0,48,23,0.2);
+  border-radius: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  letter-spacing: -0.2px;
+  flex-shrink: 0;
+}
+.tiers-cta-btn:hover {
+  background: var(--forest);
+  color: var(--pistachio);
+  border-color: var(--forest);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,48,23,0.15);
+}
+.tiers-cta-btn svg { transition: transform 0.3s ease; }
+.tiers-cta-btn:hover svg { transform: translateX(3px); }
+
 /* --- PROOF (Fold 4) --- */
 .section-proof {
   padding: 96px 0;
@@ -458,6 +548,7 @@ a { text-decoration: none; color: inherit; }
   align-items: stretch;
 }
 .proof-card {
+  position: relative;
   background: var(--white);
   border: 1.5px solid rgba(0,48,23,0.06);
   border-radius: 16px;
@@ -480,6 +571,27 @@ a { text-decoration: none; color: inherit; }
   color: var(--charcoal);
   letter-spacing: -0.5px;
   margin-bottom: 6px;
+}
+.proof-client-logo {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+  object-position: left center;
+  display: block;
+}
+.proof-client-logo--moco {
+  height: 43x;
+}
+.proof-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: #E8F5E9;
+  color: #1B5E20;
+  font-size: 13px;
+  font-weight: 600;
 }
 .proof-industry {
   font-size: 14px; color: rgba(26,29,27,0.4);
@@ -831,6 +943,8 @@ select.form-input option {
   }
   .flow-arrow { transform: rotate(90deg); padding: 4px 0; }
   .tiers-grid { grid-template-columns: 1fr; }
+  .tier-card:not(:last-child)::after { display: none; }
+  .tiers-header-row { flex-direction: column; align-items: flex-start; gap: 20px; }
   .proof-grid { grid-template-columns: 1fr; }
   .form-card { padding: 40px 28px; }
   .section-pipeline { padding: 64px 0 24px; }
@@ -1207,123 +1321,133 @@ select.form-input option {
 }
 
 /* Email client interface */
-.ea-body-wrap {
-  padding: 0 !important;
+/* Email automation — Gmail-inspired interface */
+.ea-body-wrap { padding: 0 !important; background: #fff; }
+.ea-client { display: flex; flex-direction: column; height: 100%; }
+.ea-gm-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 4px 8px; border-bottom: 1px solid #e8eaed; background: #fff;
+  opacity: 0; max-height: 0; overflow: hidden;
+  transition: opacity 0.3s ease, max-height 0.3s ease;
 }
-.ea-client {
-  display: flex; flex-direction: column; height: 100%;
+.ea-gm-bar.ea-gm-bar--show { opacity: 1; max-height: 40px; }
+.ea-gm-bar-l, .ea-gm-bar-r { display: flex; align-items: center; gap: 1px; }
+.ea-gm-ico {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 24px; height: 24px; border-radius: 50%; color: #5f6368;
 }
-.ea-toolbar {
-  display: flex; gap: 3px;
-  padding: 8px 14px 7px;
-  border-bottom: 1px solid rgba(0,48,23,0.07);
-}
-.ea-toolbar-btn {
-  padding: 3px 8px;
-  border: 1px solid rgba(0,48,23,0.08);
-  border-radius: 5px;
-  font-size: 10px; font-weight: 600;
-  color: rgba(26,29,27,0.3);
-  background: transparent;
-  display: inline-flex; align-items: center; gap: 4px;
-}
-.ea-viewport {
-  position: relative; flex: 1;
-  overflow: hidden; min-height: 250px;
-}
+.ea-gm-sep { width: 1px; height: 16px; background: #dadce0; margin: 0 4px; }
+.ea-gm-pager { font-size: 9px; color: #5f6368; margin-right: 4px; }
+.ea-viewport { position: relative; flex: 1; overflow: hidden; min-height: 250px; }
 .ea-phase {
   position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-  padding: 12px 14px;
-  opacity: 0;
-  transform: translateY(8px);
+  opacity: 0; transform: translateY(8px);
   transition: opacity 0.4s ease, transform 0.4s ease;
   pointer-events: none;
 }
-.ea-phase.ea-active {
-  opacity: 1; transform: translateY(0); pointer-events: auto;
-}
+.ea-phase.ea-active { opacity: 1; transform: translateY(0); pointer-events: auto; }
 .ea-phase.ea-exit-up {
   opacity: 0; transform: translateY(-12px);
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
-.ea-fields {
-  display: flex; flex-direction: column; gap: 2px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid rgba(0,48,23,0.06);
-  margin-bottom: 8px;
+/* Inbox tabs */
+.ea-gm-tabs { display: flex; border-bottom: 1px solid #e8eaed; }
+.ea-gm-tab {
+  padding: 8px 14px; font-size: 10px; font-weight: 600;
+  color: #5f6368; border-bottom: 2px solid transparent;
 }
-.ea-field {
-  font-size: 11px; color: var(--charcoal);
-  line-height: 1.3; display: flex; gap: 0;
+.ea-gm-tab--active { color: #1a73e8; border-bottom-color: #1a73e8; }
+/* Inbox rows */
+.ea-gm-row {
+  display: flex; align-items: center; gap: 4px;
+  padding: 7px 8px; border-bottom: 1px solid #f1f3f4;
+  transition: background 0.3s ease;
 }
-.ea-lbl {
-  display: inline-block; min-width: 52px;
-  font-size: 10px; font-weight: 700;
-  color: rgba(26,29,27,0.28);
-  text-transform: uppercase; letter-spacing: 0.3px;
+.ea-gm-row--unread .ea-gm-row-sender { font-weight: 700; color: #202124; }
+.ea-gm-row--unread .ea-gm-row-subj { font-weight: 600; color: #202124; }
+.ea-gm-row--unread .ea-gm-row-date { font-weight: 600; }
+.ea-gm-row--read { background: rgba(242,245,250,0.6); }
+.ea-gm-row--read .ea-gm-row-sender { color: #5f6368; }
+.ea-gm-row.ea-row-hl { background: #c2dbff; }
+.ea-gm-row-chk, .ea-gm-row-star { display: flex; align-items: center; color: #c4c7cc; flex-shrink: 0; }
+.ea-gm-row-content {
+  flex: 1; min-width: 0; display: flex; align-items: baseline; gap: 3px;
+  overflow: hidden; white-space: nowrap;
 }
-.ea-body-text {
-  font-size: 12px; color: rgba(26,29,27,0.55);
-  line-height: 1.55; white-space: pre-line;
+.ea-gm-row-sender { font-size: 10.5px; color: #202124; flex-shrink: 0; min-width: 72px; max-width: 90px; overflow: hidden; text-overflow: ellipsis; }
+.ea-gm-row-subj { font-size: 10.5px; color: #5f6368; flex-shrink: 0; }
+.ea-gm-row-preview { font-size: 10.5px; color: #969aa1; overflow: hidden; text-overflow: ellipsis; }
+.ea-gm-row-date { font-size: 9px; color: #5f6368; white-space: nowrap; flex-shrink: 0; }
+/* Email detail */
+.ea-gm-detail { padding: 10px 14px; }
+.ea-gm-subject-row { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
+.ea-gm-subject { font-size: 14px; font-weight: 400; color: #202124; line-height: 1.3; }
+.ea-gm-inbox-lbl {
+  font-size: 8px; font-weight: 600; padding: 1px 5px;
+  background: #e8eaed; border-radius: 3px; color: #5f6368; white-space: nowrap;
 }
-.ea-compose-head {
-  margin-bottom: 8px;
+.ea-gm-sender-row { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 12px; }
+.ea-gm-avatar {
+  width: 28px; height: 28px; min-width: 28px; border-radius: 50%;
+  background: #1a73e8; color: #fff;
+  font-size: 13px; font-weight: 500;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
 }
+.ea-gm-sender-info { flex: 1; min-width: 0; }
+.ea-gm-sender-name { font-size: 10.5px; color: #202124; font-weight: 600; line-height: 1.3; }
+.ea-gm-sender-addr { font-weight: 400; color: #5f6368; font-size: 9px; }
+.ea-gm-to { font-size: 9px; color: #5f6368; margin-top: 1px; }
+.ea-gm-date-detail { font-size: 9px; color: #5f6368; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+.ea-gm-email-body { font-size: 11.5px; color: #3c4043; line-height: 1.6; padding-left: 36px; white-space: pre-line; }
+/* Reply compose */
+.ea-gm-compose { padding: 10px 14px; }
+.ea-gm-reply-box { border: 1px solid #dadce0; border-radius: 8px; overflow: hidden; }
+.ea-gm-reply-head { padding: 8px 12px 4px; }
 .ea-ai-badge {
   display: inline-flex; align-items: center; gap: 5px;
-  padding: 3px 10px;
-  background: rgba(186,217,168,0.15);
-  border: 1px solid rgba(186,217,168,0.3);
-  border-radius: 6px;
-  font-size: 10px; font-weight: 700;
-  color: var(--forest);
+  padding: 3px 10px; background: rgba(186,217,168,0.15);
+  border: 1px solid rgba(186,217,168,0.3); border-radius: 6px;
+  font-size: 10px; font-weight: 700; color: var(--forest);
 }
-.ea-compose-foot {
-  display: flex; justify-content: flex-end; margin-top: 10px;
+.ea-gm-reply-body {
+  padding: 8px 12px; font-size: 11.5px; color: #3c4043;
+  line-height: 1.55; min-height: 80px; white-space: pre-line;
 }
-.ea-send-btn {
-  padding: 5px 14px;
-  background: var(--forest); color: var(--white);
-  border: none; border-radius: 6px;
-  font-size: 11px; font-weight: 600;
-  opacity: 0.25;
-  transition: opacity 0.3s ease;
+.ea-gm-reply-foot {
+  display: flex; align-items: center; gap: 6px; padding: 6px 12px 8px;
 }
-.ea-send-btn.ea-ready { opacity: 1; }
+.ea-gm-send {
+  padding: 5px 18px; background: #1a73e8; color: #fff;
+  border: none; border-radius: 4px;
+  font-size: 10px; font-weight: 600; font-family: inherit;
+  opacity: 0.35; transition: opacity 0.3s ease, transform 0.12s ease, background 0.25s ease;
+}
+.ea-gm-send.ea-ready { opacity: 1; }
+.ea-gm-send.ea-pressed { opacity: 1; transform: scale(0.92); }
+.ea-gm-send.ea-sent { opacity: 1; background: #188038; }
+.ea-gm-tool-ico {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 22px; height: 22px; border-radius: 50%; color: #5f6368;
+}
 .ea-cursor {
   display: inline-block; width: 1.5px; height: 13px;
-  background: var(--forest); margin-left: 1px;
+  background: #1a73e8; margin-left: 1px;
   vertical-align: text-bottom;
   animation: eaCursorBlink 0.6s ease infinite;
 }
-@keyframes eaCursorBlink {
-  0%, 100% { opacity: 1; } 50% { opacity: 0; }
-}
-.ea-phase--sent {
-  display: flex; align-items: center; justify-content: center;
-}
+@keyframes eaCursorBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.ea-phase--sent { display: flex; align-items: center; justify-content: center; }
 .ea-sent-badge {
   display: inline-flex; align-items: center; gap: 8px;
-  padding: 10px 16px;
-  background: rgba(186,217,168,0.2);
-  border: 1px solid rgba(186,217,168,0.4);
-  border-radius: 10px;
-  font-size: 12px; font-weight: 600;
-  color: var(--forest);
+  padding: 10px 16px; background: rgba(186,217,168,0.2);
+  border: 1px solid rgba(186,217,168,0.4); border-radius: 10px;
+  font-size: 12px; font-weight: 600; color: var(--forest);
 }
-
-/* Animated ellipsis for AI responding badge */
 .ea-ellipsis { display: inline; letter-spacing: 0.5px; }
-.ea-ellipsis span {
-  opacity: 0;
-  animation: eaEllipsis 1.4s ease-in-out infinite;
-}
+.ea-ellipsis span { opacity: 0; animation: eaEllipsis 1.4s ease-in-out infinite; }
 .ea-ellipsis span:nth-child(2) { animation-delay: 0.2s; }
 .ea-ellipsis span:nth-child(3) { animation-delay: 0.4s; }
-@keyframes eaEllipsis {
-  0%, 60%, 100% { opacity: 0; }
-  30% { opacity: 1; }
-}
+@keyframes eaEllipsis { 0%, 60%, 100% { opacity: 0; } 30% { opacity: 1; } }
 
 /* Animated chat card viewports */
 .icard-chat-wrap {
@@ -1834,10 +1958,10 @@ select.form-input option {
 }
 
 /* ================================================================
-   SOCIAL PROOF SECTION (founders)
+   SOCIAL PROOF SECTION (engineering-led)
    ================================================================ */
 .section-mosaic {
-  padding: 64px 0;
+  padding: 80px 0;
   background: var(--forest);
   position: relative; overflow: hidden;
 }
@@ -1849,67 +1973,87 @@ select.form-input option {
 .section-mosaic .container { position: relative; z-index: 1; }
 .mosaic-layout {
   display: flex;
-  align-items: center;
-  gap: 48px;
+  align-items: stretch;
+  gap: 56px;
 }
-.mosaic-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 0;
+.mosaic-photo {
   flex-shrink: 0;
-  width: 280px;
-  aspect-ratio: 1;
-}
-.mosaic-item {
-  border-radius: 0;
-  border: none;
-  background: rgba(186,217,168,0.06);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 420px;
+  border-radius: 12px;
   overflow: hidden;
 }
-.mosaic-item img {
+.mosaic-photo img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   display: block;
-}
-.mosaic-item--tall {
-  grid-row: 1 / 3;
-  aspect-ratio: 1/2;
-}
-
-.mosaic-item--square {
-  aspect-ratio: 1;
-}
-.mosaic-label {
-  font-size: 11px;
-  color: rgba(186,217,168,0.22);
-  font-family: var(--font-body);
 }
 .mosaic-text {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .mosaic-text h2 {
   font-family: var(--font-display);
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 700;
   letter-spacing: -0.5px;
   color: var(--offwhite);
   margin: 0 0 12px;
 }
-.mosaic-text p {
+.mosaic-text > p {
   font-size: 15px;
   line-height: 1.7;
   color: rgba(223,220,215,0.55);
-  max-width: 400px;
+  max-width: 460px;
+  margin: 0 0 32px;
+}
+.usp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.usp-item {
+  padding: 20px 22px;
+  border-radius: 10px;
+  background: rgba(186,217,168,0.06);
+  border: 1px solid rgba(186,217,168,0.08);
+  transition: background 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+.usp-item:hover {
+  background: rgba(186,217,168,0.1);
+  border-color: rgba(186,217,168,0.16);
+}
+.usp-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(186,217,168,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  color: var(--pistachio);
+}
+.usp-icon svg { width: 18px; height: 18px; }
+.usp-item h3 {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--offwhite);
+  margin: 0 0 4px;
+}
+.usp-item p {
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(223,220,215,0.45);
   margin: 0;
 }
 @media (max-width: 768px) {
-  .mosaic-layout { flex-direction: column; gap: 32px; }
-  .mosaic-grid { width: 240px; }
+  .mosaic-layout { flex-direction: column; gap: 36px; }
+  .mosaic-photo { width: 100%; max-height: 280px; }
+  .usp-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -1920,12 +2064,13 @@ select.form-input option {
      ================================================================ -->
 <nav class="nav at-top" id="mainNav">
   <div class="nav-inner">
-    <a href="#" class="nav-brand" onclick="showPage('product')">
-      <!-- Logo placeholder -->
-      <img class="trusted-logo-placeholder" src="assets/logos/valae_logo.png" alt="Valae Logo" style="max-height:32px">
-      <div class="nav-brand-wordmark">
-        <span class="nav-brand-name">Step Zero</span>
-        <span class="nav-brand-sub">by Valae</span>
+    <a href="#" class="nav-brand" onclick="showPage('product')" style="gap: 0;">
+      <div class="nav-brand-wordmark" style="gap: 2px;">
+        <span class="nav-brand-name" style="font-size: 22px;">Step Zero</span>
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span class="nav-brand-sub" style="font-size: 11px;">BY</span>
+          <img src="assets/logos/valae_logo.png" alt="Valae Logo" style="height: 16px; transform: translateY(-2px);">
+        </div>
       </div>
     </a>
     <button class="nav-cta" onclick="showPage('form')">
@@ -2126,36 +2271,119 @@ select.form-input option {
           </div>
           <div class="interface-body ea-body-wrap">
             <div class="ea-client" id="emailAnim">
-              <div class="ea-toolbar">
-                <span class="ea-toolbar-btn"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M9 17H4a2 2 0 01-2-2V5a2 2 0 012-2h16a2 2 0 012 2v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> Reply</span>
-                <span class="ea-toolbar-btn"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M13 5H2v14h20V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Forward</span>
-                <span class="ea-toolbar-btn"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m3 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Delete</span>
+              <div class="ea-gm-bar" id="eaToolbar">
+                <div class="ea-gm-bar-l">
+                  <span class="ea-gm-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M19 12H5m7-7l-7 7 7 7" stroke="#5f6368" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  <span class="ea-gm-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M21 8V21H3V8" stroke="#5f6368" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M23 3H1v5h22V3z" stroke="#5f6368" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  <span class="ea-gm-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m3 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6" stroke="#5f6368" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  <span class="ea-gm-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#5f6368" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 6l-10 7L2 6" stroke="#5f6368" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  <span class="ea-gm-sep"></span>
+                  <span class="ea-gm-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2zm4 4l6 5-6 5V7z" stroke="#5f6368" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                </div>
+                <div class="ea-gm-bar-r">
+                  <span class="ea-gm-pager">1 of 24</span>
+                  <span class="ea-gm-ico"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#5f6368" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  <span class="ea-gm-ico"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#5f6368" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                </div>
               </div>
               <div class="ea-viewport">
-                <!-- Phase 1: Reading received email -->
-                <div class="ea-phase" id="eaReceived">
-                  <div class="ea-fields">
-                    <div class="ea-field"><span class="ea-lbl">From</span>Sarah Chen &lt;sarah@acme.com&gt;</div>
-                    <div class="ea-field"><span class="ea-lbl">Subject</span>Re: Q2 Partnership Proposal</div>
-                    <div class="ea-field"><span class="ea-lbl">Date</span>18 Feb 2026, 10:32 AM</div>
+                <!-- Phase 0: Gmail inbox list -->
+                <div class="ea-phase" id="eaInbox">
+                  <div class="ea-gm-tabs">
+                    <span class="ea-gm-tab ea-gm-tab--active">Primary</span>
+                    <span class="ea-gm-tab">Social</span>
+                    <span class="ea-gm-tab">Promotions</span>
                   </div>
-                  <div class="ea-body-text">Hi,
+                  <div class="ea-gm-row ea-gm-row--unread" id="eaInboxTarget">
+                    <span class="ea-gm-row-chk"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/></svg></span>
+                    <span class="ea-gm-row-star"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></span>
+                    <div class="ea-gm-row-content">
+                      <span class="ea-gm-row-sender">Sarah Chen</span>
+                      <span class="ea-gm-row-subj">Re: Q2 Partnership Proposal</span>
+                      <span class="ea-gm-row-preview"> — We'd like to move forward with the...</span>
+                    </div>
+                    <span class="ea-gm-row-date">10:32 AM</span>
+                  </div>
+                  <div class="ea-gm-row ea-gm-row--read">
+                    <span class="ea-gm-row-chk"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/></svg></span>
+                    <span class="ea-gm-row-star"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></span>
+                    <div class="ea-gm-row-content">
+                      <span class="ea-gm-row-sender">James Liu</span>
+                      <span class="ea-gm-row-subj">Invoice #4821</span>
+                      <span class="ea-gm-row-preview"> — Attached is the invoice for last...</span>
+                    </div>
+                    <span class="ea-gm-row-date">9:15 AM</span>
+                  </div>
+                  <div class="ea-gm-row ea-gm-row--read">
+                    <span class="ea-gm-row-chk"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/></svg></span>
+                    <span class="ea-gm-row-star"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></span>
+                    <div class="ea-gm-row-content">
+                      <span class="ea-gm-row-sender">Marketing Team</span>
+                      <span class="ea-gm-row-subj">Weekly update</span>
+                      <span class="ea-gm-row-preview"> — Here's the summary from this week's...</span>
+                    </div>
+                    <span class="ea-gm-row-date">Yesterday</span>
+                  </div>
+                  <div class="ea-gm-row ea-gm-row--read">
+                    <span class="ea-gm-row-chk"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/></svg></span>
+                    <span class="ea-gm-row-star"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></span>
+                    <div class="ea-gm-row-content">
+                      <span class="ea-gm-row-sender">David Park</span>
+                      <span class="ea-gm-row-subj">New applicant: Senior Eng</span>
+                      <span class="ea-gm-row-preview"> — A new application has been...</span>
+                    </div>
+                    <span class="ea-gm-row-date">Yesterday</span>
+                  </div>
+                  <div class="ea-gm-row ea-gm-row--read">
+                    <span class="ea-gm-row-chk"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/></svg></span>
+                    <span class="ea-gm-row-star"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></span>
+                    <div class="ea-gm-row-content">
+                      <span class="ea-gm-row-sender">Lisa Wang</span>
+                      <span class="ea-gm-row-subj">Q1 results summary</span>
+                      <span class="ea-gm-row-preview"> — Please find attached the Q1...</span>
+                    </div>
+                    <span class="ea-gm-row-date">Feb 16</span>
+                  </div>
+                </div>
+                <!-- Phase 1: Gmail email detail view -->
+                <div class="ea-phase" id="eaReceived">
+                  <div class="ea-gm-detail">
+                    <div class="ea-gm-subject-row">
+                      <span class="ea-gm-subject">Re: Q2 Partnership Proposal</span>
+                      <span class="ea-gm-inbox-lbl">Inbox</span>
+                    </div>
+                    <div class="ea-gm-sender-row">
+                      <div class="ea-gm-avatar">S</div>
+                      <div class="ea-gm-sender-info">
+                        <div class="ea-gm-sender-name">Sarah Chen <span class="ea-gm-sender-addr">&lt;sarah@acme.com&gt;</span></div>
+                        <div class="ea-gm-to">to me</div>
+                      </div>
+                      <span class="ea-gm-date-detail">10:32 AM</span>
+                    </div>
+                    <div class="ea-gm-email-body">Hi,
 
 We'd like to move forward with the partnership. Could you send your standard terms and availability for a call next week?
 
 Best,
 Sarah</div>
+                  </div>
                 </div>
-                <!-- Phase 2: AI composing reply -->
+                <!-- Phase 2: AI reply compose (Gmail style) -->
                 <div class="ea-phase" id="eaCompose">
-                  <div class="ea-compose-head">
-                    <span class="ea-ai-badge"><svg width="10" height="10" viewBox="0 0 22 22" fill="none"><path d="M11 4C11.5 7.6 13.4 9.5 17 10 13.4 10.5 11.5 12.4 11 16 10.5 12.4 8.6 10.5 5 10 8.6 9.5 10.5 7.6 11 4Z" fill="currentColor"/></svg> AI responding<span class="ea-ellipsis"><span>.</span><span>.</span><span>.</span></span></span>
+                  <div class="ea-gm-compose">
+                    <div class="ea-gm-reply-box">
+                      <div class="ea-gm-reply-head">
+                        <span class="ea-ai-badge"><svg width="10" height="10" viewBox="0 0 22 22" fill="none"><path d="M11 4C11.5 7.6 13.4 9.5 17 10 13.4 10.5 11.5 12.4 11 16 10.5 12.4 8.6 10.5 5 10 8.6 9.5 10.5 7.6 11 4Z" fill="currentColor"/></svg> AI writing reply<span class="ea-ellipsis"><span>.</span><span>.</span><span>.</span></span></span>
+                      </div>
+                      <div class="ea-gm-reply-body"><span id="eaReplyText"></span><span class="ea-cursor" id="eaCursor"></span></div>
+                      <div class="ea-gm-reply-foot">
+                        <button class="ea-gm-send" id="eaSendBtn">Send</button>
+                        <span class="ea-gm-tool-ico"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M15 7h3a5 5 0 010 10h-3m-6 0H6A5 5 0 016 7h3M8 12h8" stroke="#5f6368" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                        <span class="ea-gm-tool-ico"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.49" stroke="#5f6368" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                        <span class="ea-gm-tool-ico"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#5f6368" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                      </div>
+                    </div>
                   </div>
-                  <div class="ea-fields">
-                    <div class="ea-field"><span class="ea-lbl">To</span>sarah@acme-logistics.com</div>
-                    <div class="ea-field"><span class="ea-lbl">Subject</span>Re: Q2 Partnership Proposal</div>
-                  </div>
-                  <div class="ea-body-text"><span id="eaReplyText"></span><span class="ea-cursor" id="eaCursor"></span></div>
                 </div>
               </div>
             </div>
@@ -2198,18 +2426,32 @@ Sarah</div>
     </div>
   </section>
 
-  <!-- SOCIAL PROOF: FOUNDERS -->
+  <!-- SOCIAL PROOF: ENGINEERING-LED -->
   <section class="section-mosaic">
     <div class="container">
       <div class="mosaic-layout">
-        <div class="mosaic-grid">
-          <div class="mosaic-item mosaic-item--tall"><img src="assets/team/dan.png" alt="Dan"></div>
-          <div class="mosaic-item mosaic-item--square"><img src="assets/team/gleb.png" alt="Gleb"></div>
-          <div class="mosaic-item mosaic-item--square"><img src="assets/team/working-on-code.png" alt="Daniel"></div>
+        <div class="mosaic-photo">
+          <img src="assets/team/working-on-code.png" alt="Valae team working on code">
         </div>
         <div class="mosaic-text">
           <h2>Engineering-led, not sales-led</h2>
-          <p>Our team has lectured on AI at univerisites, run global engineering and data teams, and led multi-million-dollar businesses.</p>
+          <p>Our team has lectured on AI at universities, run global engineering and data teams, and led multi-million-dollar digital businesses.</p>
+          <div class="usp-grid">
+            <div class="usp-item">
+              <div class="usp-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+              </div>
+              <h3>Enterprise tech, mid-size pricing</h3>
+              <p>The same architecture powering Fortune 500 AI, built to fit your budget and scale.</p>
+            </div>
+            <div class="usp-item">
+              <div class="usp-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+              </div>
+              <h3>World-class security</h3>
+              <p>ISO compliant infrastructure, encrypted at rest and in transit, with strict data isolation.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -2219,8 +2461,14 @@ Sarah</div>
   <section class="section-tiers">
     <div class="container">
       <div class="section-label">What you get</div>
-      <h2 class="section-title">Three steps to AI that <em>actually works</em></h2>
-      <p class="section-sub">Each step delivers standalone value. Start small, expand when you're ready.</p>
+      <h2 class="section-title">A proven framework</h2>
+      <div class="tiers-header-row">
+        <p class="section-sub">Each step delivers standalone value. Start small, expand when you're ready.</p>
+        <button class="tiers-cta-btn" onclick="showPage('form')">
+          Book a meeting
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
 
       <div class="tiers-grid">
         <!-- Tier 1: Audit -->
@@ -2270,7 +2518,7 @@ Sarah</div>
             </li>
             <li>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.5 8l3 3 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Weekly reporting against KPIs
+              Works within your systems
             </li>
           </ul>
           <div class="tier-timeline">4 weeks</div>
@@ -2280,12 +2528,12 @@ Sarah</div>
         <div class="tier-card">
           <div class="tier-step">Step 3</div>
           <div class="tier-name">Manage</div>
-          <div class="tier-desc">Your AI brain plugs into all your tools, even ChatGPT, Gemini, Claude. 
+          <div class="tier-desc">Your AI brain plugs into all your tools, even ChatGPT. 
           </div>
           <ul class="tier-features">
             <li>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.5 8l3 3 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Constantly self-updating
+              Self-updating
             </li>
             <li>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.5 8l3 3 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2293,7 +2541,7 @@ Sarah</div>
             </li>
             <li>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.5 8l3 3 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Monthly reporting
+              Monthly KPI reporting
             </li>
             <li>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.5 8l3 3 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2303,6 +2551,7 @@ Sarah</div>
           <div class="tier-timeline">Ongoing</div>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -2310,7 +2559,7 @@ Sarah</div>
   <section class="section-proof">
     <div class="container">
       <div class="section-label">Real results</div>
-      <h2 class="section-title">Live systems and real ROI</h2>
+      <h2 class="section-title">Recent projects</h2>
       <p class="section-sub">Delivering ROI that our clients can see. Measured daily.</p>
 
       <div class="proof-grid">
@@ -2318,11 +2567,12 @@ Sarah</div>
           <div class="proof-card-img">
             <img src="assets/clients/moco-image.jpg" alt="Moco Museum">
           </div>
+          <span class="proof-tag">Email automation</span>
           <div class="proof-card-body">
-            <div class="proof-client">Moco Museum</div>
+            <div class="proof-client"><img src="assets/logos/mocomuseum_logo.png" alt="Moco Museum" class="proof-client-logo proof-client-logo--moco"></div>
             <div class="proof-industry">Culture and experiences</div>
             <div class="proof-stat">92% automated</div>
-            <div class="proof-stat-label">customer service communications. Reply time reduced from 3 days to 3 minutes.</div>
+            <div class="proof-stat-label">customer comms. Reply time reduced from 3 days to 3 minutes.</div>
             <div class="proof-read-more">Read case study <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           </div>
         </a>
@@ -2330,8 +2580,9 @@ Sarah</div>
           <div class="proof-card-img">
             <img src="assets/clients/mango-image.avif" alt="Mango Mobility">
           </div>
+          <span class="proof-tag">Knowledge assistant</span>
           <div class="proof-card-body">
-            <div class="proof-client">Mango Mobility</div>
+            <div class="proof-client"><img src="assets/logos/mango_logo.png" alt="Mango Mobility" class="proof-client-logo"></div>
             <div class="proof-industry">Mobility and health</div>
             <div class="proof-stat">23 hrs/wk saved</div>
             <div class="proof-stat-label">with instant, source-cited answers.</div>
@@ -2342,8 +2593,9 @@ Sarah</div>
           <div class="proof-card-img">
             <img src="assets/clients/ikea-image.avif" alt="IKEA">
           </div>
+          <span class="proof-tag">Customer chatbot</span>
           <div class="proof-card-body">
-            <div class="proof-client">IKEA</div>
+            <div class="proof-client"><img src="assets/logos/ikea_logo.png" alt="IKEA" class="proof-client-logo"></div>
             <div class="proof-industry">Retail and e-commerce</div>
             <div class="proof-stat">63 countries</div>
             <div class="proof-stat-label">with one global AI chatbot and instant customer service.</div>
@@ -2923,20 +3175,28 @@ window.addEventListener('load', function() {
 });
 
 function initEmailAnim() {
+  var inbox = document.getElementById('eaInbox');
+  if (!inbox) return;
   var received = document.getElementById('eaReceived');
-  if (!received) return;
   var compose = document.getElementById('eaCompose');
   var replyEl = document.getElementById('eaReplyText');
   var cursor = document.getElementById('eaCursor');
+  var toolbar = document.getElementById('eaToolbar');
+  var sendBtn = document.getElementById('eaSendBtn');
+  var hlRow = document.getElementById('eaInboxTarget');
 
-  var reply = "Hi Sarah,\n\nThanks for your interest! I\u2019ve attached our standard partnership terms. I\u2019m free Tuesday or Thursday \u2014 shall I send a calendar invite for 2pm?\n\nBest regards";
+  var reply = "Hi Sarah,\n\nThanks for your interest! I\u2019ve attached our standard partnership terms. I\u2019m free Tuesday or Thursday, shall I send a calendar invite for 2pm?\n\nBest regards";
 
   function resetAll() {
-    [received, compose].forEach(function(el) {
+    [inbox, received, compose].forEach(function(el) {
       el.classList.remove('ea-active', 'ea-exit-up');
     });
+    toolbar.classList.remove('ea-gm-bar--show');
+    hlRow.classList.remove('ea-row-hl');
     replyEl.textContent = '';
     cursor.style.display = '';
+    sendBtn.classList.remove('ea-ready', 'ea-pressed', 'ea-sent');
+    sendBtn.textContent = 'Send';
   }
 
   function typeChar(text, i, cb) {
@@ -2949,24 +3209,45 @@ function initEmailAnim() {
   function runCycle() {
     resetAll();
     setTimeout(function() {
-      received.classList.add('ea-active');
+      inbox.classList.add('ea-active');
       setTimeout(function() {
-        received.classList.remove('ea-active');
-        received.classList.add('ea-exit-up');
+        hlRow.classList.add('ea-row-hl');
         setTimeout(function() {
-          compose.classList.add('ea-active');
+          inbox.classList.remove('ea-active');
+          inbox.classList.add('ea-exit-up');
           setTimeout(function() {
-            typeChar(reply, 0, function() {
-              cursor.style.display = 'none';
+            toolbar.classList.add('ea-gm-bar--show');
+            received.classList.add('ea-active');
+            setTimeout(function() {
+              received.classList.remove('ea-active');
+              received.classList.add('ea-exit-up');
               setTimeout(function() {
-                compose.classList.remove('ea-active');
-                compose.classList.add('ea-exit-up');
-                setTimeout(runCycle, 600);
-              }, 2000);
-            });
+                compose.classList.add('ea-active');
+                setTimeout(function() {
+                  typeChar(reply, 0, function() {
+                    cursor.style.display = 'none';
+                    sendBtn.classList.add('ea-ready');
+                    setTimeout(function() {
+                      sendBtn.classList.add('ea-pressed');
+                      setTimeout(function() {
+                        sendBtn.classList.remove('ea-pressed');
+                        sendBtn.classList.add('ea-sent');
+                        sendBtn.textContent = 'Sent \u2713';
+                        setTimeout(function() {
+                          compose.classList.remove('ea-active');
+                          compose.classList.add('ea-exit-up');
+                          toolbar.classList.remove('ea-gm-bar--show');
+                          setTimeout(runCycle, 600);
+                        }, 1200);
+                      }, 150);
+                    }, 500);
+                  });
+                }, 400);
+              }, 400);
+            }, 2400);
           }, 400);
-        }, 400);
-      }, 2400);
+        }, 800);
+      }, 1200);
     }, 400);
   }
 
@@ -2976,7 +3257,7 @@ function initEmailAnim() {
       obs.disconnect();
     }
   }, { threshold: 0.3 });
-  obs.observe(received.closest('.interface-card'));
+  obs.observe(inbox.closest('.interface-card'));
 }
 
 window.addEventListener('load', initEmailAnim);
