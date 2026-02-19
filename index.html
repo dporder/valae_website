@@ -2722,8 +2722,11 @@ function handleFormSubmit(e) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
   })
-    .then(res => {
-      if (!res.ok) throw new Error('Submission failed');
+    .then(async res => {
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error(body.error || `Server error ${res.status}`);
+      }
       return res.json();
     })
     .then(() => showPage('booking'))
@@ -2731,6 +2734,7 @@ function handleFormSubmit(e) {
       console.error('Form submission error:', err);
       btn.disabled = false;
       btn.textContent = 'Submit';
+      alert(err.message);
     });
 }
 
