@@ -804,16 +804,7 @@ a { text-decoration: none; color: inherit; }
 textarea.form-input {
   resize: vertical; min-height: 100px;
 }
-select.form-input {
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='rgba(186,217,168,0.4)' viewBox='0 0 16 16'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 14px center;
-  padding-right: 40px;
-}
-select.form-input option {
-  background: var(--forest); color: var(--offwhite);
-}
+
 
 .form-submit {
   width: 100%;
@@ -2660,43 +2651,19 @@ Sarah</div>
       <form id="qualForm" onsubmit="handleFormSubmit(event)">
         <div class="form-group">
           <label class="form-label">Your name</label>
-          <input type="text" class="form-input" placeholder="Full name" required>
+          <input type="text" id="formName" class="form-input" placeholder="Full name" required>
         </div>
         <div class="form-group">
           <label class="form-label">Company name</label>
-          <input type="text" class="form-input" placeholder="Your company" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Your role</label>
-          <select class="form-input" required>
-            <option value="" disabled selected>Select your role</option>
-            <option>CEO / Founder</option>
-            <option>COO / Head of Operations</option>
-            <option>Head of Customer Service</option>
-            <option>CTO / Head of IT</option>
-            <option>Head of Marketing</option>
-            <option>General Manager</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Company size</label>
-          <select class="form-input" required>
-            <option value="" disabled selected>Number of employees</option>
-            <option>10–30</option>
-            <option>30–50</option>
-            <option>50–100</option>
-            <option>100–200</option>
-            <option>200+</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Biggest operational pain point</label>
-          <textarea class="form-input" placeholder="Where does your team lose the most time? What's frustrating?" required></textarea>
+          <input type="text" id="formCompany" class="form-input" placeholder="Your company" required>
         </div>
         <div class="form-group">
           <label class="form-label">Email address</label>
-          <input type="email" class="form-input" placeholder="you@company.com" required>
+          <input type="email" id="formEmail" class="form-input" placeholder="you@company.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Biggest operational pain point <span style="font-weight:400;opacity:0.5;">(optional)</span></label>
+          <textarea id="formPainPoint" class="form-input" placeholder="Where does your team lose the most time? What's frustrating?"></textarea>
         </div>
         <button type="submit" class="form-submit">
           Continue to booking →
@@ -2750,11 +2717,35 @@ function showPage(page) {
   window.scrollTo(0, 0);
 }
 
-// Form submission
+// Form submission → Attio lead creation
 function handleFormSubmit(e) {
   e.preventDefault();
-  // In production: send form data to your backend/CRM here
-  showPage('booking');
+  const btn = e.target.querySelector('.form-submit');
+  btn.disabled = true;
+  btn.textContent = 'Submitting…';
+
+  const payload = {
+    fullName: document.getElementById('formName').value.trim(),
+    company: document.getElementById('formCompany').value.trim(),
+    email: document.getElementById('formEmail').value.trim(),
+    painPoint: document.getElementById('formPainPoint').value.trim() || undefined,
+  };
+
+  fetch('/api/leads', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  })
+    .then(res => {
+      if (!res.ok) throw new Error('Submission failed');
+      return res.json();
+    })
+    .then(() => showPage('booking'))
+    .catch(err => {
+      console.error('Form submission error:', err);
+      btn.disabled = false;
+      btn.textContent = 'Continue to booking →';
+    });
 }
 
 // Nav scroll behavior
