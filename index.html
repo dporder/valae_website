@@ -3,7 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Valae - AI Wbrought down to earth</title>
+<title>Valae - AI brought down to earth</title>
+<meta name="description" content="Step Zero organises your messy docs, spreadsheets, emails and more into an AI-ready foundation, then builds tools for fast ROI. Knowledge assistants, email automation, sales chatbots. Measurable results in weeks, not months.">
+<link rel="canonical" href="https://valae.ai">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://valae.ai">
+<meta property="og:title" content="Valae - AI brought down to earth">
+<meta property="og:description" content="Valae consolidates your messy business knowledge into a structured, self-updating AI brain. Knowledge assistants, email automation, sales chatbots. Measurable results in weeks, not months.">
+<meta property="og:image" content="https://valae.ai/assets/logos/Valae-WM-Pistachio.png">
+<meta property="og:site_name" content="Valae">
+<meta property="og:locale" content="en_GB">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://valae.ai">
+<meta name="twitter:title" content="Valae - AI brought down to earth">
+<meta name="twitter:description" content="Valae consolidates your messy business knowledge into a structured, self-updating AI brain. Knowledge assistants, email automation, sales chatbots. Measurable results in weeks, not months.">
+<meta name="twitter:image" content="https://valae.ai/assets/logos/Valae-WM-Pistachio.png">
+
 <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAA">
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -897,36 +914,33 @@ textarea.form-input {
    FOOTER
    ================================================================ */
 .footer {
-  padding: 24px 40px 34px;
+  padding: 48px 40px 28px;
   background: var(--forest-deep);
   border-top: 1px solid rgba(186,217,168,0.06);
 }
 .footer-inner {
   max-width: var(--max-w); margin: 0 auto;
-  display: flex; align-items: flex-end; justify-content: space-between;
+}
+.footer-top {
+  display: flex; justify-content: space-between; gap: 60px;
 }
 .footer-left {
-  display: flex; flex-direction: column; gap: 10px;
+  display: flex; flex-direction: column; gap: 20px;
+  max-width: 480px;
 }
-.footer-link {
-  font-size: 13px;
-  font-weight: 600;
-  color: rgba(186,217,168,0.6);
-  text-decoration: none;
-  transition: color 0.2s ease;
+.footer-brand {
+  display: flex; align-items: center; gap: 12px;
 }
-.footer-link:hover {
-  color: var(--pistachio);
-}
-.footer-right {
-  display: flex; flex-direction: column; align-items: flex-end; gap: 20px;
+.footer-description {
+  font-size: 14px; line-height: 1.7;
+  color: rgba(223,220,215,0.45);
 }
 .footer-icons {
-  display: flex; align-items: center; gap: 8px;
+  display: flex; align-items: center; gap: 10px;
 }
 .footer-icons a {
   display: inline-flex; align-items: center; justify-content: center;
-  width: 32px; height: 32px; border-radius: 6px;
+  width: 34px; height: 34px; border-radius: 8px;
   border: 1px solid rgba(186,217,168,0.12);
   color: rgba(186,217,168,0.4);
   transition: all 0.2s ease;
@@ -935,13 +949,55 @@ textarea.form-input {
   border-color: rgba(186,217,168,0.3);
   color: var(--pistachio);
 }
-.footer-locations {
-  font-size: 13px;
-  color: rgba(223,220,215,0.35);
+.footer-right {
+  display: flex; flex-direction: column; gap: 16px;
+  flex-shrink: 0;
+}
+.footer-heading {
+  font-family: var(--font-body);
+  font-size: 15px; font-weight: 700;
+  color: rgba(223,220,215,0.8);
+  letter-spacing: -0.2px;
+}
+.footer-nav {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.footer-link {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(186,217,168,0.5);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.footer-link:hover {
+  color: var(--pistachio);
+}
+.footer-divider {
+  height: 1px;
+  background: rgba(186,217,168,0.08);
+  margin: 36px 0 20px;
+}
+.footer-bottom {
+  display: flex; align-items: center; justify-content: space-between;
 }
 .footer-copyright {
-  font-size: 12px;
-  color: rgba(223,220,215,0.22);
+  font-size: 13px;
+  color: rgba(223,220,215,0.25);
+}
+.footer-legal {
+  display: flex; gap: 24px;
+}
+.footer-legal-link {
+  font-size: 13px;
+  color: rgba(223,220,215,0.35);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(223,220,215,0.15);
+  transition: color 0.2s ease;
+}
+.footer-legal-link:hover {
+  color: var(--pistachio);
+  text-decoration-color: var(--pistachio);
 }
 
 /* ================================================================
@@ -973,10 +1029,13 @@ textarea.form-input {
   .section-video-demo { padding: 48px 0; }
   .section-mosaic { padding: 48px 0; }
   .section-tiers, .section-proof, .section-cta { padding: 64px 0; }
-  .footer-inner { flex-direction: column; align-items: center; gap: 24px; text-align: center; }
-  .footer-left { align-items: center; }
-  .footer-right { align-items: center; }
+  .footer-top { flex-direction: column; gap: 36px; }
+  .footer-left { align-items: center; text-align: center; }
+  .footer-right { align-items: center; text-align: center; }
+  .footer-nav { align-items: center; }
   .footer-icons { justify-content: center; }
+  .footer-bottom { flex-direction: column; align-items: center; gap: 12px; text-align: center; }
+  .footer-legal { justify-content: center; }
 }
 
 /* ================================================================
@@ -2661,20 +2720,37 @@ Sarah</div>
 
   <footer class="footer">
     <div class="footer-inner">
-      <div class="footer-left">
-        <a href="https://valae.ai/about" class="footer-link">About us</a>
-        <div class="footer-locations">London &nbsp;·&nbsp; New York &nbsp;·&nbsp; Amsterdam</div>
-        <div class="footer-copyright">&copy; 2026 Valae B.V. All rights reserved.</div>
+      <div class="footer-top">
+        <div class="footer-left">
+          <div class="footer-brand">
+            <img class="footer-logo-placeholder" src="assets/logos/Valae-WM-Pistachio.png" alt="Valae">
+          </div>
+          <p class="footer-description">Step Zero organises your scattered knowledge into a secure, source-cited AI brain—powering assistants, automations, and chatbots that deliver ROI fast.</p>
+          <div class="footer-icons">
+            <a href="mailto:info@valae.ai" aria-label="Email">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/company/valae-ai/" target="_blank" aria-label="LinkedIn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-right">
+          <h4 class="footer-heading">Quick Links</h4>
+          <nav class="footer-nav">
+            <a href="https://valae.ai/about" class="footer-link">About Us</a>
+            <a href="#how-it-works" class="footer-link">How It Works</a>
+            <a href="#" class="footer-link" onclick="document.querySelector('.section-tiers').scrollIntoView({behavior:'smooth'});return false;">Tooling</a>
+            <a href="#" class="footer-link" onclick="document.querySelector('.section-proof').scrollIntoView({behavior:'smooth'});return false;">Projects</a>
+          </nav>
+        </div>
       </div>
-      <div class="footer-right">
-        <img class="footer-logo-placeholder" src="assets/logos/Valae-WM-Pistachio.png" alt="Valae">
-        <div class="footer-icons">
-          <a href="mailto:info@valae.ai" aria-label="Email">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/company/valae-ai/" target="_blank" aria-label="LinkedIn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
+      <div class="footer-divider"></div>
+      <div class="footer-bottom">
+        <div class="footer-copyright">&copy; 2026 Valae B.V. All rights reserved.</div>
+        <div class="footer-legal">
+          <a href="#" class="footer-legal-link">Privacy Policy</a>
+          <a href="#" class="footer-legal-link">Terms &amp; Conditions</a>
         </div>
       </div>
     </div>
