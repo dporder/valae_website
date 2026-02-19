@@ -1,0 +1,2057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valae - AI brought down to earth</title>
+<meta name="description" content="Step Zero organises your messy docs, spreadsheets, emails and more into an AI-ready foundation, then builds tools for fast ROI. Knowledge assistants, email automation, sales chatbots. Measurable results in weeks, not months.">
+<link rel="canonical" href="https://valae.ai">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://valae.ai">
+<meta property="og:title" content="Valae - AI brought down to earth">
+<meta property="og:description" content="Valae consolidates your messy business knowledge into a structured, self-updating AI brain. Knowledge assistants, email automation, sales chatbots. Measurable results in weeks, not months.">
+<meta property="og:image" content="https://valae.ai/assets/logos/valae_social_image.png">
+<meta property="og:site_name" content="Valae">
+<meta property="og:locale" content="en_GB">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://valae.ai">
+<meta name="twitter:title" content="Valae - AI brought down to earth">
+<meta name="twitter:description" content="Valae consolidates your messy business knowledge into a structured, self-updating AI brain. Knowledge assistants, email automation, sales chatbots. Measurable results in weeks, not months.">
+<meta name="twitter:image" content="https://valae.ai/assets/logos/valae_social_image.png">
+
+<link rel="icon" type="image/png" href="assets/logos/valaestar_logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ================================================================
+   BROTHER 1816 — LOCAL @font-face
+   ================================================================ */
+@font-face { font-family: 'Brother 1816'; font-weight: 300; font-style: normal; font-display: swap; src: url('fonts/Brother 1816/Brother-1816-Font/Brother-1816-Light.woff2') format('woff2'); }
+@font-face { font-family: 'Brother 1816'; font-weight: 300; font-style: italic; font-display: swap; src: url('fonts/Brother 1816/Brother-1816-Font/Brother-1816-Light-Italic.woff2') format('woff2'); }
+@font-face { font-family: 'Brother 1816'; font-weight: 400; font-style: normal; font-display: swap; src: url('fonts/Brother 1816/Brother-1816-Font/Brother-1816-Regular.woff2') format('woff2'); }
+@font-face { font-family: 'Brother 1816'; font-weight: 400; font-style: italic; font-display: swap; src: url('fonts/Brother 1816/Brother-1816-Font/Brother-1816-Regular-Italic.woff2') format('woff2'); }
+@font-face { font-family: 'Brother 1816'; font-weight: 500; font-style: normal; font-display: swap; src: url('fonts/Brother 1816/Brother-1816-Font/Brother-1816-Medium.woff2') format('woff2'); }
+@font-face { font-family: 'Brother 1816'; font-weight: 500; font-style: italic; font-display: swap; src: url('fonts/Brother 1816/Brother-1816-Font/Brother-1816-Medium-Italic.woff2') format('woff2'); }
+@font-face { font-family: 'Brother 1816'; font-weight: 600; font-style: normal; font-display: swap; src: url('fonts/Brother 1816/Brother-1816-Font/Brother-1816-Bold.woff2') format('woff2'); }
+@font-face { font-family: 'Brother 1816'; font-weight: 600; font-style: italic; font-display: swap; src: url('fonts/Brother 1816/Brother-1816-Font/Brother-1816-Bold-Italic.woff2') format('woff2'); }
+@font-face { font-family: 'Brother 1816'; font-weight: 700; font-style: normal; font-display: swap; src: url('fonts/Brother 1816/Brother-1816-Font/Brother-1816-Extra-Bold.woff2') format('woff2'); }
+@font-face { font-family: 'Brother 1816'; font-weight: 700; font-style: italic; font-display: swap; src: url('fonts/Brother 1816/Brother-1816-Font/Brother-1816-Extra-Bold-Italic.woff2') format('woff2'); }
+
+/* ================================================================
+   RESET & VARIABLES
+   ================================================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --forest: #003017;
+  --forest-deep: #001a0d;
+  --forest-mid: #002a14;
+  --pistachio: #BAD9A8;
+  --pistachio-light: #d4eac6;
+  --pistachio-dim: rgba(186,217,168,0.15);
+  --offwhite: #DFDCD7;
+  --charcoal: #1A1D1B;
+  --bg: #FAFAF7;
+  --bg-warm: #F5F2ED;
+  --white: #ffffff;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --font-display: 'Unbounded', sans-serif;
+  --font-body: 'Brother 1816', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--charcoal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+.page { display: none; }
+.page.active { display: block; }
+
+/* ================================================================
+   ANIMATIONS
+   ================================================================ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes flowDown {
+  0%   { top: 0; opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { top: calc(100% - 5px); opacity: 0; }
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+@keyframes eaCursorBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+@keyframes eaEllipsis { 0%, 60%, 100% { opacity: 0; } 30% { opacity: 1; } }
+@keyframes icardThink {
+  0%, 80%, 100% { opacity: 0.3; transform: scale(0.85); }
+  40% { opacity: 1; transform: scale(1.15); }
+}
+
+.fade-up { opacity: 0; animation: fadeUp 0.8s var(--ease) forwards; }
+.fade-up-d1 { animation-delay: 0.15s; }
+.fade-up-d2 { animation-delay: 0.3s; }
+.fade-up-d3 { animation-delay: 0.45s; }
+
+/* ================================================================
+   NAV
+   ================================================================ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 0 20px; transition: all 0.4s ease;
+}
+.nav.at-top { background: transparent; }
+.nav.scrolled {
+  background: rgba(0,48,23,0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(186,217,168,0.15);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between; height: 56px;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 0;
+  color: var(--pistachio);
+}
+.nav-brand-wordmark { display: flex; flex-direction: column; gap: 2px; }
+.nav-brand-name {
+  font-family: var(--font-display); font-weight: 600; font-size: 18px;
+  color: var(--pistachio); letter-spacing: -0.5px; line-height: 1;
+}
+.nav-brand-sub-row {
+  display: flex; align-items: center; gap: 5px;
+}
+.nav-brand-sub {
+  font-family: var(--font-display); font-weight: 300; font-size: 9px;
+  color: rgba(186,217,168,0.45); letter-spacing: 1.5px; text-transform: uppercase; line-height: 1;
+}
+.nav-cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 16px; border-radius: 8px;
+  background: var(--pistachio); color: var(--forest);
+  font-weight: 600; font-size: 13px; letter-spacing: -0.2px;
+  transition: all 0.3s ease; cursor: pointer; border: none;
+  font-family: var(--font-body);
+}
+
+/* ================================================================
+   HERO
+   ================================================================ */
+.hero {
+  position: relative; overflow: hidden;
+  min-height: 100vh; min-height: 100dvh;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--forest);
+  padding: 80px 0 60px;
+}
+.hero-video-bg {
+  position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none;
+}
+.hero-video-bg video {
+  position: absolute; top: 50%; left: 50%;
+  min-width: 100%; min-height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover; pointer-events: none;
+}
+.hero-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(180deg, rgba(0,26,13,0.88) 0%, rgba(0,48,23,0.82) 50%, rgba(0,32,14,0.92) 100%);
+}
+.hero::after {
+  content: ''; position: absolute; inset: 0; z-index: 2; opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.hero-content {
+  position: relative; z-index: 3;
+  padding: 0 24px; text-align: center;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 7px 14px 7px 12px;
+  background: rgba(186,217,168,0.08);
+  border: 1px solid rgba(186,217,168,0.15);
+  border-radius: 100px;
+  font-size: 13px; font-weight: 500; color: var(--pistachio);
+  margin-bottom: 28px; letter-spacing: 0.3px;
+}
+.hero-badge-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--pistachio); animation: pulse 2s ease infinite;
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: 28px; font-weight: 600; line-height: 1.15;
+  color: var(--offwhite); letter-spacing: -1px;
+  margin-bottom: 20px;
+}
+.hero h1 em { font-style: italic; color: var(--pistachio); }
+.hero-sub {
+  font-size: 16px; line-height: 1.65; color: rgba(223,220,215,0.7);
+  margin: 0 auto 32px; font-weight: 400;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 28px;
+  background: var(--pistachio); color: var(--forest);
+  font-weight: 600; font-size: 16px;
+  border-radius: 12px; border: none; cursor: pointer;
+  transition: all 0.3s var(--ease);
+  letter-spacing: -0.3px;
+  font-family: var(--font-body);
+}
+
+/* ================================================================
+   TRUSTED BY / LOGO CAROUSEL
+   ================================================================ */
+.section-trusted {
+  background: var(--bg-warm);
+  padding: 24px 0;
+  border-top: 1px solid rgba(0,48,23,0.06);
+  border-bottom: 1px solid rgba(0,48,23,0.06);
+}
+.trusted-row { text-align: center; }
+.trusted-label {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--charcoal); opacity: 0.3; margin-bottom: 16px;
+}
+.trusted-track-wrap {
+  overflow: hidden; width: 100%;
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+.trusted-track {
+  display: flex; align-items: center; width: max-content; will-change: transform;
+}
+.trusted-track-set {
+  display: flex; align-items: center; gap: 36px; flex-shrink: 0; padding-right: 36px;
+}
+.trusted-logo-placeholder {
+  max-height: 32px; max-width: 100px; width: auto; height: auto;
+  flex-shrink: 0; object-fit: contain; opacity: 0.75;
+}
+
+/* ================================================================
+   SECTION SHARED
+   ================================================================ */
+.section-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--forest); opacity: 0.5; margin-bottom: 16px;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: 24px; font-weight: 600; line-height: 1.2;
+  color: var(--charcoal); letter-spacing: -1px; margin-bottom: 16px;
+}
+.section-title em { font-style: italic; color: var(--forest); }
+.section-sub {
+  font-size: 15px; line-height: 1.7; color: rgba(26,29,27,0.6); margin-bottom: 28px;
+}
+
+/* ================================================================
+   PIPELINE — MOBILE REDESIGN
+   ================================================================ */
+.section-pipeline {
+  padding: 56px 0 24px;
+  background: var(--bg);
+}
+.section-pipeline .container {
+  padding: 0 24px;
+}
+.pipeline-hero-text {
+  margin-bottom: 28px; text-align: center;
+}
+.pipeline-feature-cards {
+  display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px;
+}
+.pipeline-feature-card {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--pistachio);
+  border: 1.5px solid rgba(0,48,23,0.12);
+  border-radius: 14px; padding: 18px 16px;
+}
+.pipeline-feature-card svg { flex-shrink: 0; }
+.pipeline-feature-title {
+  font-size: 14px; font-weight: 600; color: var(--forest); margin-bottom: 4px;
+}
+.pipeline-feature-desc {
+  font-size: 13px; line-height: 1.5; color: rgba(0,48,23,0.7);
+}
+
+.diagram-eyebrow {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 24px;
+}
+.diagram-eyebrow-text {
+  font-family: var(--font-display);
+  font-size: 9px; font-weight: 600;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--forest); opacity: 0.35; white-space: nowrap;
+}
+.diagram-eyebrow-line { flex: 1; height: 1px; background: rgba(0,48,23,0.1); }
+
+.pipeline {
+  background: var(--forest-deep);
+  border: 1px solid rgba(186,217,168,0.1);
+  border-radius: 20px; padding: 28px 20px;
+  position: relative; overflow: hidden;
+}
+.pipeline::before {
+  content: ''; position: absolute; inset: 0; opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.pipeline > * { position: relative; z-index: 1; }
+
+.pipe-sources-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+}
+.pipe-source-item {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 10px 6px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 10px;
+}
+.pipe-source-icon {
+  width: 32px; height: 32px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+}
+.pipe-source-icon svg { width: 16px; height: 16px; }
+.pipe-source-label {
+  font-size: 10px; font-weight: 600; color: var(--offwhite);
+  text-align: center; line-height: 1.2;
+}
+.pipe-source-meta {
+  font-size: 9px; color: rgba(223,220,215,0.4);
+  text-align: center; margin-top: -3px;
+}
+
+.pipe-connector {
+  display: flex; flex-direction: column; align-items: center;
+  height: 40px; position: relative; margin: 0 auto;
+}
+.pipe-connector::before {
+  content: ''; width: 1.5px; height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(186,217,168,0.25) 0px, rgba(186,217,168,0.25) 4px,
+    transparent 4px, transparent 8px
+  );
+}
+.pipe-connector::after {
+  content: ''; position: absolute;
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--pistachio);
+  box-shadow: 0 0 6px rgba(186,217,168,0.8);
+  animation: flowDown 1.8s ease-in-out infinite;
+}
+
+.pipe-engine {
+  background: var(--forest-mid);
+  border: 1px solid rgba(186,217,168,0.2);
+  border-radius: 14px; padding: 20px 16px;
+}
+.pipe-engine-label {
+  font-family: var(--font-display);
+  font-size: 9px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--pistachio); opacity: 0.6; text-align: center; margin-bottom: 14px;
+}
+.pipe-engine-steps {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+}
+.pipe-step {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border-radius: 8px;
+  background: rgba(0,48,23,0.5);
+  border: 1px solid rgba(186,217,168,0.1);
+  transition: border-color 0.4s ease, background 0.4s ease;
+}
+.pipe-step.active {
+  border-color: rgba(186,217,168,0.35);
+  background: rgba(0,48,23,0.85);
+}
+.pipe-step-num {
+  width: 22px; height: 22px; border-radius: 50%;
+  border: 1.5px solid rgba(186,217,168,0.25);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 9px; font-weight: 700;
+  color: var(--pistachio); opacity: 0.55; flex-shrink: 0;
+  transition: opacity 0.4s ease;
+}
+.pipe-step.active .pipe-step-num { opacity: 1; border-color: rgba(186,217,168,0.6); }
+.pipe-step-text {
+  font-size: 13px; font-weight: 500; color: rgba(223,220,215,0.55);
+  transition: color 0.4s ease;
+}
+.pipe-step.active .pipe-step-text { color: var(--offwhite); font-weight: 600; }
+
+.pipe-brain-panel {
+  background: var(--forest-mid);
+  border: 1px solid rgba(186,217,168,0.2);
+  border-radius: 14px; padding: 16px 20px;
+}
+.pipe-brain {
+  display: flex; align-items: center; gap: 14px; text-align: left;
+}
+.pipe-brain-visual { width: 56px; height: 56px; flex-shrink: 0; }
+.pipe-brain-svg { width: 100%; height: 100%; }
+.brain-ring-outer { stroke: rgba(186,217,168,0.12); fill: none; stroke-dasharray: 3 4; animation: pipeRotate 40s linear infinite; transform-origin: 36px 36px; }
+.brain-ring-mid { stroke: rgba(186,217,168,0.1); fill: none; stroke-dasharray: 6 3; animation: pipeRotate 22s linear infinite reverse; transform-origin: 36px 36px; }
+@keyframes pipeRotate { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+.brain-core { fill: rgba(186,217,168,0.14); stroke: rgba(186,217,168,0.4); stroke-width: 1.5; }
+.brain-pulse { fill: rgba(186,217,168,0.7); animation: brainPulse 2.4s ease-in-out infinite; transform-origin: 36px 36px; }
+@keyframes brainPulse { 0%,100%{r:5;opacity:.55} 50%{r:8;opacity:1} }
+.brain-sonar-1 { fill: none; stroke: rgba(186,217,168,0.55); stroke-width: 1; transform-origin: 36px 36px; animation: brainSonar 2.4s ease-out infinite; }
+.brain-sonar-2 { fill: none; stroke: rgba(186,217,168,0.35); stroke-width: 0.8; transform-origin: 36px 36px; animation: brainSonar 2.4s ease-out 0.8s infinite; }
+.brain-sonar-3 { fill: none; stroke: rgba(186,217,168,0.2); stroke-width: 0.6; transform-origin: 36px 36px; animation: brainSonar 2.4s ease-out 1.6s infinite; }
+@keyframes brainSonar { 0% { r: 14; opacity: 0.7; } 100% { r: 34; opacity: 0; } }
+.brain-orbit-1 { fill: rgba(186,217,168,0.35); stroke: rgba(186,217,168,0.55); stroke-width:1; animation: orbit1 14s linear infinite; transform-origin:36px 36px; }
+.brain-orbit-2 { fill: rgba(140,210,255,0.3); stroke: rgba(140,210,255,0.5); stroke-width:1; animation: orbit2 20s linear infinite; transform-origin:36px 36px; }
+.brain-orbit-3 { fill: rgba(240,200,80,0.25); stroke: rgba(240,200,80,0.45); stroke-width:1; animation: orbit3 10s linear infinite; transform-origin:36px 36px; }
+@keyframes orbit1 { from{transform:rotate(0deg) translateX(26px) rotate(0deg)} to{transform:rotate(360deg) translateX(26px) rotate(-360deg)} }
+@keyframes orbit2 { from{transform:rotate(120deg) translateX(20px) rotate(-120deg)} to{transform:rotate(480deg) translateX(20px) rotate(-480deg)} }
+@keyframes orbit3 { from{transform:rotate(240deg) translateX(30px) rotate(-240deg)} to{transform:rotate(600deg) translateX(30px) rotate(-600deg)} }
+.pipe-brain-name {
+  font-family: var(--font-display); font-size: 11px; font-weight: 600;
+  color: var(--pistachio); letter-spacing: -0.3px;
+}
+.pipe-brain-sub { font-size: 10px; color: rgba(223,220,215,0.35); margin-top: 2px; }
+
+/* ================================================================
+   TOOLS SECTION + CAROUSEL
+   ================================================================ */
+.section-tools {
+  padding: 24px 0 56px;
+  background: var(--bg);
+}
+.section-tools .container { padding: 0 24px; }
+.section-tools .section-label,
+.section-tools .section-title,
+.section-tools .section-sub { text-align: left; }
+
+.tools-carousel {
+  display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  gap: 12px; padding: 0 24px;
+  scrollbar-width: none;
+}
+.tools-carousel::-webkit-scrollbar { display: none; }
+
+.tools-more {
+  margin: 24px 24px 0;
+  padding: 12px 20px;
+  background: rgba(186,217,168,0.2);
+  border: 1px solid rgba(186,217,168,0.4);
+  border-radius: 999px;
+  font-size: 14px; font-weight: 600;
+  color: var(--forest); text-align: center;
+}
+
+/* Interface card (tool demos) */
+.interface-card {
+  flex: 0 0 82vw; scroll-snap-align: center;
+  background: var(--white);
+  border: 1.5px solid rgba(0,48,23,0.1);
+  border-radius: 20px; overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,48,23,0.05);
+  display: flex; flex-direction: column;
+}
+.interface-bar {
+  display: flex; align-items: center; gap: 10px;
+  padding: 11px 14px;
+  background: var(--bg-warm);
+  border-bottom: 1.5px solid rgba(0,48,23,0.08);
+}
+.interface-dots { display: flex; gap: 5px; }
+.interface-dots span { width: 8px; height: 8px; border-radius: 50%; background: rgba(0,48,23,0.12); display: block; }
+.interface-bar-title {
+  font-size: 11px; font-weight: 600; color: rgba(26,29,27,0.45);
+  letter-spacing: 0.3px; display: flex; align-items: center; gap: 5px;
+}
+.interface-body {
+  padding: 18px 14px; flex: 0 0 265px;
+  display: flex; flex-direction: column; gap: 12px; overflow: hidden;
+}
+.interface-footer {
+  padding: 14px 14px; border-top: 1px solid rgba(0,48,23,0.06);
+  display: flex; flex-direction: column; gap: 6px;
+}
+.interface-tag {
+  display: inline-flex; padding: 3px 10px;
+  background: rgba(186,217,168,0.2); border: 1px solid rgba(0,48,23,0.08);
+  border-radius: 6px; font-size: 11px; font-weight: 700;
+  color: var(--forest); letter-spacing: 0.3px; align-self: flex-start;
+}
+.interface-desc { font-size: 13px; color: rgba(26,29,27,0.5); line-height: 1.5; }
+
+/* ================================================================
+   CHAT ANIMATION (Knowledge Assistant + Chatbot)
+   ================================================================ */
+.icard-chat-wrap { padding: 0 !important; overflow: hidden; position: relative; }
+.icard-thinking { display: inline-flex; gap: 4px; padding: 2px 0; }
+.icard-thinking span {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: rgba(0,48,23,0.25);
+  animation: icardThink 1.2s ease-in-out infinite;
+}
+.icard-thinking span:nth-child(2) { animation-delay: 0.15s; }
+.icard-thinking span:nth-child(3) { animation-delay: 0.3s; }
+
+.aibrain-q {
+  align-self: flex-end;
+  background: rgba(0,48,23,0.06);
+  border-radius: 12px 12px 2px 12px;
+  padding: 10px 14px; font-size: 13px; font-weight: 500;
+  color: var(--charcoal); max-width: 85%; line-height: 1.5;
+}
+.aibrain-a-wrap { display: flex; gap: 10px; align-items: flex-start; }
+.aibrain-a-avatar {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--forest);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 2px;
+}
+.aibrain-a {
+  background: var(--bg); border: 1px solid rgba(0,48,23,0.08);
+  border-radius: 2px 12px 12px 12px;
+  padding: 12px 14px; flex: 1; min-width: 0; overflow: hidden;
+}
+.aibrain-a-text { font-size: 13px; line-height: 1.6; color: var(--charcoal); margin-bottom: 8px; }
+.aibrain-a-text strong { color: var(--forest); font-weight: 600; }
+.aibrain-sources { display: flex; flex-wrap: wrap; gap: 6px; }
+.aibrain-source-tag {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 8px; background: rgba(186,217,168,0.2);
+  border: 1px solid rgba(0,48,23,0.1); border-radius: 6px;
+  font-size: 11px; font-weight: 500; color: var(--forest);
+}
+.aibrain-cursor {
+  display: inline-block; width: 1.5px; height: 13px;
+  background: var(--forest); margin-left: 1px;
+  animation: blink 1s step-end infinite; vertical-align: middle;
+}
+
+/* Shopping chatbot carousel */
+.shop-carousel {
+  display: flex; gap: 6px; overflow-x: auto;
+  padding-bottom: 2px; margin-top: 4px; scrollbar-width: none;
+}
+.shop-carousel::-webkit-scrollbar { display: none; }
+.shop-product {
+  flex: 1 1 0; min-width: 0;
+  background: var(--white);
+  border: 1px solid rgba(0,48,23,0.08);
+  border-radius: 8px; padding: 6px;
+  display: flex; flex-direction: column; gap: 3px;
+}
+.shop-product-img {
+  width: 100%; aspect-ratio: 3/2;
+  background: linear-gradient(135deg, rgba(186,217,168,0.12), rgba(0,48,23,0.04));
+  border-radius: 6px; border: 1px dashed rgba(0,48,23,0.08);
+  overflow: hidden;
+}
+.shop-product-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 6px; }
+.shop-product-name { font-size: 10px; font-weight: 600; color: var(--charcoal); line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.shop-product-price { font-size: 11px; font-weight: 700; color: var(--forest); }
+.shop-product-link { font-size: 9px; font-weight: 600; color: var(--forest); opacity: 0.5; }
+
+/* ================================================================
+   EMAIL AUTOMATION ANIMATION
+   ================================================================ */
+.ea-body-wrap { padding: 0 !important; background: #fff; }
+.ea-client { display: flex; flex-direction: column; height: 100%; }
+.ea-gm-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 4px 8px; border-bottom: 1px solid #e8eaed; background: #fff;
+  opacity: 0; transition: opacity 0.3s ease;
+}
+.ea-gm-bar.ea-gm-bar--show { opacity: 1; }
+.ea-gm-bar-l, .ea-gm-bar-r { display: flex; align-items: center; gap: 1px; }
+.ea-gm-ico {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 24px; height: 24px; border-radius: 50%; color: #5f6368;
+}
+.ea-gm-sep { width: 1px; height: 16px; background: #dadce0; margin: 0 4px; }
+.ea-gm-pager { font-size: 9px; color: #5f6368; margin-right: 4px; }
+.ea-viewport { position: relative; flex: 1; overflow: hidden; }
+.ea-phase {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  opacity: 0; transform: translateY(8px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+}
+.ea-phase.ea-active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.ea-phase.ea-exit-up { opacity: 0; transform: translateY(-12px); transition: opacity 0.3s ease, transform 0.3s ease; }
+.ea-gm-tabs { display: flex; border-bottom: 1px solid #e8eaed; }
+.ea-gm-tab { padding: 8px 12px; font-size: 10px; font-weight: 600; color: #5f6368; border-bottom: 2px solid transparent; }
+.ea-gm-tab--active { color: #1a73e8; border-bottom-color: #1a73e8; }
+.ea-gm-row {
+  display: flex; align-items: center; gap: 4px;
+  padding: 7px 8px; border-bottom: 1px solid #f1f3f4;
+  transition: background 0.3s ease;
+}
+.ea-gm-row--unread .ea-gm-row-sender { font-weight: 700; color: #202124; }
+.ea-gm-row--unread .ea-gm-row-subj { font-weight: 600; color: #202124; }
+.ea-gm-row--unread .ea-gm-row-date { font-weight: 600; }
+.ea-gm-row--read { background: rgba(242,245,250,0.6); }
+.ea-gm-row--read .ea-gm-row-sender { color: #5f6368; }
+.ea-gm-row.ea-row-hl { background: #c2dbff; }
+.ea-gm-row-chk, .ea-gm-row-star { display: flex; align-items: center; color: #c4c7cc; flex-shrink: 0; }
+.ea-gm-row-content {
+  flex: 1; min-width: 0; display: flex; align-items: baseline; gap: 3px;
+  overflow: hidden; white-space: nowrap;
+}
+.ea-gm-row-sender { font-size: 10px; color: #202124; flex-shrink: 0; min-width: 60px; max-width: 75px; overflow: hidden; text-overflow: ellipsis; }
+.ea-gm-row-subj { font-size: 10px; color: #5f6368; flex-shrink: 0; }
+.ea-gm-row-preview { font-size: 10px; color: #969aa1; overflow: hidden; text-overflow: ellipsis; }
+.ea-gm-row-date { font-size: 9px; color: #5f6368; white-space: nowrap; flex-shrink: 0; }
+.ea-gm-detail { padding: 10px 12px; }
+.ea-gm-subject-row { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
+.ea-gm-subject { font-size: 13px; font-weight: 400; color: #202124; line-height: 1.3; }
+.ea-gm-inbox-lbl { font-size: 8px; font-weight: 600; padding: 1px 5px; background: #e8eaed; border-radius: 3px; color: #5f6368; white-space: nowrap; }
+.ea-gm-sender-row { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 12px; }
+.ea-gm-avatar {
+  width: 28px; height: 28px; min-width: 28px; border-radius: 50%;
+  background: #1a73e8; color: #fff;
+  font-size: 13px; font-weight: 500;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.ea-gm-sender-info { flex: 1; min-width: 0; }
+.ea-gm-sender-name { font-size: 10px; color: #202124; font-weight: 600; line-height: 1.3; }
+.ea-gm-sender-addr { font-weight: 400; color: #5f6368; font-size: 9px; }
+.ea-gm-to { font-size: 9px; color: #5f6368; margin-top: 1px; }
+.ea-gm-date-detail { font-size: 9px; color: #5f6368; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+.ea-gm-email-body { font-size: 11px; color: #3c4043; line-height: 1.6; padding-left: 36px; white-space: pre-line; }
+.ea-gm-compose { padding: 10px 12px; }
+.ea-gm-reply-box { border: 1px solid #dadce0; border-radius: 8px; overflow: hidden; }
+.ea-gm-reply-head { padding: 8px 12px 4px; }
+.ea-ai-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 3px 10px; background: rgba(186,217,168,0.15);
+  border: 1px solid rgba(186,217,168,0.3); border-radius: 6px;
+  font-size: 10px; font-weight: 700; color: var(--forest);
+}
+.ea-gm-reply-body { padding: 8px 12px; font-size: 11px; color: #3c4043; line-height: 1.55; min-height: 80px; white-space: pre-line; }
+.ea-gm-reply-foot { display: flex; align-items: center; gap: 6px; padding: 6px 12px 8px; }
+.ea-gm-send {
+  padding: 5px 16px; background: #1a73e8; color: #fff;
+  border: none; border-radius: 4px;
+  font-size: 10px; font-weight: 600; font-family: inherit;
+  opacity: 0.35; transition: opacity 0.3s ease, transform 0.12s ease, background 0.25s ease;
+}
+.ea-gm-send.ea-ready { opacity: 1; }
+.ea-gm-send.ea-pressed { opacity: 1; transform: scale(0.92); }
+.ea-gm-send.ea-sent { opacity: 1; background: #188038; }
+.ea-gm-tool-ico {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 22px; height: 22px; border-radius: 50%; color: #5f6368;
+}
+.ea-cursor {
+  display: inline-block; width: 1.5px; height: 13px;
+  background: #1a73e8; margin-left: 1px;
+  vertical-align: text-bottom; animation: eaCursorBlink 0.6s ease infinite;
+}
+.ea-ellipsis { display: inline; letter-spacing: 0.5px; }
+.ea-ellipsis span { opacity: 0; animation: eaEllipsis 1.4s ease-in-out infinite; }
+.ea-ellipsis span:nth-child(2) { animation-delay: 0.2s; }
+.ea-ellipsis span:nth-child(3) { animation-delay: 0.4s; }
+
+/* ================================================================
+   VIDEO DEMO
+   ================================================================ */
+.section-video-demo {
+  padding: 48px 0;
+  background: var(--bg-warm);
+  border-top: 1px solid rgba(0,48,23,0.06);
+  border-bottom: 1px solid rgba(0,48,23,0.06);
+}
+.section-video-demo .container { padding: 0 24px; }
+.video-demo-embed {
+  border-radius: 14px; overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,48,23,0.08);
+  border: 1.5px solid rgba(0,48,23,0.1);
+}
+
+/* ================================================================
+   SOCIAL PROOF / MOSAIC
+   ================================================================ */
+.section-mosaic {
+  padding: 56px 0;
+  background: var(--forest);
+  position: relative; overflow: hidden;
+}
+.section-mosaic::after {
+  content: ''; position: absolute; inset: 0; opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.section-mosaic .container { position: relative; z-index: 1; padding: 0 24px; }
+.mosaic-photo {
+  width: 100%; border-radius: 12px; overflow: hidden;
+  max-height: 240px; margin-bottom: 28px;
+}
+.mosaic-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mosaic-text h2 {
+  font-family: var(--font-display);
+  font-size: 22px; font-weight: 700; letter-spacing: -0.5px;
+  color: var(--offwhite); margin: 0 0 12px;
+}
+.mosaic-text > p {
+  font-size: 14px; line-height: 1.7;
+  color: rgba(223,220,215,0.55); margin: 0 0 24px;
+}
+.usp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.usp-item {
+  padding: 16px 14px; border-radius: 10px;
+  background: rgba(186,217,168,0.06);
+  border: 1px solid rgba(186,217,168,0.08);
+}
+.usp-icon {
+  width: 32px; height: 32px; border-radius: 8px;
+  background: rgba(186,217,168,0.1);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 10px; color: var(--pistachio);
+}
+.usp-icon svg { width: 16px; height: 16px; }
+.usp-item h3 {
+  font-family: var(--font-body);
+  font-size: 13px; font-weight: 600; color: var(--offwhite);
+  margin: 0 0 4px;
+}
+.usp-item p { font-size: 12px; line-height: 1.55; color: rgba(223,220,215,0.45); margin: 0; }
+
+/* ================================================================
+   TIERS SECTION + CAROUSEL
+   ================================================================ */
+.section-tiers {
+  padding: 56px 0;
+  background: var(--pistachio-light);
+  position: relative; overflow: hidden;
+}
+.section-tiers::after {
+  content: ''; position: absolute; inset: 0; opacity: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.section-tiers > * { position: relative; z-index: 1; }
+.section-tiers .section-label { color: var(--forest); opacity: 0.5; }
+.section-tiers .section-title { color: var(--charcoal); }
+
+.tiers-header { padding: 0 24px; margin-bottom: 24px; }
+.tiers-cta-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px; font-size: 14px; font-weight: 600;
+  color: var(--forest); background: transparent;
+  border: 1.5px solid rgba(0,48,23,0.2); border-radius: 10px;
+  cursor: pointer; white-space: nowrap; transition: all 0.3s ease;
+  letter-spacing: -0.2px; font-family: var(--font-body); margin-top: 4px;
+}
+
+.tiers-carousel {
+  display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  gap: 12px; padding: 0 24px;
+  scrollbar-width: none;
+}
+.tiers-carousel::-webkit-scrollbar { display: none; }
+
+.tier-card {
+  flex: 0 0 82vw; scroll-snap-align: center;
+  background: var(--white);
+  border: 1.5px solid rgba(0,48,23,0.08);
+  border-radius: 20px; padding: 28px 24px;
+}
+.tier-card.featured {
+  border-color: var(--forest);
+  box-shadow: 0 4px 24px rgba(0,48,23,0.1);
+}
+.tier-step {
+  font-family: var(--font-display);
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--forest); opacity: 0.4; margin-bottom: 8px;
+}
+.tier-name {
+  font-family: var(--font-display);
+  font-size: 22px; font-weight: 600;
+  color: var(--charcoal); letter-spacing: -1px; margin-bottom: 10px;
+}
+.tier-desc {
+  font-size: 15px; line-height: 1.65;
+  color: rgba(26,29,27,0.55); margin-bottom: 24px;
+}
+.tier-features { list-style: none; padding: 0; margin-bottom: 24px; }
+.tier-features li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 15px; line-height: 1.6;
+  color: rgba(26,29,27,0.65); margin-bottom: 10px;
+}
+.tier-features li svg { flex-shrink: 0; margin-top: 3px; color: var(--forest); opacity: 0.6; }
+.tier-timeline {
+  font-size: 14px; font-weight: 500;
+  color: var(--forest); opacity: 0.5; letter-spacing: 0.3px;
+}
+
+/* ================================================================
+   PROOF / PROJECTS CAROUSEL
+   ================================================================ */
+.section-proof {
+  padding: 56px 0;
+  background: var(--bg-warm);
+}
+.section-proof .container { padding: 0 24px; }
+
+.proof-carousel {
+  display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  gap: 16px; padding: 0 24px;
+  scrollbar-width: none;
+}
+.proof-carousel::-webkit-scrollbar { display: none; }
+
+.proof-card {
+  flex: 0 0 85vw; scroll-snap-align: center;
+  background: var(--white);
+  border: 1.5px solid rgba(0,48,23,0.06);
+  border-radius: 16px; overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.proof-card-img { width: 100%; height: 180px; }
+.proof-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.proof-tag {
+  position: absolute; top: 12px; left: 12px;
+  padding: 6px 14px; border-radius: 999px;
+  background: #E8F5E9; color: #1B5E20;
+  font-size: 12px; font-weight: 600;
+}
+.proof-card-body {
+  padding: 20px 20px 18px; flex: 1;
+  display: flex; flex-direction: column; position: relative;
+}
+.proof-client { margin-bottom: 4px; }
+.proof-client-logo {
+  height: 32px; width: auto; object-fit: contain;
+  object-position: left center; display: block;
+}
+.proof-industry {
+  font-size: 13px; color: rgba(26,29,27,0.4);
+  margin-bottom: 16px; letter-spacing: 0.3px;
+}
+.proof-stat {
+  font-family: var(--font-display);
+  font-size: 28px; font-weight: 700;
+  color: var(--forest); letter-spacing: -1.5px; margin-bottom: 4px;
+}
+.proof-stat-label { font-size: 14px; line-height: 1.5; color: rgba(26,29,27,0.55); }
+.proof-read-more {
+  display: inline-flex; align-items: center; gap: 5px;
+  margin-top: 14px; font-size: 13px; font-weight: 600;
+  color: rgba(0,48,23,0.4); letter-spacing: 0.2px;
+}
+
+/* ================================================================
+   PAGINATION DOTS (shared)
+   ================================================================ */
+.carousel-dots {
+  display: flex; justify-content: center; gap: 8px; margin-top: 20px;
+}
+.carousel-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(0,48,23,0.15); transition: all 0.3s ease;
+}
+.carousel-dot.active { background: var(--forest); transform: scale(1.25); }
+.section-tiers .carousel-dot { background: rgba(0,48,23,0.12); }
+.section-tiers .carousel-dot.active { background: var(--forest); }
+
+/* ================================================================
+   FINAL CTA
+   ================================================================ */
+.section-cta {
+  padding: 64px 0;
+  background: var(--forest);
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.section-cta::after {
+  content: ''; position: absolute; inset: 0; opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.section-cta .container { position: relative; z-index: 1; padding: 0 24px; }
+.cta-title {
+  font-family: var(--font-display);
+  font-size: 26px; font-weight: 600; line-height: 1.15;
+  color: var(--offwhite); letter-spacing: -1.5px; margin-bottom: 16px;
+}
+.cta-title em { font-style: italic; color: var(--pistachio); }
+.cta-sub {
+  font-size: 15px; line-height: 1.65;
+  color: rgba(223,220,215,0.55); margin: 0 auto 28px;
+}
+
+/* ================================================================
+   FOOTER
+   ================================================================ */
+.footer {
+  padding: 40px 24px 24px;
+  background: var(--forest-deep);
+  border-top: 1px solid rgba(186,217,168,0.06);
+}
+.footer-inner { text-align: center; }
+.footer-brand { display: flex; justify-content: center; margin-bottom: 16px; }
+.footer-logo-placeholder { height: 36px; width: auto; object-fit: contain; }
+.footer-description {
+  font-size: 13px; line-height: 1.7;
+  color: rgba(223,220,215,0.45); margin-bottom: 16px;
+}
+.footer-icons {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  margin-bottom: 24px;
+}
+.footer-icons a {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; border-radius: 8px;
+  border: 1px solid rgba(186,217,168,0.12);
+  color: rgba(186,217,168,0.4);
+}
+.footer-heading {
+  font-family: var(--font-body);
+  font-size: 14px; font-weight: 700;
+  color: rgba(223,220,215,0.8); letter-spacing: -0.2px;
+  margin-bottom: 12px;
+}
+.footer-nav {
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  margin-bottom: 24px;
+}
+.footer-link {
+  font-size: 14px; font-weight: 500;
+  color: rgba(186,217,168,0.5);
+}
+.footer-divider { height: 1px; background: rgba(186,217,168,0.08); margin: 0 0 16px; }
+.footer-bottom { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.footer-copyright { font-size: 12px; color: rgba(223,220,215,0.25); }
+.footer-legal { display: flex; gap: 20px; }
+.footer-legal-link {
+  font-size: 12px; color: rgba(223,220,215,0.35);
+  text-decoration: underline; text-underline-offset: 3px;
+  text-decoration-color: rgba(223,220,215,0.15);
+}
+
+/* ================================================================
+   FORM PAGE
+   ================================================================ */
+.form-page {
+  min-height: 100vh; min-height: 100dvh;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--forest);
+  padding: 72px 24px;
+  position: relative; overflow: hidden;
+}
+.form-page::after {
+  content: ''; position: absolute; inset: 0; opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.form-card {
+  position: relative; z-index: 1;
+  background: rgba(0,32,14,0.5);
+  border: 1px solid rgba(186,217,168,0.12);
+  border-radius: 24px; padding: 36px 24px;
+  width: 100%; max-width: 440px;
+  backdrop-filter: blur(20px);
+}
+.form-progress { display: flex; align-items: center; gap: 8px; margin-bottom: 24px; }
+.form-progress-step { width: 40px; height: 3px; border-radius: 2px; background: rgba(186,217,168,0.15); }
+.form-progress-step.active { background: var(--pistachio); }
+.form-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--pistachio); opacity: 0.5; margin-bottom: 12px;
+}
+.form-title {
+  font-family: var(--font-display);
+  font-size: 22px; font-weight: 600;
+  color: var(--offwhite); letter-spacing: -1px; margin-bottom: 8px;
+}
+.form-sub {
+  font-size: 14px; line-height: 1.65;
+  color: rgba(223,220,215,0.5); margin-bottom: 28px;
+}
+.form-group { margin-bottom: 16px; }
+.form-label {
+  display: block; font-size: 13px; font-weight: 600;
+  color: rgba(223,220,215,0.6); margin-bottom: 8px; letter-spacing: 0.3px;
+}
+.form-input {
+  width: 100%; padding: 14px 16px;
+  background: rgba(186,217,168,0.06);
+  border: 1.5px solid rgba(186,217,168,0.12);
+  border-radius: 10px; color: var(--offwhite);
+  font-family: var(--font-body); font-size: 16px;
+  transition: all 0.3s ease; outline: none;
+}
+.form-input::placeholder { color: rgba(223,220,215,0.25); }
+.form-input:focus {
+  border-color: rgba(186,217,168,0.35);
+  background: rgba(186,217,168,0.08);
+  box-shadow: 0 0 0 3px rgba(186,217,168,0.08);
+}
+textarea.form-input { resize: vertical; min-height: 100px; }
+.form-submit {
+  width: 100%; padding: 16px;
+  background: var(--pistachio); color: var(--forest);
+  font-family: var(--font-body); font-weight: 600; font-size: 16px;
+  border: none; border-radius: 12px;
+  cursor: pointer; transition: all 0.3s ease; margin-top: 8px;
+}
+.form-submit:disabled { opacity: 0.7; cursor: not-allowed; }
+
+/* ================================================================
+   BOOKING PAGE
+   ================================================================ */
+.confirm-page {
+  min-height: 100vh; min-height: 100dvh;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--forest);
+  padding: 72px 24px;
+  position: relative; overflow: hidden; text-align: center;
+}
+.confirm-page::after {
+  content: ''; position: absolute; inset: 0; opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.confirm-content { position: relative; z-index: 1; }
+.confirm-icon {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: rgba(186,217,168,0.1);
+  border: 2px solid rgba(186,217,168,0.2);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 24px; animation: float 3s ease-in-out infinite;
+}
+.confirm-title {
+  font-family: var(--font-display);
+  font-size: 26px; font-weight: 600;
+  color: var(--offwhite); letter-spacing: -1.5px; margin-bottom: 14px;
+}
+.confirm-sub {
+  font-size: 15px; line-height: 1.65;
+  color: rgba(223,220,215,0.55); margin-bottom: 32px;
+}
+
+/* ================================================================
+   STICKY BOTTOM CTA
+   ================================================================ */
+.sticky-cta {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
+  padding: 12px 24px;
+  padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  background: rgba(0,48,23,0.95);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(186,217,168,0.15);
+  transform: translateY(100%);
+  transition: transform 0.35s var(--ease);
+  display: flex; justify-content: center;
+}
+.sticky-cta.visible { transform: translateY(0); }
+.sticky-cta .btn-primary {
+  width: 100%; justify-content: center; padding: 14px 24px;
+}
+</style>
+</head>
+<body>
+
+<script>
+if (window.innerWidth > 768) {
+  window.location.replace('index.html');
+}
+</script>
+
+<!-- ================================================================
+     NAV
+     ================================================================ -->
+<nav class="nav at-top" id="mainNav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand" onclick="showPage('product')">
+      <div class="nav-brand-wordmark">
+        <span class="nav-brand-name">Step Zero</span>
+        <div class="nav-brand-sub-row">
+          <span class="nav-brand-sub">BY</span>
+          <img src="assets/logos/valae_logo.png" alt="Valae Logo" style="height: 14px; transform: translateY(-1px);">
+        </div>
+      </div>
+    </a>
+    <button class="nav-cta" onclick="showPage('form')">
+      Book a demo
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ================================================================
+     PAGE 1: PRODUCT
+     ================================================================ -->
+<div class="page active" id="page-product">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-video-bg">
+      <video autoplay muted loop playsinline>
+        <source src="bg-video.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="fade-up fade-up-d1">Your AI doesn't work because your <em>knowledge</em> is scattered</h1>
+      <p class="hero-sub fade-up fade-up-d2">Step Zero organises your messy docs, spreadsheets, emails and more into an AI-ready foundation, then builds tools for fast ROI.</p>
+      <div class="fade-up fade-up-d3">
+        <button class="btn-primary" onclick="showPage('form')">
+          Book a demo
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUSTED BY -->
+  <section class="section-trusted">
+    <div class="trusted-row">
+      <div class="trusted-label">Our team has supported</div>
+      <div class="trusted-track-wrap">
+        <div class="trusted-track">
+          <div class="trusted-track-set">
+            <img class="trusted-logo-placeholder" src="assets/logos/bugaboo_logo.png" alt="Bugaboo">
+            <img class="trusted-logo-placeholder" src="assets/logos/ikea_logo.png" alt="IKEA">
+            <img class="trusted-logo-placeholder" src="assets/logos/mocomuseum_logo.png" alt="Moco Museum" style="max-height:44px">
+            <img class="trusted-logo-placeholder" src="assets/logos/shell_logo.png" alt="Shell" style="max-height:44px">
+            <img class="trusted-logo-placeholder" src="assets/logos/loreal_logo.png" alt="L'Oréal">
+            <img class="trusted-logo-placeholder" src="assets/logos/vcc_logo.svg" alt="Vibe Coding Collective" style="max-height:44px">
+            <img class="trusted-logo-placeholder" src="assets/logos/mango_logo.png" alt="Mango Mobility" style="max-height:44px">
+            <img class="trusted-logo-placeholder" src="assets/logos/spinn_logo.png" alt="Spinn">
+            <img class="trusted-logo-placeholder" src="assets/logos/tudelft_logo.png" alt="TU Delft">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS — PIPELINE -->
+  <section class="section-pipeline" id="how-it-works">
+    <div class="container">
+      <div class="pipeline-hero-text">
+        <div class="section-label">How it works</div>
+        <h2 class="section-title">Your files go in.<br><em>Your AI brain comes out</em></h2>
+        <p class="section-sub">Your AI tools should know everything about your business. That's why Step Zero converts your files into an AI brain.</p>
+      </div>
+
+      <div class="pipeline-feature-cards">
+        <div class="pipeline-feature-card">
+          <svg width="44" height="44" viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="4" stroke="#003017" stroke-width="1.3"/><circle cx="26" cy="26" r="9.5" stroke="#003017" stroke-width="1.3" stroke-dasharray="2.5 3.5"/><circle cx="26" cy="26" r="15" stroke="#003017" stroke-width="1.2"/><circle cx="26" cy="26" r="20.5" stroke="#003017" stroke-width="1.1" stroke-dasharray="3 4"/><circle cx="26" cy="26" r="25" stroke="#003017" stroke-width="1" opacity="0.5"/></svg>
+          <div>
+            <div class="pipeline-feature-title">Built on your business</div>
+            <div class="pipeline-feature-desc">Not a generic AI tool. Every answer is grounded in your knowledge and comes with an exact source.</div>
+          </div>
+        </div>
+        <div class="pipeline-feature-card">
+          <svg width="44" height="44" viewBox="0 0 52 52" fill="none"><path d="M26 46C26 46 26 30 26 26" stroke="#003017" stroke-width="1.3" stroke-linecap="round"/><path d="M26 26C26 22 24.5 18 21 15" stroke="#003017" stroke-width="1.2" stroke-linecap="round"/><path d="M26 30C28 27 31 24.5 35 24" stroke="#003017" stroke-width="1.2" stroke-linecap="round"/><path d="M26 22C23.5 20 20 19 16.5 20" stroke="#003017" stroke-width="1.1" stroke-linecap="round" opacity="0.8"/><path d="M26 18C28 15.5 31.5 13 36 13.5" stroke="#003017" stroke-width="1.1" stroke-linecap="round" opacity="0.8"/><path d="M21 15C18 13 14 12.5 11 14" stroke="#003017" stroke-width="1" stroke-linecap="round" opacity="0.6"/><path d="M26 14C24 11 20.5 8 17 7" stroke="#003017" stroke-width="1" stroke-linecap="round" opacity="0.6"/><path d="M36 13.5C39 11.5 42 9 43 6" stroke="#003017" stroke-width="1" stroke-linecap="round" opacity="0.5"/><circle cx="26" cy="26" r="2" fill="#003017" opacity="0.4"/></svg>
+          <div>
+            <div class="pipeline-feature-title">Evolves as you do</div>
+            <div class="pipeline-feature-desc">Constantly self-updating. Connected to your live data. As your business changes, the AI keeps up.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="diagram-eyebrow">
+        <div class="diagram-eyebrow-line"></div>
+        <div class="diagram-eyebrow-text">Under the hood</div>
+        <div class="diagram-eyebrow-line"></div>
+      </div>
+
+      <div class="pipeline">
+        <div class="pipe-sources-grid">
+          <div class="pipe-source-item"><div class="pipe-source-icon" style="background:rgba(100,160,255,0.1);"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 2h5l3 3v9a1 1 0 01-1 1H4a1 1 0 01-1-1V3a1 1 0 011-1z" stroke="rgba(100,160,255,0.8)" stroke-width="1.2"/><path d="M9 2v3h3" stroke="rgba(100,160,255,0.8)" stroke-width="1.2"/><path d="M5 7h6M5 9.5h6M5 12h4" stroke="rgba(100,160,255,0.8)" stroke-width="1" stroke-linecap="round"/></svg></div><div class="pipe-source-label">Documents</div><div class="pipe-source-meta">Word, PDF</div></div>
+          <div class="pipe-source-item"><div class="pipe-source-icon" style="background:rgba(80,200,120,0.1);"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="1.5" stroke="rgba(80,200,120,0.8)" stroke-width="1.2"/><path d="M2 6h12M2 10h12M6 2v12" stroke="rgba(80,200,120,0.8)" stroke-width="1" stroke-linecap="round"/></svg></div><div class="pipe-source-label">Sheets</div><div class="pipe-source-meta">Excel, CSV</div></div>
+          <div class="pipe-source-item"><div class="pipe-source-icon" style="background:rgba(255,170,60,0.1);"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12v8a1 1 0 01-1 1H3a1 1 0 01-1-1V4z" stroke="rgba(255,170,60,0.8)" stroke-width="1.2"/><path d="M2 4l6 5 6-5" stroke="rgba(255,170,60,0.8)" stroke-width="1.2" stroke-linecap="round"/></svg></div><div class="pipe-source-label">Emails</div><div class="pipe-source-meta">Any provider</div></div>
+          <div class="pipe-source-item"><div class="pipe-source-icon" style="background:rgba(150,120,255,0.1);"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12v6a2 2 0 01-2 2H4a2 2 0 01-2-2V4z" stroke="rgba(150,120,255,0.8)" stroke-width="1.2"/><path d="M5 8h6M5 10.5h4" stroke="rgba(150,120,255,0.8)" stroke-width="1" stroke-linecap="round"/><circle cx="4" cy="2.5" r="1" fill="rgba(150,120,255,0.8)"/><circle cx="8" cy="2.5" r="1" fill="rgba(150,120,255,0.8)"/><circle cx="12" cy="2.5" r="1" fill="rgba(150,120,255,0.8)"/></svg></div><div class="pipe-source-label">Chat</div><div class="pipe-source-meta">Comms logs</div></div>
+          <div class="pipe-source-item"><div class="pipe-source-icon" style="background:rgba(220,80,80,0.1);"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="1.5" stroke="rgba(220,80,80,0.8)" stroke-width="1.2"/><path d="M5 6h6M5 8.5h6M5 11h4" stroke="rgba(220,80,80,0.8)" stroke-width="1" stroke-linecap="round"/><rect x="4" y="4" width="8" height="1.5" rx="0.5" fill="rgba(220,80,80,0.3)"/></svg></div><div class="pipe-source-label">Databases</div><div class="pipe-source-meta">CRM, ERP</div></div>
+          <div class="pipe-source-item"><div class="pipe-source-icon" style="background:rgba(80,180,220,0.1);"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1.5" y="2" width="13" height="10" rx="1.5" stroke="rgba(80,180,220,0.8)" stroke-width="1.2"/><circle cx="8" cy="7" r="2.5" stroke="rgba(80,180,220,0.8)" stroke-width="1"/><path d="M1.5 14l3-2h7l3 2" stroke="rgba(80,180,220,0.8)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="pipe-source-label">Media</div><div class="pipe-source-meta">Calls, video</div></div>
+        </div>
+
+        <div class="pipe-connector"></div>
+
+        <div class="pipe-engine" id="pipeEngine">
+          <div class="pipe-engine-label">Step Zero Engine</div>
+          <div class="pipe-engine-steps">
+            <div class="pipe-step"><div class="pipe-step-num">1</div><div class="pipe-step-text">Ingest</div></div>
+            <div class="pipe-step"><div class="pipe-step-num">2</div><div class="pipe-step-text">De-duplicate</div></div>
+            <div class="pipe-step"><div class="pipe-step-num">3</div><div class="pipe-step-text">Structure</div></div>
+            <div class="pipe-step"><div class="pipe-step-num">4</div><div class="pipe-step-text">Tag</div></div>
+            <div class="pipe-step" style="grid-column: span 2; max-width: 50%; margin: 0 auto;"><div class="pipe-step-num">5</div><div class="pipe-step-text">Permission</div></div>
+          </div>
+        </div>
+
+        <div class="pipe-connector" style="animation-delay: 0.9s;"></div>
+
+        <div class="pipe-brain-panel">
+          <div class="pipe-brain">
+            <div class="pipe-brain-visual">
+              <svg class="pipe-brain-svg" viewBox="0 0 72 72" fill="none">
+                <circle cx="36" cy="36" r="14" class="brain-sonar-1"/>
+                <circle cx="36" cy="36" r="14" class="brain-sonar-2"/>
+                <circle cx="36" cy="36" r="14" class="brain-sonar-3"/>
+                <circle cx="36" cy="36" r="34" class="brain-ring-outer" stroke-width="1"/>
+                <circle cx="36" cy="36" r="24" class="brain-ring-mid" stroke-width="0.5"/>
+                <circle cx="36" cy="36" r="14" class="brain-core" stroke-width="1.5"/>
+                <circle cx="36" cy="36" r="6" class="brain-pulse"/>
+                <path d="M36 28 C36.5 31.8 37.9 33.1 41.5 33.6 C37.9 34.1 36.5 35.4 36 39.2 C35.5 35.4 34.1 34.1 30.5 33.6 C34.1 33.1 35.5 31.8 36 28Z" fill="#BAD9A8" opacity="0.9"/>
+                <circle cx="36" cy="6" r="4" class="brain-orbit-1"/>
+                <circle cx="62" cy="36" r="3" class="brain-orbit-2"/>
+                <circle cx="36" cy="66" r="3.5" class="brain-orbit-3"/>
+              </svg>
+            </div>
+            <div>
+              <div class="pipe-brain-name">AI brain</div>
+              <div class="pipe-brain-sub">Single source of truth</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS -->
+  <section class="section-tools">
+    <div class="container">
+      <div class="section-label">One foundation. Any tool.</div>
+      <h2 class="section-title">The AI brain powers<br><em>whatever tools you want</em></h2>
+      <p class="section-sub">The foundation is the hard part. Once it's built, every tool you add runs on the same AI brain, faster and cheaper each time.</p>
+    </div>
+
+    <div class="tools-carousel" id="toolsCarousel">
+
+      <!-- Knowledge Assistant -->
+      <div class="interface-card">
+        <div class="interface-bar">
+          <div class="interface-dots"><span></span><span></span><span></span></div>
+          <div class="interface-bar-title">
+            <svg width="10" height="10" viewBox="0 0 22 22" fill="none"><path d="M11 4C11.5 7.6 13.4 9.5 17 10 13.4 10.5 11.5 12.4 11 16 10.5 12.4 8.6 10.5 5 10 8.6 9.5 10.5 7.6 11 4Z" fill="#BAD9A8"/></svg>
+            Knowledge assistant
+          </div>
+        </div>
+        <div class="interface-body icard-chat-wrap" id="kaChat"></div>
+        <div class="interface-footer">
+          <div class="interface-tag">Time and cost savings</div>
+          <div class="interface-desc">Source-cited answers to any internal question.</div>
+        </div>
+      </div>
+
+      <!-- Email Automation -->
+      <div class="interface-card">
+        <div class="interface-bar">
+          <div class="interface-dots"><span></span><span></span><span></span></div>
+          <div class="interface-bar-title">
+            <svg width="10" height="10" viewBox="0 0 22 22" fill="none"><path d="M11 4C11.5 7.6 13.4 9.5 17 10 13.4 10.5 11.5 12.4 11 16 10.5 12.4 8.6 10.5 5 10 8.6 9.5 10.5 7.6 11 4Z" fill="#BAD9A8"/></svg>
+            Email automation
+          </div>
+        </div>
+        <div class="interface-body ea-body-wrap">
+          <div class="ea-client" id="emailAnim">
+            <div class="ea-gm-bar" id="eaToolbar">
+              <div class="ea-gm-bar-l">
+                <span class="ea-gm-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M19 12H5m7-7l-7 7 7 7" stroke="#5f6368" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span class="ea-gm-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M21 8V21H3V8" stroke="#5f6368" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M23 3H1v5h22V3z" stroke="#5f6368" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span class="ea-gm-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m3 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6" stroke="#5f6368" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              </div>
+              <div class="ea-gm-bar-r">
+                <span class="ea-gm-pager">1 of 24</span>
+              </div>
+            </div>
+            <div class="ea-viewport">
+              <div class="ea-phase" id="eaInbox">
+                <div class="ea-gm-tabs">
+                  <span class="ea-gm-tab ea-gm-tab--active">Primary</span>
+                  <span class="ea-gm-tab">Social</span>
+                  <span class="ea-gm-tab">Promos</span>
+                </div>
+                <div class="ea-gm-row ea-gm-row--unread" id="eaInboxTarget">
+                  <span class="ea-gm-row-chk"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/></svg></span>
+                  <div class="ea-gm-row-content">
+                    <span class="ea-gm-row-sender">Sarah Chen</span>
+                    <span class="ea-gm-row-subj">Re: Q2 Partnership</span>
+                    <span class="ea-gm-row-preview"> — We'd like to move forward...</span>
+                  </div>
+                  <span class="ea-gm-row-date">10:32</span>
+                </div>
+                <div class="ea-gm-row ea-gm-row--read">
+                  <span class="ea-gm-row-chk"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/></svg></span>
+                  <div class="ea-gm-row-content">
+                    <span class="ea-gm-row-sender">James Liu</span>
+                    <span class="ea-gm-row-subj">Invoice #4821</span>
+                    <span class="ea-gm-row-preview"> — Attached is the invoice...</span>
+                  </div>
+                  <span class="ea-gm-row-date">9:15</span>
+                </div>
+                <div class="ea-gm-row ea-gm-row--read">
+                  <span class="ea-gm-row-chk"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/></svg></span>
+                  <div class="ea-gm-row-content">
+                    <span class="ea-gm-row-sender">Marketing</span>
+                    <span class="ea-gm-row-subj">Weekly update</span>
+                    <span class="ea-gm-row-preview"> — Summary from this week's...</span>
+                  </div>
+                  <span class="ea-gm-row-date">Yest.</span>
+                </div>
+                <div class="ea-gm-row ea-gm-row--read">
+                  <span class="ea-gm-row-chk"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/></svg></span>
+                  <div class="ea-gm-row-content">
+                    <span class="ea-gm-row-sender">David Park</span>
+                    <span class="ea-gm-row-subj">New applicant</span>
+                    <span class="ea-gm-row-preview"> — A new application has...</span>
+                  </div>
+                  <span class="ea-gm-row-date">Yest.</span>
+                </div>
+                <div class="ea-gm-row ea-gm-row--read">
+                  <span class="ea-gm-row-chk"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/></svg></span>
+                  <div class="ea-gm-row-content">
+                    <span class="ea-gm-row-sender">Lisa Wang</span>
+                    <span class="ea-gm-row-subj">Q1 results</span>
+                    <span class="ea-gm-row-preview"> — Please find attached...</span>
+                  </div>
+                  <span class="ea-gm-row-date">Feb 16</span>
+                </div>
+              </div>
+              <div class="ea-phase" id="eaReceived">
+                <div class="ea-gm-detail">
+                  <div class="ea-gm-subject-row">
+                    <span class="ea-gm-subject">Re: Q2 Partnership Proposal</span>
+                    <span class="ea-gm-inbox-lbl">Inbox</span>
+                  </div>
+                  <div class="ea-gm-sender-row">
+                    <div class="ea-gm-avatar">S</div>
+                    <div class="ea-gm-sender-info">
+                      <div class="ea-gm-sender-name">Sarah Chen <span class="ea-gm-sender-addr">&lt;sarah@acme.com&gt;</span></div>
+                      <div class="ea-gm-to">to me</div>
+                    </div>
+                    <span class="ea-gm-date-detail">10:32 AM</span>
+                  </div>
+                  <div class="ea-gm-email-body">Hi,
+
+We'd like to move forward with the partnership. Could you send your standard terms and availability for a call next week?
+
+Best,
+Sarah</div>
+                </div>
+              </div>
+              <div class="ea-phase" id="eaCompose">
+                <div class="ea-gm-compose">
+                  <div class="ea-gm-reply-box">
+                    <div class="ea-gm-reply-head">
+                      <span class="ea-ai-badge"><svg width="10" height="10" viewBox="0 0 22 22" fill="none"><path d="M11 4C11.5 7.6 13.4 9.5 17 10 13.4 10.5 11.5 12.4 11 16 10.5 12.4 8.6 10.5 5 10 8.6 9.5 10.5 7.6 11 4Z" fill="currentColor"/></svg> AI writing reply<span class="ea-ellipsis"><span>.</span><span>.</span><span>.</span></span></span>
+                    </div>
+                    <div class="ea-gm-reply-body"><span id="eaReplyText"></span><span class="ea-cursor" id="eaCursor"></span></div>
+                    <div class="ea-gm-reply-foot">
+                      <button class="ea-gm-send" id="eaSendBtn">Send</button>
+                      <span class="ea-gm-tool-ico"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M15 7h3a5 5 0 010 10h-3m-6 0H6A5 5 0 016 7h3M8 12h8" stroke="#5f6368" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                      <span class="ea-gm-tool-ico"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.49" stroke="#5f6368" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="interface-footer">
+          <div class="interface-tag">Reduced headcount</div>
+          <div class="interface-desc">AI reads, classifies, and replies from your inbox.</div>
+        </div>
+      </div>
+
+      <!-- Revenue-Generating Chatbot -->
+      <div class="interface-card">
+        <div class="interface-bar">
+          <div class="interface-dots"><span></span><span></span><span></span></div>
+          <div class="interface-bar-title">
+            <svg width="10" height="10" viewBox="0 0 22 22" fill="none"><path d="M11 4C11.5 7.6 13.4 9.5 17 10 13.4 10.5 11.5 12.4 11 16 10.5 12.4 8.6 10.5 5 10 8.6 9.5 10.5 7.6 11 4Z" fill="#BAD9A8"/></svg>
+            Revenue-generating chatbot
+          </div>
+        </div>
+        <div class="interface-body icard-chat-wrap" id="rcChat"></div>
+        <div class="interface-footer">
+          <div class="interface-tag">Revenue growth</div>
+          <div class="interface-desc">Boost sales through conversational buying.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="carousel-dots" id="toolsDots">
+      <div class="carousel-dot active"></div>
+      <div class="carousel-dot"></div>
+      <div class="carousel-dot"></div>
+    </div>
+
+    <div class="tools-more">+ Other kinds of tools and connections available</div>
+  </section>
+
+  <!-- VIDEO DEMO -->
+  <section class="section-video-demo">
+    <div class="container">
+      <div class="section-label">See it in action</div>
+      <h2 class="section-title">5 minutes on <em>how we do it</em></h2>
+      <div class="video-demo-embed">
+        <div style="position: relative; padding-bottom: 56.36743215031315%; height: 0;"><iframe src="https://www.loom.com/embed/d22ae54d1d0744a28298f27789b6515b" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF — ENGINEERING-LED -->
+  <section class="section-mosaic">
+    <div class="container">
+      <div class="mosaic-photo">
+        <img src="assets/team/working-on-code.png" alt="Valae team working on code">
+      </div>
+      <div class="mosaic-text">
+        <h2>Engineering-led, not sales-led</h2>
+        <p>Our team has lectured on AI at universities, run global engineering and data teams, and led multi-million-dollar digital businesses.</p>
+        <div class="usp-grid">
+          <div class="usp-item">
+            <div class="usp-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            </div>
+            <h3>Enterprise tech, mid-size pricing</h3>
+            <p>The same architecture powering Fortune 500 AI, built to fit your budget and scale.</p>
+          </div>
+          <div class="usp-item">
+            <div class="usp-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
+            <h3>World-class security</h3>
+            <p>ISO compliant infrastructure, encrypted at rest and in transit, with strict data isolation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIERS -->
+  <section class="section-tiers">
+    <div class="tiers-header">
+      <div class="section-label">What you get</div>
+      <h2 class="section-title">A proven framework</h2>
+      <p class="section-sub">Each step delivers standalone value. Start small, expand when you're ready.</p>
+      <button class="tiers-cta-btn" onclick="showPage('form')">
+        Book a meeting
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+
+    <div class="tiers-carousel" id="tiersCarousel">
+      <div class="tier-card">
+        <div class="tier-step">Step 1</div>
+        <div class="tier-name">Analyse</div>
+        <div class="tier-desc">We map your data, identify gaps, and build a prioritised roadmap.</div>
+        <ul class="tier-features">
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.5 8l3 3 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Knowledge analysis</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.5 8l3 3 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Gap assessment</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.5 8l3 3 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Data quality review</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.5 8l3 3 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Actionable roadmap</li>
+        </ul>
+        <div class="tier-timeline">1 week</div>
+      </div>
+
+      <div class="tier-card featured">
+        <div class="tier-step">Step 2</div>
+        <div class="tier-name">Build</div>
+        <div class="tier-desc">We build your AI brain, deploy tools, and measure ROI.</div>
+        <ul class="tier-features">
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.5 8l3 3 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Full Step Zero process</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.5 8l3 3 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Permanent AI brain</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.5 8l3 3 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>First AI tool bringing ROI</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.5 8l3 3 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Works within your systems</li>
+        </ul>
+        <div class="tier-timeline">4 weeks</div>
+      </div>
+
+      <div class="tier-card">
+        <div class="tier-step">Step 3</div>
+        <div class="tier-name">Manage</div>
+        <div class="tier-desc">Your AI brain plugs into all your tools, even ChatGPT.</div>
+        <ul class="tier-features">
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.5 8l3 3 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Self-updating</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.5 8l3 3 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>New tools, same foundation</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.5 8l3 3 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Monthly KPI reporting</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.5 8l3 3 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>World-class security</li>
+        </ul>
+        <div class="tier-timeline">Ongoing</div>
+      </div>
+    </div>
+
+    <div class="carousel-dots" id="tiersDots">
+      <div class="carousel-dot active"></div>
+      <div class="carousel-dot"></div>
+      <div class="carousel-dot"></div>
+    </div>
+  </section>
+
+  <!-- PROOF — RECENT PROJECTS -->
+  <section class="section-proof">
+    <div class="container">
+      <div class="section-label">Real results</div>
+      <h2 class="section-title">Recent projects</h2>
+      <p class="section-sub">Delivering ROI that our clients can see. Measured daily.</p>
+    </div>
+
+    <div class="proof-carousel" id="proofCarousel">
+      <a href="https://valae.ai/projects/moco-museum" class="proof-card" style="text-decoration:none;color:inherit;">
+        <div class="proof-card-img"><img src="assets/clients/moco-image.jpg" alt="Moco Museum"></div>
+        <div class="proof-card-body">
+          <span class="proof-tag">Email automation</span>
+          <div class="proof-client"><img src="assets/logos/mocomuseum_logo.png" alt="Moco Museum" class="proof-client-logo" style="height:38px"></div>
+          <div class="proof-industry">Culture and experiences</div>
+          <div class="proof-stat">92% automated</div>
+          <div class="proof-stat-label">customer comms. Reply time reduced from 3 days to 3 minutes.</div>
+          <div class="proof-read-more">Read case study <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+      </a>
+      <a href="https://valae.ai/projects/mango-mobility" class="proof-card" style="text-decoration:none;color:inherit;">
+        <div class="proof-card-img"><img src="assets/clients/mango-image.avif" alt="Mango Mobility"></div>
+        <div class="proof-card-body">
+          <span class="proof-tag">Knowledge assistant</span>
+          <div class="proof-client"><img src="assets/logos/mango_logo.png" alt="Mango Mobility" class="proof-client-logo"></div>
+          <div class="proof-industry">Mobility and health</div>
+          <div class="proof-stat">23 hrs/wk saved</div>
+          <div class="proof-stat-label">with instant, source-cited answers.</div>
+          <div class="proof-read-more">Read case study <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+      </a>
+      <div class="proof-card">
+        <div class="proof-card-img"><img src="assets/clients/ikea-image.avif" alt="IKEA"></div>
+        <div class="proof-card-body">
+          <span class="proof-tag">Customer chatbot</span>
+          <div class="proof-client"><img src="assets/logos/ikea_logo.png" alt="IKEA" class="proof-client-logo"></div>
+          <div class="proof-industry">Retail and e-commerce</div>
+          <div class="proof-stat">63 countries</div>
+          <div class="proof-stat-label">with one global AI chatbot and instant customer service.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-dots" id="proofDots">
+      <div class="carousel-dot active"></div>
+      <div class="carousel-dot"></div>
+      <div class="carousel-dot"></div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section-cta" id="sectionCta">
+    <div class="container">
+      <p style="font-family: var(--font-display); font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--pistachio); opacity: 0.5; margin-bottom: 16px;">Build solid foundations</p>
+      <h2 class="cta-title">Ready to <em>future-proof</em><br>for the AI era?</h2>
+      <p class="cta-sub">It starts with a 15-minute demo.</p>
+      <button class="btn-primary" onclick="showPage('form')" style="font-size:17px; padding: 16px 36px;">
+        Book a demo
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img class="footer-logo-placeholder" src="assets/logos/Valae-WM-Pistachio.png" alt="Valae">
+      </div>
+      <p class="footer-description">Valae's Step Zero organises your scattered knowledge into an AI brain, powering assistants, automations, chatbots, and more.</p>
+      <div class="footer-icons">
+        <a href="mailto:info@valae.ai" aria-label="Email">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/company/valae-ai/" target="_blank" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+      </div>
+      <h4 class="footer-heading">Quick Links</h4>
+      <nav class="footer-nav">
+        <a href="https://valae.ai/about" class="footer-link">About Us</a>
+        <a href="#how-it-works" class="footer-link">How It Works</a>
+        <a href="#" class="footer-link" onclick="document.querySelector('.section-tiers').scrollIntoView({behavior:'smooth'});return false;">Tooling</a>
+        <a href="#" class="footer-link" onclick="document.querySelector('.section-proof').scrollIntoView({behavior:'smooth'});return false;">Projects</a>
+      </nav>
+      <div class="footer-divider"></div>
+      <div class="footer-bottom">
+        <div class="footer-copyright">&copy; 2026 Valae B.V. All rights reserved.</div>
+        <div class="footer-legal">
+          <a href="#" class="footer-legal-link">Privacy Policy</a>
+          <a href="#" class="footer-legal-link">Terms &amp; Conditions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ================================================================
+     PAGE 2: QUALIFICATION FORM
+     ================================================================ -->
+<div class="page" id="page-form">
+  <div class="form-page">
+    <div class="form-card">
+      <div class="form-progress">
+        <div class="form-progress-step active"></div>
+        <div class="form-progress-step"></div>
+      </div>
+      <div class="form-badge">Step 1 of 2</div>
+      <h2 class="form-title">Tell us about your business</h2>
+      <p class="form-sub">Takes less than 2 minutes. We'll review this before the call so we can hit the ground running.</p>
+      <form id="qualForm" onsubmit="handleFormSubmit(event)">
+        <div class="form-group">
+          <label class="form-label">Your name</label>
+          <input type="text" id="formName" class="form-input" placeholder="Full name" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Company name</label>
+          <input type="text" id="formCompany" class="form-input" placeholder="Your company" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email address</label>
+          <input type="email" id="formEmail" class="form-input" placeholder="you@company.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Biggest operational pain point <span style="font-weight:400;opacity:0.5;">(optional)</span></label>
+          <textarea id="formPainPoint" class="form-input" placeholder="Where does your team lose the most time?"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================
+     PAGE 3: BOOKING
+     ================================================================ -->
+<div class="page" id="page-booking">
+  <div class="confirm-page">
+    <div class="confirm-content">
+      <div class="confirm-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#BAD9A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h2 class="confirm-title">Thank you!</h2>
+      <p class="confirm-sub">We've received your information and will be in touch within 24 hours. If you'd like, you can also book a 15-minute intro call right now.</p>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 16px; margin-top: 8px;">
+        <a href="https://calendly.com/daniel-whytock-valae/15-minute-demo-step-zero-by-valae?month=2026-02" target="_blank" class="btn-primary" style="font-size:16px; padding: 14px 32px; text-decoration: none;">
+          Book a 15-minute call →
+        </a>
+        <button onclick="showPage('product')" style="font-size:14px; padding: 12px 28px; background: none; border: 1px solid rgba(186,217,168,0.2); border-radius: 999px; color: rgba(223,220,215,0.5); cursor: pointer; font-family: var(--font-body);">
+          ← Back to home
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STICKY BOTTOM CTA -->
+<div class="sticky-cta" id="stickyCta">
+  <button class="btn-primary" onclick="showPage('form')">
+    Book a demo
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+</div>
+
+<!-- ================================================================
+     JAVASCRIPT
+     ================================================================ -->
+<script>
+/* Page navigation */
+function showPage(page) {
+  document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
+  document.getElementById('page-' + page).classList.add('active');
+  window.scrollTo(0, 0);
+  var sticky = document.getElementById('stickyCta');
+  if (sticky) sticky.classList.toggle('visible', false);
+}
+
+/* Form submission */
+function handleFormSubmit(e) {
+  e.preventDefault();
+  var btn = e.target.querySelector('.form-submit');
+  btn.disabled = true;
+  btn.textContent = 'Submitting\u2026';
+
+  var payload = {
+    fullName: document.getElementById('formName').value.trim(),
+    company: document.getElementById('formCompany').value.trim(),
+    email: document.getElementById('formEmail').value.trim(),
+    painPoint: document.getElementById('formPainPoint').value.trim() || undefined,
+  };
+
+  fetch('/api/leads', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  })
+    .then(function(res) {
+      if (!res.ok) return res.json().catch(function() { return {}; }).then(function(b) { throw new Error(b.error || 'Server error ' + res.status); });
+      return res.json();
+    })
+    .then(function() {
+      window.location.href = 'https://calendly.com/daniel-whytock-valae/15-minute-demo-step-zero-by-valae?month=2026-02';
+    })
+    .catch(function(err) {
+      console.error('Form submission error:', err);
+      btn.disabled = false;
+      btn.textContent = 'Submit';
+      alert(err.message);
+    });
+}
+
+/* Nav scroll */
+var nav = document.getElementById('mainNav');
+window.addEventListener('scroll', function() {
+  if (window.scrollY > 20) { nav.classList.remove('at-top'); nav.classList.add('scrolled'); }
+  else { nav.classList.remove('scrolled'); nav.classList.add('at-top'); }
+});
+
+/* Pipeline step cycling */
+(function() {
+  var stepIdx = 0;
+  var steps = document.querySelectorAll('.pipe-step');
+  if (!steps.length) return;
+  setInterval(function() {
+    steps.forEach(function(s) { s.classList.remove('active'); });
+    steps[stepIdx].classList.add('active');
+    stepIdx = (stepIdx + 1) % steps.length;
+  }, 900);
+})();
+
+/* ================================================================
+   CAROUSEL SCROLL TRACKING
+   ================================================================ */
+function initCarousel(carouselId, dotsId) {
+  var carousel = document.getElementById(carouselId);
+  var dotsWrap = document.getElementById(dotsId);
+  if (!carousel || !dotsWrap) return;
+  var dots = dotsWrap.querySelectorAll('.carousel-dot');
+
+  function update() {
+    var items = carousel.children;
+    if (!items.length) return;
+    var gap = 12;
+    var itemW = items[0].offsetWidth + gap;
+    var idx = Math.round(carousel.scrollLeft / itemW);
+    idx = Math.max(0, Math.min(idx, dots.length - 1));
+    for (var i = 0; i < dots.length; i++) {
+      dots[i].classList.toggle('active', i === idx);
+    }
+  }
+  carousel.addEventListener('scroll', update, { passive: true });
+  update();
+}
+
+/* ================================================================
+   LOGO MARQUEE
+   ================================================================ */
+(function() {
+  var wrap = document.querySelector('.trusted-track-wrap');
+  var track = document.querySelector('.trusted-track');
+  var sourceSet = document.querySelector('.trusted-track-set');
+  if (!wrap || !track || !sourceSet) return;
+
+  var pos = 0, speed = 0.4, setWidth = 0;
+
+  function fillTrack() {
+    Array.from(track.querySelectorAll('.trusted-track-set:not(:first-child)')).forEach(function(el) { el.remove(); });
+    setWidth = sourceSet.offsetWidth;
+    var num = Math.ceil(wrap.offsetWidth / setWidth) + 2;
+    for (var i = 1; i < num; i++) track.appendChild(sourceSet.cloneNode(true));
+  }
+
+  function tick() {
+    pos -= speed;
+    if (Math.abs(pos) >= setWidth) pos += setWidth;
+    track.style.transform = 'translateX(' + pos + 'px)';
+    requestAnimationFrame(tick);
+  }
+
+  function setup() { fillTrack(); requestAnimationFrame(tick); window.addEventListener('resize', fillTrack, { passive: true }); }
+
+  var imgs = Array.from(sourceSet.querySelectorAll('img'));
+  var pending = imgs.length;
+  function onSettle() { if (--pending <= 0) setup(); }
+  if (pending === 0) { setup(); return; }
+  imgs.forEach(function(img) {
+    if (img.complete && img.naturalWidth > 0) { onSettle(); }
+    else { img.addEventListener('load', onSettle, { once: true }); img.addEventListener('error', onSettle, { once: true }); }
+  });
+  setTimeout(setup, 1500);
+})();
+
+/* ================================================================
+   CHAT CARD ANIMATIONS (Knowledge Assistant + Chatbot)
+   ================================================================ */
+function initCardChat(containerId, conversations, type) {
+  var container = document.getElementById(containerId);
+  if (!container) return;
+
+  var starSvg = '<svg width="12" height="12" viewBox="0 0 22 22" fill="none"><path d="M11 4C11.5 7.6 13.4 9.5 17 10 13.4 10.5 11.5 12.4 11 16 10.5 12.4 8.6 10.5 5 10 8.6 9.5 10.5 7.6 11 4Z" fill="#BAD9A8"/></svg>';
+  var arrowSvg = '<svg width="8" height="8" viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5 2l3 3-3 3" stroke="#003017" stroke-width="1.3" stroke-linecap="round"/></svg>';
+
+  function typeText(el, text, speed, cb) {
+    var i = 0;
+    function tick() {
+      if (i <= text.length) { el.textContent = text.slice(0, i); i++; setTimeout(tick, speed); }
+      else if (cb) cb();
+    }
+    tick();
+  }
+
+  function showEl(el) {
+    el.style.opacity = '0'; el.style.transform = 'translateY(8px)';
+    el.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+    setTimeout(function() { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }, 50);
+  }
+
+  function runExchange() {
+    var conv = conversations[0];
+    container.innerHTML = '';
+
+    var inner = document.createElement('div');
+    inner.style.cssText = 'position:absolute;inset:0;padding:14px 14px;display:flex;flex-direction:column;gap:10px;overflow:hidden;';
+    container.appendChild(inner);
+
+    var qEl = document.createElement('div');
+    qEl.className = 'aibrain-q';
+    qEl.style.cssText = 'font-size:13px;padding:10px 14px;opacity:0;transform:translateY(8px);transition:opacity 0.35s ease,transform 0.35s ease;';
+    qEl.textContent = conv.q;
+    inner.appendChild(qEl);
+    showEl(qEl);
+
+    setTimeout(function() {
+      var aWrap = document.createElement('div');
+      aWrap.className = 'aibrain-a-wrap';
+      aWrap.style.cssText = 'opacity:0;transform:translateY(8px);transition:opacity 0.35s ease,transform 0.35s ease;';
+
+      var avatar = document.createElement('div');
+      avatar.className = 'aibrain-a-avatar';
+      avatar.style.cssText = 'width:24px;height:24px;';
+      avatar.innerHTML = starSvg;
+
+      var aBody = document.createElement('div');
+      aBody.className = 'aibrain-a';
+      aBody.style.cssText = 'padding:12px 14px;min-width:0;overflow:hidden;';
+      aBody.innerHTML = '<div class="icard-thinking"><span></span><span></span><span></span></div>';
+
+      aWrap.appendChild(avatar);
+      aWrap.appendChild(aBody);
+      inner.appendChild(aWrap);
+      showEl(aWrap);
+
+      setTimeout(function() {
+        var textEl = document.createElement('div');
+        textEl.className = 'aibrain-a-text';
+        textEl.style.cssText = 'font-size:13px;margin-bottom:8px;';
+
+        var cursor = document.createElement('span');
+        cursor.style.cssText = 'display:inline-block;width:1.5px;height:13px;background:var(--forest);margin-left:1px;vertical-align:text-bottom;animation:eaCursorBlink 0.6s ease infinite;';
+
+        aBody.innerHTML = '';
+        aBody.appendChild(textEl);
+        aBody.appendChild(cursor);
+
+        typeText(textEl, conv.a, 18, function() {
+          cursor.remove();
+
+          if (type === 'knowledge' && conv.sources) {
+            var srcDiv = document.createElement('div');
+            srcDiv.className = 'aibrain-sources';
+            srcDiv.style.cssText = 'opacity:0;transition:opacity 0.4s ease;';
+            conv.sources.forEach(function(s) {
+              var tag = document.createElement('div');
+              tag.className = 'aibrain-source-tag';
+              tag.style.cssText = 'font-size:11px;padding:3px 8px;';
+              tag.innerHTML = arrowSvg + s;
+              srcDiv.appendChild(tag);
+            });
+            aBody.appendChild(srcDiv);
+            setTimeout(function() { srcDiv.style.opacity = '1'; }, 100);
+          }
+
+          if (type === 'chatbot' && conv.products) {
+            var carousel = document.createElement('div');
+            carousel.className = 'shop-carousel';
+            carousel.style.cssText = 'opacity:0;transition:opacity 0.4s ease;margin-top:4px;';
+            conv.products.forEach(function(p) {
+              var prod = document.createElement('div');
+              prod.className = 'shop-product';
+              prod.innerHTML =
+                '<div class="shop-product-img">' + (p.img ? '<img src="' + p.img + '" alt="' + p.name + '">' : '') + '</div>' +
+                '<div class="shop-product-name">' + p.name + '</div>' +
+                '<div class="shop-product-price">' + p.price + '</div>' +
+                '<span class="shop-product-link">View \u2192</span>';
+              carousel.appendChild(prod);
+            });
+            aBody.appendChild(carousel);
+            setTimeout(function() { carousel.style.opacity = '1'; }, 100);
+          }
+        });
+      }, 900);
+    }, 600);
+  }
+
+  var obs = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting) { runExchange(); obs.disconnect(); }
+  }, { threshold: 0.3 });
+  obs.observe(container.closest('.interface-card'));
+}
+
+/* ================================================================
+   EMAIL AUTOMATION ANIMATION
+   ================================================================ */
+function initEmailAnim() {
+  var inbox = document.getElementById('eaInbox');
+  if (!inbox) return;
+  var received = document.getElementById('eaReceived');
+  var compose = document.getElementById('eaCompose');
+  var replyEl = document.getElementById('eaReplyText');
+  var cursor = document.getElementById('eaCursor');
+  var toolbar = document.getElementById('eaToolbar');
+  var sendBtn = document.getElementById('eaSendBtn');
+  var hlRow = document.getElementById('eaInboxTarget');
+
+  var reply = "Hi Sarah,\n\nThanks for your interest! I\u2019ve attached our standard partnership terms. I\u2019m free Tuesday or Thursday, shall I send a calendar invite for 2pm?\n\nBest regards";
+
+  function resetAll() {
+    [inbox, received, compose].forEach(function(el) { el.classList.remove('ea-active', 'ea-exit-up'); });
+    toolbar.classList.remove('ea-gm-bar--show');
+    hlRow.classList.remove('ea-row-hl');
+    replyEl.textContent = '';
+    cursor.style.display = '';
+    sendBtn.classList.remove('ea-ready', 'ea-pressed', 'ea-sent');
+    sendBtn.textContent = 'Send';
+  }
+
+  function typeChar(text, i, cb) {
+    if (i <= text.length) { replyEl.textContent = text.slice(0, i); setTimeout(function() { typeChar(text, i + 1, cb); }, 16); }
+    else { cb(); }
+  }
+
+  function runCycle() {
+    resetAll();
+    setTimeout(function() {
+      inbox.classList.add('ea-active');
+      setTimeout(function() {
+        hlRow.classList.add('ea-row-hl');
+        setTimeout(function() {
+          inbox.classList.remove('ea-active');
+          inbox.classList.add('ea-exit-up');
+          setTimeout(function() {
+            toolbar.classList.add('ea-gm-bar--show');
+            received.classList.add('ea-active');
+            setTimeout(function() {
+              received.classList.remove('ea-active');
+              received.classList.add('ea-exit-up');
+              setTimeout(function() {
+                compose.classList.add('ea-active');
+                setTimeout(function() {
+                  typeChar(reply, 0, function() {
+                    cursor.style.display = 'none';
+                    sendBtn.classList.add('ea-ready');
+                    setTimeout(function() {
+                      sendBtn.classList.add('ea-pressed');
+                      setTimeout(function() {
+                        sendBtn.classList.remove('ea-pressed');
+                        sendBtn.classList.add('ea-sent');
+                        sendBtn.textContent = 'Sent \u2713';
+                        setTimeout(function() {
+                          compose.classList.remove('ea-active');
+                          compose.classList.add('ea-exit-up');
+                          toolbar.classList.remove('ea-gm-bar--show');
+                          setTimeout(runCycle, 600);
+                        }, 1200);
+                      }, 150);
+                    }, 500);
+                  });
+                }, 400);
+              }, 400);
+            }, 2400);
+          }, 400);
+        }, 800);
+      }, 1200);
+    }, 400);
+  }
+
+  var obs = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting) { runCycle(); obs.disconnect(); }
+  }, { threshold: 0.3 });
+  obs.observe(inbox.closest('.interface-card'));
+}
+
+/* ================================================================
+   STICKY BOTTOM CTA
+   ================================================================ */
+function initStickyCta() {
+  var bar = document.getElementById('stickyCta');
+  var hero = document.querySelector('.hero');
+  var ctaSection = document.getElementById('sectionCta');
+  if (!bar || !hero) return;
+
+  var heroVisible = true, ctaVisible = false;
+
+  function update() {
+    var productPage = document.getElementById('page-product');
+    var isProductActive = productPage && productPage.classList.contains('active');
+    bar.classList.toggle('visible', isProductActive && !heroVisible && !ctaVisible);
+  }
+
+  new IntersectionObserver(function(e) { heroVisible = e[0].isIntersecting; update(); }, { threshold: 0.05 }).observe(hero);
+  if (ctaSection) new IntersectionObserver(function(e) { ctaVisible = e[0].isIntersecting; update(); }, { threshold: 0.1 }).observe(ctaSection);
+}
+
+/* ================================================================
+   INIT
+   ================================================================ */
+window.addEventListener('load', function() {
+  initCarousel('toolsCarousel', 'toolsDots');
+  initCarousel('tiersCarousel', 'tiersDots');
+  initCarousel('proofCarousel', 'proofDots');
+
+  initCardChat('kaChat', [
+    { q: "Which version of our returns policy is current?", a: "The current policy is v4.2, updated 14 Jan 2026, approved by Sarah M. (Head of Ops).", sources: ["Returns_Policy_v4.2.pdf", "Ops_Log_Jan26.xlsx"] }
+  ], 'knowledge');
+
+  setTimeout(function() {
+    initCardChat('rcChat', [
+      { q: "Looking for comfortable running shoes under \u00a3120", a: "Here are our top picks for you:", products: [{ name: "AeroRun Pro", price: "\u00a389.00", img: "assets/products/shoe_1.png" }, { name: "CloudStride X", price: "\u00a3109.00", img: "assets/products/shoe_2.png" }, { name: "PaceMax Lite", price: "\u00a395.00", img: "assets/products/shoe_3.png" }] }
+    ], 'chatbot');
+  }, 400);
+
+  initEmailAnim();
+  initStickyCta();
+});
+</script>
+
+</body>
+</html>

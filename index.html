@@ -838,6 +838,14 @@ textarea.form-input {
   transform: translateY(-1px);
   box-shadow: 0 8px 24px rgba(186,217,168,0.2);
 }
+.form-submit:disabled {
+  background: var(--pistachio);
+  color: var(--forest);
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
 
 /* Progress indicator */
 .form-progress {
@@ -2155,6 +2163,12 @@ textarea.form-input {
 </head>
 <body>
 
+<script>
+if (window.innerWidth <= 768) {
+  window.location.replace('mobile.html');
+}
+</script>
+
 <!-- ================================================================
      NAV
      ================================================================ -->
@@ -2192,7 +2206,7 @@ textarea.form-input {
     <canvas class="hero-static-canvas" id="heroStatic"></canvas>
     <div class="hero-content">
 <h1 class="fade-up fade-up-d1">Your AI doesn't work because your <em>knowledge</em> is scattered</h1>
-      <p class="hero-sub fade-up fade-up-d2">Step Zero organises your messy docs, spreadsheets, emails and more into an AI-ready foundation, then builds tools for fast ROI.</p>
+      <p class="hero-sub fade-up fade-up-d2">Step Zero organises your messy docs, spreadsheets, emails and more into an AI brain, then plugs in tools for fast ROI. Knowledge assistants, email automation, sales chatbots. Measurable results in weeks, not months.</p>
       <div class="hero-cta-wrap fade-up fade-up-d3">
         <button class="btn-primary" onclick="showPage('form')">
           Book a demo
