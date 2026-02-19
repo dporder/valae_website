@@ -49,11 +49,18 @@ export default async function handler(req, res) {
       }
     );
 
-    await attio("/objects/companies/records?matching_attribute=name", "PUT", {
-      data: {
-        values: { name: [{ value: company }] },
-      },
-    });
+    try {
+      await attio("/objects/companies/records?matching_attribute=domains", "PUT", {
+        data: {
+          values: {
+            name: [{ value: company }],
+            domains: [email.split("@")[1]],
+          },
+        },
+      });
+    } catch (companyErr) {
+      console.warn("Company assert failed (non-fatal):", companyErr.message);
+    }
 
     const recordId = person.data.id.record_id;
 
