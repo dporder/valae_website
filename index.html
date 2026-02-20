@@ -3,6 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SS9FY3PEJM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SS9FY3PEJM');
+</script>
 <title>Valae - AI brought down to earth</title>
 <meta name="description" content="Step Zero organises your messy docs, spreadsheets, emails and more into an AI-ready foundation, then builds tools for fast ROI. Knowledge assistants, email automation, sales chatbots. Measurable results in weeks, not months.">
 <link rel="canonical" href="https://valae.ai">
@@ -2183,7 +2192,7 @@ if (window.innerWidth <= 768) {
         </div>
       </div>
     </a>
-    <button class="nav-cta" onclick="showPage('form')">
+    <button class="nav-cta" onclick="gtag('event', 'cta_click', { button_name: 'header_book_demo' }); showPage('form');">
       Book a demo
       <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
@@ -2205,10 +2214,10 @@ if (window.innerWidth <= 768) {
     <div class="hero-overlay"></div>
     <canvas class="hero-static-canvas" id="heroStatic"></canvas>
     <div class="hero-content">
-<h1 class="fade-up fade-up-d1">Your AI doesn't work because your <em>knowledge</em> is scattered</h1>
-      <p class="hero-sub fade-up fade-up-d2">Step Zero organises your messy docs, spreadsheets, emails and more into an AI brain, then plugs in tools for fast ROI. Knowledge assistants, email automation, sales chatbots. Measurable results in weeks, not months.</p>
+<h1 class="fade-up fade-up-d1">One <em>foundation</em>,<br>every AI tool you'll ever need</h1>
+      <p class="hero-sub fade-up fade-up-d2">Step Zero organises your messy docs, spreadsheets, emails and more into an AI brain, then plugs in tools for fast ROI.</p>
       <div class="hero-cta-wrap fade-up fade-up-d3">
-        <button class="btn-primary" onclick="showPage('form')">
+        <button class="btn-primary" onclick="gtag('event', 'cta_click', { button_name: 'hero_book_demo' }); showPage('form');">
           Book a demo
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
@@ -2577,8 +2586,8 @@ Sarah</div>
       <h2 class="section-title">A proven framework</h2>
       <div class="tiers-header-row">
         <p class="section-sub">Each stage delivers standalone value. Start small, expand when you're ready.</p>
-        <button class="tiers-cta-btn" onclick="showPage('form')">
-          Book a meeting
+        <button class="tiers-cta-btn" onclick="gtag('event', 'cta_click', { button_name: 'tiers_book_demo' }); showPage('form');">
+          Book a demo
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
@@ -2725,7 +2734,7 @@ Sarah</div>
       <p style="font-family: var(--font-display); font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--pistachio); opacity: 0.5; margin-bottom: 20px;">Build solid foundations</p>
       <h2 class="cta-title">Ready to <em>future-proof</em><br>for the AI era?</h2>
       <p class="cta-sub">It starts with a 15-minute demo.</p>
-      <button class="btn-primary" onclick="showPage('form')" style="font-size:18px; padding: 18px 40px;">
+      <button class="btn-primary" onclick="gtag('event', 'cta_click', { button_name: 'cta_book_demo' }); showPage('form');" style="font-size:18px; padding: 18px 40px;">
         Book a demo
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
