@@ -139,7 +139,7 @@
 <script>
 if (window.innerWidth <= 768) {
   document.documentElement.style.visibility = 'hidden';
-  fetch('mobile.html')
+  fetch('/projects/mango-mobility/mobile.html')
     .then(function(r) { return r.text(); })
     .then(function(html) {
       document.open();
