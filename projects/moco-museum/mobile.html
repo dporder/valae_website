@@ -87,49 +87,62 @@
     .m-section--warm .m-section-body { color: rgba(26,29,27,0.6); }
     .cs-label { margin-bottom: 20px; font-size: 11px; }
 
-    /* Pain-point cards (mobile: 1 column) */
+    /* Pain-point cards — horizontal swipe carousel */
     .m-pain-grid {
-      display: flex; flex-direction: column; gap: 14px; margin-top: 32px;
+      display: flex; gap: 12px; margin-top: 28px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 4px;
+      margin-left: -20px; margin-right: -20px;
+      padding-left: 20px; padding-right: 20px;
     }
+    .m-pain-grid::-webkit-scrollbar { display: none; }
+    .m-pain-grid { scrollbar-width: none; }
     .m-pain-card {
-      padding: 20px 18px; border-radius: 12px;
+      min-width: 260px; max-width: 280px;
+      padding: 22px 20px; border-radius: 14px;
       background: rgba(186,217,168,0.05);
       border: 1px solid rgba(186,217,168,0.08);
-      display: flex; align-items: flex-start; gap: 14px;
+      flex-shrink: 0; scroll-snap-align: start;
     }
     .m-pain-icon {
-      width: 36px; height: 36px; border-radius: 9px;
+      width: 34px; height: 34px; border-radius: 9px;
       background: rgba(186,217,168,0.1);
       display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
+      margin-bottom: 14px;
     }
-    .m-pain-icon svg { width: 18px; height: 18px; color: var(--pistachio); }
+    .m-pain-icon svg { width: 17px; height: 17px; color: var(--pistachio); }
     .m-pain-title {
       font-weight: 600; font-size: 14px;
-      color: var(--offwhite); margin-bottom: 4px;
+      color: var(--offwhite); margin-bottom: 8px;
     }
     .m-pain-body {
-      font-size: 13px; line-height: 1.55;
+      font-size: 12.5px; line-height: 1.55;
       color: rgba(223,220,215,0.45);
     }
 
-    /* Process steps */
+    /* Process steps — compact timeline */
     .m-process {
-      display: flex; flex-direction: column; gap: 16px; margin-top: 32px;
+      position: relative; margin-top: 28px;
+      padding-left: 36px;
+    }
+    .m-process::before {
+      content: ''; position: absolute;
+      left: 11px; top: 4px; bottom: 4px;
+      width: 1px; background: rgba(0,48,23,0.12);
     }
     .m-process-step {
-      padding: 22px 20px; border-radius: 12px;
-      background: rgba(0,48,23,0.04);
-      border: 1px solid rgba(0,48,23,0.06);
-      display: flex; align-items: flex-start; gap: 14px;
+      position: relative;
+      padding: 0 0 28px 0;
     }
+    .m-process-step:last-child { padding-bottom: 0; }
     .m-process-num {
       font-family: var(--font-display);
-      font-size: 11px; font-weight: 700;
+      font-size: 9px; font-weight: 700;
       color: var(--pistachio); background: var(--forest);
-      width: 26px; height: 26px; border-radius: 7px;
+      width: 22px; height: 22px; border-radius: 6px;
       display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
+      position: absolute; left: -36px; top: 0;
     }
     .m-process-text-title {
       font-weight: 600; font-size: 14px; margin-bottom: 4px;
@@ -142,40 +155,45 @@
 
     /* Source tags */
     .m-sources {
-      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px;
+      display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px;
     }
     .m-source-tag {
-      padding: 6px 12px; border-radius: 7px;
-      font-size: 12px; font-weight: 500;
-      background: rgba(0,48,23,0.06);
-      color: rgba(26,29,27,0.6);
-      border: 1px solid rgba(0,48,23,0.06);
+      padding: 5px 10px; border-radius: 6px;
+      font-size: 11.5px; font-weight: 500;
+      background: rgba(0,48,23,0.05);
+      color: rgba(26,29,27,0.55);
+      border: 1px solid rgba(0,48,23,0.05);
     }
 
-    /* Email flow steps (mobile: vertical) */
+    /* Email flow steps — compact timeline */
     .m-flow {
-      display: flex; flex-direction: column; gap: 12px; margin: 32px 0;
+      position: relative; margin: 28px 0;
+      padding-left: 36px;
+    }
+    .m-flow::before {
+      content: ''; position: absolute;
+      left: 11px; top: 4px; bottom: 4px;
+      width: 1px; background: rgba(186,217,168,0.1);
     }
     .m-flow-step {
-      padding: 16px 18px; border-radius: 12px;
-      background: rgba(186,217,168,0.05);
-      border: 1px solid rgba(186,217,168,0.08);
-      display: flex; align-items: flex-start; gap: 12px;
+      position: relative;
+      padding: 0 0 24px 0;
     }
+    .m-flow-step:last-child { padding-bottom: 0; }
     .m-flow-num {
       font-family: var(--font-display);
-      font-size: 10px; font-weight: 700;
+      font-size: 9px; font-weight: 700;
       color: var(--pistachio); background: var(--forest-deep);
-      width: 24px; height: 24px; border-radius: 7px;
+      width: 22px; height: 22px; border-radius: 6px;
       display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
+      position: absolute; left: -36px; top: 0;
     }
     .m-flow-title {
       font-weight: 600; font-size: 14px;
       color: var(--offwhite); margin-bottom: 2px;
     }
     .m-flow-body {
-      font-size: 12px; line-height: 1.5;
+      font-size: 12.5px; line-height: 1.5;
       color: rgba(223,220,215,0.4);
     }
     .m-flow-badge {
@@ -533,55 +551,43 @@ if (window.innerWidth > 768) {
         <div class="m-pain-icon">
           <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M10 7v3l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <div>
-          <div class="m-pain-title">3-day response time</div>
-          <div class="m-pain-body">Customers waited an average of three days for a reply. On weekends (peak visitor time) almost no emails were answered at all.</div>
-        </div>
+        <div class="m-pain-title">3-day response time</div>
+        <div class="m-pain-body">Customers waited an average of three days for a reply. On weekends (peak visitor time) almost no emails were answered at all.</div>
       </div>
       <div class="m-pain-card">
         <div class="m-pain-icon">
           <svg viewBox="0 0 20 20" fill="none"><path d="M10 4L3 16h14L10 4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 9v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="10" cy="14" r=".5" fill="currentColor"/></svg>
         </div>
-        <div>
-          <div class="m-pain-title">Revenue slipping through</div>
-          <div class="m-pain-body">Venue rental enquiries worth six figures were missed, buried alongside routine ticketing questions. Group bookings and partnerships suffered the same fate.</div>
-        </div>
+        <div class="m-pain-title">Revenue slipping through</div>
+        <div class="m-pain-body">Venue rental enquiries worth six figures were missed, buried alongside routine ticketing questions. Group bookings and partnerships suffered the same fate.</div>
       </div>
       <div class="m-pain-card">
         <div class="m-pain-icon">
           <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M3 10h14" stroke="currentColor" stroke-width="1.5"/><ellipse cx="10" cy="10" rx="3" ry="7" stroke="currentColor" stroke-width="1.5"/></svg>
         </div>
-        <div>
-          <div class="m-pain-title">120+ visitor nationalities</div>
-          <div class="m-pain-body">Emails arrived in dozens of languages, but staff could only comfortably reply in English, leaving gaps for a global audience.</div>
-        </div>
+        <div class="m-pain-title">120+ visitor nationalities</div>
+        <div class="m-pain-body">Emails arrived in dozens of languages, but staff could only comfortably reply in English, leaving gaps for a global audience.</div>
       </div>
       <div class="m-pain-card">
         <div class="m-pain-icon">
           <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M7.5 7.5l5 5M12.5 7.5l-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </div>
-        <div>
-          <div class="m-pain-title">Broken tooling at €500/month</div>
-          <div class="m-pain-body">Their old, legacy tools failed to track email threads, missed colleague replies, and created confusion. Staff worked from multiple systems simultaneously, duplicating effort.</div>
-        </div>
+        <div class="m-pain-title">Broken tooling at €500/month</div>
+        <div class="m-pain-body">Their old, legacy tools failed to track email threads, missed colleague replies, and created confusion. Staff worked from multiple systems simultaneously, duplicating effort.</div>
       </div>
       <div class="m-pain-card">
         <div class="m-pain-icon">
           <svg viewBox="0 0 20 20" fill="none"><circle cx="7" cy="7" r="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M2 16c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="14" cy="7" r="2" stroke="currentColor" stroke-width="1.5"/><path d="M18 16c0-2.2-1.8-4-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </div>
-        <div>
-          <div class="m-pain-title">Marketing team in the trenches</div>
-          <div class="m-pain-body">The customer service team was so overwhelmed that marketing staff were regularly pulled into answering routine customer emails.</div>
-        </div>
+        <div class="m-pain-title">Marketing team in the trenches</div>
+        <div class="m-pain-body">The customer service team was so overwhelmed that marketing staff were regularly pulled into answering routine customer emails.</div>
       </div>
       <div class="m-pain-card">
         <div class="m-pain-icon">
           <svg viewBox="0 0 20 20" fill="none"><rect x="3" y="5" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M3 9h14" stroke="currentColor" stroke-width="1.5"/><circle cx="13" cy="12" r="1" fill="currentColor"/></svg>
         </div>
-        <div>
-          <div class="m-pain-title">Hiring pressure, no budget</div>
-          <div class="m-pain-body">They needed more customer service staff but didn't have the budget to hire. The situation was unsustainable, and getting worse every week.</div>
-        </div>
+        <div class="m-pain-title">Hiring pressure, no budget</div>
+        <div class="m-pain-body">They needed more customer service staff but didn't have the budget to hire. The situation was unsustainable, and getting worse every week.</div>
       </div>
     </div>
   </div>
@@ -601,24 +607,18 @@ if (window.innerWidth > 768) {
     <div class="m-process cs-reveal cs-reveal-d1">
       <div class="m-process-step">
         <div class="m-process-num">1</div>
-        <div>
-          <div class="m-process-text-title">Ingest</div>
-          <div class="m-process-text-body">Pulled in data from internal documents, email inboxes, call transcripts, all three websites, policies, brand guidelines, exhibition info, pricing, reviews, and press coverage.</div>
-        </div>
+        <div class="m-process-text-title">Ingest</div>
+        <div class="m-process-text-body">Pulled in data from internal documents, email inboxes, call transcripts, all three websites, policies, brand guidelines, exhibition info, pricing, reviews, and press coverage.</div>
       </div>
       <div class="m-process-step">
         <div class="m-process-num">2</div>
-        <div>
-          <div class="m-process-text-title">Structure</div>
-          <div class="m-process-text-body">De-duplicated, cleaned, tagged, and permissioned everything into a single AI brain across all locations and languages.</div>
-        </div>
+        <div class="m-process-text-title">Structure</div>
+        <div class="m-process-text-body">De-duplicated, cleaned, tagged, and permissioned everything into a single AI brain across all locations and languages.</div>
       </div>
       <div class="m-process-step">
         <div class="m-process-num">3</div>
-        <div>
-          <div class="m-process-text-title">Deploy</div>
-          <div class="m-process-text-body">Built an email AI agent on top of the brain, working natively inside Gmail, no new tools, no training, and no disruption to existing workflows.</div>
-        </div>
+        <div class="m-process-text-title">Deploy</div>
+        <div class="m-process-text-body">Built an email AI agent on top of the brain, working natively inside Gmail, no new tools, no training, and no disruption to existing workflows.</div>
       </div>
     </div>
 
@@ -657,40 +657,30 @@ if (window.innerWidth > 768) {
     <div class="m-flow cs-reveal cs-reveal-d1">
       <div class="m-flow-step">
         <div class="m-flow-num">1</div>
-        <div>
-          <div class="m-flow-title">Reads</div>
-          <div class="m-flow-body">all incoming customer emails across Moco's inboxes</div>
-        </div>
+        <div class="m-flow-title">Reads</div>
+        <div class="m-flow-body">all incoming customer emails across Moco's inboxes</div>
       </div>
       <div class="m-flow-step">
         <div class="m-flow-num">2</div>
-        <div>
-          <div class="m-flow-title">Classifies</div>
-          <div class="m-flow-body">by topic (ticketing, refunds, bookings, partnerships, etc.)</div>
-        </div>
+        <div class="m-flow-title">Classifies</div>
+        <div class="m-flow-body">by topic (ticketing, refunds, bookings, partnerships, etc.)</div>
       </div>
       <div class="m-flow-step">
         <div class="m-flow-num">3</div>
-        <div>
-          <div class="m-flow-title">Organises</div>
-          <div class="m-flow-body">into Gmail folders by category, every minute of every day</div>
-        </div>
+        <div class="m-flow-title">Organises</div>
+        <div class="m-flow-body">into Gmail folders by category, every minute of every day</div>
       </div>
       <div class="m-flow-step">
         <div class="m-flow-num">4</div>
-        <div>
-          <div class="m-flow-title">Responds</div>
-          <div class="m-flow-body">92% of the time, with multilingual, source-grounded answers</div>
-          <div class="m-flow-badge">92%</div>
-        </div>
+        <div class="m-flow-title">Responds</div>
+        <div class="m-flow-body">92% of the time, with multilingual, source-grounded answers</div>
+        <div class="m-flow-badge">92%</div>
       </div>
       <div class="m-flow-step">
         <div class="m-flow-num">5</div>
-        <div>
-          <div class="m-flow-title">Escalates</div>
-          <div class="m-flow-body">8% of the time to the right person, with full context attached</div>
-          <div class="m-flow-badge">8%</div>
-        </div>
+        <div class="m-flow-title">Escalates</div>
+        <div class="m-flow-body">8% of the time to the right person, with full context attached</div>
+        <div class="m-flow-badge">8%</div>
       </div>
     </div>
 
@@ -812,7 +802,7 @@ if (window.innerWidth > 768) {
 <div class="m-visual-break">
   <img src="../../assets/clients/moco/woman-in-immersive-mirrored-colorful-room.jpg" alt="Visitor in a stunning, colorful mirrored installation at Moco Museum">
   <div class="m-visual-break-overlay">
-    <p class="m-visual-break-quote">"The customer service AI was much needed and much anticipated — now that it's in place, we can finally focus on what we're actually here to do."</p>
+    <p class="m-visual-break-quote">"The customer service AI was much needed and much anticipated. Now that it's in place, we can finally focus on what we're actually here to do."</p>
   </div>
 </div>
 
