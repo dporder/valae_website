@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mango Mobility — Valae Case Study</title>
+  <meta name="description" content="How Valae built an AI brain for Mango Mobility — the Netherlands' leading mobility brand — saving 23 hours per week and transforming customer service in just 4 weeks.">
+  <link rel="icon" type="image/png" href="../../assets/logos/valaestar_logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/casestudy.css">
+  <style>
+    /* ================================================================
+       MOBILE-SPECIFIC OVERRIDES
+       ================================================================ */
+    .cs-container { padding: 0 20px; }
+
+    /* Nav */
+    .nav { padding: 0 20px; }
+    .nav-brand-name { font-size: 18px !important; }
+    .nav-brand-sub { font-size: 9px !important; }
+    .nav-cta { padding: 8px 16px; font-size: 13px; }
+
+    /* Hero */
+    .m-hero {
+      position: relative;
+      background: var(--forest);
+      overflow: hidden;
+    }
+    .m-hero-video-wrap {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+    }
+    .m-hero-video-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .m-hero-video-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,26,13,0.2) 0%, rgba(0,48,23,0.7) 100%);
+    }
+    .m-hero-content {
+      padding: 32px 20px 40px;
+    }
+    .m-hero-back {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 500;
+      color: rgba(186,217,168,0.5);
+      margin-bottom: 20px;
+    }
+    .m-hero-title {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--offwhite);
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .m-hero-subtitle {
+      font-size: 15px;
+      line-height: 1.6;
+      color: rgba(223,220,215,0.55);
+      margin-bottom: 32px;
+    }
+    .m-hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(186,217,168,0.12);
+    }
+    .m-hero-stat-value {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--pistachio);
+      letter-spacing: -1px;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .m-hero-stat-label {
+      font-size: 12px;
+      color: rgba(223,220,215,0.4);
+      line-height: 1.3;
+    }
+
+    /* Sections */
+    .m-section {
+      padding: 64px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .m-section--dark {
+      background: var(--forest);
+      color: var(--offwhite);
+    }
+    .m-section--light {
+      background: var(--bg);
+      color: var(--charcoal);
+    }
+    .m-section--warm {
+      background: var(--bg-warm);
+      color: var(--charcoal);
+    }
+    .m-section-img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 28px;
+      display: block;
+    }
+    .m-section-title {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .m-section--dark .m-section-title { color: var(--offwhite); }
+    .m-section--light .m-section-title,
+    .m-section--warm .m-section-title { color: var(--charcoal); }
+    .m-section-body {
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    .m-section--dark .m-section-body { color: rgba(223,220,215,0.55); }
+    .m-section--light .m-section-body,
+    .m-section--warm .m-section-body { color: rgba(26,29,27,0.6); }
+
+    .cs-label { margin-bottom: 20px; font-size: 11px; }
+
+    /* Process steps */
+    .m-process {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .m-process-step {
+      padding: 22px 20px;
+      border-radius: 12px;
+      background: rgba(0,48,23,0.04);
+      border: 1px solid rgba(0,48,23,0.06);
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .m-section--warm .m-process-step {
+      background: rgba(0,48,23,0.04);
+      border-color: rgba(0,48,23,0.06);
+    }
+    .m-process-num {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--pistachio);
+      background: var(--forest);
+      width: 26px; height: 26px;
+      border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .m-process-text-title {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 4px;
+      color: var(--charcoal);
+    }
+    .m-process-text-body {
+      font-size: 13px;
+      line-height: 1.55;
+      color: rgba(26,29,27,0.5);
+    }
+
+    /* Tool cards */
+    .m-tools {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 36px;
+    }
+    .m-tool-card {
+      border-radius: 16px;
+      padding: 28px 22px;
+      display: flex;
+      flex-direction: column;
+    }
+    .m-tool-card--video {
+      background: var(--forest);
+      color: var(--offwhite);
+    }
+    .m-tool-card--icon {
+      background: var(--forest-mid);
+      color: var(--offwhite);
+      border: 1px solid rgba(186,217,168,0.08);
+    }
+    .m-tool-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--pistachio);
+      margin-bottom: 12px;
+    }
+    .m-tool-title {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 600;
+      letter-spacing: -0.6px;
+      color: var(--offwhite);
+      margin-bottom: 10px;
+    }
+    .m-tool-body {
+      font-size: 14px;
+      line-height: 1.65;
+      color: rgba(223,220,215,0.5);
+      margin-bottom: 20px;
+    }
+    .m-tool-stat {
+      font-family: var(--font-display);
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--pistachio);
+      letter-spacing: -1px;
+      margin-bottom: 2px;
+    }
+    .m-tool-stat-label {
+      font-size: 12px;
+      color: rgba(223,220,215,0.4);
+      margin-bottom: 20px;
+    }
+    .m-tool-video-wrap {
+      max-width: 240px;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(186,217,168,0.1);
+      box-shadow: 0 10px 32px rgba(0,0,0,0.25);
+    }
+    .m-tool-video-wrap video {
+      width: 100%;
+      display: block;
+    }
+    .m-tool-icon-wrap {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      background: rgba(186,217,168,0.1);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+    }
+    .m-tool-icon-wrap svg {
+      width: 24px; height: 24px;
+      color: var(--pistachio);
+    }
+    .m-tool-features {
+      list-style: none;
+      display: flex; flex-direction: column;
+      gap: 12px;
+    }
+    .m-tool-features li {
+      display: flex; align-items: flex-start; gap: 8px;
+      font-size: 13px; line-height: 1.5;
+      color: rgba(223,220,215,0.55);
+    }
+    .m-tool-features li svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--pistachio);
+    }
+
+    /* Visual break */
+    .m-visual-break {
+      position: relative;
+      height: 320px;
+      overflow: hidden;
+    }
+    .m-visual-break img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .m-visual-break-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,26,13,0.3) 0%, rgba(0,48,23,0.55) 100%);
+      display: flex; align-items: center; justify-content: center;
+      padding: 28px;
+    }
+    .m-visual-break-quote {
+      text-align: center;
+      font-size: 17px;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.55;
+      color: var(--offwhite);
+      letter-spacing: -0.2px;
+    }
+
+    /* Stats grid */
+    .m-stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .m-stat-card {
+      padding: 22px 18px;
+      border-radius: 12px;
+      background: rgba(186,217,168,0.06);
+      border: 1px solid rgba(186,217,168,0.08);
+    }
+    .m-stat-value {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--pistachio);
+      letter-spacing: -1.5px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .m-stat-label {
+      font-size: 12px;
+      line-height: 1.4;
+      color: rgba(223,220,215,0.45);
+    }
+    .m-results-image {
+      margin-top: 24px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .m-results-image img {
+      width: 100%;
+      display: block;
+      border-radius: 12px;
+    }
+
+    /* CTA */
+    .m-cta {
+      padding: 64px 0;
+      background: var(--forest);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .m-cta-title {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--offwhite);
+      letter-spacing: -1.2px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .m-cta-title em {
+      font-style: italic;
+      color: var(--pistachio);
+    }
+    .m-cta-sub {
+      font-size: 15px;
+      line-height: 1.6;
+      color: rgba(223,220,215,0.5);
+      margin: 0 auto 32px;
+      max-width: 400px;
+    }
+    .m-btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px;
+      background: var(--pistachio);
+      color: var(--forest);
+      border: none; border-radius: 10px;
+      font-family: var(--font-body);
+      font-size: 15px; font-weight: 600;
+      letter-spacing: -0.2px;
+      cursor: pointer;
+    }
+
+    /* Email AI Outlook Mockup — mobile */
+    .email-mock {
+      border-radius: 10px; overflow: hidden;
+      border: 1px solid rgba(186,217,168,0.1);
+      margin-top: 4px;
+      font-family: 'Segoe UI', -apple-system, system-ui, sans-serif;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    }
+    .email-mock-chrome {
+      display: flex; align-items: center; gap: 10px;
+      padding: 7px 10px; background: #2b2b2b;
+    }
+    .email-mock-dots { display: flex; gap: 5px; }
+    .email-mock-dots span { width: 8px; height: 8px; border-radius: 50%; }
+    .email-mock-dots span:nth-child(1) { background: #ff5f57; }
+    .email-mock-dots span:nth-child(2) { background: #ffbd2e; }
+    .email-mock-dots span:nth-child(3) { background: #28c840; }
+    .email-mock-title { font-size: 10px; color: #999; letter-spacing: 0; }
+    .email-mock-body { display: flex; height: 260px; }
+    .email-mock-main { flex: 1; position: relative; overflow: hidden; background: #fff; }
+
+    .email-mock-inbox {
+      position: absolute; inset: 0; background: #fff;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    .email-mock-inbox.em-hidden { opacity: 0; transform: translateX(-8px); pointer-events: none; }
+    .email-mock-inbox-header {
+      padding: 9px 12px 7px; font-size: 13px; font-weight: 600;
+      color: #1a1a1a; border-bottom: 1px solid #edebe9;
+    }
+    .email-mock-row {
+      display: flex; align-items: flex-start;
+      padding: 9px 12px; border-bottom: 1px solid #f3f2f1; gap: 6px;
+    }
+    .email-mock-row.em-unread {
+      border-left: 3px solid #0f6cbd; padding-left: 9px; background: #f0f6ff;
+    }
+    .email-mock-row.em-unread .email-mock-sender { font-weight: 700; }
+    .email-mock-row.em-replied .email-mock-sender { font-weight: 400; color: #999; }
+    .email-mock-row.em-replied .email-mock-subject { color: #bbb; }
+    .email-mock-row.em-replied .email-mock-time { color: #ccc; }
+    .email-mock-row-text { flex: 1; min-width: 0; }
+    .email-mock-sender { font-size: 11px; color: #1a1a1a; font-weight: 400; line-height: 1.3; }
+    .email-mock-subject {
+      font-size: 10px; color: #605e5c; line-height: 1.3; margin-top: 1px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .email-mock-time { font-size: 9px; color: #a19f9d; flex-shrink: 0; line-height: 1.3; padding-top: 1px; }
+
+    .email-mock-read {
+      position: absolute; inset: 0; background: #fff;
+      padding: 12px 14px; overflow-y: auto;
+      opacity: 0; transform: translateX(8px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      pointer-events: none;
+    }
+    .email-mock-read::-webkit-scrollbar { width: 3px; }
+    .email-mock-read::-webkit-scrollbar-track { background: transparent; }
+    .email-mock-read::-webkit-scrollbar-thumb { background: #ddd; border-radius: 3px; }
+    .email-mock-read.em-visible { opacity: 1; transform: translateX(0); pointer-events: auto; }
+    .email-mock-read-from { font-size: 9px; color: #a19f9d; margin-bottom: 2px; }
+    .email-mock-read-sender { font-size: 12px; font-weight: 600; color: #1a1a1a; line-height: 1.3; }
+    .email-mock-read-subject {
+      font-size: 10px; color: #605e5c; margin-top: 2px; margin-bottom: 10px;
+      padding-bottom: 8px; border-bottom: 1px solid #edebe9;
+    }
+    .email-mock-read-body { font-size: 11px; line-height: 1.6; color: #323130; }
+
+    .email-mock-reply {
+      margin-top: 12px; padding-top: 10px;
+      border-top: 1px solid #edebe9;
+      opacity: 0; transition: opacity 0.3s ease;
+    }
+    .email-mock-reply.em-visible { opacity: 1; }
+    .email-mock-reply-label {
+      display: flex; align-items: center; gap: 4px;
+      font-size: 9px; font-weight: 600; color: #0f6cbd; margin-bottom: 6px;
+    }
+    .email-mock-reply-label .em-sparkle { font-size: 11px; animation: emPulse 1.5s ease infinite; }
+    @keyframes emPulse { 0%,100%{ opacity:.6; } 50%{ opacity:1; } }
+    .email-mock-reply-content { font-size: 10px; line-height: 1.55; color: #323130; }
+    .email-mock-reply-content .em-cursor {
+      display: inline-block; width: 1px; height: 11px;
+      background: #0f6cbd; vertical-align: text-bottom;
+      margin-left: 1px; animation: emBlink .6s step-end infinite;
+    }
+    @keyframes emBlink { 0%,100%{ opacity:1; } 50%{ opacity:0; } }
+
+    .email-mock-sent {
+      position: absolute; inset: 0; z-index: 2;
+      background: rgba(255,255,255,0.96);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.4s ease; pointer-events: none;
+    }
+    .email-mock-sent.em-visible { opacity: 1; }
+    .email-mock-sent-icon {
+      width: 38px; height: 38px; border-radius: 50%; background: #dff6dd;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 8px;
+    }
+    .email-mock-sent-icon svg { width: 20px; height: 20px; color: #107c10; }
+    .email-mock-sent-text { font-size: 13px; font-weight: 600; color: #107c10; }
+
+    /* Footer mobile */
+    .footer { padding: 36px 20px 24px; }
+    .footer-top { flex-direction: column; gap: 32px; }
+    .footer-left { align-items: center; text-align: center; }
+    .footer-right { align-items: center; text-align: center; }
+    .footer-nav { align-items: center; }
+    .footer-icons { justify-content: center; }
+    .footer-bottom { flex-direction: column; align-items: center; gap: 12px; text-align: center; }
+    .footer-legal { justify-content: center; }
+  </style>
+</head>
+
+<script>
+if (window.innerWidth > 768) {
+  window.location.replace('index.html');
+}
+</script>
+
+<body>
+
+<!-- ================================================================
+     NAV
+     ================================================================ -->
+<nav class="nav at-top" id="mainNav">
+  <div class="nav-inner">
+    <a href="../../" class="nav-brand" style="gap: 0;">
+      <div class="nav-brand-wordmark" style="gap: 2px;">
+        <span class="nav-brand-name" style="font-size: 18px;">Step Zero</span>
+        <div style="display: flex; align-items: center; gap: 5px;">
+          <span class="nav-brand-sub" style="font-size: 9px;">BY</span>
+          <img src="../../assets/logos/valae_logo.png" alt="Valae Logo" style="height: 13px; transform: translateY(-1px);">
+        </div>
+      </div>
+    </a>
+    <a href="../../" class="nav-cta">
+      Book a demo
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</nav>
+
+<!-- ================================================================
+     HERO
+     ================================================================ -->
+<section class="m-hero cs-grain">
+  <div class="m-hero-video-wrap">
+    <video autoplay muted loop playsinline>
+      <source src="../../assets/clients/mango/beautiful_video_of_mango_product_lifestyle.mp4" type="video/mp4">
+    </video>
+    <div class="m-hero-video-overlay"></div>
+  </div>
+  <div class="m-hero-content">
+    <a href="../../" class="m-hero-back">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to home
+    </a>
+    <h1 class="m-hero-title">Mango Mobility</h1>
+    <p class="m-hero-subtitle">How the Netherlands' leading mobility retailer went from scattered knowledge to a single AI brain and multiple high-ROI tools <em>in just four weeks.</em></p>
+    <div class="m-hero-stats">
+      <div>
+        <div class="m-hero-stat-value" data-count="23" data-suffix="hrs">0</div>
+        <div class="m-hero-stat-label">saved per week</div>
+      </div>
+      <div>
+        <div class="m-hero-stat-value" data-count="4" data-suffix="wks">0</div>
+        <div class="m-hero-stat-label">from start to live</div>
+      </div>
+      <div>
+        <div class="m-hero-stat-value" data-count="500" data-suffix="+">0</div>
+        <div class="m-hero-stat-label">products in catalogue</div>
+      </div>
+      <div>
+        <div class="m-hero-stat-value" data-count="14">0</div>
+        <div class="m-hero-stat-label">stores nationwide</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     OVERVIEW
+     ================================================================ -->
+<section class="m-section m-section--light">
+  <div class="cs-container">
+    <img class="m-section-img cs-reveal" src="../../assets/clients/mango/store.jpg" alt="Mango Mobility storefront with mobility scooters and products on display">
+    <div class="cs-reveal cs-reveal-d1">
+      <span class="cs-label cs-label--dark">Overview</span>
+      <h2 class="m-section-title">The leading mobility brand in the Netherlands</h2>
+      <p class="m-section-body">Mango Mobility sells 500+ products, from mobility scooters and electric bikes to wheelchairs and small automobiles.</p>
+      <p class="m-section-body" style="margin-top: 12px;">But behind that scale, there was no technical team and knowledge was scattered across files, chats, inboxes, and legacy tools.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     THE CHALLENGE
+     ================================================================ -->
+<section class="m-section m-section--dark cs-grain">
+  <div class="cs-container">
+    <img class="m-section-img cs-reveal" src="../../assets/clients/mango/store_interior.jpg" alt="Mango Mobility modern showroom interior">
+    <div class="cs-reveal cs-reveal-d1">
+      <span class="cs-label cs-label--light">The Challenge</span>
+      <h2 class="m-section-title">Drowning in repetitive questions</h2>
+      <p class="m-section-body">Staff across 14 locations were fielding the same questions. Product specs, pricing, availability. Even simple tasks ate up time.</p>
+      <p class="m-section-body" style="margin-top: 12px;">The problem wasn't a lack of AI tools. It was a lack of foundation. Without organised knowledge, no AI tool can give accurate answers.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     THE SOLUTION
+     ================================================================ -->
+<section class="m-section m-section--warm">
+  <div class="cs-container">
+    <div class="cs-reveal" style="margin-bottom: 32px;">
+      <span class="cs-label cs-label--dark">The Solution</span>
+      <h2 class="m-section-title">One AI brain. Multiple automations.</h2>
+      <p class="m-section-body">We ran Step Zero, ingesting Mango's scattered data into a single AI brain. Then we deployed two ROI-focused AI tools on top of it.</p>
+    </div>
+
+    <!-- Process steps -->
+    <div class="m-process cs-reveal cs-reveal-d1">
+      <div class="m-process-step">
+        <div class="m-process-num">1</div>
+        <div>
+          <div class="m-process-text-title">Ingest</div>
+          <div class="m-process-text-body">Pulled in data from Excel files, email threads, their website, calls with staff, legacy systems like Vendit, and more.</div>
+        </div>
+      </div>
+      <div class="m-process-step">
+        <div class="m-process-num">2</div>
+        <div>
+          <div class="m-process-text-title">Structure</div>
+          <div class="m-process-text-body">De-duplicated, cleaned, and tagged every piece of knowledge into a unified format, the AI brain.</div>
+        </div>
+      </div>
+      <div class="m-process-step">
+        <div class="m-process-num">3</div>
+        <div>
+          <div class="m-process-text-title">Deploy</div>
+          <div class="m-process-text-body">Built two AI tools on top of the brain, one to provide instant info to staff, and another to talk with customers by email automatically.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tool cards -->
+    <div class="m-tools cs-reveal cs-reveal-d2">
+      <!-- Knowledge Assistant -->
+      <div class="m-tool-card m-tool-card--video">
+        <span class="m-tool-label">Tool 1</span>
+        <h3 class="m-tool-title">Knowledge Assistant</h3>
+        <p class="m-tool-body">Gives staff instant, source-cited answers to any internal question, from product specs to pricing to procedures to advice and guidance.</p>
+        <div class="m-tool-stat" data-count="23" data-suffix="hrs">0</div>
+        <div class="m-tool-stat-label">saved per week</div>
+        <div class="m-tool-video-wrap">
+          <video autoplay muted loop playsinline>
+            <source src="../../assets/clients/mango/mango_knowledge_agent_in_action.mov" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <!-- Email AI -->
+      <div class="m-tool-card m-tool-card--video">
+        <span class="m-tool-label">Tool 2</span>
+        <h3 class="m-tool-title">Email AI</h3>
+        <p class="m-tool-body">Reads, classifies, and drafts replies to customer emails, cutting response times and reducing the need for extra hires.</p>
+        <div class="email-mock" id="emailMock">
+          <div class="email-mock-chrome">
+            <div class="email-mock-dots"><span></span><span></span><span></span></div>
+            <div class="email-mock-title">info@mangomobility.nl</div>
+          </div>
+          <div class="email-mock-body">
+            <div class="email-mock-main">
+              <div class="email-mock-inbox" id="emailInbox">
+                <div class="email-mock-inbox-header">Inbox</div>
+                <div class="email-mock-row">
+                  <div class="email-mock-row-text">
+                    <div class="email-mock-sender">Jan de Vries</div>
+                    <div class="email-mock-subject">Invoice question &mdash; order #4892</div>
+                  </div>
+                  <div class="email-mock-time">10:14</div>
+                </div>
+                <div class="email-mock-row em-unread" id="petraRow">
+                  <div class="email-mock-row-text">
+                    <div class="email-mock-sender">Petra Bakker</div>
+                    <div class="email-mock-subject">Do you have a covered scooter for two?</div>
+                  </div>
+                  <div class="email-mock-time">09:47</div>
+                </div>
+                <div class="email-mock-row">
+                  <div class="email-mock-row-text">
+                    <div class="email-mock-sender">Willem Smit</div>
+                    <div class="email-mock-subject">Re: Delivery update</div>
+                  </div>
+                  <div class="email-mock-time">Yesterday</div>
+                </div>
+                <div class="email-mock-row">
+                  <div class="email-mock-row-text">
+                    <div class="email-mock-sender">Maria Jansen</div>
+                    <div class="email-mock-subject">Wheelchair ramp installation</div>
+                  </div>
+                  <div class="email-mock-time">Yesterday</div>
+                </div>
+              </div>
+              <div class="email-mock-read" id="emailRead">
+                <div class="email-mock-read-from">From: petra.bakker@gmail.com</div>
+                <div class="email-mock-read-sender">Petra Bakker</div>
+                <div class="email-mock-read-subject">Do you have a covered scooter for two?</div>
+                <div class="email-mock-read-body">Hi, my husband and I are looking for a mobility scooter that seats two people and is protected from the rain. We'd like a decent range for day trips. What options do you have?</div>
+                <div class="email-mock-reply" id="emailReply">
+                  <div class="email-mock-reply-label"><span class="em-sparkle">&#10022;</span> <span id="emailReplyLabelText">AI is writing&hellip;</span></div>
+                  <div class="email-mock-reply-content"><span id="emailReplyText"></span><span class="em-cursor" id="emailCursor" style="display:none"></span></div>
+                </div>
+              </div>
+              <div class="email-mock-sent" id="emailSent">
+                <div class="email-mock-sent-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <div class="email-mock-sent-text">Reply sent</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     VISUAL BREAK
+     ================================================================ -->
+<div class="m-visual-break">
+  <img src="../../assets/clients/mango/grandad_and_kid.jpg" alt="Grandfather on mobility scooter with grandchild on a bridge in the park">
+  <div class="m-visual-break-overlay">
+    <p class="m-visual-break-quote">"Customers get faster, more accurate service, in-store and online. Staff spend less time searching and more time on high-value work."</p>
+  </div>
+</div>
+
+<!-- ================================================================
+     RESULTS
+     ================================================================ -->
+<section class="m-section m-section--dark cs-grain">
+  <div class="cs-container">
+    <div class="cs-reveal">
+      <span class="cs-label cs-label--light">The Results</span>
+      <h2 class="m-section-title">A foundation that grows with them</h2>
+      <p class="m-section-body">Built in just 4 weeks, Mango now has an AI foundation that compounds in value. Every future tool they add will be faster and cheaper to deploy, because the brain is already built. This includes tools from other providers. It even includes ChatGPT and Gemini, which can be connected directly to the AI brain.</p>
+    </div>
+    <div class="m-stats-grid cs-reveal cs-reveal-d1">
+      <div class="m-stat-card">
+        <div class="m-stat-value" data-count="23" data-suffix="hrs">0</div>
+        <div class="m-stat-label">Saved per week with the knowledge assistant</div>
+      </div>
+      <div class="m-stat-card">
+        <div class="m-stat-value" data-count="4" data-suffix=" weeks">0</div>
+        <div class="m-stat-label">From kickoff to live deployment</div>
+      </div>
+      <div class="m-stat-card">
+        <div class="m-stat-value" data-count="2" data-suffix=" tools">0</div>
+        <div class="m-stat-label">One AI brain</div>
+      </div>
+      <div class="m-stat-card">
+        <div class="m-stat-value" data-count="14" data-suffix=" stores">0</div>
+        <div class="m-stat-label">One source of truth</div>
+      </div>
+    </div>
+    <div class="m-results-image cs-reveal cs-reveal-d2">
+      <img src="../../assets/clients/mango/on_the_road.jpg" alt="Two people enjoying the outdoors — one on a bicycle, one on a Mango mobility scooter">
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     CTA
+     ================================================================ -->
+<section class="m-cta cs-grain">
+  <div class="cs-container" style="position: relative; z-index: 2;">
+    <h2 class="m-cta-title cs-reveal">Ready to build <em>your</em> AI brain?</h2>
+    <p class="m-cta-sub cs-reveal cs-reveal-d1">Step Zero organises your messy knowledge into a foundation, then plugs in tools for fast ROI. Just like we did for Mango.</p>
+    <a href="../../" class="m-btn-primary cs-reveal cs-reveal-d2">
+      Book a demo
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ================================================================
+     FOOTER
+     ================================================================ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-left">
+        <div class="footer-brand">
+          <img class="footer-logo-placeholder" src="../../assets/logos/Valae-WM-Pistachio.png" alt="Valae">
+        </div>
+        <p class="footer-description">Valae's Step Zero organises your scattered knowledge into an AI brain, powering assistants, automations, chatbots, and more.</p>
+        <div class="footer-icons">
+          <a href="mailto:info@valae.ai" aria-label="Email">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/valae-ai/" target="_blank" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-right">
+        <h4 class="footer-heading">Quick Links</h4>
+        <nav class="footer-nav">
+          <a href="https://valae.ai/about" class="footer-link">About Us</a>
+          <a href="../../" class="footer-link">Home</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+      <div class="footer-copyright">&copy; 2026 Valae B.V. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="#" class="footer-legal-link">Privacy Policy</a>
+        <a href="#" class="footer-legal-link">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../shared/casestudy.js"></script>
+<script>
+(function() {
+  var mock = document.getElementById('emailMock');
+  if (!mock) return;
+
+  var inbox = document.getElementById('emailInbox');
+  var read = document.getElementById('emailRead');
+  var reply = document.getElementById('emailReply');
+  var replyTextEl = document.getElementById('emailReplyText');
+  var replyLabelText = document.getElementById('emailReplyLabelText');
+  var cursor = document.getElementById('emailCursor');
+  var sent = document.getElementById('emailSent');
+  var petraRow = document.getElementById('petraRow');
+
+  var replyContent = 'Dear Petra, thank you for your message!\n\nBased on your requirements, I\u2019d recommend the Afikim Afiscooter S4 with the dual-seat cabin option. It seats two comfortably, has a fully enclosed weatherproof canopy, and offers up to 55 km range per charge \u2014 perfect for day trips.\n\nWould you like to visit our nearest store for a test ride? I can check availability at your closest location.\n\nKind regards,\nMango Mobility';
+
+  var timers = [];
+  function delay(fn, ms) { timers.push(setTimeout(fn, ms)); }
+  function clearAllTimers() { timers.forEach(function(t) { clearTimeout(t); }); timers = []; }
+
+  function reset() {
+    clearAllTimers();
+    inbox.classList.remove('em-hidden');
+    read.classList.remove('em-visible');
+    reply.classList.remove('em-visible');
+    sent.classList.remove('em-visible');
+    replyTextEl.innerHTML = '';
+    cursor.style.display = 'none';
+    replyLabelText.innerHTML = 'AI is writing&hellip;';
+    petraRow.classList.add('em-unread');
+    petraRow.classList.remove('em-replied');
+    read.scrollTop = 0;
+  }
+
+  function typeReply(cb) {
+    var i = 0;
+    cursor.style.display = '';
+    function tick() {
+      if (i < replyContent.length) {
+        var ch = replyContent[i];
+        if (ch === '\n') {
+          replyTextEl.appendChild(document.createElement('br'));
+        } else {
+          var last = replyTextEl.lastChild;
+          if (last && last.nodeType === 3) { last.textContent += ch; }
+          else { replyTextEl.appendChild(document.createTextNode(ch)); }
+        }
+        i++;
+        read.scrollTop = read.scrollHeight;
+        delay(tick, 12);
+      } else {
+        cursor.style.display = 'none';
+        replyLabelText.textContent = 'Reply ready';
+        if (cb) cb();
+      }
+    }
+    tick();
+  }
+
+  function run() {
+    reset();
+    delay(function() {
+      inbox.classList.add('em-hidden');
+      read.classList.add('em-visible');
+      delay(function() {
+        reply.classList.add('em-visible');
+        delay(function() {
+          read.scrollTop = read.scrollHeight;
+          typeReply(function() {
+            delay(function() {
+              sent.classList.add('em-visible');
+              delay(function() {
+                sent.classList.remove('em-visible');
+                read.classList.remove('em-visible');
+                inbox.classList.remove('em-hidden');
+                petraRow.classList.remove('em-unread');
+                petraRow.classList.add('em-replied');
+                delay(run, 2500);
+              }, 1500);
+            }, 3500);
+          });
+        }, 300);
+      }, 1800);
+    }, 2000);
+  }
+
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) { obs.disconnect(); delay(run, 500); }
+    }, { threshold: 0.2 });
+    obs.observe(mock);
+  } else { run(); }
+})();
+</script>
+</body>
+</html>

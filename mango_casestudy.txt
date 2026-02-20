@@ -1,0 +1,11 @@
+Introduction
+Mango Mobility is the leading mobility brand in the Netherlands, with 14 stores and an e-commerce site offering 500+ products, including mobility scooters, electric bicycles, small automobiles, and wheelchairs. They had no technical team and their knowledge was scattered across legacy systems, spreadsheets, and inboxes. The perfect starting point for Step Zero.
+
+Challenge
+Staff were drowning in repetitive questions — product specs, pricing, availability — spread across systems that didn't talk to each other. Even simple tasks ate up valuable time. The problem wasn't a lack of AI tools. It was a lack of foundation. Without organised knowledge, no AI tool can give accurate answers.
+
+What we built
+We ran Step Zero: ingesting Mango's scattered data, de-duplicating, structuring, and tagging it into a single AI brain — one source of truth for the entire business. From there, we deployed two tools on top of it. First, a knowledge assistant that gives staff instant, source-cited answers to any internal question — saving 23 hours per week. Then, an email AI that reads, classifies, and replies to customer emails, cutting response time and reducing the need for extra hires. Both tools, one brain.
+
+Results
+Built in just 4 weeks, Mango now has a foundation that grows with them. Staff spend less time searching and more time on high-value work. Customers get faster, more accurate service in-store and online. And because the AI brain is already built, every future tool Mango adds will be faster and cheaper to deploy.

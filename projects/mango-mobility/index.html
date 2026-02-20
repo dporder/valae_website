@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mango Mobility — Valae Case Study</title>
+  <meta name="description" content="How Valae built an AI brain for Mango Mobility — the Netherlands' leading mobility brand — saving 23 hours per week and transforming customer service in just 4 weeks.">
+  <link rel="icon" type="image/png" href="../../assets/logos/valaestar_logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/casestudy.css">
+  <style>
+    /* Page-specific desktop overrides */
+    .cs-hero { min-height: 100vh; }
+    .cs-tool-card { min-height: 520px; }
+
+    /* Phone-format video (Knowledge Assistant) */
+    .cs-tool-video-wrap {
+      max-width: 260px;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 28px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+
+    /* Email AI Outlook Mockup */
+    .email-mock {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(186,217,168,0.1);
+      margin-top: 20px;
+      font-family: 'Segoe UI', -apple-system, system-ui, sans-serif;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .email-mock-chrome {
+      display: flex; align-items: center; gap: 12px;
+      padding: 8px 12px; background: #2b2b2b;
+    }
+    .email-mock-dots { display: flex; gap: 6px; }
+    .email-mock-dots span { width: 10px; height: 10px; border-radius: 50%; }
+    .email-mock-dots span:nth-child(1) { background: #ff5f57; }
+    .email-mock-dots span:nth-child(2) { background: #ffbd2e; }
+    .email-mock-dots span:nth-child(3) { background: #28c840; }
+    .email-mock-title { font-size: 11px; color: #999; letter-spacing: 0; }
+    .email-mock-body { display: flex; flex: 1; min-height: 300px; }
+    .email-mock-sidebar {
+      width: 40px; background: #0f6cbd;
+      display: flex; flex-direction: column; align-items: center;
+      padding-top: 14px; gap: 18px; flex-shrink: 0;
+    }
+    .email-mock-sidebar svg { width: 18px; height: 18px; color: rgba(255,255,255,0.7); }
+    .email-mock-main { flex: 1; position: relative; overflow: hidden; background: #fff; }
+
+    .email-mock-inbox {
+      position: absolute; inset: 0; background: #fff;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    .email-mock-inbox.em-hidden { opacity: 0; transform: translateX(-8px); pointer-events: none; }
+    .email-mock-inbox-header {
+      padding: 10px 14px 8px; font-size: 14px; font-weight: 600;
+      color: #1a1a1a; border-bottom: 1px solid #edebe9;
+    }
+    .email-mock-row {
+      display: flex; align-items: flex-start;
+      padding: 10px 14px; border-bottom: 1px solid #f3f2f1; gap: 8px;
+    }
+    .email-mock-row.em-unread {
+      border-left: 3px solid #0f6cbd; padding-left: 11px; background: #f0f6ff;
+    }
+    .email-mock-row.em-unread .email-mock-sender { font-weight: 700; }
+    .email-mock-row.em-replied .email-mock-sender { font-weight: 400; color: #999; }
+    .email-mock-row.em-replied .email-mock-subject { color: #bbb; }
+    .email-mock-row.em-replied .email-mock-time { color: #ccc; }
+    .email-mock-row-text { flex: 1; min-width: 0; }
+    .email-mock-sender { font-size: 12px; color: #1a1a1a; font-weight: 400; line-height: 1.3; }
+    .email-mock-subject {
+      font-size: 11px; color: #605e5c; line-height: 1.3; margin-top: 1px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .email-mock-time { font-size: 10px; color: #a19f9d; flex-shrink: 0; line-height: 1.3; padding-top: 1px; }
+
+    .email-mock-read {
+      position: absolute; inset: 0; background: #fff;
+      padding: 14px 16px; overflow-y: auto;
+      opacity: 0; transform: translateX(8px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      pointer-events: none;
+    }
+    .email-mock-read::-webkit-scrollbar { width: 4px; }
+    .email-mock-read::-webkit-scrollbar-track { background: transparent; }
+    .email-mock-read::-webkit-scrollbar-thumb { background: #ddd; border-radius: 4px; }
+    .email-mock-read.em-visible { opacity: 1; transform: translateX(0); pointer-events: auto; }
+    .email-mock-read-from { font-size: 10px; color: #a19f9d; margin-bottom: 2px; }
+    .email-mock-read-sender { font-size: 13px; font-weight: 600; color: #1a1a1a; line-height: 1.3; }
+    .email-mock-read-subject {
+      font-size: 11px; color: #605e5c; margin-top: 2px; margin-bottom: 12px;
+      padding-bottom: 10px; border-bottom: 1px solid #edebe9;
+    }
+    .email-mock-read-body { font-size: 12px; line-height: 1.65; color: #323130; }
+
+    .email-mock-reply {
+      margin-top: 14px; padding-top: 12px;
+      border-top: 1px solid #edebe9;
+      opacity: 0; transition: opacity 0.3s ease;
+    }
+    .email-mock-reply.em-visible { opacity: 1; }
+    .email-mock-reply-label {
+      display: flex; align-items: center; gap: 5px;
+      font-size: 10px; font-weight: 600; color: #0f6cbd; margin-bottom: 8px;
+    }
+    .email-mock-reply-label .em-sparkle { font-size: 12px; animation: emPulse 1.5s ease infinite; }
+    @keyframes emPulse { 0%,100%{ opacity:.6; } 50%{ opacity:1; } }
+    .email-mock-reply-content { font-size: 11px; line-height: 1.6; color: #323130; }
+    .email-mock-reply-content .em-cursor {
+      display: inline-block; width: 1px; height: 12px;
+      background: #0f6cbd; vertical-align: text-bottom;
+      margin-left: 1px; animation: emBlink .6s step-end infinite;
+    }
+    @keyframes emBlink { 0%,100%{ opacity:1; } 50%{ opacity:0; } }
+
+    .email-mock-sent {
+      position: absolute; inset: 0; z-index: 2;
+      background: rgba(255,255,255,0.96);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.4s ease; pointer-events: none;
+    }
+    .email-mock-sent.em-visible { opacity: 1; }
+    .email-mock-sent-icon {
+      width: 44px; height: 44px; border-radius: 50%; background: #dff6dd;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 10px;
+    }
+    .email-mock-sent-icon svg { width: 22px; height: 22px; color: #107c10; }
+    .email-mock-sent-text { font-size: 14px; font-weight: 600; color: #107c10; }
+  </style>
+</head>
+
+<script>
+if (window.innerWidth <= 768) {
+  document.documentElement.style.visibility = 'hidden';
+  fetch('mobile.html')
+    .then(function(r) { return r.text(); })
+    .then(function(html) {
+      document.open();
+      document.write(html);
+      document.close();
+    })
+    .catch(function() {
+      document.documentElement.style.visibility = '';
+    });
+}
+</script>
+
+<body>
+
+<!-- ================================================================
+     NAV
+     ================================================================ -->
+<nav class="nav at-top" id="mainNav">
+  <div class="nav-inner">
+    <a href="../../" class="nav-brand" style="gap: 0;">
+      <div class="nav-brand-wordmark" style="gap: 2px;">
+        <span class="nav-brand-name" style="font-size: 22px;">Step Zero</span>
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span class="nav-brand-sub" style="font-size: 11px;">BY</span>
+          <img src="../../assets/logos/valae_logo.png" alt="Valae Logo" style="height: 16px; transform: translateY(-2px);">
+        </div>
+      </div>
+    </a>
+    <a href="../../" class="nav-cta">
+      Book a demo
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</nav>
+
+<!-- ================================================================
+     HERO
+     ================================================================ -->
+<section class="cs-hero cs-grain">
+  <div class="cs-hero-video-bg">
+    <video autoplay muted loop playsinline>
+      <source src="../../assets/clients/mango/beautiful_video_of_mango_product_lifestyle.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="cs-hero-overlay"></div>
+  <div class="cs-hero-content">
+    <a href="../../" class="cs-hero-back">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to home
+    </a>
+    <h1 class="cs-hero-title">Mango Mobility</h1>
+    <p class="cs-hero-subtitle">How the Netherlands' leading mobility retailer went from scattered knowledge to a single AI brain and multiple high-ROI tools <em>in just four weeks.</em></p>
+    <div class="cs-hero-stats">
+      <div class="cs-hero-stat">
+        <span class="cs-hero-stat-value" data-count="23" data-suffix="hrs">0</span>
+        <span class="cs-hero-stat-label">saved per week</span>
+      </div>
+      <div class="cs-hero-stat">
+        <span class="cs-hero-stat-value" data-count="4" data-suffix="wks">0</span>
+        <span class="cs-hero-stat-label">from start to live</span>
+      </div>
+      <div class="cs-hero-stat">
+        <span class="cs-hero-stat-value" data-count="500" data-suffix="+">0</span>
+        <span class="cs-hero-stat-label">products in catalogue</span>
+      </div>
+      <div class="cs-hero-stat">
+        <span class="cs-hero-stat-value" data-count="14">0</span>
+        <span class="cs-hero-stat-label">stores nationwide</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     OVERVIEW / INTRODUCTION
+     ================================================================ -->
+<section class="cs-section cs-section--light">
+  <div class="cs-container">
+    <div class="cs-grid">
+      <div class="cs-grid-media cs-reveal">
+        <img src="../../assets/clients/mango/store.jpg" alt="Mango Mobility storefront with mobility scooters and products on display" style="border-radius: 16px;">
+      </div>
+      <div class="cs-grid-text cs-reveal cs-reveal-d1">
+        <span class="cs-label cs-label--dark">Overview</span>
+        <h2 class="cs-section-title">The leading mobility brand in the Netherlands</h2>
+        <p class="cs-section-body">Mango Mobility sells 500+ products, from mobility scooters and electric bikes to wheelchairs and small automobiles.</p>
+        <p class="cs-section-body" style="margin-top: 16px;">But behind that scale, there was no technical team and knowledge was scattered across files, chats, inboxes, and legacy tools.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     THE CHALLENGE
+     ================================================================ -->
+<section class="cs-section cs-section--dark cs-grain">
+  <div class="cs-container">
+    <div class="cs-grid cs-grid--reverse">
+      <div class="cs-grid-media cs-reveal">
+        <img src="../../assets/clients/mango/store_interior.jpg" alt="Mango Mobility modern showroom interior with mobility scooters" style="border-radius: 16px;">
+      </div>
+      <div class="cs-grid-text cs-reveal cs-reveal-d1">
+        <span class="cs-label cs-label--light">The Challenge</span>
+        <h2 class="cs-section-title">Drowning in repetitive questions</h2>
+        <p class="cs-section-body">Staff across 14 locations were fielding the same questions. Product specs, pricing, availability. Even simple tasks ate up time.</p>
+        <p class="cs-section-body" style="margin-top: 16px;">The problem wasn't a lack of AI tools. It was a lack of foundation. Without organised knowledge, no AI tool can give accurate answers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     THE SOLUTION — STEP ZERO
+     ================================================================ -->
+<section class="cs-section cs-section--warm">
+  <div class="cs-container">
+    <div class="cs-reveal" style="text-align: center; max-width: 700px; margin: 0 auto 56px;">
+      <span class="cs-label cs-label--dark">The Solution</span>
+      <h2 class="cs-section-title">One AI brain. Multiple automations.</h2>
+      <p class="cs-section-body">We ran Step Zero, ingesting Mango's scattered data into a single AI brain. Then we deployed two ROI-focused AI tools on top of it.</p>
+    </div>
+
+    <!-- Process steps -->
+    <div class="cs-process cs-reveal cs-reveal-d1">
+      <div class="cs-process-step">
+        <div class="cs-process-num">1</div>
+        <div class="cs-process-step-title">Ingest</div>
+        <div class="cs-process-step-body">Pulled in data from Excel files, email threads, their website, calls with staff, legacy systems like Vendit, and more.</div>
+      </div>
+      <div class="cs-process-step">
+        <div class="cs-process-num">2</div>
+        <div class="cs-process-step-title">Structure</div>
+        <div class="cs-process-step-body">De-duplicated, cleaned, and tagged every piece of knowledge into a unified format, the AI brain.</div>
+      </div>
+      <div class="cs-process-step">
+        <div class="cs-process-num">3</div>
+        <div class="cs-process-step-title">Deploy</div>
+        <div class="cs-process-step-body">Built two AI tools on top of the brain, one to provide instant info to staff, and another to talk with customers by email automatically.</div>
+      </div>
+    </div>
+
+    <!-- Tool cards -->
+    <div class="cs-tools cs-reveal cs-reveal-d2">
+      <!-- Knowledge Assistant -->
+      <div class="cs-tool-card cs-tool-card--video">
+        <span class="cs-tool-card-label">Tool 1</span>
+        <h3 class="cs-tool-card-title">Knowledge Assistant</h3>
+        <p class="cs-tool-card-body">Gives staff instant, source-cited answers to any internal question, from product specs to pricing to procedures to advice and guidance.</p>
+        <div class="cs-tool-card-stat" data-count="23" data-suffix="hrs">0</div>
+        <div class="cs-tool-card-stat-label">saved per week</div>
+        <div class="cs-tool-video-wrap">
+          <video autoplay muted loop playsinline>
+            <source src="../../assets/clients/mango/mango_knowledge_agent_in_action.mov" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <!-- Email AI -->
+      <div class="cs-tool-card cs-tool-card--video">
+        <span class="cs-tool-card-label">Tool 2</span>
+        <h3 class="cs-tool-card-title">Email AI</h3>
+        <p class="cs-tool-card-body">Reads, classifies, and drafts replies to customer emails, cutting response times and reducing the need for extra hires.</p>
+        <div class="email-mock" id="emailMock">
+          <div class="email-mock-chrome">
+            <div class="email-mock-dots"><span></span><span></span><span></span></div>
+            <div class="email-mock-title">info@mangomobility.nl &mdash; Inbox</div>
+          </div>
+          <div class="email-mock-body">
+            <div class="email-mock-sidebar">
+              <svg viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M3 8h14" stroke="currentColor" stroke-width="1.5"/></svg>
+              <svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 20 20" fill="none"><path d="M10 3v3M10 14v3M3 10h3M14 10h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/></svg>
+            </div>
+            <div class="email-mock-main">
+              <div class="email-mock-inbox" id="emailInbox">
+                <div class="email-mock-inbox-header">Inbox</div>
+                <div class="email-mock-row">
+                  <div class="email-mock-row-text">
+                    <div class="email-mock-sender">Jan de Vries</div>
+                    <div class="email-mock-subject">Invoice question &mdash; order #4892</div>
+                  </div>
+                  <div class="email-mock-time">10:14</div>
+                </div>
+                <div class="email-mock-row em-unread" id="petraRow">
+                  <div class="email-mock-row-text">
+                    <div class="email-mock-sender">Petra Bakker</div>
+                    <div class="email-mock-subject">Do you have a covered scooter for two?</div>
+                  </div>
+                  <div class="email-mock-time">09:47</div>
+                </div>
+                <div class="email-mock-row">
+                  <div class="email-mock-row-text">
+                    <div class="email-mock-sender">Willem Smit</div>
+                    <div class="email-mock-subject">Re: Delivery update</div>
+                  </div>
+                  <div class="email-mock-time">Yesterday</div>
+                </div>
+                <div class="email-mock-row">
+                  <div class="email-mock-row-text">
+                    <div class="email-mock-sender">Maria Jansen</div>
+                    <div class="email-mock-subject">Wheelchair ramp installation</div>
+                  </div>
+                  <div class="email-mock-time">Yesterday</div>
+                </div>
+              </div>
+              <div class="email-mock-read" id="emailRead">
+                <div class="email-mock-read-from">From: petra.bakker@gmail.com</div>
+                <div class="email-mock-read-sender">Petra Bakker</div>
+                <div class="email-mock-read-subject">Do you have a covered scooter for two?</div>
+                <div class="email-mock-read-body">Hi, my husband and I are looking for a mobility scooter that seats two people and is protected from the rain. We'd like a decent range for day trips. What options do you have?</div>
+                <div class="email-mock-reply" id="emailReply">
+                  <div class="email-mock-reply-label"><span class="em-sparkle">&#10022;</span> <span id="emailReplyLabelText">AI is writing&hellip;</span></div>
+                  <div class="email-mock-reply-content"><span id="emailReplyText"></span><span class="em-cursor" id="emailCursor" style="display:none"></span></div>
+                </div>
+              </div>
+              <div class="email-mock-sent" id="emailSent">
+                <div class="email-mock-sent-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <div class="email-mock-sent-text">Reply sent</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     VISUAL BREAK
+     ================================================================ -->
+<div class="cs-visual-break">
+  <img src="../../assets/clients/mango/grandad_and_kid.jpg" alt="Grandfather on mobility scooter with grandchild on a bridge in the park">
+  <div class="cs-visual-break-overlay">
+    <p class="cs-visual-break-quote">"Customers get faster, more accurate service, in-store and online. Staff spend less time searching and more time on high-value work."</p>
+  </div>
+</div>
+
+<!-- ================================================================
+     RESULTS
+     ================================================================ -->
+<section class="cs-section cs-section--dark cs-grain">
+  <div class="cs-container">
+    <div class="cs-reveal" style="margin-bottom: 56px;">
+      <span class="cs-label cs-label--light">The Results</span>
+      <h2 class="cs-section-title">A foundation that grows with them</h2>
+      <p class="cs-section-body" style="max-width: 560px;">Built in just 4 weeks, Mango now has an AI foundation that compounds in value. Every future tool they add will be faster and cheaper to deploy, because the brain is already built. This includes tools from other providers. It even includes ChatGPT and Gemini, which can be connected directly to the AI brain.</p>
+    </div>
+    <div class="cs-results cs-reveal cs-reveal-d1">
+      <div class="cs-stats-grid">
+        <div class="cs-stat-card">
+          <div class="cs-stat-value" data-count="23" data-suffix="hrs">0</div>
+          <div class="cs-stat-label">Saved per week with the knowledge assistant</div>
+        </div>
+        <div class="cs-stat-card">
+          <div class="cs-stat-value" data-count="4" data-suffix=" weeks">0</div>
+          <div class="cs-stat-label">From kickoff to live deployment</div>
+        </div>
+        <div class="cs-stat-card">
+          <div class="cs-stat-value" data-count="2" data-suffix=" tools">0</div>
+          <div class="cs-stat-label">Running on a single AI brain</div>
+        </div>
+        <div class="cs-stat-card">
+          <div class="cs-stat-value" data-count="14" data-suffix=" stores">0</div>
+          <div class="cs-stat-label">Connected to one source of truth</div>
+        </div>
+      </div>
+      <div class="cs-results-image">
+        <img src="../../assets/clients/mango/on_the_road.jpg" alt="Two people enjoying the outdoors — one on a bicycle, one on a Mango mobility scooter">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     CTA
+     ================================================================ -->
+<section class="cs-cta cs-grain">
+  <div class="cs-container" style="position: relative; z-index: 2;">
+    <h2 class="cs-cta-title cs-reveal">Ready to build <em>your</em> AI brain?</h2>
+    <p class="cs-cta-sub cs-reveal cs-reveal-d1">Step Zero organises your messy knowledge into a foundation, then plugs in tools for fast ROI. Just like we did for Mango.</p>
+    <a href="../../" class="cs-btn-primary cs-reveal cs-reveal-d2">
+      Book a demo
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ================================================================
+     FOOTER
+     ================================================================ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-left">
+        <div class="footer-brand">
+          <img class="footer-logo-placeholder" src="../../assets/logos/Valae-WM-Pistachio.png" alt="Valae">
+        </div>
+        <p class="footer-description">Valae's Step Zero organises your scattered knowledge into an AI brain, powering assistants, automations, chatbots, and more.</p>
+        <div class="footer-icons">
+          <a href="mailto:info@valae.ai" aria-label="Email">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/valae-ai/" target="_blank" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-right">
+        <h4 class="footer-heading">Quick Links</h4>
+        <nav class="footer-nav">
+          <a href="https://valae.ai/about" class="footer-link">About Us</a>
+          <a href="../../" class="footer-link">Home</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+      <div class="footer-copyright">&copy; 2026 Valae B.V. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="#" class="footer-legal-link">Privacy Policy</a>
+        <a href="#" class="footer-legal-link">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../shared/casestudy.js"></script>
+<script>
+(function() {
+  var mock = document.getElementById('emailMock');
+  if (!mock) return;
+
+  var inbox = document.getElementById('emailInbox');
+  var read = document.getElementById('emailRead');
+  var reply = document.getElementById('emailReply');
+  var replyTextEl = document.getElementById('emailReplyText');
+  var replyLabelText = document.getElementById('emailReplyLabelText');
+  var cursor = document.getElementById('emailCursor');
+  var sent = document.getElementById('emailSent');
+  var petraRow = document.getElementById('petraRow');
+
+  var replyContent = 'Dear Petra,\n\nThank you for your message! Based on your requirements, I\u2019d recommend the Afikim Afiscooter S4 with the dual-seat cabin option. It seats two comfortably, has a fully enclosed weatherproof canopy, and offers up to 55 km range per charge, so it\u2019s perfect for day trips.\n\nWould you like to visit our nearest store for a test ride? I can check availability at your closest location.\n\nKind regards,\nMango Mobility';
+
+  var timers = [];
+  function delay(fn, ms) { timers.push(setTimeout(fn, ms)); }
+  function clearAllTimers() { timers.forEach(function(t) { clearTimeout(t); }); timers = []; }
+
+  function reset() {
+    clearAllTimers();
+    inbox.classList.remove('em-hidden');
+    read.classList.remove('em-visible');
+    reply.classList.remove('em-visible');
+    sent.classList.remove('em-visible');
+    replyTextEl.innerHTML = '';
+    cursor.style.display = 'none';
+    replyLabelText.innerHTML = 'AI is writing&hellip;';
+    petraRow.classList.add('em-unread');
+    petraRow.classList.remove('em-replied');
+    read.scrollTop = 0;
+  }
+
+  function typeReply(cb) {
+    var i = 0;
+    cursor.style.display = '';
+    function tick() {
+      if (i < replyContent.length) {
+        var ch = replyContent[i];
+        if (ch === '\n') {
+          replyTextEl.appendChild(document.createElement('br'));
+        } else {
+          var last = replyTextEl.lastChild;
+          if (last && last.nodeType === 3) { last.textContent += ch; }
+          else { replyTextEl.appendChild(document.createTextNode(ch)); }
+        }
+        i++;
+        read.scrollTop = read.scrollHeight;
+        delay(tick, 12);
+      } else {
+        cursor.style.display = 'none';
+        replyLabelText.textContent = 'Reply ready';
+        if (cb) cb();
+      }
+    }
+    tick();
+  }
+
+  function run() {
+    reset();
+    delay(function() {
+      inbox.classList.add('em-hidden');
+      read.classList.add('em-visible');
+      delay(function() {
+        reply.classList.add('em-visible');
+        delay(function() {
+          read.scrollTop = read.scrollHeight;
+          typeReply(function() {
+            delay(function() {
+              sent.classList.add('em-visible');
+              delay(function() {
+                sent.classList.remove('em-visible');
+                read.classList.remove('em-visible');
+                inbox.classList.remove('em-hidden');
+                petraRow.classList.remove('em-unread');
+                petraRow.classList.add('em-replied');
+                delay(run, 2500);
+              }, 1500);
+            }, 3500);
+          });
+        }, 300);
+      }, 1800);
+    }, 2000);
+  }
+
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) { obs.disconnect(); delay(run, 500); }
+    }, { threshold: 0.2 });
+    obs.observe(mock);
+  } else { run(); }
+})();
+</script>
+</body>
+</html>

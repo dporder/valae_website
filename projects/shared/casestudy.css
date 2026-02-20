@@ -1,0 +1,681 @@
+/* ================================================================
+   BROTHER 1816 — LOCAL @font-face
+   (paths relative to this CSS file's location: projects/shared/)
+   ================================================================ */
+@font-face { font-family: 'Brother 1816'; font-weight: 300; font-style: normal; font-display: swap; src: url('../../fonts/Brother 1816/Brother-1816-Font/Brother-1816-Light.woff2') format('woff2'); }
+@font-face { font-family: 'Brother 1816'; font-weight: 300; font-style: italic; font-display: swap; src: url('../../fonts/Brother 1816/Brother-1816-Font/Brother-1816-Light-Italic.woff2') format('woff2'); }
+@font-face { font-family: 'Brother 1816'; font-weight: 400; font-style: normal; font-display: swap; src: url('../../fonts/Brother 1816/Brother-1816-Font/Brother-1816-Regular.woff2') format('woff2'); }
+@font-face { font-family: 'Brother 1816'; font-weight: 400; font-style: italic; font-display: swap; src: url('../../fonts/Brother 1816/Brother-1816-Font/Brother-1816-Regular-Italic.woff2') format('woff2'); }
+@font-face { font-family: 'Brother 1816'; font-weight: 500; font-style: normal; font-display: swap; src: url('../../fonts/Brother 1816/Brother-1816-Font/Brother-1816-Medium.woff2') format('woff2'); }
+@font-face { font-family: 'Brother 1816'; font-weight: 500; font-style: italic; font-display: swap; src: url('../../fonts/Brother 1816/Brother-1816-Font/Brother-1816-Medium-Italic.woff2') format('woff2'); }
+@font-face { font-family: 'Brother 1816'; font-weight: 600; font-style: normal; font-display: swap; src: url('../../fonts/Brother 1816/Brother-1816-Font/Brother-1816-Bold.woff2') format('woff2'); }
+@font-face { font-family: 'Brother 1816'; font-weight: 600; font-style: italic; font-display: swap; src: url('../../fonts/Brother 1816/Brother-1816-Font/Brother-1816-Bold-Italic.woff2') format('woff2'); }
+@font-face { font-family: 'Brother 1816'; font-weight: 700; font-style: normal; font-display: swap; src: url('../../fonts/Brother 1816/Brother-1816-Font/Brother-1816-Extra-Bold.woff2') format('woff2'); }
+@font-face { font-family: 'Brother 1816'; font-weight: 700; font-style: italic; font-display: swap; src: url('../../fonts/Brother 1816/Brother-1816-Font/Brother-1816-Extra-Bold-Italic.woff2') format('woff2'); }
+
+/* ================================================================
+   RESET & VARIABLES
+   ================================================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --forest: #003017;
+  --forest-deep: #001a0d;
+  --forest-mid: #002a14;
+  --pistachio: #BAD9A8;
+  --pistachio-light: #d4eac6;
+  --pistachio-dim: rgba(186,217,168,0.15);
+  --offwhite: #DFDCD7;
+  --charcoal: #1A1D1B;
+  --bg: #FAFAF7;
+  --bg-warm: #F5F2ED;
+  --white: #ffffff;
+  --max-w: 1100px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --font-display: 'Unbounded', sans-serif;
+  --font-body: 'Brother 1816', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--charcoal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; height: auto; display: block; }
+
+.cs-container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ================================================================
+   GRAIN TEXTURE MIXIN (pseudo-element)
+   ================================================================ */
+.cs-grain::after {
+  content: '';
+  position: absolute; inset: 0; z-index: 1;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* ================================================================
+   ANIMATIONS
+   ================================================================ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes drawLine {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+.cs-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.cs-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.cs-reveal-d1 { transition-delay: 0.1s; }
+.cs-reveal-d2 { transition-delay: 0.2s; }
+.cs-reveal-d3 { transition-delay: 0.3s; }
+.cs-reveal-d4 { transition-delay: 0.4s; }
+
+/* ================================================================
+   NAV (matches home page)
+   ================================================================ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 0 40px; transition: all 0.4s ease;
+}
+.nav.at-top {
+  background: transparent;
+}
+.nav.scrolled {
+  background: rgba(0,48,23,0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(186,217,168,0.15);
+}
+.nav-inner {
+  max-width: var(--max-w); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; height: 64px;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 12px;
+  color: var(--pistachio);
+}
+.nav-brand-wordmark {
+  display: flex; flex-direction: column; gap: 1px;
+}
+.nav-brand-name {
+  font-family: var(--font-display); font-weight: 600; font-size: 15px;
+  color: var(--pistachio); letter-spacing: -0.5px; line-height: 1;
+}
+.nav-brand-sub {
+  font-family: var(--font-display); font-weight: 300; font-size: 10px;
+  color: rgba(186,217,168,0.45); letter-spacing: 1.5px; text-transform: uppercase; line-height: 1;
+}
+.nav-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 22px; border-radius: 8px;
+  background: var(--pistachio); color: var(--forest);
+  font-weight: 600; font-size: 14px; letter-spacing: -0.2px;
+  transition: all 0.3s ease; cursor: pointer; border: none;
+  font-family: var(--font-body);
+}
+.nav-cta:hover { background: var(--pistachio-light); transform: translateY(-1px); }
+
+/* ================================================================
+   SECTION LABEL PILL
+   ================================================================ */
+.cs-label {
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.cs-label--light {
+  background: rgba(186,217,168,0.12);
+  color: var(--pistachio);
+}
+.cs-label--dark {
+  background: rgba(0,48,23,0.07);
+  color: var(--forest);
+}
+
+/* ================================================================
+   HERO
+   ================================================================ */
+.cs-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--forest);
+  padding: 0 0 80px;
+}
+.cs-hero-video-bg {
+  position: absolute; inset: 0; z-index: 0;
+  overflow: hidden; pointer-events: none;
+}
+.cs-hero-video-bg video {
+  position: absolute;
+  top: 50%; left: 50%;
+  min-width: 100%; min-height: 100%;
+  width: auto; height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  pointer-events: none;
+}
+.cs-hero-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(0,26,13,0.55) 0%,
+    rgba(0,48,23,0.45) 40%,
+    rgba(0,26,13,0.85) 100%
+  );
+}
+.cs-hero-content {
+  position: relative; z-index: 3;
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+.cs-hero-back {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 500;
+  color: rgba(186,217,168,0.5);
+  margin-bottom: 40px;
+  transition: color 0.2s ease;
+}
+.cs-hero-back:hover { color: var(--pistachio); }
+.cs-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 600;
+  color: var(--offwhite);
+  letter-spacing: -2.5px;
+  line-height: 1.05;
+  margin-bottom: 16px;
+}
+.cs-hero-title em {
+  font-style: italic;
+  color: var(--pistachio);
+}
+.cs-hero-subtitle {
+  font-size: 18px;
+  line-height: 1.65;
+  color: rgba(223,220,215,0.6);
+  max-width: 600px;
+  margin-bottom: 48px;
+}
+.cs-hero-stats {
+  display: flex;
+  gap: 48px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(186,217,168,0.12);
+}
+.cs-hero-stat {
+  display: flex; flex-direction: column; gap: 4px;
+}
+.cs-hero-stat-value {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--pistachio);
+  letter-spacing: -1.5px;
+  line-height: 1;
+}
+.cs-hero-stat-label {
+  font-size: 13px;
+  color: rgba(223,220,215,0.4);
+  line-height: 1.4;
+}
+
+/* ================================================================
+   TWO-COLUMN SECTION
+   ================================================================ */
+.cs-section {
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+.cs-section--dark {
+  background: var(--forest);
+  color: var(--offwhite);
+}
+.cs-section--light {
+  background: var(--bg);
+  color: var(--charcoal);
+}
+.cs-section--warm {
+  background: var(--bg-warm);
+  color: var(--charcoal);
+}
+.cs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.cs-grid--reverse .cs-grid-media { order: 2; }
+.cs-grid--reverse .cs-grid-text  { order: 1; }
+
+.cs-section-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 600;
+  letter-spacing: -1.5px;
+  line-height: 1.15;
+  margin-bottom: 24px;
+}
+.cs-section--dark .cs-section-title { color: var(--offwhite); }
+.cs-section--light .cs-section-title,
+.cs-section--warm .cs-section-title { color: var(--charcoal); }
+
+.cs-section-body {
+  font-size: 16px;
+  line-height: 1.75;
+}
+.cs-section--dark .cs-section-body { color: rgba(223,220,215,0.55); }
+.cs-section--light .cs-section-body,
+.cs-section--warm .cs-section-body { color: rgba(26,29,27,0.6); }
+
+.cs-grid-media img,
+.cs-grid-media video {
+  width: 100%;
+  border-radius: 16px;
+  display: block;
+}
+
+/* ================================================================
+   SOLUTION TOOLS (Knowledge Assistant + Email AI)
+   ================================================================ */
+.cs-tools {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 56px;
+}
+.cs-tool-card {
+  border-radius: 20px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+.cs-tool-card--video {
+  background: var(--forest);
+  color: var(--offwhite);
+}
+.cs-tool-card--icon {
+  background: var(--forest-mid);
+  color: var(--offwhite);
+  border: 1px solid rgba(186,217,168,0.08);
+}
+.cs-tool-card-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--pistachio);
+  margin-bottom: 16px;
+}
+.cs-tool-card-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.8px;
+  line-height: 1.2;
+  margin-bottom: 12px;
+  color: var(--offwhite);
+}
+.cs-tool-card-body {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(223,220,215,0.5);
+  margin-bottom: 24px;
+}
+.cs-tool-card-stat {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--pistachio);
+  letter-spacing: -1.5px;
+  margin-bottom: 4px;
+}
+.cs-tool-card-stat-label {
+  font-size: 13px;
+  color: rgba(223,220,215,0.4);
+  margin-bottom: 24px;
+}
+.cs-tool-video-wrap {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: auto;
+  border: 1px solid rgba(186,217,168,0.1);
+}
+.cs-tool-video-wrap video {
+  width: 100%;
+  display: block;
+}
+
+.cs-tool-icon-wrap {
+  width: 64px; height: 64px;
+  border-radius: 16px;
+  background: rgba(186,217,168,0.1);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 24px;
+}
+.cs-tool-icon-wrap svg {
+  width: 28px; height: 28px;
+  color: var(--pistachio);
+}
+.cs-tool-features {
+  list-style: none;
+  display: flex; flex-direction: column;
+  gap: 14px;
+  margin-top: auto;
+}
+.cs-tool-features li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 14px; line-height: 1.5;
+  color: rgba(223,220,215,0.55);
+}
+.cs-tool-features li svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--pistachio);
+}
+
+/* ================================================================
+   RESULTS / STATS GRID
+   ================================================================ */
+.cs-results {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.cs-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.cs-stat-card {
+  padding: 32px;
+  border-radius: 16px;
+  background: rgba(186,217,168,0.06);
+  border: 1px solid rgba(186,217,168,0.08);
+}
+.cs-stat-value {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--pistachio);
+  letter-spacing: -2px;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.cs-stat-label {
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(223,220,215,0.45);
+}
+.cs-results-image {
+  border-radius: 16px;
+  overflow: hidden;
+}
+.cs-results-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 16px;
+}
+
+/* ================================================================
+   FULL-WIDTH VISUAL BREAK
+   ================================================================ */
+.cs-visual-break {
+  position: relative;
+  height: 480px;
+  overflow: hidden;
+}
+.cs-visual-break img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.cs-visual-break-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,26,13,0.3) 0%, rgba(0,48,23,0.5) 100%);
+  display: flex; align-items: center; justify-content: center;
+  padding: 40px;
+}
+.cs-visual-break-quote {
+  max-width: 640px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--offwhite);
+  letter-spacing: -0.3px;
+}
+
+/* ================================================================
+   CTA
+   ================================================================ */
+.cs-cta {
+  padding: 96px 0;
+  background: var(--forest);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cs-cta-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 600;
+  color: var(--offwhite);
+  letter-spacing: -2px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+.cs-cta-title em {
+  font-style: italic;
+  color: var(--pistachio);
+}
+.cs-cta-sub {
+  font-size: 17px;
+  line-height: 1.65;
+  color: rgba(223,220,215,0.55);
+  max-width: 500px;
+  margin: 0 auto 40px;
+}
+.cs-btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 36px;
+  background: var(--pistachio);
+  color: var(--forest);
+  border: none; border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 16px; font-weight: 600;
+  letter-spacing: -0.2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.cs-btn-primary:hover {
+  background: var(--pistachio-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(186,217,168,0.2);
+}
+
+/* ================================================================
+   FOOTER (matches home page)
+   ================================================================ */
+.footer {
+  padding: 48px 40px 28px;
+  background: var(--forest-deep);
+  border-top: 1px solid rgba(186,217,168,0.06);
+}
+.footer-inner {
+  max-width: var(--max-w); margin: 0 auto;
+}
+.footer-top {
+  display: flex; justify-content: space-between; gap: 60px;
+}
+.footer-left {
+  display: flex; flex-direction: column; gap: 20px;
+  max-width: 480px;
+}
+.footer-brand {
+  display: flex; align-items: center; gap: 12px;
+}
+.footer-logo-placeholder {
+  height: 40px; width: auto; object-fit: contain;
+}
+.footer-description {
+  font-size: 14px; line-height: 1.7;
+  color: rgba(223,220,215,0.45);
+}
+.footer-icons {
+  display: flex; align-items: center; gap: 10px;
+}
+.footer-icons a {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; border-radius: 8px;
+  border: 1px solid rgba(186,217,168,0.12);
+  color: rgba(186,217,168,0.4);
+  transition: all 0.2s ease;
+}
+.footer-icons a:hover {
+  border-color: rgba(186,217,168,0.3);
+  color: var(--pistachio);
+}
+.footer-right {
+  display: flex; flex-direction: column; gap: 16px;
+  flex-shrink: 0;
+}
+.footer-heading {
+  font-family: var(--font-body);
+  font-size: 15px; font-weight: 700;
+  color: rgba(223,220,215,0.8);
+  letter-spacing: -0.2px;
+}
+.footer-nav {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.footer-link {
+  font-size: 14px; font-weight: 500;
+  color: rgba(186,217,168,0.5);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.footer-link:hover { color: var(--pistachio); }
+.footer-divider {
+  height: 1px;
+  background: rgba(186,217,168,0.08);
+  margin: 36px 0 20px;
+}
+.footer-bottom {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-copyright {
+  font-size: 13px;
+  color: rgba(223,220,215,0.25);
+}
+.footer-legal {
+  display: flex; gap: 24px;
+}
+.footer-legal-link {
+  font-size: 13px;
+  color: rgba(223,220,215,0.35);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(223,220,215,0.15);
+  transition: color 0.2s ease;
+}
+.footer-legal-link:hover {
+  color: var(--pistachio);
+  text-decoration-color: var(--pistachio);
+}
+
+/* ================================================================
+   STEP ZERO PROCESS VISUAL
+   ================================================================ */
+.cs-process {
+  display: flex;
+  gap: 24px;
+  margin-top: 40px;
+}
+.cs-process-step {
+  flex: 1;
+  padding: 28px 24px;
+  border-radius: 14px;
+  background: rgba(0,48,23,0.04);
+  border: 1px solid rgba(0,48,23,0.06);
+  position: relative;
+}
+.cs-process-num {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--pistachio);
+  background: var(--forest);
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 14px;
+}
+.cs-section--dark .cs-process-step {
+  background: rgba(186,217,168,0.05);
+  border-color: rgba(186,217,168,0.08);
+}
+.cs-process-step-title {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+.cs-section--dark .cs-process-step-title { color: var(--offwhite); }
+.cs-section--light .cs-process-step-title,
+.cs-section--warm .cs-process-step-title { color: var(--charcoal); }
+.cs-process-step-body {
+  font-size: 13px;
+  line-height: 1.6;
+}
+.cs-section--dark .cs-process-step-body { color: rgba(223,220,215,0.4); }
+.cs-section--light .cs-process-step-body,
+.cs-section--warm .cs-process-step-body { color: rgba(26,29,27,0.5); }

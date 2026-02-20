@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MOCO — Valae</title>
+  <link rel="stylesheet" href="../shared/casestudy.css">
+  <style>
+    /* Page-specific desktop styles */
+  </style>
+</head>
+
+<script>
+if (window.innerWidth <= 768) {
+  document.documentElement.style.visibility = 'hidden';
+  fetch('mobile.html')
+    .then(function(r) { return r.text(); })
+    .then(function(html) {
+      document.open();
+      document.write(html);
+      document.close();
+    })
+    .catch(function() {
+      document.documentElement.style.visibility = '';
+    });
+}
+</script>
+
+<body>
+
+  <!-- DESKTOP CASE STUDY CONTENT HERE -->
+
+  <script src="../shared/casestudy.js"></script>
+</body>
+</html>
