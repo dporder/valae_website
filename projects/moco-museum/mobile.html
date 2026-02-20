@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How Valae automated 92% of customer service</title>
+  <meta name="description" content="Valae automated 92% of Moco Museum's customer email communications, cutting response time from 3 days to 3 minutes... in just two weeks.">
+  <link rel="icon" type="image/png" href="../../assets/logos/valaestar_logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/casestudy.css">
+  <style>
+    /* ================================================================
+       MOBILE-SPECIFIC OVERRIDES
+       ================================================================ */
+    .cs-container { padding: 0 20px; }
+
+    /* Nav */
+    .nav { padding: 0 20px; }
+    .nav-brand-name { font-size: 18px !important; }
+    .nav-brand-sub { font-size: 9px !important; }
+    .nav-cta { padding: 8px 16px; font-size: 13px; }
+
+    /* Hero */
+    .m-hero {
+      position: relative; background: var(--forest); overflow: hidden;
+    }
+    .m-hero-video-wrap {
+      position: relative; width: 100%; height: 300px; overflow: hidden;
+    }
+    .m-hero-video-wrap video {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .m-hero-video-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,26,13,0.2) 0%, rgba(0,48,23,0.7) 100%);
+    }
+    .m-hero-content { padding: 32px 20px 40px; }
+    .m-hero-back {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 500;
+      color: rgba(186,217,168,0.5); margin-bottom: 20px;
+    }
+    .m-hero-title {
+      font-family: var(--font-display);
+      font-size: 32px; font-weight: 600; color: var(--offwhite);
+      letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 12px;
+    }
+    .m-hero-subtitle {
+      font-size: 15px; line-height: 1.6;
+      color: rgba(223,220,215,0.55); margin-bottom: 32px;
+    }
+    .m-hero-stats {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 20px; padding-top: 28px;
+      border-top: 1px solid rgba(186,217,168,0.12);
+    }
+    .m-hero-stat-value {
+      font-family: var(--font-display);
+      font-size: 26px; font-weight: 700; color: var(--pistachio);
+      letter-spacing: -1px; line-height: 1; margin-bottom: 4px;
+    }
+    .m-hero-stat-label {
+      font-size: 12px; color: rgba(223,220,215,0.4); line-height: 1.3;
+    }
+
+    /* Sections */
+    .m-section {
+      padding: 64px 0; position: relative; overflow: hidden;
+    }
+    .m-section--dark { background: var(--forest); color: var(--offwhite); }
+    .m-section--light { background: var(--bg); color: var(--charcoal); }
+    .m-section--warm { background: var(--bg-warm); color: var(--charcoal); }
+    .m-section-img {
+      width: 100%; border-radius: 12px; margin-bottom: 28px; display: block;
+    }
+    .m-section-title {
+      font-family: var(--font-display);
+      font-size: 24px; font-weight: 600;
+      letter-spacing: -1px; line-height: 1.15; margin-bottom: 16px;
+    }
+    .m-section--dark .m-section-title { color: var(--offwhite); }
+    .m-section--light .m-section-title,
+    .m-section--warm .m-section-title { color: var(--charcoal); }
+    .m-section-body { font-size: 15px; line-height: 1.7; }
+    .m-section--dark .m-section-body { color: rgba(223,220,215,0.55); }
+    .m-section--light .m-section-body,
+    .m-section--warm .m-section-body { color: rgba(26,29,27,0.6); }
+    .cs-label { margin-bottom: 20px; font-size: 11px; }
+
+    /* Pain-point cards (mobile: 1 column) */
+    .m-pain-grid {
+      display: flex; flex-direction: column; gap: 14px; margin-top: 32px;
+    }
+    .m-pain-card {
+      padding: 20px 18px; border-radius: 12px;
+      background: rgba(186,217,168,0.05);
+      border: 1px solid rgba(186,217,168,0.08);
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .m-pain-icon {
+      width: 36px; height: 36px; border-radius: 9px;
+      background: rgba(186,217,168,0.1);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .m-pain-icon svg { width: 18px; height: 18px; color: var(--pistachio); }
+    .m-pain-title {
+      font-weight: 600; font-size: 14px;
+      color: var(--offwhite); margin-bottom: 4px;
+    }
+    .m-pain-body {
+      font-size: 13px; line-height: 1.55;
+      color: rgba(223,220,215,0.45);
+    }
+
+    /* Process steps */
+    .m-process {
+      display: flex; flex-direction: column; gap: 16px; margin-top: 32px;
+    }
+    .m-process-step {
+      padding: 22px 20px; border-radius: 12px;
+      background: rgba(0,48,23,0.04);
+      border: 1px solid rgba(0,48,23,0.06);
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .m-process-num {
+      font-family: var(--font-display);
+      font-size: 11px; font-weight: 700;
+      color: var(--pistachio); background: var(--forest);
+      width: 26px; height: 26px; border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .m-process-text-title {
+      font-weight: 600; font-size: 14px; margin-bottom: 4px;
+      color: var(--charcoal);
+    }
+    .m-process-text-body {
+      font-size: 13px; line-height: 1.55;
+      color: rgba(26,29,27,0.5);
+    }
+
+    /* Source tags */
+    .m-sources {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px;
+    }
+    .m-source-tag {
+      padding: 6px 12px; border-radius: 7px;
+      font-size: 12px; font-weight: 500;
+      background: rgba(0,48,23,0.06);
+      color: rgba(26,29,27,0.6);
+      border: 1px solid rgba(0,48,23,0.06);
+    }
+
+    /* Email flow steps (mobile: vertical) */
+    .m-flow {
+      display: flex; flex-direction: column; gap: 12px; margin: 32px 0;
+    }
+    .m-flow-step {
+      padding: 16px 18px; border-radius: 12px;
+      background: rgba(186,217,168,0.05);
+      border: 1px solid rgba(186,217,168,0.08);
+      display: flex; align-items: flex-start; gap: 12px;
+    }
+    .m-flow-num {
+      font-family: var(--font-display);
+      font-size: 10px; font-weight: 700;
+      color: var(--pistachio); background: var(--forest-deep);
+      width: 24px; height: 24px; border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .m-flow-title {
+      font-weight: 600; font-size: 14px;
+      color: var(--offwhite); margin-bottom: 2px;
+    }
+    .m-flow-body {
+      font-size: 12px; line-height: 1.5;
+      color: rgba(223,220,215,0.4);
+    }
+    .m-flow-badge {
+      font-family: var(--font-display);
+      font-size: 12px; font-weight: 700;
+      color: var(--pistachio); margin-top: 4px;
+    }
+
+    /* Design decisions (mobile: 2-column) */
+    .m-decisions {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 14px; margin-top: 32px;
+    }
+    .m-decision-card {
+      padding: 20px 16px; border-radius: 12px;
+      background: rgba(186,217,168,0.05);
+      border: 1px solid rgba(186,217,168,0.08);
+    }
+    .m-decision-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: rgba(186,217,168,0.1);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 12px;
+    }
+    .m-decision-icon svg { width: 16px; height: 16px; color: var(--pistachio); }
+    .m-decision-title {
+      font-weight: 600; font-size: 13px;
+      color: var(--offwhite); margin-bottom: 6px;
+    }
+    .m-decision-body {
+      font-size: 12px; line-height: 1.5;
+      color: rgba(223,220,215,0.4);
+    }
+
+    /* ============================================================
+       GMAIL MOCK — MOBILE (no sidebar)
+       ============================================================ */
+    .gmail-mock {
+      border-radius: 10px; overflow: hidden;
+      border: 1px solid rgba(186,217,168,0.1);
+      font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+      margin-top: 4px;
+    }
+    .gmail-chrome {
+      display: flex; align-items: center; gap: 10px;
+      padding: 7px 10px; background: #2b2b2b;
+    }
+    .gmail-dots { display: flex; gap: 5px; }
+    .gmail-dots span { width: 8px; height: 8px; border-radius: 50%; }
+    .gmail-dots span:nth-child(1) { background: #ff5f57; }
+    .gmail-dots span:nth-child(2) { background: #ffbd2e; }
+    .gmail-dots span:nth-child(3) { background: #28c840; }
+    .gmail-title { font-size: 10px; color: #999; }
+
+    .gmail-body { display: flex; height: 280px; }
+    .gmail-main {
+      flex: 1; position: relative; overflow: hidden; background: #fff;
+    }
+
+    .gmail-inbox {
+      position: absolute; inset: 0; background: #fff;
+      transition: opacity .35s ease, transform .35s ease;
+    }
+    .gmail-inbox.gm-hidden {
+      opacity: 0; transform: translateX(-8px); pointer-events: none;
+    }
+    .gmail-row {
+      display: flex; align-items: center;
+      padding: 8px 12px; border-bottom: 1px solid #f1f3f4; gap: 6px;
+    }
+    .gmail-row.gm-unread { background: #f2f6fc; }
+    .gmail-row.gm-unread .gmail-sender { font-weight: 700; }
+    .gmail-row.gm-replied .gmail-sender { font-weight: 400; color: #999; }
+    .gmail-row.gm-replied .gmail-subject { color: #bbb; }
+    .gmail-row.gm-replied .gmail-time { color: #ccc; }
+    .gmail-row.gm-replied .gmail-row-label { opacity: .4; }
+    .gmail-row.gm-selected { background: #e8f0fe; }
+    .gmail-row-text {
+      flex: 1; min-width: 0;
+    }
+    .gmail-sender {
+      font-size: 11px; color: #202124; line-height: 1.3;
+    }
+    .gmail-subject {
+      font-size: 10px; color: #5f6368; line-height: 1.3; margin-top: 1px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .gmail-row-label {
+      display: inline-block; font-size: 9px; font-weight: 500;
+      padding: 1px 5px; border-radius: 3px; flex-shrink: 0;
+    }
+    .gmail-time {
+      font-size: 9px; color: #5f6368; flex-shrink: 0;
+    }
+
+    .gmail-read {
+      position: absolute; inset: 0; background: #fff;
+      padding: 12px 14px; overflow-y: auto;
+      opacity: 0; transform: translateX(8px);
+      transition: opacity .35s ease, transform .35s ease;
+      pointer-events: none;
+    }
+    .gmail-read::-webkit-scrollbar { width: 3px; }
+    .gmail-read::-webkit-scrollbar-track { background: transparent; }
+    .gmail-read::-webkit-scrollbar-thumb { background: #ddd; border-radius: 3px; }
+    .gmail-read.gm-visible {
+      opacity: 1; transform: translateX(0); pointer-events: auto;
+    }
+    .gmail-read-subject {
+      font-size: 14px; font-weight: 400; color: #202124;
+      margin-bottom: 12px; padding-bottom: 10px;
+      border-bottom: 1px solid #e8eaed;
+    }
+    .gmail-read-header {
+      display: flex; align-items: flex-start; gap: 8px; margin-bottom: 10px;
+    }
+    .gmail-read-avatar {
+      width: 28px; height: 28px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 12px; font-weight: 500; flex-shrink: 0;
+    }
+    .gmail-read-meta { flex: 1; }
+    .gmail-read-sender {
+      font-size: 12px; font-weight: 600; color: #202124; line-height: 1.3;
+    }
+    .gmail-read-from {
+      font-size: 10px; color: #5f6368; margin-top: 1px;
+    }
+    .gmail-read-body {
+      font-size: 12px; line-height: 1.6; color: #3c4043;
+      margin-top: 10px;
+    }
+
+    .gmail-reply {
+      margin-top: 14px; padding: 12px;
+      border: 1px solid #e8eaed; border-radius: 8px;
+      opacity: 0; transition: opacity .3s ease;
+    }
+    .gmail-reply.gm-visible { opacity: 1; }
+    .gmail-reply-label {
+      display: flex; align-items: center; gap: 4px;
+      font-size: 10px; font-weight: 600; color: #1a73e8;
+      margin-bottom: 8px;
+    }
+    .gmail-reply-label .gm-sparkle {
+      font-size: 12px; animation: gmPulse 1.5s ease infinite;
+    }
+    @keyframes gmPulse { 0%,100%{ opacity:.6; } 50%{ opacity:1; } }
+    .gmail-reply-content {
+      font-size: 11px; line-height: 1.6; color: #3c4043;
+    }
+    .gmail-reply-content .gm-cursor {
+      display: inline-block; width: 1px; height: 12px;
+      background: #1a73e8; vertical-align: text-bottom;
+      margin-left: 1px; animation: gmBlink .6s step-end infinite;
+    }
+    @keyframes gmBlink { 0%,100%{ opacity:1; } 50%{ opacity:0; } }
+
+    .gmail-overlay {
+      position: absolute; inset: 0; z-index: 2;
+      background: rgba(255,255,255,0.96);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      opacity: 0; transition: opacity .4s ease; pointer-events: none;
+    }
+    .gmail-overlay.gm-visible { opacity: 1; }
+    .gmail-overlay-icon {
+      width: 40px; height: 40px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 8px;
+    }
+    .gmail-overlay-icon svg { width: 20px; height: 20px; }
+    .gmail-overlay-text { font-size: 13px; font-weight: 600; }
+
+    /* Visual break */
+    .m-visual-break {
+      position: relative; height: 320px; overflow: hidden;
+    }
+    .m-visual-break img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .m-visual-break-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,20,10,0.6) 0%, rgba(0,30,15,0.8) 100%);
+      display: flex; align-items: center; justify-content: center;
+      padding: 28px;
+    }
+    .m-visual-break-quote {
+      text-align: center; font-size: 17px; font-weight: 300;
+      font-style: italic; line-height: 1.55;
+      color: var(--offwhite); letter-spacing: -0.2px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.5), 0 0 40px rgba(0,0,0,0.3);
+    }
+
+    /* Stats grid */
+    .m-stats-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 16px; margin-top: 32px;
+    }
+    .m-stat-card {
+      padding: 22px 18px; border-radius: 12px;
+      background: rgba(186,217,168,0.06);
+      border: 1px solid rgba(186,217,168,0.08);
+    }
+    .m-stat-value {
+      font-family: var(--font-display);
+      font-size: 28px; font-weight: 700; color: var(--pistachio);
+      letter-spacing: -1.5px; line-height: 1; margin-bottom: 6px;
+    }
+    .m-stat-label {
+      font-size: 12px; line-height: 1.4;
+      color: rgba(223,220,215,0.45);
+    }
+    .m-results-image {
+      margin-top: 24px; border-radius: 12px; overflow: hidden;
+    }
+    .m-results-image img {
+      width: 100%; display: block; border-radius: 12px;
+    }
+
+    /* CTA */
+    .m-cta {
+      padding: 64px 0; background: var(--forest);
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .m-cta-title {
+      font-family: var(--font-display);
+      font-size: 26px; font-weight: 600; color: var(--offwhite);
+      letter-spacing: -1.2px; line-height: 1.15; margin-bottom: 16px;
+    }
+    .m-cta-title em { font-style: italic; color: var(--pistachio); }
+    .m-cta-sub {
+      font-size: 15px; line-height: 1.6;
+      color: rgba(223,220,215,0.5);
+      margin: 0 auto 32px; max-width: 400px;
+    }
+    .m-btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; background: var(--pistachio);
+      color: var(--forest); border: none; border-radius: 10px;
+      font-family: var(--font-body);
+      font-size: 15px; font-weight: 600; letter-spacing: -0.2px;
+      cursor: pointer;
+    }
+
+    /* Footer mobile */
+    .footer { padding: 36px 20px 24px; }
+    .footer-top { flex-direction: column; gap: 32px; }
+    .footer-left { align-items: center; text-align: center; }
+    .footer-right { align-items: center; text-align: center; }
+    .footer-nav { align-items: center; }
+    .footer-icons { justify-content: center; }
+    .footer-bottom { flex-direction: column; align-items: center; gap: 12px; text-align: center; }
+    .footer-legal { justify-content: center; }
+  </style>
+</head>
+
+<script>
+if (window.innerWidth > 768) {
+  window.location.replace('index.html');
+}
+</script>
+
+<body>
+
+<!-- ================================================================
+     NAV
+     ================================================================ -->
+<nav class="nav at-top" id="mainNav">
+  <div class="nav-inner">
+    <a href="../../" class="nav-brand" style="gap: 0;">
+      <div class="nav-brand-wordmark" style="gap: 2px;">
+        <span class="nav-brand-name" style="font-size: 18px;">Step Zero</span>
+        <div style="display: flex; align-items: center; gap: 5px;">
+          <span class="nav-brand-sub" style="font-size: 9px;">BY</span>
+          <img src="../../assets/logos/valae_logo.png" alt="Valae Logo" style="height: 13px; transform: translateY(-1px);">
+        </div>
+      </div>
+    </a>
+    <a href="../../" class="nav-cta">
+      Book a demo
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</nav>
+
+<!-- ================================================================
+     HERO
+     ================================================================ -->
+<section class="m-hero cs-grain">
+  <div class="m-hero-video-wrap">
+    <video autoplay muted loop playsinline>
+      <source src="../../assets/clients/moco/video-of-museum-galleries-and-experiences.mp4" type="video/mp4">
+    </video>
+    <div class="m-hero-video-overlay"></div>
+  </div>
+  <div class="m-hero-content">
+    <a href="../../" class="m-hero-back">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to home
+    </a>
+    <h1 class="m-hero-title">Moco Museum</h1>
+    <p class="m-hero-subtitle">How Europe's most-visited museum network automated 92% of email communications, cutting response time from three days to three minutes... <em>in just two weeks.</em></p>
+    <div class="m-hero-stats">
+      <div>
+        <div class="m-hero-stat-value" data-count="92" data-suffix="%">0</div>
+        <div class="m-hero-stat-label">emails automated</div>
+      </div>
+      <div>
+        <div class="m-hero-stat-value" data-count="3" data-suffix="min">0</div>
+        <div class="m-hero-stat-label">response time</div>
+      </div>
+      <div>
+        <div class="m-hero-stat-value" data-count="2" data-suffix="wks">0</div>
+        <div class="m-hero-stat-label">to build and deploy</div>
+      </div>
+      <div>
+        <div class="m-hero-stat-value" data-count="93" data-suffix="+">0</div>
+        <div class="m-hero-stat-label">languages</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     OVERVIEW
+     ================================================================ -->
+<section class="m-section m-section--light">
+  <div class="cs-container">
+    <img class="m-section-img cs-reveal" src="../../assets/clients/moco/amsterdam-location-from-outside.jpg" alt="Moco Museum Amsterdam — a historic townhouse on Museumplein with cyclists passing by">
+    <div class="cs-reveal cs-reveal-d1">
+      <span class="cs-label cs-label--dark">Overview</span>
+      <h2 class="m-section-title">Europe's most-visited independent art museums</h2>
+      <p class="m-section-body">Moco Museum exhibits works by Banksy, Warhol, Basquiat, Kusama, Keith Haring and others alongside immersive digital installations. Founded in 2016, Moco has welcomed over 6 million visitors from 120+ countries across locations in Amsterdam, Barcelona, and London.</p>
+      <p class="m-section-body" style="margin-top: 12px;">Design-forward, culturally sharp, and fundamentally marketing-led, they have a ~200-person team and a 10-person customer service operation handling enquiries across 3 countries and 15+ languages.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     THE PROBLEM
+     ================================================================ -->
+<section class="m-section m-section--dark cs-grain">
+  <div class="cs-container">
+    <img class="m-section-img cs-reveal" src="../../assets/clients/moco/gallery-with-pop-art.jpg" alt="Moco Museum gallery with Keith Haring artworks and an Arsham eroded Porsche sculpture">
+    <div class="cs-reveal cs-reveal-d1">
+      <span class="cs-label cs-label--light">The Challenge</span>
+      <h2 class="m-section-title">Six problems hiding in one inbox</h2>
+      <p class="m-section-body">Moco's customer service challenges went far beyond email volume. Each problem compounded the others, creating a crisis that cost the organisation time, money, and its most valuable talent.</p>
+    </div>
+
+    <div class="m-pain-grid cs-reveal cs-reveal-d2">
+      <div class="m-pain-card">
+        <div class="m-pain-icon">
+          <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M10 7v3l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <div class="m-pain-title">3-day response time</div>
+          <div class="m-pain-body">Customers waited an average of three days for a reply. On weekends (peak visitor time) almost no emails were answered at all.</div>
+        </div>
+      </div>
+      <div class="m-pain-card">
+        <div class="m-pain-icon">
+          <svg viewBox="0 0 20 20" fill="none"><path d="M10 4L3 16h14L10 4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 9v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="10" cy="14" r=".5" fill="currentColor"/></svg>
+        </div>
+        <div>
+          <div class="m-pain-title">Revenue slipping through</div>
+          <div class="m-pain-body">Venue rental enquiries worth six figures were missed, buried alongside routine ticketing questions. Group bookings and partnerships suffered the same fate.</div>
+        </div>
+      </div>
+      <div class="m-pain-card">
+        <div class="m-pain-icon">
+          <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M3 10h14" stroke="currentColor" stroke-width="1.5"/><ellipse cx="10" cy="10" rx="3" ry="7" stroke="currentColor" stroke-width="1.5"/></svg>
+        </div>
+        <div>
+          <div class="m-pain-title">120+ visitor nationalities</div>
+          <div class="m-pain-body">Emails arrived in dozens of languages, but staff could only comfortably reply in English, leaving gaps for a global audience.</div>
+        </div>
+      </div>
+      <div class="m-pain-card">
+        <div class="m-pain-icon">
+          <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M7.5 7.5l5 5M12.5 7.5l-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div class="m-pain-title">Broken tooling at €500/month</div>
+          <div class="m-pain-body">Their old, legacy tools failed to track email threads, missed colleague replies, and created confusion. Staff worked from multiple systems simultaneously, duplicating effort.</div>
+        </div>
+      </div>
+      <div class="m-pain-card">
+        <div class="m-pain-icon">
+          <svg viewBox="0 0 20 20" fill="none"><circle cx="7" cy="7" r="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M2 16c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="14" cy="7" r="2" stroke="currentColor" stroke-width="1.5"/><path d="M18 16c0-2.2-1.8-4-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div class="m-pain-title">Marketing team in the trenches</div>
+          <div class="m-pain-body">The customer service team was so overwhelmed that marketing staff were regularly pulled into answering routine customer emails.</div>
+        </div>
+      </div>
+      <div class="m-pain-card">
+        <div class="m-pain-icon">
+          <svg viewBox="0 0 20 20" fill="none"><rect x="3" y="5" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M3 9h14" stroke="currentColor" stroke-width="1.5"/><circle cx="13" cy="12" r="1" fill="currentColor"/></svg>
+        </div>
+        <div>
+          <div class="m-pain-title">Hiring pressure, no budget</div>
+          <div class="m-pain-body">They needed more customer service staff but didn't have the budget to hire. The situation was unsustainable, and getting worse every week.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     STEP ZERO — THE FOUNDATION
+     ================================================================ -->
+<section class="m-section m-section--warm">
+  <div class="cs-container">
+    <div class="cs-reveal" style="margin-bottom: 32px;">
+      <span class="cs-label cs-label--dark">The Foundation</span>
+      <h2 class="m-section-title">One AI brain. Everything else follows.</h2>
+      <p class="m-section-body">Before building any tool, we ran Step Zero, our process for creating a comprehensive AI brain. We ingested and structured everything Moco knew into a single source of truth.</p>
+    </div>
+
+    <div class="m-process cs-reveal cs-reveal-d1">
+      <div class="m-process-step">
+        <div class="m-process-num">1</div>
+        <div>
+          <div class="m-process-text-title">Ingest</div>
+          <div class="m-process-text-body">Pulled in data from internal documents, email inboxes, call transcripts, all three websites, policies, brand guidelines, exhibition info, pricing, reviews, and press coverage.</div>
+        </div>
+      </div>
+      <div class="m-process-step">
+        <div class="m-process-num">2</div>
+        <div>
+          <div class="m-process-text-title">Structure</div>
+          <div class="m-process-text-body">De-duplicated, cleaned, tagged, and permissioned everything into a single AI brain across all locations and languages.</div>
+        </div>
+      </div>
+      <div class="m-process-step">
+        <div class="m-process-num">3</div>
+        <div>
+          <div class="m-process-text-title">Deploy</div>
+          <div class="m-process-text-body">Built an email AI agent on top of the brain, working natively inside Gmail, no new tools, no training, and no disruption to existing workflows.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-reveal cs-reveal-d2" style="margin-top: 32px;">
+      <p class="m-section-body" style="margin-bottom: 14px; font-weight: 500; color: var(--charcoal);">Data sources we ingested:</p>
+      <div class="m-sources">
+        <span class="m-source-tag">Internal documents and spreadsheets</span>
+        <span class="m-source-tag">Customer service email threads</span>
+        <span class="m-source-tag">Staff call transcripts</span>
+        <span class="m-source-tag">FAQs from all three websites</span>
+        <span class="m-source-tag">Website content (all locations)</span>
+        <span class="m-source-tag">Internal policies and procedures</span>
+        <span class="m-source-tag">Brand tone and style guidelines</span>
+        <span class="m-source-tag">Artist and exhibition information</span>
+        <span class="m-source-tag">Pricing and booking data</span>
+        <span class="m-source-tag">Customer reviews (TripAdvisor, Google)</span>
+        <span class="m-source-tag">Media coverage</span>
+        <span class="m-source-tag">Creative assets (visual and written)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     THE EMAIL AI AGENT
+     ================================================================ -->
+<section class="m-section m-section--dark cs-grain">
+  <div class="cs-container">
+    <div class="cs-reveal">
+      <span class="cs-label cs-label--light">The Tool</span>
+      <h2 class="m-section-title">An AI colleague in the inbox</h2>
+      <p class="m-section-body">On top of the AI brain, we deployed an email automation agent that works natively inside Gmail. It's like a knowledgeable, diligent colleague who reads, classifies, responds, and knows when to hand off.</p>
+    </div>
+
+    <!-- 5-step flow (vertical on mobile) -->
+    <div class="m-flow cs-reveal cs-reveal-d1">
+      <div class="m-flow-step">
+        <div class="m-flow-num">1</div>
+        <div>
+          <div class="m-flow-title">Reads</div>
+          <div class="m-flow-body">all incoming customer emails across Moco's inboxes</div>
+        </div>
+      </div>
+      <div class="m-flow-step">
+        <div class="m-flow-num">2</div>
+        <div>
+          <div class="m-flow-title">Classifies</div>
+          <div class="m-flow-body">by topic (ticketing, refunds, bookings, partnerships, etc.)</div>
+        </div>
+      </div>
+      <div class="m-flow-step">
+        <div class="m-flow-num">3</div>
+        <div>
+          <div class="m-flow-title">Organises</div>
+          <div class="m-flow-body">into Gmail folders by category, every minute of every day</div>
+        </div>
+      </div>
+      <div class="m-flow-step">
+        <div class="m-flow-num">4</div>
+        <div>
+          <div class="m-flow-title">Responds</div>
+          <div class="m-flow-body">92% of the time, with multilingual, source-grounded answers</div>
+          <div class="m-flow-badge">92%</div>
+        </div>
+      </div>
+      <div class="m-flow-step">
+        <div class="m-flow-num">5</div>
+        <div>
+          <div class="m-flow-title">Escalates</div>
+          <div class="m-flow-body">8% of the time to the right person, with full context attached</div>
+          <div class="m-flow-badge">8%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gmail Mock (mobile — no sidebar) -->
+    <div class="cs-reveal cs-reveal-d2">
+      <div class="gmail-mock" id="gmailMock">
+        <div class="gmail-chrome">
+          <div class="gmail-dots"><span></span><span></span><span></span></div>
+          <div class="gmail-title">info@mocomuseum.com</div>
+        </div>
+        <div class="gmail-body">
+          <div class="gmail-main">
+            <div class="gmail-inbox" id="gmailInbox">
+              <div class="gmail-row gm-unread" id="sophieRow">
+                <div class="gmail-row-text">
+                  <div class="gmail-sender">Sophie Moreau</div>
+                  <div class="gmail-subject">Demande de remboursement &mdash; billets Amsterdam</div>
+                </div>
+                <span class="gmail-row-label" style="background:#fce8e6;color:#c5221f;">Refunds</span>
+                <span class="gmail-time">10:23</span>
+              </div>
+              <div class="gmail-row">
+                <div class="gmail-row-text">
+                  <div class="gmail-sender">Hans Mueller</div>
+                  <div class="gmail-subject">Gruppenbesuch Anfrage &mdash; 40 Schüler</div>
+                </div>
+                <span class="gmail-row-label" style="background:#e6f4ea;color:#137333;">Groups</span>
+                <span class="gmail-time">09:51</span>
+              </div>
+              <div class="gmail-row gm-unread" id="jamesRow">
+                <div class="gmail-row-text">
+                  <div class="gmail-sender">James &amp; Partners LLP</div>
+                  <div class="gmail-subject">Venue rental enquiry &mdash; summer gala</div>
+                </div>
+                <span class="gmail-row-label" style="background:#fef7e0;color:#b06000;">Venue</span>
+                <span class="gmail-time">09:14</span>
+              </div>
+              <div class="gmail-row">
+                <div class="gmail-row-text">
+                  <div class="gmail-sender">María García</div>
+                  <div class="gmail-subject">Re: Entradas Barcelona &mdash; 6 personas</div>
+                </div>
+                <span class="gmail-row-label" style="background:#e8eaf6;color:#4255f4;">Tickets</span>
+                <span class="gmail-time">Yesterday</span>
+              </div>
+            </div>
+
+            <div class="gmail-read" id="gmailRead">
+              <div class="gmail-read-subject" id="gmailReadSubject"></div>
+              <div class="gmail-read-header">
+                <div class="gmail-read-avatar" id="gmailReadAvatar" style="background:#1a73e8;">S</div>
+                <div class="gmail-read-meta">
+                  <div class="gmail-read-sender" id="gmailReadSender"></div>
+                  <div class="gmail-read-from" id="gmailReadFrom"></div>
+                </div>
+              </div>
+              <div class="gmail-read-body" id="gmailReadBody"></div>
+              <div class="gmail-reply" id="gmailReply">
+                <div class="gmail-reply-label"><span class="gm-sparkle">&#10022;</span> <span id="gmailReplyLabelText">AI is writing&hellip;</span></div>
+                <div class="gmail-reply-content"><span id="gmailReplyText"></span><span class="gm-cursor" id="gmailCursor" style="display:none"></span></div>
+              </div>
+            </div>
+
+            <div class="gmail-overlay" id="gmailSent">
+              <div class="gmail-overlay-icon" style="background:#e6f4ea;">
+                <svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="#137333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="gmail-overlay-text" style="color:#137333;">Reply sent</div>
+            </div>
+
+            <div class="gmail-overlay" id="gmailEscalated">
+              <div class="gmail-overlay-icon" style="background:#fef7e0;">
+                <svg viewBox="0 0 20 20" fill="none"><path d="M10 15V5" stroke="#b06000" stroke-width="2" stroke-linecap="round"/><path d="M6 9l4-4 4 4" stroke="#b06000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="gmail-overlay-text" style="color:#b06000;">Escalated to venue coordinator</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Design decisions (2-column on mobile) -->
+    <div class="m-decisions cs-reveal cs-reveal-d3">
+      <div class="m-decision-card">
+        <div class="m-decision-icon">
+          <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v4l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="m-decision-title">24/7 coverage</div>
+        <div class="m-decision-body">Three-day waits and zero weekend replies became three minutes, any time, any day.</div>
+      </div>
+      <div class="m-decision-card">
+        <div class="m-decision-icon">
+          <svg viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M3 10h4l1.5 2h3l1.5-2h4" stroke="currentColor" stroke-width="1.5"/></svg>
+        </div>
+        <div class="m-decision-title">No new tooling</div>
+        <div class="m-decision-body">Works inside Gmail. Replaced an expensive, cumbersome legacy system (€500/month).</div>
+      </div>
+      <div class="m-decision-card">
+        <div class="m-decision-icon">
+          <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M4 17c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="m-decision-title">Acts like a colleague</div>
+        <div class="m-decision-body">Doesn't auto-reply with templates. Reads, understands, classifies, and responds with contextual, source-grounded answers.</div>
+      </div>
+      <div class="m-decision-card">
+        <div class="m-decision-icon">
+          <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M3 10h14" stroke="currentColor" stroke-width="1.5"/><ellipse cx="10" cy="10" rx="3" ry="7" stroke="currentColor" stroke-width="1.5"/></svg>
+        </div>
+        <div class="m-decision-title">Multilingual by default</div>
+        <div class="m-decision-body">93 languages handled natively. The response gap for non-English-speaking visitors disappeared overnight.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     VISUAL BREAK
+     ================================================================ -->
+<div class="m-visual-break">
+  <img src="../../assets/clients/moco/woman-in-immersive-mirrored-colorful-room.jpg" alt="Visitor in a stunning, colorful mirrored installation at Moco Museum">
+  <div class="m-visual-break-overlay">
+    <p class="m-visual-break-quote">"The customer service AI was much needed and much anticipated — now that it's in place, we can finally focus on what we're actually here to do."</p>
+  </div>
+</div>
+
+<!-- ================================================================
+     RESULTS
+     ================================================================ -->
+<section class="m-section m-section--dark cs-grain">
+  <div class="cs-container">
+    <div class="cs-reveal">
+      <span class="cs-label cs-label--light">The Results</span>
+      <h2 class="m-section-title">A foundation that compounds</h2>
+      <p class="m-section-body">Built in just two weeks, Moco's AI brain grows in value with every interaction. The email AI replaced an expensive broken tool and eliminated the need for planned customer service hires. The marketing team returned to high-value creative work.</p>
+    </div>
+    <div class="m-stats-grid cs-reveal cs-reveal-d1">
+      <div class="m-stat-card">
+        <div class="m-stat-value" data-count="92" data-suffix="%">0</div>
+        <div class="m-stat-label">of customer emails fully automated</div>
+      </div>
+      <div class="m-stat-card">
+        <div class="m-stat-value" data-count="3" data-suffix=" min">0</div>
+        <div class="m-stat-label">response time, down from 3 days</div>
+      </div>
+      <div class="m-stat-card">
+        <div class="m-stat-value" data-count="2" data-suffix=" weeks">0</div>
+        <div class="m-stat-label">from kickoff to live in production</div>
+      </div>
+      <div class="m-stat-card">
+        <div class="m-stat-value" data-count="93" data-suffix="+">0</div>
+        <div class="m-stat-label">languages handled natively</div>
+      </div>
+    </div>
+    <div class="m-results-image cs-reveal cs-reveal-d2">
+      <img src="../../assets/clients/moco/london-location-from-outside.jpeg" alt="Moco Museum London location with vibrant window displays">
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     WHAT'S NEXT
+     ================================================================ -->
+<section class="m-section m-section--warm">
+  <div class="cs-container">
+    <img class="m-section-img cs-reveal" src="../../assets/clients/moco/london-gallery-with-cool-statues.jpg" alt="Futuristic geometric light sculptures at Moco Museum London">
+    <div class="cs-reveal cs-reveal-d1">
+      <span class="cs-label cs-label--dark">What's Next</span>
+      <h2 class="m-section-title">The next chapter: driving revenue</h2>
+      <p class="m-section-body">Valae is now building additional tools on top of the same AI brain. These include automated SEO research and AI-written blog content that draws on Moco's deep exhibition and artist knowledge, in their exact brand voice.</p>
+      <p class="m-section-body" style="margin-top: 12px;">Because Step Zero is already done, these tools plug straight into the existing foundation, and are faster and cheaper to deploy each time. One brain, growing tool count, compounding value.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     CTA
+     ================================================================ -->
+<section class="m-cta cs-grain">
+  <div class="cs-container" style="position: relative; z-index: 2;">
+    <h2 class="m-cta-title cs-reveal">Ready to build <em>your</em> AI brain?</h2>
+    <p class="m-cta-sub cs-reveal cs-reveal-d1">Step Zero organises your messy knowledge into a foundation, then plugs in tools for fast ROI. Just like we did for Moco.</p>
+    <a href="../../" class="m-btn-primary cs-reveal cs-reveal-d2">
+      Book a demo
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ================================================================
+     FOOTER
+     ================================================================ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-left">
+        <div class="footer-brand">
+          <img class="footer-logo-placeholder" src="../../assets/logos/Valae-WM-Pistachio.png" alt="Valae">
+        </div>
+        <p class="footer-description">Valae's Step Zero organises your scattered knowledge into an AI brain, powering assistants, automations, chatbots, and more.</p>
+        <div class="footer-icons">
+          <a href="mailto:info@valae.ai" aria-label="Email">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/valae-ai/" target="_blank" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-right">
+        <h4 class="footer-heading">Quick Links</h4>
+        <nav class="footer-nav">
+          <a href="https://valae.ai/about" class="footer-link">About Us</a>
+          <a href="../../" class="footer-link">Home</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+      <div class="footer-copyright">&copy; 2026 Valae B.V. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="#" class="footer-legal-link">Privacy Policy</a>
+        <a href="#" class="footer-legal-link">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../shared/casestudy.js"></script>
+<script>
+(function() {
+  var mock = document.getElementById('gmailMock');
+  if (!mock) return;
+
+  var inbox = document.getElementById('gmailInbox');
+  var readEl = document.getElementById('gmailRead');
+  var replyEl = document.getElementById('gmailReply');
+  var replyTextEl = document.getElementById('gmailReplyText');
+  var replyLabelText = document.getElementById('gmailReplyLabelText');
+  var cursor = document.getElementById('gmailCursor');
+  var sentOverlay = document.getElementById('gmailSent');
+  var escalatedOverlay = document.getElementById('gmailEscalated');
+  var sophieRow = document.getElementById('sophieRow');
+  var jamesRow = document.getElementById('jamesRow');
+  var readSubject = document.getElementById('gmailReadSubject');
+  var readSender = document.getElementById('gmailReadSender');
+  var readFrom = document.getElementById('gmailReadFrom');
+  var readBody = document.getElementById('gmailReadBody');
+  var readAvatar = document.getElementById('gmailReadAvatar');
+
+  var sophieReply = 'Bonjour Sophie,\n\nMerci pour votre message. Les billets sont remboursables jusqu\u2019\u00e0 24 heures avant la visite. Votre demande \u00e9tant dans ce d\u00e9lai, le remboursement est en cours.\n\nVous le recevrez sous 5 \u00e0 7 jours ouvrables.\n\nCordialement,\nMoco Museum';
+
+  var jamesReply = 'High-value venue rental enquiry \u2014 200 guests, Amsterdam, July 12th.\n\nForwarding to the venue coordinator with the original email attached. Recommended: follow up within 24 hours given the event scale.';
+
+  var timers = [];
+  function delay(fn, ms) { timers.push(setTimeout(fn, ms)); }
+  function clearAll() { timers.forEach(clearTimeout); timers = []; }
+
+  function resetUI() {
+    clearAll();
+    inbox.classList.remove('gm-hidden');
+    readEl.classList.remove('gm-visible');
+    replyEl.classList.remove('gm-visible');
+    sentOverlay.classList.remove('gm-visible');
+    escalatedOverlay.classList.remove('gm-visible');
+    replyTextEl.innerHTML = '';
+    cursor.style.display = 'none';
+    replyLabelText.innerHTML = 'AI is writing\u2026';
+    sophieRow.classList.add('gm-unread');
+    sophieRow.classList.remove('gm-replied');
+    jamesRow.classList.add('gm-unread');
+    jamesRow.classList.remove('gm-replied');
+    readEl.scrollTop = 0;
+  }
+
+  function loadEmail(data) {
+    readSubject.textContent = data.subject;
+    readSender.textContent = data.sender;
+    readFrom.textContent = data.from;
+    readBody.innerHTML = data.body.replace(/\n/g, '<br>');
+    readAvatar.textContent = data.avatar;
+    readAvatar.style.background = data.color;
+  }
+
+  function typeText(text, label, cb) {
+    var i = 0;
+    cursor.style.display = '';
+    replyTextEl.innerHTML = '';
+    replyLabelText.textContent = label;
+    function tick() {
+      if (i < text.length) {
+        var ch = text[i];
+        if (ch === '\n') {
+          replyTextEl.appendChild(document.createElement('br'));
+        } else {
+          var last = replyTextEl.lastChild;
+          if (last && last.nodeType === 3) last.textContent += ch;
+          else replyTextEl.appendChild(document.createTextNode(ch));
+        }
+        i++;
+        readEl.scrollTop = readEl.scrollHeight;
+        delay(tick, 8);
+      } else {
+        cursor.style.display = 'none';
+        if (cb) cb();
+      }
+    }
+    tick();
+  }
+
+  function openEmail(data, row, replyText, overlay, writeLabel, doneLabel, cb) {
+    loadEmail(data);
+    row.classList.add('gm-selected');
+    delay(function() {
+      row.classList.remove('gm-selected');
+      inbox.classList.add('gm-hidden');
+      readEl.classList.add('gm-visible');
+      readEl.scrollTop = 0;
+      delay(function() {
+        replyEl.classList.add('gm-visible');
+        delay(function() {
+          readEl.scrollTop = readEl.scrollHeight;
+          typeText(replyText, writeLabel, function() {
+            replyLabelText.textContent = doneLabel;
+            delay(function() {
+              overlay.classList.add('gm-visible');
+              delay(function() {
+                overlay.classList.remove('gm-visible');
+                readEl.classList.remove('gm-visible');
+                inbox.classList.remove('gm-hidden');
+                row.classList.remove('gm-unread');
+                row.classList.add('gm-replied');
+                replyEl.classList.remove('gm-visible');
+                replyTextEl.innerHTML = '';
+                readEl.scrollTop = 0;
+                if (cb) cb();
+              }, 1600);
+            }, 1400);
+          });
+        }, 300);
+      }, 1400);
+    }, 250);
+  }
+
+  var sophie = {
+    subject: 'Demande de remboursement \u2014 billets Amsterdam',
+    sender: 'Sophie Moreau',
+    from: 'sophie.moreau@gmail.com',
+    body: 'Bonjour,\n\nJ\u2019ai achet\u00e9 des billets pour la visite du 15 mars \u00e0 Amsterdam, mais malheureusement je ne pourrai pas y assister. Est-il possible d\u2019obtenir un remboursement ?\n\nMerci,\nSophie',
+    avatar: 'S',
+    color: '#ea4335'
+  };
+
+  var james = {
+    subject: 'Venue rental enquiry \u2014 summer gala',
+    sender: 'James Harrington',
+    from: 'j.harrington@jamespartners.co.uk',
+    body: 'Dear Moco Museum team,\n\nWe\u2019re organising a summer gala for 200 guests and are interested in hiring your Amsterdam venue for the evening of July 12th. Could you share availability, pricing, and any restrictions?\n\nBest regards,\nJames Harrington\nJames & Partners LLP',
+    avatar: 'J',
+    color: '#fbbc05'
+  };
+
+  function run() {
+    resetUI();
+    delay(function() {
+      openEmail(sophie, sophieRow, sophieReply, sentOverlay,
+        'AI is writing\u2026', 'Reply ready', function() {
+          delay(function() {
+            openEmail(james, jamesRow, jamesReply, escalatedOverlay,
+              'AI is escalating\u2026', 'Escalation ready', function() {
+                delay(run, 3000);
+              });
+          }, 1500);
+        });
+    }, 2000);
+  }
+
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) { obs.disconnect(); delay(run, 500); }
+    }, { threshold: 0.2 });
+    obs.observe(mock);
+  } else { run(); }
+})();
+</script>
+</body>
+</html>
