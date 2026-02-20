@@ -2174,7 +2174,17 @@ textarea.form-input {
 
 <script>
 if (window.innerWidth <= 768) {
-  window.location.replace('mobile.html');
+  document.documentElement.style.visibility = 'hidden';
+  fetch('mobile.html')
+    .then(function(r) { return r.text(); })
+    .then(function(html) {
+      document.open();
+      document.write(html);
+      document.close();
+    })
+    .catch(function() {
+      document.documentElement.style.visibility = '';
+    });
 }
 </script>
 
