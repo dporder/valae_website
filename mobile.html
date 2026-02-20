@@ -838,6 +838,7 @@ a { text-decoration: none; color: inherit; }
   border: 1.5px solid rgba(0,48,23,0.06);
   border-radius: 16px; overflow: hidden;
   display: flex; flex-direction: column;
+  position: relative;
 }
 .proof-card-img { width: 100%; height: 180px; }
 .proof-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -849,7 +850,7 @@ a { text-decoration: none; color: inherit; }
 }
 .proof-card-body {
   padding: 20px 20px 18px; flex: 1;
-  display: flex; flex-direction: column; position: relative;
+  display: flex; flex-direction: column;
 }
 .proof-client { margin-bottom: 4px; }
 .proof-client-logo {
@@ -1462,7 +1463,7 @@ Sarah</div>
     <div class="tiers-header">
       <div class="section-label">What you get</div>
       <h2 class="section-title">A proven framework</h2>
-      <p class="section-sub">Each step delivers standalone value. Start small, expand when you're ready.</p>
+      <p class="section-sub">Each stage delivers standalone value. Start small, expand when you're ready.</p>
       <button class="tiers-cta-btn" onclick="showPage('form')">
         Book a meeting
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1471,7 +1472,7 @@ Sarah</div>
 
     <div class="tiers-carousel" id="tiersCarousel">
       <div class="tier-card">
-        <div class="tier-step">Step 1</div>
+        <div class="tier-step">Stage 1</div>
         <div class="tier-name">Analyse</div>
         <div class="tier-desc">We map your data, identify gaps, and build a prioritised roadmap.</div>
         <ul class="tier-features">
@@ -1484,7 +1485,7 @@ Sarah</div>
       </div>
 
       <div class="tier-card featured">
-        <div class="tier-step">Step 2</div>
+        <div class="tier-step">Stage 2</div>
         <div class="tier-name">Build</div>
         <div class="tier-desc">We build your AI brain, deploy tools, and measure ROI.</div>
         <ul class="tier-features">
@@ -1497,7 +1498,7 @@ Sarah</div>
       </div>
 
       <div class="tier-card">
-        <div class="tier-step">Step 3</div>
+        <div class="tier-step">Stage 3</div>
         <div class="tier-name">Manage</div>
         <div class="tier-desc">Your AI brain plugs into all your tools, even ChatGPT.</div>
         <ul class="tier-features">
@@ -1528,8 +1529,8 @@ Sarah</div>
     <div class="proof-carousel" id="proofCarousel">
       <a href="https://valae.ai/projects/moco-museum" class="proof-card" style="text-decoration:none;color:inherit;">
         <div class="proof-card-img"><img src="assets/clients/moco-image.jpg" alt="Moco Museum"></div>
+        <span class="proof-tag">Email automation</span>
         <div class="proof-card-body">
-          <span class="proof-tag">Email automation</span>
           <div class="proof-client"><img src="assets/logos/mocomuseum_logo.png" alt="Moco Museum" class="proof-client-logo" style="height:38px"></div>
           <div class="proof-industry">Culture and experiences</div>
           <div class="proof-stat">92% automated</div>
@@ -1539,8 +1540,8 @@ Sarah</div>
       </a>
       <a href="https://valae.ai/projects/mango-mobility" class="proof-card" style="text-decoration:none;color:inherit;">
         <div class="proof-card-img"><img src="assets/clients/mango-image.avif" alt="Mango Mobility"></div>
+        <span class="proof-tag">Knowledge assistant</span>
         <div class="proof-card-body">
-          <span class="proof-tag">Knowledge assistant</span>
           <div class="proof-client"><img src="assets/logos/mango_logo.png" alt="Mango Mobility" class="proof-client-logo"></div>
           <div class="proof-industry">Mobility and health</div>
           <div class="proof-stat">23 hrs/wk saved</div>
@@ -1550,8 +1551,8 @@ Sarah</div>
       </a>
       <div class="proof-card">
         <div class="proof-card-img"><img src="assets/clients/ikea-image.avif" alt="IKEA"></div>
+        <span class="proof-tag">Customer chatbot</span>
         <div class="proof-card-body">
-          <span class="proof-tag">Customer chatbot</span>
           <div class="proof-client"><img src="assets/logos/ikea_logo.png" alt="IKEA" class="proof-client-logo"></div>
           <div class="proof-industry">Retail and e-commerce</div>
           <div class="proof-stat">63 countries</div>
