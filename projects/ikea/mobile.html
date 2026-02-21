@@ -4,9 +4,355 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IKEA — Valae</title>
+  <meta name="description" content="How Valae is making the world's biggest AI chatbot smarter — improving the AI behind 3.2M+ conversations across 63 countries.">
+  <link rel="icon" type="image/png" href="../../assets/logos/valaestar_logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../shared/casestudy.css">
   <style>
-    /* Page-specific mobile styles */
+    /* ================================================================
+       MOBILE-SPECIFIC OVERRIDES
+       ================================================================ */
+    .cs-container { padding: 0 20px; }
+
+    /* Nav */
+    .nav { padding: 0 20px; }
+    .nav-brand-name { font-size: 18px !important; }
+    .nav-brand-sub { font-size: 9px !important; }
+    .nav-cta { padding: 8px 16px; font-size: 13px; }
+
+    /* Hero */
+    .m-hero {
+      position: relative; background: var(--forest); overflow: hidden;
+    }
+    .m-hero-video-wrap {
+      position: relative; width: 100%; height: 300px; overflow: hidden;
+    }
+    .m-hero-video-wrap video {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .m-hero-video-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,26,13,0.2) 0%, rgba(0,48,23,0.7) 100%);
+    }
+    .m-hero-content { padding: 32px 20px 40px; }
+    .m-hero-back {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 500;
+      color: rgba(186,217,168,0.5); margin-bottom: 20px;
+    }
+    .m-hero-title {
+      font-family: var(--font-display);
+      font-size: 28px; font-weight: 600; color: var(--offwhite);
+      letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 12px;
+    }
+    .m-hero-title em { font-style: italic; color: var(--pistachio); }
+    .m-hero-subtitle {
+      font-size: 14px; line-height: 1.6;
+      color: rgba(223,220,215,0.55); margin-bottom: 20px;
+    }
+    .m-scope-tags {
+      display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 28px;
+    }
+    .m-scope-tag {
+      padding: 4px 10px; border-radius: 5px;
+      font-size: 9px; font-weight: 600; letter-spacing: 0.6px; text-transform: uppercase;
+      background: rgba(186,217,168,0.1); color: var(--pistachio);
+      border: 1px solid rgba(186,217,168,0.12);
+    }
+    .m-hero-stats {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 20px; padding-top: 28px;
+      border-top: 1px solid rgba(186,217,168,0.12);
+    }
+    .m-hero-stat-value {
+      font-family: var(--font-display);
+      font-size: 26px; font-weight: 700; color: var(--pistachio);
+      letter-spacing: -1px; line-height: 1; margin-bottom: 4px;
+    }
+    .m-hero-stat-label {
+      font-size: 12px; color: rgba(223,220,215,0.4); line-height: 1.3;
+    }
+
+    /* Sections */
+    .m-section {
+      padding: 64px 0; position: relative; overflow: hidden;
+    }
+    .m-section--dark { background: var(--forest); color: var(--offwhite); }
+    .m-section--light { background: var(--bg); color: var(--charcoal); }
+    .m-section--warm { background: var(--bg-warm); color: var(--charcoal); }
+    .m-section-img {
+      width: 100%; border-radius: 12px; margin-bottom: 28px; display: block;
+    }
+    .m-section-title {
+      font-family: var(--font-display);
+      font-size: 24px; font-weight: 600;
+      letter-spacing: -1px; line-height: 1.15; margin-bottom: 16px;
+    }
+    .m-section--dark .m-section-title { color: var(--offwhite); }
+    .m-section--light .m-section-title,
+    .m-section--warm .m-section-title { color: var(--charcoal); }
+    .m-section-body { font-size: 15px; line-height: 1.7; }
+    .m-section--dark .m-section-body { color: rgba(223,220,215,0.55); }
+    .m-section--light .m-section-body,
+    .m-section--warm .m-section-body { color: rgba(26,29,27,0.6); }
+    .cs-label { margin-bottom: 20px; font-size: 11px; }
+
+    /* Pain-point cards — horizontal swipe carousel */
+    .m-pain-grid {
+      display: flex; gap: 12px; margin-top: 28px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 4px;
+      margin-left: -20px; margin-right: -20px;
+      padding-left: 20px; padding-right: 20px;
+    }
+    .m-pain-grid::-webkit-scrollbar { display: none; }
+    .m-pain-grid { scrollbar-width: none; }
+    .m-pain-card {
+      min-width: 260px; max-width: 280px;
+      padding: 22px 20px; border-radius: 14px;
+      background: rgba(186,217,168,0.05);
+      border: 1px solid rgba(186,217,168,0.08);
+      flex-shrink: 0; scroll-snap-align: start;
+    }
+    .m-pain-icon {
+      width: 34px; height: 34px; border-radius: 9px;
+      background: rgba(186,217,168,0.1);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 14px;
+    }
+    .m-pain-icon svg { width: 17px; height: 17px; color: var(--pistachio); }
+    .m-pain-title {
+      font-weight: 600; font-size: 14px;
+      color: var(--offwhite); margin-bottom: 8px;
+    }
+    .m-pain-body {
+      font-size: 12.5px; line-height: 1.55;
+      color: rgba(223,220,215,0.45);
+    }
+
+    /* World map band */
+    .m-map-band {
+      background: var(--forest-deep); padding: 40px 0 36px;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .m-map-title {
+      font-family: var(--font-display); font-size: 20px;
+      font-weight: 600; color: var(--offwhite); letter-spacing: -0.8px;
+      margin-bottom: 4px; padding: 0 20px; position: relative; z-index: 2;
+    }
+    .m-map-title em { font-style: italic; color: var(--pistachio); }
+    .m-map-sub {
+      font-size: 13px; color: rgba(223,220,215,0.45);
+      margin-bottom: 24px; padding: 0 20px; position: relative; z-index: 2;
+    }
+    .m-map-wrap { padding: 0 12px; position: relative; z-index: 2; }
+    .m-map-land { fill: var(--pistachio); opacity: 0.07; }
+    .m-map-dot { fill: var(--pistachio); filter: url(#mapGlow); }
+    .m-map-dot-lg { fill: var(--pistachio); filter: url(#mapGlow); }
+    @keyframes dotPulse { 0%,100%{ opacity: 0.55; } 50%{ opacity: 1; } }
+    .m-map-dot { animation: dotPulse 3s ease infinite; }
+    .m-map-dot:nth-child(3n+1) { animation-delay: 0.5s; }
+    .m-map-dot:nth-child(3n+2) { animation-delay: 1.2s; }
+    .m-map-dot-lg { animation: dotPulse 3s ease infinite; opacity: 1; }
+
+    /* Workstream cards — vertical stack */
+    .m-ws-grid {
+      display: flex; flex-direction: column;
+      gap: 12px; margin-top: 28px;
+    }
+    .m-ws-card {
+      padding: 22px 20px; border-radius: 12px;
+      background: rgba(0,48,23,0.04);
+      border: 1px solid rgba(0,48,23,0.06);
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .m-ws-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: var(--forest); display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .m-ws-icon svg { width: 18px; height: 18px; color: var(--pistachio); }
+    .m-ws-text { flex: 1; }
+    .m-ws-title { font-weight: 600; font-size: 15px; color: var(--charcoal); margin-bottom: 4px; }
+    .m-ws-body { font-size: 12.5px; line-height: 1.55; color: rgba(26,29,27,0.55); }
+
+    /* Chatbot mockup — mobile (compact) */
+    .billie-mock {
+      border-radius: 10px; overflow: hidden;
+      border: 1px solid rgba(186,217,168,0.1);
+      font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+      margin-top: 32px;
+    }
+    .billie-chrome {
+      display: flex; align-items: center; gap: 10px;
+      padding: 7px 10px; background: #2b2b2b;
+    }
+    .billie-dots { display: flex; gap: 5px; }
+    .billie-dots span { width: 8px; height: 8px; border-radius: 50%; }
+    .billie-dots span:nth-child(1) { background: #ff5f57; }
+    .billie-dots span:nth-child(2) { background: #ffbd2e; }
+    .billie-dots span:nth-child(3) { background: #28c840; }
+    .billie-url { font-size: 10px; color: #999; }
+    .billie-widget { background: #fff; display: flex; flex-direction: column; }
+    .billie-widget-header {
+      background: #FFDB00; padding: 10px 14px;
+      display: flex; align-items: center; gap: 7px;
+      font-size: 13px; font-weight: 600; color: #111;
+    }
+    .billie-widget-header svg { width: 14px; height: 14px; color: #111; }
+    .billie-messages {
+      padding: 14px; min-height: 280px; max-height: 280px;
+      overflow-y: auto; display: flex; flex-direction: column; gap: 8px;
+      background: #fafafa;
+    }
+    .billie-messages::-webkit-scrollbar { width: 3px; }
+    .billie-messages::-webkit-scrollbar-track { background: transparent; }
+    .billie-messages::-webkit-scrollbar-thumb { background: #ddd; border-radius: 3px; }
+    .billie-msg {
+      max-width: 88%; padding: 9px 12px; border-radius: 12px;
+      font-size: 12px; line-height: 1.5;
+      opacity: 0; transform: translateY(8px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .billie-msg.is-visible { opacity: 1; transform: translateY(0); }
+    .billie-msg--bot {
+      background: #fff; color: #333; align-self: flex-start;
+      border: 1px solid #e8e8e8; border-bottom-left-radius: 4px;
+    }
+    .billie-msg--user {
+      background: #0058A3; color: #fff; align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+    .billie-typing {
+      display: flex; gap: 4px; padding: 9px 12px;
+      background: #fff; border-radius: 12px; border: 1px solid #e8e8e8;
+      align-self: flex-start; border-bottom-left-radius: 4px;
+      opacity: 0; transform: translateY(8px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .billie-typing.is-visible { opacity: 1; transform: translateY(0); }
+    .billie-typing span {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: #999; animation: typingBounce 1.4s ease infinite;
+    }
+    .billie-typing span:nth-child(2) { animation-delay: 0.2s; }
+    .billie-typing span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typingBounce { 0%,60%,100%{ transform: translateY(0); } 30%{ transform: translateY(-3px); } }
+    .billie-badge {
+      align-self: center; padding: 5px 12px; border-radius: 16px;
+      font-size: 10px; font-weight: 600; letter-spacing: 0.2px;
+      opacity: 0; transform: scale(0.9);
+      transition: all 0.4s ease;
+    }
+    .billie-badge.is-visible { opacity: 1; transform: scale(1); }
+    .billie-badge--intent {
+      background: rgba(186,217,168,0.2); color: #2d7a2d;
+      border: 1px solid rgba(186,217,168,0.3);
+    }
+    .billie-badge--logged {
+      background: rgba(186,217,168,0.15); color: #2d7a2d;
+      border: 1px solid rgba(186,217,168,0.25);
+    }
+    .billie-input {
+      padding: 10px 14px; border-top: 1px solid #e8e8e8;
+      background: #fff; display: flex; align-items: center; justify-content: space-between;
+    }
+    .billie-input-text { font-size: 12px; color: #999; }
+    .billie-input svg { opacity: 0.4; }
+
+    /* Visual break */
+    .m-visual-break {
+      position: relative; height: 320px; overflow: hidden;
+    }
+    .m-visual-break img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .m-visual-break-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,20,10,0.55) 0%, rgba(0,30,15,0.8) 100%);
+      display: flex; align-items: center; justify-content: center;
+      padding: 28px;
+    }
+    .m-visual-break-quote {
+      text-align: center; font-size: 16px; font-weight: 300;
+      font-style: italic; line-height: 1.55;
+      color: var(--offwhite); letter-spacing: -0.2px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.5), 0 0 40px rgba(0,0,0,0.3);
+    }
+
+    /* Stats grid */
+    .m-stats-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 14px; margin-top: 28px;
+    }
+    .m-stat-card {
+      padding: 20px 16px; border-radius: 12px;
+      background: rgba(186,217,168,0.06);
+      border: 1px solid rgba(186,217,168,0.08);
+    }
+    .m-stat-value {
+      font-family: var(--font-display);
+      font-size: 26px; font-weight: 700; color: var(--pistachio);
+      letter-spacing: -1.5px; line-height: 1; margin-bottom: 6px;
+    }
+    .m-stat-label {
+      font-size: 12px; line-height: 1.4;
+      color: rgba(223,220,215,0.45);
+    }
+    .m-results-image {
+      margin-top: 20px; border-radius: 12px; overflow: hidden;
+    }
+    .m-results-image img {
+      width: 100%; display: block; border-radius: 12px;
+    }
+
+    /* Results list */
+    .m-results-list {
+      list-style: none; margin-top: 28px;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .m-results-list li {
+      display: flex; align-items: flex-start; gap: 8px;
+      font-size: 13px; line-height: 1.5; color: rgba(223,220,215,0.55);
+    }
+    .m-results-list li svg { flex-shrink: 0; margin-top: 2px; color: var(--pistachio); }
+
+    /* CTA */
+    .m-cta {
+      padding: 64px 0; background: var(--forest);
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .m-cta-title {
+      font-family: var(--font-display);
+      font-size: 26px; font-weight: 600; color: var(--offwhite);
+      letter-spacing: -1.2px; line-height: 1.15; margin-bottom: 16px;
+    }
+    .m-cta-title em { font-style: italic; color: var(--pistachio); }
+    .m-cta-sub {
+      font-size: 15px; line-height: 1.6;
+      color: rgba(223,220,215,0.5);
+      margin: 0 auto 32px; max-width: 400px;
+    }
+    .m-btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; background: var(--pistachio);
+      color: var(--forest); border: none; border-radius: 10px;
+      font-family: var(--font-body);
+      font-size: 15px; font-weight: 600; letter-spacing: -0.2px;
+      cursor: pointer;
+    }
+
+    /* Footer mobile */
+    .footer { padding: 36px 20px 24px; }
+    .footer-top { flex-direction: column; gap: 32px; }
+    .footer-left { align-items: center; text-align: center; }
+    .footer-right { align-items: center; text-align: center; }
+    .footer-nav { align-items: center; }
+    .footer-icons { justify-content: center; }
+    .footer-bottom { flex-direction: column; align-items: center; gap: 12px; text-align: center; }
+    .footer-legal { justify-content: center; }
   </style>
 </head>
 
@@ -18,8 +364,516 @@ if (window.innerWidth > 768) {
 
 <body>
 
-  <!-- MOBILE CASE STUDY CONTENT HERE -->
+<!-- ================================================================
+     NAV
+     ================================================================ -->
+<nav class="nav at-top" id="mainNav">
+  <div class="nav-inner">
+    <a href="../../" class="nav-brand" style="gap: 0;">
+      <div class="nav-brand-wordmark" style="gap: 2px;">
+        <span class="nav-brand-name" style="font-size: 18px;">Step Zero</span>
+        <div style="display: flex; align-items: center; gap: 5px;">
+          <span class="nav-brand-sub" style="font-size: 9px;">BY</span>
+          <img src="../../assets/logos/valae_logo.png" alt="Valae Logo" style="height: 13px; transform: translateY(-1px);">
+        </div>
+      </div>
+    </a>
+    <a href="../../" class="nav-cta">
+      Book a demo
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</nav>
 
-  <script src="../shared/casestudy.js"></script>
+<!-- ================================================================
+     HERO
+     ================================================================ -->
+<section class="m-hero cs-grain">
+  <div class="m-hero-video-wrap">
+    <video autoplay muted loop playsinline>
+      <source src="../../assets/clients/ikea/ikea_hero_ad.mp4" type="video/mp4">
+    </video>
+    <div class="m-hero-video-overlay"></div>
+  </div>
+  <div class="m-hero-content">
+    <a href="../../" class="m-hero-back">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to home
+    </a>
+    <h1 class="m-hero-title">Making the world's biggest AI chatbot <em>smarter</em></h1>
+    <p class="m-hero-subtitle">Valae is embedded inside IKEA's global GenAI team, improving the AI chatbot behind 3.2 million customer conversations across 63 countries.</p>
+    <div class="m-scope-tags">
+      <span class="m-scope-tag">AI Chatbot Optimisation</span>
+      <span class="m-scope-tag">Prompt Engineering</span>
+      <span class="m-scope-tag">Conversational Commerce</span>
+      <span class="m-scope-tag">Data Science</span>
+    </div>
+    <div class="m-hero-stats">
+      <div>
+        <div class="m-hero-stat-value" data-count="63">0</div>
+        <div class="m-hero-stat-label">countries</div>
+      </div>
+      <div>
+        <div class="m-hero-stat-value" data-count="3" data-suffix=".2M+">0</div>
+        <div class="m-hero-stat-label">conversations handled</div>
+      </div>
+      <div>
+        <div class="m-hero-stat-value" data-count="8" data-suffix=",500">0</div>
+        <div class="m-hero-stat-label">workers reskilled</div>
+      </div>
+      <div>
+        <div class="m-hero-stat-value">24/7</div>
+        <div class="m-hero-stat-label">availability</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     OVERVIEW
+     ================================================================ -->
+<section class="m-section m-section--light">
+  <div class="cs-container">
+    <img class="m-section-img cs-reveal" src="../../assets/clients/ikea/ikea_urban_or_mall_popup.jpg" alt="Modern IKEA store exterior with glass facade and branded entrance">
+    <div class="cs-reveal cs-reveal-d1">
+      <span class="cs-label cs-label--dark">Overview</span>
+      <h2 class="m-section-title">Making the best better</h2>
+      <p class="m-section-body">IKEA's Billie is retail's most ambitious AI chatbot programme &mdash; a generative AI-powered assistant that has handled over 3.2 million customer interactions across 63 markets and dozens of languages.</p>
+      <p class="m-section-body" style="margin-top: 12px;">Valae was brought in to make Billie smarter. Where most AI projects start from scratch, this one starts from excellence &mdash; and the challenge is making it measurably, systematically better.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     GLOBAL REACH MAP
+     ================================================================ -->
+<div class="m-map-band cs-grain">
+  <h2 class="m-map-title cs-reveal">Serving customers across <em>63 countries</em></h2>
+  <p class="m-map-sub cs-reveal cs-reveal-d1">Millions of conversations across dozens of markets and languages, around the clock.</p>
+  <div class="m-map-wrap cs-reveal cs-reveal-d2">
+    <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <defs>
+        <filter id="mapGlow" x="-100%" y="-100%" width="300%" height="300%">
+          <feGaussianBlur stdDeviation="3" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <!-- Continent silhouettes -->
+      <path class="m-map-land" d="M 60,52 L 100,46 L 140,46 L 180,50 L 210,54 L 245,62 L 265,72 L 275,82 L 268,92 L 252,100 L 240,108 L 228,120 L 218,138 L 210,148 L 195,140 L 180,152 L 195,172 L 212,185 L 200,190 L 182,180 L 168,158 L 150,138 L 130,120 L 115,100 L 100,88 L 78,72 Z"/>
+      <path class="m-map-land" d="M 215,192 L 252,182 L 288,190 L 312,208 L 320,225 L 315,250 L 300,272 L 280,295 L 262,315 L 250,322 L 244,310 L 240,285 L 232,260 L 224,238 L 220,215 Z"/>
+      <path class="m-map-land" d="M 362,55 L 385,46 L 412,42 L 440,44 L 460,50 L 470,60 L 472,72 L 468,84 L 460,96 L 452,110 L 445,120 L 432,116 L 420,110 L 406,104 L 396,112 L 388,120 L 378,122 L 380,110 L 388,96 L 393,84 L 390,74 L 376,64 Z"/>
+      <path class="m-map-land" d="M 380,126 L 410,122 L 438,126 L 460,132 L 480,142 L 492,160 L 510,180 L 514,202 L 510,228 L 500,252 L 484,272 L 466,282 L 450,280 L 434,272 L 422,260 L 414,240 L 404,220 L 394,200 L 384,178 L 376,155 L 374,140 Z"/>
+      <path class="m-map-land" d="M 480,58 L 512,48 L 552,42 L 600,38 L 660,36 L 720,40 L 762,44 L 792,52 L 796,68 L 784,78 L 750,82 L 720,86 L 704,94 L 714,110 L 724,120 L 714,134 L 698,146 L 676,160 L 654,174 L 634,184 L 614,180 L 592,172 L 574,180 L 558,170 L 538,158 L 518,148 L 500,138 L 490,120 L 484,100 L 480,78 Z"/>
+      <path class="m-map-land" d="M 660,232 L 690,222 L 720,226 L 740,232 L 750,248 L 746,268 L 736,282 L 722,290 L 704,288 L 688,280 L 672,270 L 664,255 L 660,242 Z"/>
+      <!-- Americas -->
+      <circle class="m-map-dot-lg" cx="181" cy="118" r="7"/>
+      <circle class="m-map-dot" cx="232" cy="103" r="5.5"/>
+      <circle class="m-map-dot" cx="180" cy="160" r="5"/>
+      <circle class="m-map-dot" cx="244" cy="162" r="5"/>
+      <circle class="m-map-dot" cx="252" cy="164" r="5"/>
+      <circle class="m-map-dot" cx="235" cy="193" r="5"/>
+      <circle class="m-map-dot" cx="243" cy="274" r="5"/>
+      <!-- Europe -->
+      <circle class="m-map-dot" cx="351" cy="62" r="5"/>
+      <circle class="m-map-dot" cx="425" cy="71" r="5.5"/>
+      <circle class="m-map-dot" cx="440" cy="72" r="5.5"/>
+      <circle class="m-map-dot" cx="456" cy="70" r="5.5"/>
+      <circle class="m-map-dot" cx="455" cy="74" r="5"/>
+      <circle class="m-map-dot" cx="428" cy="80" r="5.5"/>
+      <circle class="m-map-dot" cx="457" cy="82" r="5"/>
+      <circle class="m-map-dot" cx="386" cy="86" r="5.5"/>
+      <circle class="m-map-dot-lg" cx="400" cy="90" r="7"/>
+      <circle class="m-map-dot" cx="411" cy="88" r="5.5"/>
+      <circle class="m-map-dot-lg" cx="423" cy="90" r="7"/>
+      <circle class="m-map-dot" cx="410" cy="91" r="5"/>
+      <circle class="m-map-dot" cx="447" cy="88" r="5.5"/>
+      <circle class="m-map-dot" cx="432" cy="93" r="5.5"/>
+      <circle class="m-map-dot-lg" cx="405" cy="95" r="7"/>
+      <circle class="m-map-dot" cx="436" cy="97" r="5.5"/>
+      <circle class="m-map-dot" cx="418" cy="100" r="5.5"/>
+      <circle class="m-map-dot" cx="442" cy="98" r="5.5"/>
+      <circle class="m-map-dot" cx="438" cy="95" r="5"/>
+      <circle class="m-map-dot" cx="434" cy="102" r="5"/>
+      <circle class="m-map-dot" cx="458" cy="105" r="5.5"/>
+      <circle class="m-map-dot" cx="452" cy="109" r="5"/>
+      <circle class="m-map-dot" cx="428" cy="111" r="5.5"/>
+      <circle class="m-map-dot-lg" cx="392" cy="114" r="7"/>
+      <circle class="m-map-dot" cx="380" cy="118" r="5.5"/>
+      <circle class="m-map-dot" cx="473" cy="115" r="5.5"/>
+      <circle class="m-map-dot" cx="453" cy="120" r="5.5"/>
+      <circle class="m-map-dot" cx="474" cy="126" r="5"/>
+      <!-- Middle East & North Africa -->
+      <circle class="m-map-dot" cx="385" cy="128" r="5"/>
+      <circle class="m-map-dot" cx="476" cy="133" r="5"/>
+      <circle class="m-map-dot" cx="483" cy="132" r="5"/>
+      <circle class="m-map-dot" cx="469" cy="137" r="5.5"/>
+      <circle class="m-map-dot" cx="506" cy="139" r="5"/>
+      <circle class="m-map-dot" cx="511" cy="144" r="5"/>
+      <circle class="m-map-dot" cx="515" cy="148" r="5"/>
+      <circle class="m-map-dot" cx="504" cy="149" r="5.5"/>
+      <circle class="m-map-dot" cx="522" cy="150" r="5.5"/>
+      <circle class="m-map-dot" cx="530" cy="152" r="5"/>
+      <!-- Asia-Pacific -->
+      <circle class="m-map-dot" cx="572" cy="140" r="5.5"/>
+      <circle class="m-map-dot-lg" cx="659" cy="115" r="7"/>
+      <circle class="m-map-dot" cx="682" cy="120" r="5.5"/>
+      <circle class="m-map-dot-lg" cx="710" cy="125" r="6.5"/>
+      <circle class="m-map-dot" cx="669" cy="148" r="5.5"/>
+      <circle class="m-map-dot" cx="668" cy="172" r="5"/>
+      <circle class="m-map-dot" cx="623" cy="173" r="5.5"/>
+      <circle class="m-map-dot" cx="626" cy="197" r="5"/>
+      <circle class="m-map-dot" cx="631" cy="201" r="5"/>
+      <circle class="m-map-dot" cx="637" cy="218" r="5.5"/>
+      <circle class="m-map-dot" cx="736" cy="279" r="5.5"/>
+    </svg>
+  </div>
+</div>
+
+<!-- ================================================================
+     THE CHALLENGE
+     ================================================================ -->
+<section class="m-section m-section--dark cs-grain">
+  <div class="cs-container">
+    <img class="m-section-img cs-reveal" src="../../assets/clients/ikea/website-screenshot-with-billie-chatbot.jpg" alt="IKEA website with Billie AI chatbot widget open">
+    <div class="cs-reveal cs-reveal-d1">
+      <span class="cs-label cs-label--light">The Challenge</span>
+      <h2 class="m-section-title">Scale creates its own problems</h2>
+      <p class="m-section-body">Billie is one of retail's most high-profile AI deployments. But at IKEA's scale, complexity compounds fast. Every improvement must work across dozens of markets, languages, and product categories simultaneously.</p>
+    </div>
+
+    <div class="m-pain-grid cs-reveal cs-reveal-d2">
+      <div class="m-pain-card">
+        <div class="m-pain-icon">
+          <svg viewBox="0 0 20 20" fill="none"><path d="M4 6h12M4 10h8M4 14h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="m-pain-title">Prompt complexity at scale</div>
+        <div class="m-pain-body">Billie's behaviour is driven by layered prompt systems that grow organically and become increasingly hard to improve at global scale.</div>
+      </div>
+      <div class="m-pain-card">
+        <div class="m-pain-icon">
+          <svg viewBox="0 0 20 20" fill="none"><circle cx="6" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/><circle cx="14" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M9 10h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="2 2"/></svg>
+        </div>
+        <div class="m-pain-title">Disconnected quality tools</div>
+        <div class="m-pain-body">Scoring systems, validation tools, and monitoring dashboards existed but weren't connected into a continuous feedback loop.</div>
+      </div>
+      <div class="m-pain-card">
+        <div class="m-pain-icon">
+          <svg viewBox="0 0 20 20" fill="none"><path d="M10 3v4M6 7l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 14h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M6 17h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="m-pain-title">Classification leaking value</div>
+        <div class="m-pain-body">Misclassifying customer intent cascades into wrong answers, unnecessary escalations, and contaminated quality data.</div>
+      </div>
+      <div class="m-pain-card">
+        <div class="m-pain-icon">
+          <svg viewBox="0 0 20 20" fill="none"><path d="M10 4L3 16h14L10 4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 9v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="10" cy="14" r=".5" fill="currentColor"/></svg>
+        </div>
+        <div class="m-pain-title">Leaving money on the table</div>
+        <div class="m-pain-body">Customers signal buying intent in support conversations. The chatbot treated these as support queries and moved on.</div>
+      </div>
+      <div class="m-pain-card">
+        <div class="m-pain-icon">
+          <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M3 10h14" stroke="currentColor" stroke-width="1.5"/><ellipse cx="10" cy="10" rx="3" ry="7" stroke="currentColor" stroke-width="1.5"/></svg>
+        </div>
+        <div class="m-pain-title">Knowledge at scale</div>
+        <div class="m-pain-body">Content spanning 63 markets and dozens of languages, with no way to detect when information goes quietly stale.</div>
+      </div>
+      <div class="m-pain-card">
+        <div class="m-pain-icon">
+          <svg viewBox="0 0 20 20" fill="none"><rect x="3" y="3" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="11" y="3" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="11" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="11" y="11" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/></svg>
+        </div>
+        <div class="m-pain-title">Multi-market complexity</div>
+        <div class="m-pain-body">63 markets with different languages, regulations, and expectations. Changes in one market risk degrading another.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     THE SOLUTION — SIX WORKSTREAMS
+     ================================================================ -->
+<section class="m-section m-section--warm">
+  <div class="cs-container">
+    <div class="cs-reveal" style="margin-bottom: 4px;">
+      <span class="cs-label cs-label--dark">The Solution</span>
+      <h2 class="m-section-title">Six workstreams. One smarter chatbot.</h2>
+      <p class="m-section-body">Valae is embedded within IKEA's global GenAI chatbot team, applying the same Step Zero methodology at a fundamentally different scale.</p>
+    </div>
+
+    <div class="m-ws-grid cs-reveal cs-reveal-d1">
+      <div class="m-ws-card">
+        <div class="m-ws-icon">
+          <svg viewBox="0 0 22 22" fill="none"><path d="M4 7h14M4 11h14M4 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M8 4v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/></svg>
+        </div>
+        <div class="m-ws-text">
+          <div class="m-ws-title">Prompt Architecture</div>
+          <div class="m-ws-body">Restructuring the entire prompt system into modular, intent-specific prompts with continuous improvement cycles.</div>
+        </div>
+      </div>
+      <div class="m-ws-card">
+        <div class="m-ws-icon">
+          <svg viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M11 8v6M8 11l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="m-ws-text">
+          <div class="m-ws-title">Quality Evaluation</div>
+          <div class="m-ws-body">Building the feedback loop: monitor, detect failure modes, prioritise fixes, evaluate impact, deploy.</div>
+        </div>
+      </div>
+      <div class="m-ws-card">
+        <div class="m-ws-icon">
+          <svg viewBox="0 0 22 22" fill="none"><path d="M17 16V8a2 2 0 00-2-2H7a2 2 0 00-2 2v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M3 16h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M9 12h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11 10v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="m-ws-text">
+          <div class="m-ws-title">Conversational Commerce</div>
+          <div class="m-ws-body">Detecting buying intent in support conversations and routing toward conversion.</div>
+        </div>
+      </div>
+      <div class="m-ws-card">
+        <div class="m-ws-icon">
+          <svg viewBox="0 0 22 22" fill="none"><path d="M11 3v4M11 15v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><rect x="7" y="7" width="8" height="8" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M14 8l2-2M8 14l-2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="m-ws-text">
+          <div class="m-ws-title">Voice AI</div>
+          <div class="m-ws-body">Contributing to Billie's expansion into voice-based customer service with new prompting strategies.</div>
+        </div>
+      </div>
+      <div class="m-ws-card">
+        <div class="m-ws-icon">
+          <svg viewBox="0 0 22 22" fill="none"><rect x="4" y="4" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 9h14M9 9v9" stroke="currentColor" stroke-width="1.5"/></svg>
+        </div>
+        <div class="m-ws-text">
+          <div class="m-ws-title">Knowledge Architecture</div>
+          <div class="m-ws-body">Automated pipelines for staleness detection, source change monitoring, and terminology consistency across 63 markets.</div>
+        </div>
+      </div>
+      <div class="m-ws-card">
+        <div class="m-ws-icon">
+          <svg viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="3" stroke="currentColor" stroke-width="1.5"/><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 3"/><path d="M11 4v3M11 15v3M4 11h3M15 11h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="m-ws-text">
+          <div class="m-ws-title">Intent Classification</div>
+          <div class="m-ws-body">Small, fast language models achieving 80%+ accuracy at sub-400ms latency in early experiments.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SUPPORT-TO-SALES — CHATBOT MOCKUP
+     ================================================================ -->
+<section class="m-section m-section--dark cs-grain">
+  <div class="cs-container">
+    <div class="cs-reveal">
+      <span class="cs-label cs-label--light">From Support to Sales</span>
+      <h2 class="m-section-title">Turning every conversation into an opportunity</h2>
+      <p class="m-section-body">Customers signal buying intent inside support conversations. Valae is building a support-to-sales bridge that detects purchase signals, routes toward conversion, and measures chatbot-driven revenue &mdash; transforming Billie from a cost-reduction tool into a revenue engine.</p>
+    </div>
+
+    <div class="cs-reveal cs-reveal-d1">
+      <div class="billie-mock" id="billieMock">
+        <div class="billie-chrome">
+          <div class="billie-dots"><span></span><span></span><span></span></div>
+          <div class="billie-url">ikea.com</div>
+        </div>
+        <div class="billie-widget">
+          <div class="billie-widget-header">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            IKEA Chatbot
+          </div>
+          <div class="billie-messages" id="billieMessages">
+            <div class="billie-msg billie-msg--bot" id="billieWelcome">Hey! I'm Billie, IKEA's virtual assistant. How can I help you today?</div>
+            <div class="billie-msg billie-msg--user" id="billieQ1">How wide is the MALM bed frame in queen size?</div>
+            <div class="billie-typing" id="billieTyping1"><span></span><span></span><span></span></div>
+            <div class="billie-msg billie-msg--bot" id="billieA1">The MALM queen bed frame (160&times;200 cm mattress) is 177 cm wide, 209 cm long, and the headboard is 100 cm high. It comes in white, black-brown, and white stained oak.</div>
+            <div class="billie-badge billie-badge--intent" id="billieBadge1">&#127919; Buying intent detected</div>
+            <div class="billie-msg billie-msg--bot" id="billieA2">Would you like to see the full MALM bedroom range? I can also check stock at your nearest store or help you with delivery options.</div>
+            <div class="billie-badge billie-badge--logged" id="billieBadge2">&#10003; Sales lead logged &middot; Bedroom</div>
+          </div>
+          <div class="billie-input">
+            <span class="billie-input-text">Type your message here</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13" stroke="#0058A3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 2l-7 20-4-9-9-4 20-7z" stroke="#0058A3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     VISUAL BREAK
+     ================================================================ -->
+<div class="m-visual-break">
+  <img src="../../assets/clients/ikea/beautiful_photo_of_person_carrying_ikea_bag.jpg" alt="Person carrying an IKEA bag outside a store in golden hour light">
+  <div class="m-visual-break-overlay">
+    <p class="m-visual-break-quote">"Structure the knowledge, build the intelligence, measure the impact &mdash; applied at a scale few companies ever reach."</p>
+  </div>
+</div>
+
+<!-- ================================================================
+     RESULTS
+     ================================================================ -->
+<section class="m-section m-section--dark cs-grain">
+  <div class="cs-container">
+    <div class="cs-reveal">
+      <span class="cs-label cs-label--light">Results</span>
+      <h2 class="m-section-title">Early impact, ongoing transformation</h2>
+      <p class="m-section-body">This is an active, ongoing engagement. Valae specialists are embedded within IKEA's team, delivering measurable improvements across every workstream.</p>
+    </div>
+    <div class="m-stats-grid cs-reveal cs-reveal-d1">
+      <div class="m-stat-card">
+        <div class="m-stat-value" data-count="80" data-suffix="%+">0</div>
+        <div class="m-stat-label">intent classification accuracy</div>
+      </div>
+      <div class="m-stat-card">
+        <div class="m-stat-value">&lt;400ms</div>
+        <div class="m-stat-label">classification latency</div>
+      </div>
+      <div class="m-stat-card">
+        <div class="m-stat-value" data-count="63">0</div>
+        <div class="m-stat-label">markets covered</div>
+      </div>
+      <div class="m-stat-card">
+        <div class="m-stat-value" data-count="6">0</div>
+        <div class="m-stat-label">active workstreams</div>
+      </div>
+    </div>
+    <div class="m-results-image cs-reveal cs-reveal-d2">
+      <img src="../../assets/clients/ikea/beautifully_framed_photo_of_employee_in_food_section.jpg" alt="IKEA employee in branded shirt at a Hej Hammersmith store">
+    </div>
+
+    <ul class="m-results-list cs-reveal cs-reveal-d3">
+      <li>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Prompt architecture overhaul underway across all production prompt layers
+      </li>
+      <li>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Quality monitoring system being built to surface failure modes at scale
+      </li>
+      <li>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Conversational commerce with buying-intent detection in development
+      </li>
+      <li>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Voice AI supporting expansion into voice-based customer service
+      </li>
+      <li>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Knowledge pipelines for automated staleness detection across 63 markets
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================================================================
+     CTA
+     ================================================================ -->
+<section class="m-cta cs-grain">
+  <div class="cs-container" style="position: relative; z-index: 2;">
+    <h2 class="m-cta-title cs-reveal">Ready to make your AI <em>smarter</em>?</h2>
+    <p class="m-cta-sub cs-reveal cs-reveal-d1">See how Valae's Step Zero methodology can transform your AI systems &mdash; at any scale.</p>
+    <a href="../../" class="m-btn-primary cs-reveal cs-reveal-d2">
+      Book a demo
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ================================================================
+     FOOTER
+     ================================================================ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-left">
+        <div class="footer-brand">
+          <img class="footer-logo-placeholder" src="../../assets/logos/Valae-WM-Pistachio.png" alt="Valae">
+        </div>
+        <p class="footer-description">Valae's Step Zero organises your scattered knowledge into an AI brain, powering assistants, automations, chatbots, and more.</p>
+        <div class="footer-icons">
+          <a href="mailto:info@valae.ai" aria-label="Email">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/valae-ai/" target="_blank" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-right">
+        <h4 class="footer-heading">Quick Links</h4>
+        <nav class="footer-nav">
+          <a href="https://valae.ai/about" class="footer-link">About Us</a>
+          <a href="../../" class="footer-link">Home</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+      <div class="footer-copyright">&copy; 2026 Valae B.V. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="#" class="footer-legal-link">Privacy Policy</a>
+        <a href="#" class="footer-legal-link">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../shared/casestudy.js"></script>
+<script>
+(function() {
+  var mock = document.getElementById('billieMock');
+  if (!mock) return;
+
+  var msgs = document.getElementById('billieMessages');
+  var steps = [
+    document.getElementById('billieWelcome'),
+    document.getElementById('billieQ1'),
+    document.getElementById('billieTyping1'),
+    document.getElementById('billieA1'),
+    document.getElementById('billieBadge1'),
+    document.getElementById('billieA2'),
+    document.getElementById('billieBadge2')
+  ];
+
+  var timers = [];
+  function delay(fn, ms) { timers.push(setTimeout(fn, ms)); }
+  function clearAll() { timers.forEach(clearTimeout); timers = []; }
+
+  function reset() {
+    clearAll();
+    steps.forEach(function(el) { el.classList.remove('is-visible'); });
+    msgs.scrollTop = 0;
+  }
+
+  function show(el) {
+    el.classList.add('is-visible');
+    setTimeout(function() { msgs.scrollTop = msgs.scrollHeight; }, 50);
+  }
+
+  function run() {
+    reset();
+    var d = 0;
+    delay(function() { show(steps[0]); }, d += 600);
+    delay(function() { show(steps[1]); }, d += 1800);
+    delay(function() { show(steps[2]); }, d += 1000);
+    delay(function() {
+      steps[2].classList.remove('is-visible');
+      show(steps[3]);
+    }, d += 2000);
+    delay(function() { show(steps[4]); }, d += 1200);
+    delay(function() { show(steps[5]); }, d += 1500);
+    delay(function() { show(steps[6]); }, d += 1500);
+    delay(run, d += 4000);
+  }
+
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) { obs.disconnect(); delay(run, 500); }
+    }, { threshold: 0.2 });
+    obs.observe(mock);
+  } else { run(); }
+})();
+</script>
 </body>
 </html>
