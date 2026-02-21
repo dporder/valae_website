@@ -1,0 +1,91 @@
+## Valae — About Us Page Brief for Web Copywriter
+
+### Company overview
+
+Valae is an AI company founded in 2024 and based in London, New York, and Amsterdam. The company builds AI systems for small and mid-size, with a few enterprise businesses as well. It uses a core methodology called Step Zero, which turns scattered, messy company data into a structured AI brain that powers any number of AI tools. Valae works with clients across all industires with current and recent projects including IKEA, Moco Museum, Mango Mobility, Bugaboo, Shell, L'Oréal, and others.
+
+The team includes engineers, data scientists, designers, and strategists working across three continents. The company is lean by design — senior-led, technically deep, and built for speed.
+
+### Founding story
+
+The three directors all built careers inside major international brands, leading AI, technology, and digital operations at enterprise scale. They saw the same problem everywhere: companies were being sold bloated, expensive AI projects by consultancies that took months to deliver and often never produced measurable results. Worse, these approaches assumed clean, structured data — which almost no real company has. According to MIT, 95% of AI projects fail (despite 90% of employees using AI tools) because knowledge is scattered and business information is not available to AI.
+
+Valae was founded on the belief that there's a better way. Step Zero was born from this insight: before you build any AI tool, you need to organise the knowledge it draws from. That foundation — the AI brain — is what makes every tool that follows actually work. Most competitors skip this step entirely, which is why their tools underperform or fail.
+
+### The founding team
+
+**Dan Porder — Engineering Director**
+
+Dan leads Valae's engineering and AI work. He is a data scientist and AI engineer and tech leader. Before Valae, Dan was a Senior AI Engineer in a global Fortune 500 AI Lab, where he worked on the foundational AI systems and knowledge architecture behind global AI programmes. Details redacted due to NDA. He has also held a lead role at Bugaboo. He also previously founded and sold WorkCrib, a marketplace platform.
+
+Dan lectures and guest lectures on AI at Delft University of Technology, at the Dutch Royal Academy of Sciences, and at the UK Academy of Digital Industries, and has hosted panels at TechEx Global in London. On the side, he is also the founder of Vibe Coding Collective, a global AI developer community operating across 8 countries and 3 continents, which has co-hosted events and hackathons in partnership with Harvard, MIT, and Google DeepMind. Additionally, he was a finalist in the 2026 Google DeepMind hackathon, has been featured in Microsoft magazine, and mentors the next generation of AI professionals through ADPList and university programmes and teaching classes.
+
+Dan maintains close working partnerships with organisations including ElevenLabs and Google DeepMind, and regularly speaks on podcasts, webinars, and industry panels on applied AI.
+
+**Daniel Whytock — Strategy Director**
+
+Daniel leads Valae's commercial strategy and client relationships. He is a seasoned operator who has led businesses at CEO level.
+
+Daniel was the founder and CEO of DownYourHighStreet.com, a multi-million-pound e-commerce platform. He was also Head of Operations at ComAve. His experience spans scaling digital businesses, managing P&L, and translating complex technology into commercial value — skills he now applies to ensuring Valae's AI solutions deliver measurable business impact for every client.
+
+**Gleb Nam — Operations Director**
+
+Gleb leads Valae's operations and delivery. He brings 15 years of experience leading complex technology, product, and SaaS operations across four regions: North America, Western Europe, Eastern Europe, and Southeast Asia.
+
+Gleb has held senior leadership roles connected with L'Oréal, Shell, and prominent European venture capital firms, managing large cross-functional teams and multi-market rollouts. His operational rigour ensures that Valae's projects are delivered on time, on budget, and at the quality level that enterprise clients expect.
+
+### The wider team
+
+Beyond the directors, Valae's team includes AI engineers with backgrounds in NLP, computer vision, and generative AI; data scientists experienced in classification, evaluation systems, and knowledge architecture including knowledge graphs, RDF and Neo4j; designers who specialise in conversational UX and product interfaces; and strategists who bridge the gap between technical capability and business outcomes. The team operates across the globe, particularly in US, UK and Europe, with project-specific specialists brought in as needed.
+
+*Copywriter note: keep this vague and narrative. Do not commit to a specific headcount. Phrases like "a team of engineers, designers, and strategists across three continents" or "senior-led, with deep technical bench strength" work well. Avoid listing specific team members beyond the three directors.*
+
+### Credibility signals to include on the page
+
+**Client logos.** Display the full roster prominently: IKEA, Bugaboo, Moco Museum, Shell, L'Oréal, Mango Mobility, Spinn, TU Delft, Vibe Coding Collective — matching the homepage logo bar. See assets/logos
+
+**University and institutional affiliations.** Delft University of Technology (lecturing, guest lecturing, training), Harvard and MIT (co-hosted events, hackathons, and AI programmes), Dutch Royal Academy of Sciences (KNAW), Academy of Digital Industries (lecturing), Google DeepMind (hackathon finalists, partnership).
+
+**Industry partnerships.** ElevenLabs, Google DeepMind.
+
+**Press and speaking.** Featured in Microsoft magazine. Panels at TechEx Global. Regular appearances on podcasts, webinars, and industry forums on applied AI. These can be listed as logos or as a "Featured in / Spoken at" strip.
+
+**Awards and recognition.** Google DeepMind hackathon finalists.
+
+### Key messages to convey
+
+**We've been inside the machine.** The founding team didn't learn enterprise AI from the outside — they built it from the inside, at companies like IKEA, Shell, L'Oréal, and Bugaboo. They know what works, what doesn't, and why most AI projects fail.
+
+**We're technically deep but commercially practical.** The team includes data scientists and engineers who can build production-grade AI systems, but every project is measured by business impact — hours saved, revenue generated, hires avoided — not by technical elegance for its own sake.
+
+**We move fast.** Mango was built in 4 weeks. Moco in 2 weeks. Valae is structured for speed, not for billable hours. The Step Zero methodology means the hard foundational work is done first, so every tool that follows is faster and cheaper.
+
+**Your data doesn't need to be perfect.** Most AI consultancies assume clean, structured data. Valae starts from the assumption that your data is messy, scattered, and incomplete — because it always is. Step Zero exists specifically to solve this.
+
+**Enterprise quality, mid-size pricing.** The same architecture and methodology that powers IKEA's global chatbot is available to a 200-person museum or a 14-store mobility brand. Valae brings enterprise-grade AI to companies that don't have enterprise budgets.
+
+### Tone and style notes
+
+- Confident and credible, but not arrogant. The founders' credentials speak for themselves — no need to oversell.
+- Accessible to non-technical readers. Avoid jargon. A business owner should read this page and think "these people understand my problems" not "these people are very smart but I don't understand what they do."
+- Warm and human. These are real people with real experience, not a faceless agency. First names are fine. Personality is welcome.
+- No combative or comparative language (no "unlike our competitors" or "no PhD required"). Let the credentials and results do the positioning.
+- The page should feel like meeting the team, not reading a corporate brochure.
+
+### Suggested visual assets
+
+**Founder headshots.** Professional but approachable. Ideally consistent style across all three — same background, same lighting, same crop. These should feel like a team, not three separate LinkedIn photos.
+
+**Team working photo.** A candid or semi-candid shot of the team working together — around a whiteboard, at a laptop, in a meeting. Doesn't need to be staged, but should feel real and energetic. If you have one from your Amsterdam or London workspace, that's ideal.
+
+**Speaking / event photos.** Dan at TechEx Global, or at a university lecture, or at a hackathon. These serve as proof of the "industry expert" positioning and break up the page visually.
+
+**Client logo bar.** Same as homepage — IKEA, Bugaboo, Moco Museum, Shell, L'Oréal, Mango Mobility, Spinn, TU Delft, Vibe Coding Collective.
+
+**Partner / affiliation logo strip.** A separate "Partnered with" or "Featured in" row: Harvard, MIT, Google DeepMind, ElevenLabs, Microsoft, TechEx Global, Academy of Digital Industries, Delft University of Technology.
+
+**City skyline or map graphic.** Something subtle showing London, New York, Amsterdam — reinforcing the international presence without being heavy-handed. Could be as simple as three city names with dots on a minimal world map.
+
+---
+
+Anything you want adjusted or expanded?

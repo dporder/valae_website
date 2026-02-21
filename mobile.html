@@ -154,6 +154,7 @@ a { text-decoration: none; color: inherit; }
   font-family: var(--font-display); font-weight: 300; font-size: 9px;
   color: rgba(186,217,168,0.45); letter-spacing: 1.5px; text-transform: uppercase; line-height: 1;
 }
+.nav-right { display: flex; align-items: center; gap: 12px; }
 .nav-cta {
   display: inline-flex; align-items: center; gap: 6px;
   padding: 8px 16px; border-radius: 8px;
@@ -162,6 +163,54 @@ a { text-decoration: none; color: inherit; }
   transition: all 0.3s ease; cursor: pointer; border: none;
   font-family: var(--font-body);
 }
+.nav-hamburger {
+  display: flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px;
+  background: none; border: 1px solid rgba(186,217,168,0.2);
+  border-radius: 8px; cursor: pointer;
+  flex-direction: column; gap: 4px;
+  padding: 0;
+  transition: border-color 0.2s ease;
+}
+.nav-hamburger:hover { border-color: rgba(186,217,168,0.4); }
+.nav-hamburger span {
+  display: block; width: 16px; height: 1.5px;
+  background: var(--pistachio); border-radius: 1px;
+  transition: all 0.3s ease;
+}
+.nav-hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(2px, 2px); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(2px, -2px); }
+.nav-drawer {
+  position: fixed; top: 56px; left: 0; right: 0;
+  background: rgba(0,26,13,0.97);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(186,217,168,0.1);
+  padding: 16px 20px 20px;
+  z-index: 99;
+  display: flex; flex-direction: column; gap: 0;
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+}
+.nav-drawer.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+.nav-drawer-link {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 0;
+  font-size: 15px; font-weight: 500;
+  color: rgba(186,217,168,0.6);
+  border-bottom: 1px solid rgba(186,217,168,0.06);
+  transition: color 0.2s ease;
+}
+.nav-drawer-link:last-child { border-bottom: none; }
+.nav-drawer-link:hover { color: var(--pistachio); }
+.nav-drawer-link.active { color: var(--pistachio); font-weight: 600; }
+.nav-drawer-link svg { opacity: 0.3; }
 
 /* ================================================================
    HERO
@@ -1116,12 +1165,22 @@ if (window.innerWidth > 768) {
         </div>
       </div>
     </a>
-    <button class="nav-cta" onclick="gtag('event', 'cta_click', { button_name: 'header_book_demo' }); showPage('form');">
-      Book a demo
-      <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
+    <div class="nav-right">
+      <button class="nav-cta" onclick="gtag('event', 'cta_click', { button_name: 'header_book_demo' }); showPage('form');">
+        Book a demo
+        <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </nav>
+<div class="nav-drawer" id="navDrawer">
+  <a href="/" class="nav-drawer-link active">Home <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  <a href="/about" class="nav-drawer-link">About <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  <a href="/projects" class="nav-drawer-link">Projects <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+</div>
 
 <!-- ================================================================
      PAGE 1: PRODUCT
@@ -2057,6 +2116,17 @@ window.addEventListener('load', function() {
   initEmailAnim();
   initStickyCta();
 });
+
+// Hamburger menu toggle
+(function() {
+  var btn = document.getElementById('navHamburger');
+  var drawer = document.getElementById('navDrawer');
+  if (!btn || !drawer) return;
+  btn.addEventListener('click', function() {
+    btn.classList.toggle('open');
+    drawer.classList.toggle('open');
+  });
+})();
 </script>
 
 </body>

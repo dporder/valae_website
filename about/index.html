@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — Valae</title>
+  <meta name="description" content="Meet the team behind Valae. Founded by AI leaders from IKEA, Shell, L'Oréal and Bugaboo, we build AI systems that actually work — because we start with your data, not your dreams.">
+  <link rel="canonical" href="https://valae.ai/about">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://valae.ai/about">
+  <meta property="og:title" content="About Us — Valae">
+  <meta property="og:description" content="Founded by AI leaders from IKEA, Shell, L'Oréal and Bugaboo. We build AI systems that actually work.">
+  <meta property="og:image" content="https://valae.ai/assets/logos/valae_social_image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/png" href="../assets/logos/valaestar_logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SS9FY3PEJM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SS9FY3PEJM');
+  </script>
+
+  <style>
+/* ================================================================
+   BROTHER 1816 — LOCAL @font-face
+   ================================================================ */
+@font-face { font-family: 'Brother 1816'; font-weight: 300; font-style: normal; font-display: swap; src: url('../fonts/Brother 1816/Brother-1816-Font/Brother-1816-Light.woff2') format('woff2'); }
+@font-face { font-family: 'Brother 1816'; font-weight: 400; font-style: normal; font-display: swap; src: url('../fonts/Brother 1816/Brother-1816-Font/Brother-1816-Regular.woff2') format('woff2'); }
+@font-face { font-family: 'Brother 1816'; font-weight: 400; font-style: italic; font-display: swap; src: url('../fonts/Brother 1816/Brother-1816-Font/Brother-1816-Regular-Italic.woff2') format('woff2'); }
+@font-face { font-family: 'Brother 1816'; font-weight: 500; font-style: normal; font-display: swap; src: url('../fonts/Brother 1816/Brother-1816-Font/Brother-1816-Medium.woff2') format('woff2'); }
+@font-face { font-family: 'Brother 1816'; font-weight: 600; font-style: normal; font-display: swap; src: url('../fonts/Brother 1816/Brother-1816-Font/Brother-1816-Bold.woff2') format('woff2'); }
+@font-face { font-family: 'Brother 1816'; font-weight: 700; font-style: normal; font-display: swap; src: url('../fonts/Brother 1816/Brother-1816-Font/Brother-1816-Extra-Bold.woff2') format('woff2'); }
+
+/* ================================================================
+   RESET & VARIABLES
+   ================================================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --forest: #003017;
+  --forest-deep: #001a0d;
+  --forest-mid: #002a14;
+  --pistachio: #BAD9A8;
+  --pistachio-light: #d4eac6;
+  --pistachio-dim: rgba(186,217,168,0.15);
+  --offwhite: #DFDCD7;
+  --charcoal: #1A1D1B;
+  --bg: #FAFAF7;
+  --bg-warm: #F5F2ED;
+  --white: #ffffff;
+  --max-w: 1100px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --font-display: 'Unbounded', sans-serif;
+  --font-body: 'Brother 1816', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--charcoal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; height: auto; display: block; }
+
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ================================================================
+   ANIMATIONS
+   ================================================================ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-d1 { transition-delay: 0.1s; }
+.reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; }
+.reveal-d4 { transition-delay: 0.4s; }
+
+/* Grain texture */
+.grain::after {
+  content: '';
+  position: absolute; inset: 0; z-index: 1;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* ================================================================
+   NAV
+   ================================================================ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 0 40px; transition: all 0.4s ease;
+}
+.nav.at-top { background: transparent; }
+.nav.scrolled {
+  background: rgba(0,48,23,0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(186,217,168,0.15);
+}
+.nav-inner {
+  max-width: var(--max-w); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; height: 64px;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 12px;
+  color: var(--pistachio);
+}
+.nav-brand-mark {
+  width: 32px; height: 32px; flex-shrink: 0;
+}
+.nav-brand-wordmark {
+  display: flex; flex-direction: column; gap: 2px;
+}
+.nav-brand-name {
+  font-family: var(--font-display); font-weight: 600; font-size: 22px;
+  color: var(--pistachio); letter-spacing: -0.5px; line-height: 1;
+}
+.nav-brand-sub {
+  font-family: var(--font-display); font-weight: 300; font-size: 10px;
+  color: rgba(186,217,168,0.45); letter-spacing: 1.5px; text-transform: uppercase; line-height: 1;
+}
+.nav-links {
+  display: flex; align-items: center; gap: 32px;
+}
+.nav-link {
+  font-size: 14px; font-weight: 500;
+  color: rgba(186,217,168,0.55);
+  transition: color 0.2s ease;
+  letter-spacing: -0.1px;
+}
+.nav-link:hover { color: var(--pistachio); }
+.nav-link.active { color: var(--pistachio); font-weight: 600; }
+.nav-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 22px; border-radius: 8px;
+  background: var(--pistachio); color: var(--forest);
+  font-weight: 600; font-size: 14px; letter-spacing: -0.2px;
+  transition: all 0.3s ease; cursor: pointer; border: none;
+  font-family: var(--font-body);
+}
+.nav-cta:hover { background: var(--pistachio-light); transform: translateY(-1px); }
+
+/* ================================================================
+   HERO
+   ================================================================ */
+.about-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--forest);
+  padding: 140px 0 100px;
+}
+.about-hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  overflow: hidden; pointer-events: none;
+}
+.about-hero-bg img {
+  position: absolute;
+  top: 50%; left: 50%;
+  min-width: 100%; min-height: 100%;
+  width: 100%; height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  pointer-events: none;
+}
+.about-hero-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(0,26,13,0.92) 0%,
+    rgba(0,48,23,0.85) 40%,
+    rgba(0,26,13,0.92) 100%
+  );
+}
+.about-hero-content {
+  position: relative; z-index: 3;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+.about-hero-back {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 500;
+  color: rgba(186,217,168,0.5);
+  margin-bottom: 40px;
+  transition: color 0.2s ease;
+}
+.about-hero-back:hover { color: var(--pistachio); }
+.about-hero-label {
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: 999px;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  background: rgba(186,217,168,0.12);
+  color: var(--pistachio);
+  margin-bottom: 28px;
+}
+.about-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 600; line-height: 1.08;
+  color: var(--offwhite);
+  letter-spacing: -2.5px;
+  margin-bottom: 24px;
+  max-width: 700px;
+}
+.about-hero h1 em {
+  font-style: italic; color: var(--pistachio);
+}
+.about-hero-sub {
+  font-size: 18px; line-height: 1.7;
+  color: rgba(223,220,215,0.6);
+  max-width: 580px;
+  margin-bottom: 56px;
+}
+.about-hero-stats {
+  display: flex; gap: 48px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(186,217,168,0.12);
+}
+.about-hero-stat { display: flex; flex-direction: column; gap: 4px; }
+.about-hero-stat-value {
+  font-family: var(--font-display);
+  font-size: 32px; font-weight: 700;
+  color: var(--pistachio);
+  letter-spacing: -1.5px; line-height: 1;
+}
+.about-hero-stat-label {
+  font-size: 13px;
+  color: rgba(223,220,215,0.4);
+  line-height: 1.4;
+}
+
+/* ================================================================
+   ORIGIN STORY
+   ================================================================ */
+.section-story {
+  padding: 120px 0;
+  background: var(--bg);
+}
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+.story-label {
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--forest); opacity: 0.5;
+  margin-bottom: 20px;
+}
+.story-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 600; line-height: 1.15;
+  color: var(--charcoal);
+  letter-spacing: -1.5px;
+  margin-bottom: 24px;
+}
+.story-title em { font-style: italic; color: var(--forest); }
+.story-body {
+  font-size: 17px; line-height: 1.75;
+  color: rgba(26,29,27,0.6);
+}
+.story-body p { margin-bottom: 20px; }
+.story-body p:last-child { margin-bottom: 0; }
+.story-image {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 16px 64px rgba(0,48,23,0.1);
+}
+.story-image img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ================================================================
+   DIFFERENTIATORS
+   ================================================================ */
+.section-diff {
+  padding: 96px 0;
+  background: var(--pistachio-light);
+  position: relative;
+  overflow: hidden;
+}
+.diff-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.diff-label {
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--forest); opacity: 0.5;
+  margin-bottom: 20px;
+}
+.diff-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 600; line-height: 1.15;
+  color: var(--charcoal);
+  letter-spacing: -1.5px;
+  margin-bottom: 16px;
+}
+.diff-title em { font-style: italic; color: var(--forest); }
+.diff-sub {
+  font-size: 17px; line-height: 1.7;
+  color: rgba(26,29,27,0.55);
+  max-width: 560px; margin: 0 auto;
+}
+.diff-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.diff-card {
+  background: var(--white);
+  border: 1.5px solid rgba(0,48,23,0.08);
+  border-radius: 20px;
+  padding: 32px 28px;
+  transition: all 0.3s ease;
+}
+.diff-card:hover {
+  border-color: var(--forest);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,48,23,0.1);
+}
+.diff-card-icon {
+  width: 48px; height: 48px; border-radius: 14px;
+  background: rgba(0,48,23,0.06);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+.diff-card-icon svg {
+  width: 24px; height: 24px;
+  color: var(--forest);
+}
+.diff-card-title {
+  font-family: var(--font-display);
+  font-size: 16px; font-weight: 600;
+  color: var(--charcoal);
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+.diff-card-body {
+  font-size: 15px; line-height: 1.65;
+  color: rgba(26,29,27,0.55);
+}
+
+/* ================================================================
+   FOUNDERS
+   ================================================================ */
+.section-founders {
+  padding: 120px 0;
+  background: var(--bg-warm);
+}
+.founders-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+.founders-label {
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--forest); opacity: 0.5;
+  margin-bottom: 20px;
+}
+.founders-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 600; line-height: 1.15;
+  color: var(--charcoal);
+  letter-spacing: -1.5px;
+  margin-bottom: 16px;
+}
+.founders-title em { font-style: italic; color: var(--forest); }
+.founders-sub {
+  font-size: 17px; line-height: 1.7;
+  color: rgba(26,29,27,0.55);
+  max-width: 600px; margin: 0 auto;
+}
+.founders-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.founder-card {
+  background: var(--white);
+  border: 1.5px solid rgba(0,48,23,0.06);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.founder-card:hover {
+  border-color: rgba(186,217,168,0.4);
+  box-shadow: 0 16px 56px rgba(0,48,23,0.08);
+  transform: translateY(-4px);
+}
+.founder-photo {
+  width: 100%;
+  height: 340px;
+  overflow: hidden;
+  position: relative;
+}
+.founder-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.5s var(--ease);
+}
+.founder-card:hover .founder-photo img {
+  transform: scale(1.03);
+}
+.founder-info {
+  padding: 28px 28px 32px;
+}
+.founder-name {
+  font-family: var(--font-display);
+  font-size: 20px; font-weight: 600;
+  color: var(--charcoal);
+  letter-spacing: -0.8px;
+  margin-bottom: 4px;
+}
+.founder-role {
+  font-size: 14px; font-weight: 500;
+  color: var(--forest); opacity: 0.6;
+  margin-bottom: 16px;
+}
+.founder-bio {
+  font-size: 15px; line-height: 1.7;
+  color: rgba(26,29,27,0.6);
+  margin-bottom: 20px;
+}
+.founder-highlights {
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.founder-highlight {
+  display: inline-flex;
+  padding: 5px 12px;
+  background: rgba(186,217,168,0.15);
+  border: 1px solid rgba(0,48,23,0.06);
+  border-radius: 8px;
+  font-size: 12px; font-weight: 600;
+  color: var(--forest);
+  letter-spacing: 0.2px;
+}
+
+/* ================================================================
+   PHOTO MOSAIC
+   ================================================================ */
+.section-mosaic {
+  padding: 0;
+  overflow: hidden;
+}
+.mosaic-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+}
+.mosaic-item {
+  position: relative;
+  overflow: hidden;
+  height: 320px;
+}
+.mosaic-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+.mosaic-item:hover img {
+  transform: scale(1.05);
+}
+.mosaic-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(0,26,13,0.5) 100%);
+  pointer-events: none;
+}
+.mosaic-caption {
+  position: absolute;
+  bottom: 16px; left: 16px;
+  font-size: 12px; font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.3px;
+  z-index: 2;
+}
+
+/* ================================================================
+   WIDER TEAM
+   ================================================================ */
+.section-team {
+  padding: 120px 0;
+  background: var(--bg);
+}
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+.team-label {
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--forest); opacity: 0.5;
+  margin-bottom: 20px;
+}
+.team-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 600; line-height: 1.15;
+  color: var(--charcoal);
+  letter-spacing: -1.5px;
+  margin-bottom: 24px;
+}
+.team-title em { font-style: italic; color: var(--forest); }
+.team-body {
+  font-size: 17px; line-height: 1.75;
+  color: rgba(26,29,27,0.6);
+}
+.team-body p { margin-bottom: 20px; }
+.team-body p:last-child { margin-bottom: 0; }
+.team-image {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 16px 64px rgba(0,48,23,0.1);
+}
+.team-image img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+/* ================================================================
+   CREDIBILITY
+   ================================================================ */
+.section-credibility {
+  padding: 96px 0;
+  background: var(--forest);
+  position: relative;
+  overflow: hidden;
+}
+.cred-row {
+  text-align: center;
+  margin-bottom: 64px;
+}
+.cred-row:last-child { margin-bottom: 0; }
+.cred-label {
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--pistachio); opacity: 0.5;
+  margin-bottom: 28px;
+}
+.cred-logos {
+  display: flex; align-items: center; justify-content: center;
+  gap: 48px; flex-wrap: wrap;
+}
+.cred-logos img {
+  height: 32px; width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.35;
+  transition: opacity 0.3s ease;
+}
+.cred-logos img:hover { opacity: 0.7; }
+.cred-logos img.cred-logo-tall { height: 40px; }
+.cred-logos img.cred-logo-short { height: 26px; }
+
+.cred-affiliations {
+  display: flex; align-items: center; justify-content: center;
+  gap: 40px; flex-wrap: wrap;
+}
+.cred-affiliation {
+  font-family: var(--font-display);
+  font-size: 14px; font-weight: 500;
+  color: var(--pistachio); opacity: 0.35;
+  letter-spacing: -0.3px;
+  transition: opacity 0.3s ease;
+}
+.cred-affiliation:hover { opacity: 0.7; }
+
+/* ================================================================
+   CTA
+   ================================================================ */
+.section-cta {
+  padding: 96px 0;
+  background: var(--forest-deep);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 600; line-height: 1.1;
+  color: var(--offwhite);
+  letter-spacing: -2px;
+  margin-bottom: 20px;
+}
+.cta-title em { font-style: italic; color: var(--pistachio); }
+.cta-sub {
+  font-size: 17px; line-height: 1.65;
+  color: rgba(223,220,215,0.55);
+  max-width: 500px; margin: 0 auto 40px;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 36px;
+  background: var(--pistachio); color: var(--forest);
+  border: none; border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 16px; font-weight: 600;
+  letter-spacing: -0.2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  background: var(--pistachio-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(186,217,168,0.2);
+}
+
+/* ================================================================
+   FOOTER
+   ================================================================ */
+.footer {
+  padding: 48px 40px 28px;
+  background: var(--forest-deep);
+  border-top: 1px solid rgba(186,217,168,0.06);
+}
+.footer-inner { max-width: var(--max-w); margin: 0 auto; }
+.footer-top {
+  display: flex; justify-content: space-between; gap: 60px;
+}
+.footer-left {
+  display: flex; flex-direction: column; gap: 20px;
+  max-width: 480px;
+}
+.footer-brand { display: flex; align-items: center; gap: 12px; }
+.footer-logo-placeholder {
+  height: 40px; width: auto; object-fit: contain;
+}
+.footer-description {
+  font-size: 14px; line-height: 1.7;
+  color: rgba(223,220,215,0.45);
+}
+.footer-icons {
+  display: flex; align-items: center; gap: 10px;
+}
+.footer-icons a {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; border-radius: 8px;
+  border: 1px solid rgba(186,217,168,0.12);
+  color: rgba(186,217,168,0.4);
+  transition: all 0.2s ease;
+}
+.footer-icons a:hover {
+  border-color: rgba(186,217,168,0.3);
+  color: var(--pistachio);
+}
+.footer-right {
+  display: flex; flex-direction: column; gap: 16px;
+  flex-shrink: 0;
+}
+.footer-heading {
+  font-family: var(--font-body);
+  font-size: 15px; font-weight: 700;
+  color: rgba(223,220,215,0.8);
+  letter-spacing: -0.2px;
+}
+.footer-nav {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.footer-link {
+  font-size: 14px; font-weight: 500;
+  color: rgba(186,217,168,0.5);
+  transition: color 0.2s ease;
+}
+.footer-link:hover { color: var(--pistachio); }
+.footer-divider {
+  height: 1px;
+  background: rgba(186,217,168,0.08);
+  margin: 36px 0 20px;
+}
+.footer-bottom {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-copyright {
+  font-size: 13px;
+  color: rgba(223,220,215,0.25);
+}
+.footer-legal { display: flex; gap: 24px; }
+.footer-legal-link {
+  font-size: 13px;
+  color: rgba(223,220,215,0.35);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(223,220,215,0.15);
+  transition: color 0.2s ease;
+}
+.footer-legal-link:hover {
+  color: var(--pistachio);
+  text-decoration-color: var(--pistachio);
+}
+
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
+@media (max-width: 1024px) {
+  .diff-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .container { padding: 0 24px; }
+  .nav { padding: 0 24px; }
+
+  .about-hero { padding: 120px 0 80px; min-height: auto; }
+  .about-hero-content { padding: 0 24px; }
+  .about-hero h1 { font-size: 32px; letter-spacing: -1px; }
+  .about-hero-sub { font-size: 16px; }
+  .about-hero-stats { flex-direction: column; gap: 24px; }
+
+  .section-story { padding: 80px 0; }
+  .story-grid { grid-template-columns: 1fr; gap: 40px; }
+  .story-image { order: -1; max-height: 360px; }
+
+  .section-diff { padding: 64px 0; }
+  .diff-grid { grid-template-columns: 1fr; }
+
+  .section-founders { padding: 80px 0; }
+  .founders-grid { grid-template-columns: 1fr; }
+  .founder-photo { height: 280px; }
+
+  .mosaic-grid { grid-template-columns: repeat(2, 1fr); }
+  .mosaic-item { height: 220px; }
+
+  .section-team { padding: 80px 0; }
+  .team-grid { grid-template-columns: 1fr; gap: 40px; }
+  .team-image { order: -1; max-height: 360px; }
+
+  .section-credibility { padding: 64px 0; }
+  .cred-logos { gap: 32px; }
+  .cred-affiliations { gap: 24px; }
+
+  .section-cta { padding: 64px 0; }
+
+  .footer-top { flex-direction: column; gap: 36px; }
+  .footer-left { align-items: center; text-align: center; }
+  .footer-right { align-items: center; text-align: center; }
+  .footer-nav { align-items: center; }
+  .footer-icons { justify-content: center; }
+  .footer-bottom { flex-direction: column; align-items: center; gap: 12px; text-align: center; }
+  .footer-legal { justify-content: center; }
+}
+@media (max-width: 480px) {
+  .mosaic-grid { grid-template-columns: 1fr 1fr; }
+  .mosaic-item { height: 180px; }
+  .founder-photo { height: 240px; }
+  .cred-logos img { height: 24px; }
+}
+  </style>
+</head>
+
+<script>
+if (window.innerWidth <= 768) {
+  document.documentElement.style.visibility = 'hidden';
+  fetch('/about/mobile.html')
+    .then(function(r) { return r.text(); })
+    .then(function(html) {
+      document.open();
+      document.write(html);
+      document.close();
+    })
+    .catch(function() {
+      document.documentElement.style.visibility = '';
+    });
+}
+</script>
+
+<body>
+
+<!-- NAV -->
+<nav class="nav at-top" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <svg class="nav-brand-mark" width="32" height="32" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M60 8L104 34V86L60 112L16 86V34L60 8Z" fill="none" stroke="currentColor" stroke-width="4"/>
+        <path d="M60 28L88 44V76L60 92L32 76V44L60 28Z" fill="none" stroke="currentColor" stroke-width="3" opacity="0.5"/>
+        <circle cx="60" cy="60" r="8" fill="currentColor" opacity="0.7"/>
+      </svg>
+      <div class="nav-brand-wordmark">
+        <span class="nav-brand-name">Valae</span>
+        <span class="nav-brand-sub">AI BROUGHT DOWN TO EARTH</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/about" class="nav-link active">About</a>
+      <a href="/projects" class="nav-link">Projects</a>
+    </div>
+    <a href="/" class="nav-cta">
+      Book a demo
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="about-hero grain">
+  <div class="about-hero-bg">
+    <img src="../assets/team/about-us/daniel_and_dan_at_techex_expo_where_they_spoke.jpeg" alt="Valae team at TechEx Global">
+  </div>
+  <div class="about-hero-overlay"></div>
+  <div class="about-hero-content">
+    <a href="/" class="about-hero-back">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Home
+    </a>
+    <div class="about-hero-label">About Valae</div>
+    <h1>We've been <em>inside the machine.</em></h1>
+    <p class="about-hero-sub">The founding team didn't learn enterprise AI from the outside. They built it from the inside, at companies like IKEA, Shell, L'Oreal, and Bugaboo. They know what works, what doesn't, and why most AI projects fail.</p>
+    <div class="about-hero-stats">
+      <div class="about-hero-stat">
+        <div class="about-hero-stat-value">3</div>
+        <div class="about-hero-stat-label">Continents</div>
+      </div>
+      <div class="about-hero-stat">
+        <div class="about-hero-stat-value">2024</div>
+        <div class="about-hero-stat-label">Founded</div>
+      </div>
+      <div class="about-hero-stat">
+        <div class="about-hero-stat-value">95%</div>
+        <div class="about-hero-stat-label">of AI projects fail (MIT)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORIGIN STORY -->
+<section class="section-story">
+  <div class="container">
+    <div class="story-grid">
+      <div class="reveal">
+        <div class="story-label">Our story</div>
+        <h2 class="story-title">Most AI projects <em>fail.</em><br>We know why.</h2>
+        <div class="story-body">
+          <p>Before Valae, the three of us spent years building AI inside major international brands — leading technology, data, and digital operations at enterprise scale. We kept seeing the same pattern: companies were being sold bloated, expensive AI projects by consultancies that took months to deliver and rarely produced measurable results.</p>
+          <p>The root problem was always the same. These approaches assumed clean, structured data — which almost no real company has. According to MIT, 95% of AI projects fail despite 90% of employees using AI tools. The knowledge is scattered. The business information just isn't available to AI.</p>
+          <p>We founded Valae on the belief that there's a better way. Step Zero was born from this insight: before you build any AI tool, you need to organise the knowledge it draws from. That foundation — the AI brain — is what makes every tool that follows actually work.</p>
+        </div>
+      </div>
+      <div class="story-image reveal reveal-d2">
+        <img src="../assets/team/about-us/dan_with_team_member.jpg" alt="Valae team collaborating">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFERENTIATORS -->
+<section class="section-diff grain">
+  <div class="container">
+    <div class="diff-header reveal">
+      <div class="diff-label">What makes us different</div>
+      <h2 class="diff-title">Enterprise quality.<br><em>Mid-size pricing.</em></h2>
+      <p class="diff-sub">The same architecture that powers IKEA's global chatbot is available to a 200-person museum or a 14-store mobility brand.</p>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-card reveal reveal-d1">
+        <div class="diff-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="diff-card-title">Your data doesn't need to be perfect</div>
+        <div class="diff-card-body">Most AI consultancies assume clean, structured data. We start from the assumption that your data is messy, scattered, and incomplete — because it always is. Step Zero exists specifically to solve this.</div>
+      </div>
+      <div class="diff-card reveal reveal-d2">
+        <div class="diff-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="diff-card-title">We move fast</div>
+        <div class="diff-card-body">Mango Mobility was built in 4 weeks. Moco Museum in 2. Valae is structured for speed, not billable hours. The Step Zero methodology means the hard foundational work is done first, so every tool that follows is faster and cheaper.</div>
+      </div>
+      <div class="diff-card reveal reveal-d3">
+        <div class="diff-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="diff-card-title">Technically deep, commercially practical</div>
+        <div class="diff-card-body">Our team includes data scientists and engineers who build production-grade AI systems. But every project is measured by business impact — hours saved, revenue generated — not technical elegance for its own sake.</div>
+      </div>
+      <div class="diff-card reveal reveal-d4">
+        <div class="diff-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="diff-card-title">Senior-led, every time</div>
+        <div class="diff-card-body">No juniors running your project. The same directors who designed AI systems at IKEA, Shell, and L'Oreal are leading yours. That's the advantage of a lean, senior-led team.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDERS -->
+<section class="section-founders">
+  <div class="container">
+    <div class="founders-header reveal">
+      <div class="founders-label">Leadership</div>
+      <h2 class="founders-title">Meet the <em>founders</em></h2>
+      <p class="founders-sub">Three directors who built their careers inside the world's biggest brands — and left to build something better.</p>
+    </div>
+    <div class="founders-grid">
+
+      <!-- Daniel Whytock -->
+      <div class="founder-card reveal reveal-d2">
+        <div class="founder-photo">
+          <img src="../assets/team/about-us/daniel_whytock_professional_business_photo.jpg" alt="Daniel Whytock">
+        </div>
+        <div class="founder-info">
+          <div class="founder-name">Daniel Whytock</div>
+          <div class="founder-role">Strategy Director</div>
+          <div class="founder-bio">Daniel leads Valae's commercial strategy and client relationships. A seasoned operator who has led businesses at CEO level, Daniel was the founder and CEO of DownYourHighStreet.com, a multi-million-pound e-commerce platform, and Head of Operations at ComAve. His experience spans scaling digital businesses, managing P&L, and translating complex technology into commercial value — skills he now applies to ensuring every Valae project delivers measurable business impact.</div>
+          <div class="founder-highlights">
+            <span class="founder-highlight">Former CEO</span>
+            <span class="founder-highlight">E-commerce Scale-up</span>
+            <span class="founder-highlight">P&L Leadership</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dan Porder -->
+      <div class="founder-card reveal reveal-d1">
+        <div class="founder-photo">
+          <img src="../assets/team/about-us/dan_solo_1.jpg" alt="Dan Porder">
+        </div>
+        <div class="founder-info">
+          <div class="founder-name">Dan Porder</div>
+          <div class="founder-role">Engineering Director</div>
+          <div class="founder-bio">Dan leads Valae's engineering and AI work. Before Valae, he was a Senior AI Engineer in a global Fortune 500 AI Lab, building the foundational AI systems behind global AI programmes. He's also held a lead role at Bugaboo and previously founded and sold WorkCrib, a marketplace platform. Dan lectures on AI at Delft University of Technology, the Dutch Royal Academy of Sciences, and the UK Academy of Digital Industries, and has hosted panels at TechEx Global. He also founded Vibe Coding Collective, a global AI developer community operating across 8 countries that has partnered with Harvard, MIT, and Google DeepMind.</div>
+          <div class="founder-highlights">
+            <span class="founder-highlight">Fortune 500 AI Lab</span>
+            <span class="founder-highlight">TU Delft Lecturer</span>
+            <span class="founder-highlight">DeepMind Finalist</span>
+            <span class="founder-highlight">Microsoft Feature</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gleb Nam -->
+      <div class="founder-card reveal reveal-d3">
+        <div class="founder-photo">
+          <img src="../assets/team/gleb.png" alt="Gleb Nam">
+        </div>
+        <div class="founder-info">
+          <div class="founder-name">Gleb Nam</div>
+          <div class="founder-role">Operations Director</div>
+          <div class="founder-bio">Gleb leads Valae's operations and delivery. He brings 15 years of experience leading complex technology, product, and SaaS operations across four regions: North America, Western Europe, Eastern Europe, and Southeast Asia. He's held senior leadership roles connected with L'Oreal, Shell, and prominent European venture capital firms, managing large cross-functional teams and multi-market rollouts. His operational rigour ensures that Valae's projects are delivered on time, on budget, and at the quality level that enterprise clients expect.</div>
+          <div class="founder-highlights">
+            <span class="founder-highlight">15 Years Operations</span>
+            <span class="founder-highlight">4 Regions</span>
+            <span class="founder-highlight">L'Oreal &amp; Shell</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO MOSAIC -->
+<section class="section-mosaic">
+  <div class="mosaic-grid">
+    <div class="mosaic-item">
+      <img src="../assets/team/about-us/dan_at_conference_panel.jpeg" alt="Dan speaking at AI & Big Data Expo">
+      <div class="mosaic-overlay"></div>
+      <div class="mosaic-caption">AI & Big Data Expo, London</div>
+    </div>
+    <div class="mosaic-item">
+      <img src="../assets/team/working-on-code.png" alt="Team working on code">
+      <div class="mosaic-overlay"></div>
+      <div class="mosaic-caption">Building in Amsterdam</div>
+    </div>
+    <div class="mosaic-item">
+      <img src="../assets/team/about-us/dan_coding.jpg" alt="Dan coding">
+      <div class="mosaic-overlay"></div>
+      <div class="mosaic-caption">Deep in the code</div>
+    </div>
+    <div class="mosaic-item">
+      <img src="../assets/team/about-us/gleb_speaking_at_conference.png" alt="Gleb speaking at conference">
+      <div class="mosaic-overlay"></div>
+      <div class="mosaic-caption">Gleb presenting</div>
+    </div>
+  </div>
+</section>
+
+<!-- WIDER TEAM -->
+<section class="section-team">
+  <div class="container">
+    <div class="team-grid">
+      <div class="team-image reveal">
+        <img src="../assets/team/about-us/laptop_showing_moco_info.jpg" alt="Valae project work">
+      </div>
+      <div class="reveal reveal-d2">
+        <div class="team-label">The wider team</div>
+        <h2 class="team-title">Senior-led, with deep <em>technical bench strength</em></h2>
+        <div class="team-body">
+          <p>Beyond the three directors, Valae's team includes AI engineers with backgrounds in NLP, computer vision, and generative AI; data scientists experienced in classification, evaluation systems, and knowledge architecture; designers who specialise in conversational UX and product interfaces; and strategists who bridge the gap between technical capability and business outcomes.</p>
+          <p>The team operates across the US, UK, and Europe, with project-specific specialists brought in as needed. We're lean by design — every person on a Valae project is there because they add direct value, not to fill a seat.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDIBILITY -->
+<section class="section-credibility grain">
+  <div class="container">
+    <div class="cred-row reveal">
+      <div class="cred-label">Trusted by</div>
+      <div class="cred-logos">
+        <img src="../assets/logos/ikea_logo.png" alt="IKEA">
+        <img src="../assets/logos/bugaboo_logo.png" alt="Bugaboo">
+        <img src="../assets/logos/mocomuseum_logo.png" alt="Moco Museum" class="cred-logo-tall">
+        <img src="../assets/logos/shell_logo.png" alt="Shell">
+        <img src="../assets/logos/loreal_logo.png" alt="L'Oreal" class="cred-logo-short">
+        <img src="../assets/logos/mango_logo.png" alt="Mango Mobility">
+        <img src="../assets/logos/spinn_logo.png" alt="Spinn">
+        <img src="../assets/logos/tudelft_logo.png" alt="TU Delft">
+      </div>
+    </div>
+    <div class="cred-row reveal reveal-d2">
+      <div class="cred-label">Affiliated with & featured in</div>
+      <div class="cred-affiliations">
+        <span class="cred-affiliation">Harvard</span>
+        <span class="cred-affiliation">MIT</span>
+        <span class="cred-affiliation">Google DeepMind</span>
+        <span class="cred-affiliation">ElevenLabs</span>
+        <span class="cred-affiliation">Microsoft</span>
+        <span class="cred-affiliation">TechEx Global</span>
+        <span class="cred-affiliation">TU Delft</span>
+        <span class="cred-affiliation">Academy of Digital Industries</span>
+        <span class="cred-affiliation">Dutch Royal Academy of Sciences</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section-cta grain">
+  <div class="container" style="position:relative; z-index:2;">
+    <p style="font-family: var(--font-display); font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--pistachio); opacity: 0.5; margin-bottom: 20px;">Let's talk</p>
+    <h2 class="cta-title">Ready to build AI<br>that <em>actually works?</em></h2>
+    <p class="cta-sub">It starts with a 15-minute conversation. No pitch decks, no pressure — just a genuine look at what AI can do for your business.</p>
+    <a href="/" class="btn-primary" style="font-size:18px; padding: 18px 40px;">
+      Book a demo
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-left">
+        <div class="footer-brand">
+          <img class="footer-logo-placeholder" src="../assets/logos/Valae-WM-Pistachio.png" alt="Valae">
+        </div>
+        <p class="footer-description">Valae's Step Zero organises your scattered knowledge into an AI brain, powering assistants, automations, chatbots, and more.</p>
+        <div class="footer-icons">
+          <a href="mailto:info@valae.ai" aria-label="Email">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/valae-ai/" target="_blank" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-right">
+        <h4 class="footer-heading">Quick Links</h4>
+        <nav class="footer-nav">
+          <a href="/about" class="footer-link">About Us</a>
+          <a href="/" class="footer-link">How It Works</a>
+          <a href="/" class="footer-link">Projects</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+      <div class="footer-copyright">&copy; 2026 Valae B.V. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="#" class="footer-legal-link">Privacy Policy</a>
+        <a href="#" class="footer-legal-link">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll behaviour
+(function() {
+  var nav = document.getElementById('nav');
+  function checkScroll() {
+    if (window.scrollY > 40) {
+      nav.classList.remove('at-top');
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.add('at-top');
+      nav.classList.remove('scrolled');
+    }
+  }
+  checkScroll();
+  window.addEventListener('scroll', checkScroll, { passive: true });
+})();
+
+// Scroll reveal
+(function() {
+  var els = document.querySelectorAll('.reveal');
+  if (!els.length) return;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(function(el) { observer.observe(el); });
+})();
+</script>
+
+</body>
+</html>
