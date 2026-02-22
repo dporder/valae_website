@@ -595,6 +595,11 @@ img { max-width: 100%; height: auto; display: block; }
   transition: opacity 0.3s ease;
 }
 .cred-logos img:hover { opacity: 0.7; }
+.cred-logos img.cred-logo-blend {
+  filter: grayscale(1) brightness(1.2);
+  mix-blend-mode: screen;
+  opacity: 0.5;
+}
 .cred-logos img.cred-logo-tall { height: 40px; }
 .cred-logos img.cred-logo-short { height: 26px; }
 
@@ -812,25 +817,23 @@ if (window.innerWidth <= 768) {
 <body>
 
 <!-- NAV -->
-<nav class="nav at-top" id="nav">
+<nav class="nav at-top" id="mainNav">
   <div class="nav-inner">
-    <a href="/" class="nav-brand">
-      <svg class="nav-brand-mark" width="32" height="32" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M60 8L104 34V86L60 112L16 86V34L60 8Z" fill="none" stroke="currentColor" stroke-width="4"/>
-        <path d="M60 28L88 44V76L60 92L32 76V44L60 28Z" fill="none" stroke="currentColor" stroke-width="3" opacity="0.5"/>
-        <circle cx="60" cy="60" r="8" fill="currentColor" opacity="0.7"/>
-      </svg>
-      <div class="nav-brand-wordmark">
-        <span class="nav-brand-name">Valae</span>
-        <span class="nav-brand-sub">AI BROUGHT DOWN TO EARTH</span>
+    <a href="/" class="nav-brand" style="gap: 0;">
+      <div class="nav-brand-wordmark" style="gap: 2px;">
+        <span class="nav-brand-name" style="font-size: 22px;">Step Zero</span>
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span class="nav-brand-sub" style="font-size: 11px;">BY</span>
+          <img src="../assets/logos/valae_logo.png" alt="Valae Logo" style="height: 16px; transform: translateY(-2px);">
+        </div>
       </div>
     </a>
     <div class="nav-links">
       <a href="/" class="nav-link">Home</a>
       <a href="/about" class="nav-link active">About</a>
-      <a href="/projects" class="nav-link">Projects</a>
+      <a href="/contact" class="nav-link">Contact</a>
     </div>
-    <a href="/" class="nav-cta">
+    <a href="/contact" class="nav-cta">
       Book a demo
       <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
@@ -876,9 +879,8 @@ if (window.innerWidth <= 768) {
         <div class="story-label">Our story</div>
         <h2 class="story-title">Most AI projects <em>fail.</em><br>We know why.</h2>
         <div class="story-body">
-          <p>Before Valae, our founding team spent years building AI inside major international brands. We kept seeing the same pattern. Companies ran bloated, expensive AI projects that took months to deliver and never delivered measurable results.</p>
-          <p>The problem was always the same. Solutions assumed well-organised data, which no real company has. According to MIT, 95% of AI projects fail despite 90% of employees using AI tools. Because knowledge is scattered. Business information just isn't available to AI.</p>
-          <p>We founded Valae on the belief that there's a better way. Step Zero was born from this insight: before you build any AI tool, you need to organise the knowledge it draws from. That foundation — the AI brain — is what makes every tool that follows actually work.</p>
+          <p>Before Valae, our founders built AI for global brands and saw a consistent pattern: expensive, bloated projects that failed to deliver measurable results. Most AI fails (95% of projects according to MIT) because solutions assume perfect data that doesn't exist in the real world.</p>
+          <p>Our founders created Step Zero to solve this, focusing on organising scattered knowledge into a foundational "AI brain" before building tools, ensuring every implementation actually works.</p>
         </div>
       </div>
       <div class="story-image reveal reveal-d2">
@@ -893,8 +895,8 @@ if (window.innerWidth <= 768) {
   <div class="container">
     <div class="diff-header reveal">
       <div class="diff-label">What makes us different</div>
-      <h2 class="diff-title">Enterprise quality.<br><em>Mid-size pricing.</em></h2>
-      <p class="diff-sub">The same architecture that powers IKEA's global chatbot is available to a 200-person museum or a 14-store mobility brand.</p>
+      <h2 class="diff-title">Enterprise quality.<br><em>Mid-size pricing</em></h2>
+      <p class="diff-sub">The same architecture that powers global Fortune 500 AI systems is available to a 200-person museum or a 14-store mobility brand.</p>
     </div>
     <div class="diff-grid">
       <div class="diff-card reveal reveal-d1">
@@ -902,21 +904,21 @@ if (window.innerWidth <= 768) {
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
         </div>
         <div class="diff-card-title">Your data doesn't need to be perfect</div>
-        <div class="diff-card-body">Most AI consultancies assume clean, structured data. We start from the assumption that your data is messy, scattered, and incomplete — because it always is. Step Zero exists specifically to solve this.</div>
+        <div class="diff-card-body">Most AI consultancies assume clean, structured data. We start from the assumption that your data is messy, scattered, and incomplete, because it always is. Step Zero exists specifically to solve this.</div>
       </div>
       <div class="diff-card reveal reveal-d2">
         <div class="diff-card-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         </div>
         <div class="diff-card-title">We move fast</div>
-        <div class="diff-card-body">Mango Mobility was built in 4 weeks. Moco Museum in 2. Valae is structured for speed, not billable hours. The Step Zero methodology means the hard foundational work is done first, so every tool that follows is faster and cheaper.</div>
+        <div class="diff-card-body">We time projects in days, not months. Valae is structured for speed, not billable hours. The Step Zero methodology means the hard foundational work is done first, so every tool that follows is faster and cheaper.</div>
       </div>
       <div class="diff-card reveal reveal-d3">
         <div class="diff-card-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
         </div>
         <div class="diff-card-title">Technically deep, commercially practical</div>
-        <div class="diff-card-body">Our team includes data scientists and engineers who build production-grade AI systems. But every project is measured by business impact — hours saved, revenue generated — not technical elegance for its own sake.</div>
+        <div class="diff-card-body">Our team includes data scientists and engineers who build production-grade AI systems. But every project is measured by business impact (hours saved, revenue generated) not technical elegance for its own sake.</div>
       </div>
       <div class="diff-card reveal reveal-d4">
         <div class="diff-card-icon">
@@ -935,7 +937,7 @@ if (window.innerWidth <= 768) {
     <div class="founders-header reveal">
       <div class="founders-label">Leadership</div>
       <h2 class="founders-title">Meet the <em>founders</em></h2>
-      <p class="founders-sub">Three directors who built their careers inside the world's biggest brands — and left to build something better.</p>
+      <p class="founders-sub">Three directors who built their careers inside the world's biggest brands, and left to build something better.</p>
     </div>
     <div class="founders-grid">
 
@@ -951,7 +953,7 @@ if (window.innerWidth <= 768) {
           <div class="founder-highlights">
             <span class="founder-highlight">Multi-millionaire CEO</span>
             <span class="founder-highlight">Digital ROI expert</span>
-            <span class="founder-highlight">P&L Leadership</span>
+            <span class="founder-highlight">P&L leadership</span>
           </div>
         </div>
       </div>
@@ -964,9 +966,9 @@ if (window.innerWidth <= 768) {
         <div class="founder-info">
           <div class="founder-name">Dan Porder</div>
           <div class="founder-role">Engineering Director</div>
-          <div class="founder-bio">Dan leads Valae’s AI engineering and data science. Formerly a top engineer at a Fortune 500 lab, he lectures on AI at universities and scientific institutions. He also leads Vibe Coding Collective, a coding community partnered with Google and MIT. At Valae, he directs Step Zero, ensuring enterprise-quality AI brains and world-class security.</div>
+          <div class="founder-bio">Dan leads Valae’s AI engineering and data science. Formerly a top engineer at a Fortune 500 lab, he lectures on AI at universities and scientific institutions. He also leads Vibe Coding Collective, a coding community partnered with Google and MIT. At Valae, he runs Step Zero, ensuring enterprise-quality AI and world-class security.</div>
           <div class="founder-highlights">
-            <span class="founder-highlight">Fortune 500 AI Lab</span>
+            <span class="founder-highlight">Fortune 500 AI lab</span>
             <span class="founder-highlight">University lecturer</span>
             <span class="founder-highlight">Google DeepMind and Amazon partner</span>
             <span class="founder-highlight">Featured in Microsoft magazine</span>
@@ -982,11 +984,11 @@ if (window.innerWidth <= 768) {
         <div class="founder-info">
           <div class="founder-name">Gleb Nam</div>
           <div class="founder-role">Operations Director</div>
-          <div class="founder-bio">Gleb leads Valae's ops and delivery. He brings 15 years experience leading complex tech ops across North America, Europe, Asia and beyond. He's held senior roles with L'Oreal, Shell, and venture capital firms, managing global engineering and data teams. He ensures that Valae delivers on time, on budget, and at enterprise quality.</div>
+          <div class="founder-bio">Gleb leads Valae's ops and delivery. He brings 15 years experience leading complex tech ops across North America, Europe, and Asia. He's held senior roles with L'Oreal, Shell, and venture capital firms, managing global engineering and data teams. He ensures that Valae delivers on time, on budget, and at enterprise quality.</div>
           <div class="founder-highlights">
             <span class="founder-highlight">15 years ops expertise</span>
             <span class="founder-highlight">Global perspective</span>
-            <span class="founder-highlight">L'Oreal, Shell, and beyond</span>
+            <span class="founder-highlight">L'Oreal, Shell</span>
           </div>
         </div>
       </div>
@@ -1046,7 +1048,7 @@ if (window.innerWidth <= 768) {
     <div class="cred-row reveal">
       <div class="cred-label">Trusted by</div>
       <div class="cred-logos">
-        <img src="../assets/logos/ikea_logo.png" alt="IKEA">
+        <img src="../assets/logos/ikea_logo.png" alt="IKEA" class="cred-logo-blend">
         <img src="../assets/logos/bugaboo_logo.png" alt="Bugaboo">
         <img src="../assets/logos/mocomuseum_logo.png" alt="Moco Museum" class="cred-logo-tall">
         <img src="../assets/logos/shell_logo.png" alt="Shell">
@@ -1078,8 +1080,8 @@ if (window.innerWidth <= 768) {
   <div class="container" style="position:relative; z-index:2;">
     <p style="font-family: var(--font-display); font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--pistachio); opacity: 0.5; margin-bottom: 20px;">Let's talk</p>
     <h2 class="cta-title">Ready to build AI<br>that <em>actually works?</em></h2>
-    <p class="cta-sub">It starts with a 15-minute conversation. No pitch decks, no pressure, just a genuine look at what AI can do for your business.</p>
-    <a href="/" class="btn-primary" style="font-size:18px; padding: 18px 40px;">
+    <p class="cta-sub">It starts with a 15-minute demo. No pitch decks, no pressure, just a genuine look at what AI can do for your business.</p>
+    <a href="/contact" class="btn-primary" style="font-size:18px; padding: 18px 40px;">
       Book a demo
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
@@ -1107,9 +1109,9 @@ if (window.innerWidth <= 768) {
       <div class="footer-right">
         <h4 class="footer-heading">Quick Links</h4>
         <nav class="footer-nav">
+          <a href="/" class="footer-link">Home</a>
           <a href="/about" class="footer-link">About Us</a>
-          <a href="/" class="footer-link">How It Works</a>
-          <a href="/projects" class="footer-link">Projects</a>
+          <a href="/contact" class="footer-link">Contact</a>
         </nav>
       </div>
     </div>
@@ -1127,7 +1129,7 @@ if (window.innerWidth <= 768) {
 <script>
 // Nav scroll behaviour
 (function() {
-  var nav = document.getElementById('nav');
+  var nav = document.getElementById('mainNav');
   function checkScroll() {
     if (window.scrollY > 40) {
       nav.classList.remove('at-top');

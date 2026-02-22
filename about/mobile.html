@@ -419,6 +419,11 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .cred-logos img.cred-logo-tall { height: 32px; }
 .cred-logos img.cred-logo-short { height: 20px; }
+.cred-logos img.cred-logo-blend {
+  filter: grayscale(1) brightness(1.2);
+  mix-blend-mode: screen;
+  opacity: 0.5;
+}
 .cred-affiliations {
   display: flex; align-items: center; justify-content: center;
   gap: 16px 24px; flex-wrap: wrap;
@@ -532,7 +537,7 @@ if (window.innerWidth > 768) {
 <body>
 
 <!-- NAV -->
-<nav class="nav at-top" id="nav">
+<nav class="nav at-top" id="mainNav">
   <div class="nav-inner">
     <a href="/" class="nav-brand">
       <div class="nav-brand-wordmark">
@@ -544,7 +549,7 @@ if (window.innerWidth > 768) {
       </div>
     </a>
     <div class="nav-right">
-      <a href="/" class="nav-cta">
+      <a href="/contact" class="nav-cta">
         Book a demo
         <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
@@ -557,7 +562,7 @@ if (window.innerWidth > 768) {
 <div class="nav-drawer" id="navDrawer">
   <a href="/" class="nav-drawer-link">Home <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
   <a href="/about" class="nav-drawer-link active">About <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-  <a href="/projects" class="nav-drawer-link">Projects <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  <a href="/contact" class="nav-drawer-link">Contact <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 </div>
 
 <!-- HERO -->
@@ -758,7 +763,7 @@ if (window.innerWidth > 768) {
     <div class="cred-row">
       <div class="cred-label">Trusted by</div>
       <div class="cred-logos">
-        <img src="../assets/logos/ikea_logo.png" alt="IKEA">
+        <img src="../assets/logos/ikea_logo.png" alt="IKEA" class="cred-logo-blend">
         <img src="../assets/logos/bugaboo_logo.png" alt="Bugaboo">
         <img src="../assets/logos/mocomuseum_logo.png" alt="Moco Museum" class="cred-logo-tall">
         <img src="../assets/logos/shell_logo.png" alt="Shell">
@@ -791,7 +796,7 @@ if (window.innerWidth > 768) {
     <p style="font-family: var(--font-display); font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--pistachio); opacity: 0.5; margin-bottom: 16px;">Let's talk</p>
     <h2 class="cta-title">Ready to build AI<br>that <em>actually works?</em></h2>
     <p class="cta-sub">It starts with a 15-minute conversation. No pitch decks, no pressure, just a genuine look at what AI can do for your business.</p>
-    <a href="/" class="btn-primary">
+    <a href="/contact" class="btn-primary">
       Book a demo
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
@@ -815,9 +820,9 @@ if (window.innerWidth > 768) {
     </div>
     <h4 class="footer-heading">Quick Links</h4>
     <nav class="footer-nav">
+      <a href="/" class="footer-link">Home</a>
       <a href="/about" class="footer-link">About Us</a>
-      <a href="/" class="footer-link">How It Works</a>
-      <a href="/projects" class="footer-link">Projects</a>
+      <a href="/contact" class="footer-link">Contact</a>
     </nav>
     <div class="footer-divider"></div>
     <div class="footer-bottom">
@@ -833,7 +838,7 @@ if (window.innerWidth > 768) {
 <script>
 // Nav scroll
 (function() {
-  var nav = document.getElementById('nav');
+  var nav = document.getElementById('mainNav');
   function check() {
     if (window.scrollY > 30) {
       nav.classList.remove('at-top');

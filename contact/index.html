@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Valae</title>
+  <meta name="description" content="Get in touch with Valae. Book a 15-minute demo and discover how Step Zero can organise your business knowledge into an AI-ready foundation.">
+  <link rel="canonical" href="https://valae.ai/contact">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://valae.ai/contact">
+  <meta property="og:title" content="Contact — Valae">
+  <meta property="og:description" content="Book a 15-minute demo and discover how Step Zero can organise your business knowledge into an AI-ready foundation.">
+  <meta property="og:image" content="https://valae.ai/assets/logos/valae_social_image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/png" href="../assets/logos/valaestar_logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SS9FY3PEJM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SS9FY3PEJM');
+  </script>
+
+  <style>
+@font-face { font-family: 'Brother 1816'; font-weight: 300; font-style: normal; font-display: swap; src: url('../fonts/Brother 1816/Brother-1816-Font/Brother-1816-Light.woff2') format('woff2'); }
+@font-face { font-family: 'Brother 1816'; font-weight: 400; font-style: normal; font-display: swap; src: url('../fonts/Brother 1816/Brother-1816-Font/Brother-1816-Regular.woff2') format('woff2'); }
+@font-face { font-family: 'Brother 1816'; font-weight: 400; font-style: italic; font-display: swap; src: url('../fonts/Brother 1816/Brother-1816-Font/Brother-1816-Regular-Italic.woff2') format('woff2'); }
+@font-face { font-family: 'Brother 1816'; font-weight: 500; font-style: normal; font-display: swap; src: url('../fonts/Brother 1816/Brother-1816-Font/Brother-1816-Medium.woff2') format('woff2'); }
+@font-face { font-family: 'Brother 1816'; font-weight: 600; font-style: normal; font-display: swap; src: url('../fonts/Brother 1816/Brother-1816-Font/Brother-1816-Bold.woff2') format('woff2'); }
+@font-face { font-family: 'Brother 1816'; font-weight: 700; font-style: normal; font-display: swap; src: url('../fonts/Brother 1816/Brother-1816-Font/Brother-1816-Extra-Bold.woff2') format('woff2'); }
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --forest: #003017;
+  --forest-deep: #001a0d;
+  --forest-mid: #002a14;
+  --pistachio: #BAD9A8;
+  --pistachio-light: #d4eac6;
+  --pistachio-dim: rgba(186,217,168,0.15);
+  --offwhite: #DFDCD7;
+  --charcoal: #1A1D1B;
+  --bg: #FAFAF7;
+  --bg-warm: #F5F2ED;
+  --white: #ffffff;
+  --max-w: 1100px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --font-display: 'Unbounded', sans-serif;
+  --font-body: 'Brother 1816', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--forest);
+  color: var(--charcoal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  margin: 0;
+}
+
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; height: auto; display: block; }
+
+/* NAV */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 0 40px; transition: all 0.4s ease;
+}
+.nav.at-top { background: transparent; }
+.nav.scrolled {
+  background: rgba(0,48,23,0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(186,217,168,0.15);
+}
+.nav-inner {
+  max-width: var(--max-w); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; height: 64px;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 12px;
+  color: var(--pistachio);
+}
+.nav-brand-mark {
+  width: 32px; height: 32px; flex-shrink: 0;
+}
+.nav-brand-wordmark {
+  display: flex; flex-direction: column; gap: 2px;
+}
+.nav-brand-name {
+  font-family: var(--font-display); font-weight: 600; font-size: 22px;
+  color: var(--pistachio); letter-spacing: -0.5px; line-height: 1;
+}
+.nav-brand-sub {
+  font-family: var(--font-display); font-weight: 300; font-size: 10px;
+  color: rgba(186,217,168,0.45); letter-spacing: 1.5px; text-transform: uppercase; line-height: 1;
+}
+.nav-links {
+  display: flex; align-items: center; gap: 32px;
+}
+.nav-link {
+  font-size: 14px; font-weight: 500;
+  color: rgba(186,217,168,0.55);
+  transition: color 0.2s ease;
+  letter-spacing: -0.1px;
+}
+.nav-link:hover { color: var(--pistachio); }
+.nav-link.active { color: var(--pistachio); font-weight: 600; }
+.nav-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 22px; border-radius: 8px;
+  background: var(--pistachio); color: var(--forest);
+  font-weight: 600; font-size: 14px; letter-spacing: -0.2px;
+  transition: all 0.3s ease; cursor: pointer; border: none;
+  font-family: var(--font-body);
+}
+.nav-cta:hover { background: var(--pistachio-light); transform: translateY(-1px); }
+
+/* PAGE CONTAINER */
+.page { display: none; }
+.page.active { display: block; }
+
+/* FORM PAGE */
+.form-page {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--forest);
+  padding: 80px 40px;
+  position: relative; overflow: hidden;
+}
+.form-page::after {
+  content: ''; position: absolute; inset: 0; opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.form-card {
+  position: relative; z-index: 1;
+  background: rgba(0,32,14,0.5);
+  border: 1px solid rgba(186,217,168,0.12);
+  border-radius: 24px;
+  padding: 56px 48px;
+  max-width: 540px; width: 100%;
+  backdrop-filter: blur(20px);
+}
+.form-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--pistachio); opacity: 0.5;
+  margin-bottom: 16px;
+}
+.form-title {
+  font-family: var(--font-display);
+  font-size: 28px; font-weight: 600;
+  color: var(--offwhite);
+  letter-spacing: -1px;
+  margin-bottom: 8px;
+}
+.form-sub {
+  font-size: 16px; line-height: 1.65;
+  color: rgba(223,220,215,0.5);
+  margin-bottom: 36px;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+.form-label {
+  display: block;
+  font-size: 14px; font-weight: 600;
+  color: rgba(223,220,215,0.6);
+  margin-bottom: 8px; letter-spacing: 0.3px;
+}
+.form-input {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(186,217,168,0.06);
+  border: 1.5px solid rgba(186,217,168,0.12);
+  border-radius: 10px;
+  color: var(--offwhite);
+  font-family: var(--font-body);
+  font-size: 16px;
+  transition: all 0.3s ease;
+  outline: none;
+}
+.form-input::placeholder { color: rgba(223,220,215,0.25); }
+.form-input:focus {
+  border-color: rgba(186,217,168,0.35);
+  background: rgba(186,217,168,0.08);
+  box-shadow: 0 0 0 3px rgba(186,217,168,0.08);
+}
+textarea.form-input {
+  resize: vertical; min-height: 100px;
+}
+.form-submit {
+  width: 100%;
+  padding: 16px;
+  background: var(--pistachio); color: var(--forest);
+  font-family: var(--font-body);
+  font-weight: 600; font-size: 16px;
+  border: none; border-radius: 12px;
+  cursor: pointer; transition: all 0.3s ease;
+  margin-top: 8px;
+}
+.form-submit:hover {
+  background: var(--pistachio-light);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(186,217,168,0.2);
+}
+.form-submit:disabled {
+  background: var(--pistachio);
+  color: var(--forest);
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+.form-progress {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 32px;
+}
+.form-progress-step {
+  width: 40px; height: 3px;
+  border-radius: 2px;
+  background: rgba(186,217,168,0.15);
+}
+.form-progress-step.active {
+  background: var(--pistachio);
+}
+
+/* BOOKING CONFIRMATION */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.confirm-page {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--forest);
+  padding: 80px 40px;
+  position: relative; overflow: hidden;
+  text-align: center;
+}
+.confirm-page::after {
+  content: ''; position: absolute; inset: 0; opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.confirm-content {
+  position: relative; z-index: 1;
+  max-width: 560px;
+}
+.confirm-icon {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: rgba(186,217,168,0.1);
+  border: 2px solid rgba(186,217,168,0.2);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 28px;
+  animation: float 3s ease-in-out infinite;
+}
+.confirm-title {
+  font-family: var(--font-display);
+  font-size: 32px; font-weight: 600;
+  color: var(--offwhite);
+  letter-spacing: -1.5px;
+  margin-bottom: 16px;
+}
+.confirm-sub {
+  font-size: 17px; line-height: 1.65;
+  color: rgba(223,220,215,0.55);
+  margin-bottom: 40px;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 36px;
+  background: var(--pistachio); color: var(--forest);
+  border: none; border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 16px; font-weight: 600;
+  letter-spacing: -0.2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  background: var(--pistachio-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(186,217,168,0.2);
+}
+
+/* FOOTER */
+.footer {
+  padding: 48px 40px 28px;
+  background: var(--forest-deep);
+  border-top: 1px solid rgba(186,217,168,0.06);
+}
+.footer-inner { max-width: var(--max-w); margin: 0 auto; }
+.footer-top {
+  display: flex; justify-content: space-between; gap: 60px;
+}
+.footer-left {
+  display: flex; flex-direction: column; gap: 20px;
+  max-width: 480px;
+}
+.footer-brand { display: flex; align-items: center; gap: 12px; }
+.footer-logo-placeholder {
+  height: 40px; width: auto; object-fit: contain;
+}
+.footer-description {
+  font-size: 14px; line-height: 1.7;
+  color: rgba(223,220,215,0.45);
+}
+.footer-icons {
+  display: flex; align-items: center; gap: 10px;
+}
+.footer-icons a {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; border-radius: 8px;
+  border: 1px solid rgba(186,217,168,0.12);
+  color: rgba(186,217,168,0.4);
+  transition: all 0.2s ease;
+}
+.footer-icons a:hover {
+  border-color: rgba(186,217,168,0.3);
+  color: var(--pistachio);
+}
+.footer-right {
+  display: flex; flex-direction: column; gap: 16px;
+  flex-shrink: 0;
+}
+.footer-heading {
+  font-family: var(--font-body);
+  font-size: 15px; font-weight: 700;
+  color: rgba(223,220,215,0.8);
+  letter-spacing: -0.2px;
+}
+.footer-nav {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.footer-link {
+  font-size: 14px; font-weight: 500;
+  color: rgba(186,217,168,0.5);
+  transition: color 0.2s ease;
+}
+.footer-link:hover { color: var(--pistachio); }
+.footer-divider {
+  height: 1px;
+  background: rgba(186,217,168,0.08);
+  margin: 36px 0 20px;
+}
+.footer-bottom {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-copyright {
+  font-size: 13px;
+  color: rgba(223,220,215,0.25);
+}
+.footer-legal { display: flex; gap: 24px; }
+.footer-legal-link {
+  font-size: 13px;
+  color: rgba(223,220,215,0.35);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(223,220,215,0.15);
+  transition: color 0.2s ease;
+}
+.footer-legal-link:hover {
+  color: var(--pistachio);
+  text-decoration-color: var(--pistachio);
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav { padding: 0 24px; }
+  .form-card { padding: 40px 28px; }
+  .footer-top { flex-direction: column; gap: 36px; }
+  .footer-left { align-items: center; text-align: center; }
+  .footer-right { align-items: center; text-align: center; }
+  .footer-nav { align-items: center; }
+  .footer-icons { justify-content: center; }
+  .footer-bottom { flex-direction: column; align-items: center; gap: 12px; text-align: center; }
+  .footer-legal { justify-content: center; }
+}
+  </style>
+</head>
+
+<script>
+if (window.innerWidth <= 768) {
+  document.documentElement.style.visibility = 'hidden';
+  fetch('/contact/mobile.html')
+    .then(function(r) { return r.text(); })
+    .then(function(html) {
+      document.open();
+      document.write(html);
+      document.close();
+    })
+    .catch(function() {
+      document.documentElement.style.visibility = '';
+    });
+}
+</script>
+
+<body>
+
+<!-- NAV -->
+<nav class="nav at-top" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <svg class="nav-brand-mark" width="32" height="32" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M60 8L104 34V86L60 112L16 86V34L60 8Z" fill="none" stroke="currentColor" stroke-width="4"/>
+        <path d="M60 28L88 44V76L60 92L32 76V44L60 28Z" fill="none" stroke="currentColor" stroke-width="3" opacity="0.5"/>
+        <circle cx="60" cy="60" r="8" fill="currentColor" opacity="0.7"/>
+      </svg>
+      <div class="nav-brand-wordmark">
+        <span class="nav-brand-name">Valae</span>
+        <span class="nav-brand-sub">AI BROUGHT DOWN TO EARTH</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/about" class="nav-link">About</a>
+      <a href="/contact" class="nav-link active">Contact</a>
+    </div>
+    <a href="/contact" class="nav-cta">
+      Book a demo
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</nav>
+
+<!-- FORM PAGE -->
+<div class="page active" id="page-form">
+  <div class="form-page">
+    <div class="form-card">
+      <div class="form-progress">
+        <div class="form-progress-step active"></div>
+        <div class="form-progress-step"></div>
+      </div>
+      <div class="form-badge">Step 1 of 2</div>
+      <h2 class="form-title">Tell us about yourself</h2>
+      <p class="form-sub">We'll review this before the call so we can hit the ground running.</p>
+
+      <form id="qualForm" onsubmit="handleFormSubmit(event)">
+        <div class="form-group">
+          <label class="form-label">Your name</label>
+          <input type="text" id="formName" class="form-input" placeholder="Full name" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Company name</label>
+          <input type="text" id="formCompany" class="form-input" placeholder="Your company" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email address</label>
+          <input type="email" id="formEmail" class="form-input" placeholder="you@company.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Biggest operational pain point <span style="font-weight:400;opacity:0.5;">(optional)</span></label>
+          <textarea id="formPainPoint" class="form-input" placeholder="Where does your team lose the most time? What's frustrating?"></textarea>
+        </div>
+        <button type="submit" class="form-submit">
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- BOOKING CONFIRMATION -->
+<div class="page" id="page-booking">
+  <div class="confirm-page">
+    <div class="confirm-content">
+      <div class="confirm-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#BAD9A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h2 class="confirm-title">Thank you!</h2>
+      <p class="confirm-sub">We've received your information and will be in touch within 24 hours. If you'd like, you can also book a 15-minute intro call right now.</p>
+
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 16px; margin-top: 8px;">
+        <a href="https://calendly.com/daniel-whytock-valae/15-minute-demo-step-zero-by-valae?month=2026-02" target="_blank" class="btn-primary" style="font-size:16px; padding: 16px 36px; text-decoration: none;">
+          Book a 15-minute call →
+        </a>
+        <button onclick="showPage('form')" style="font-size:14px; padding: 12px 28px; background: none; border: 1px solid rgba(186,217,168,0.2); border-radius: 999px; color: rgba(223,220,215,0.5); cursor: pointer; font-family: var(--font-body); transition: all 0.2s ease;">
+          ← Back to form
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-left">
+        <div class="footer-brand">
+          <img class="footer-logo-placeholder" src="../assets/logos/Valae-WM-Pistachio.png" alt="Valae">
+        </div>
+        <p class="footer-description">Valae's Step Zero organises your scattered knowledge into an AI brain, powering assistants, automations, chatbots, and more.</p>
+        <div class="footer-icons">
+          <a href="mailto:info@valae.ai" aria-label="Email">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/valae-ai/" target="_blank" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-right">
+        <h4 class="footer-heading">Quick Links</h4>
+        <nav class="footer-nav">
+          <a href="/" class="footer-link">Home</a>
+          <a href="/about" class="footer-link">About Us</a>
+          <a href="/contact" class="footer-link">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+      <div class="footer-copyright">&copy; 2026 Valae B.V. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="#" class="footer-legal-link">Privacy Policy</a>
+        <a href="#" class="footer-legal-link">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Page navigation
+function showPage(page) {
+  document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
+  document.getElementById('page-' + page).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+// Form submission → Attio lead creation
+function handleFormSubmit(e) {
+  e.preventDefault();
+  var btn = e.target.querySelector('.form-submit');
+  btn.disabled = true;
+  btn.textContent = 'Submitting…';
+
+  var payload = {
+    fullName: document.getElementById('formName').value.trim(),
+    company: document.getElementById('formCompany').value.trim(),
+    email: document.getElementById('formEmail').value.trim(),
+    painPoint: document.getElementById('formPainPoint').value.trim() || undefined,
+  };
+
+  fetch('/api/leads', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  })
+    .then(function(res) {
+      if (!res.ok) return res.json().catch(function() { return {}; }).then(function(b) { throw new Error(b.error || 'Server error ' + res.status); });
+      return res.json();
+    })
+    .then(function() {
+      window.location.href = 'https://calendly.com/daniel-whytock-valae/15-minute-demo-step-zero-by-valae?month=2026-02';
+    })
+    .catch(function(err) {
+      console.error('Form submission error:', err);
+      btn.disabled = false;
+      btn.textContent = 'Submit';
+      alert(err.message);
+    });
+}
+
+// Nav scroll behaviour
+(function() {
+  var nav = document.getElementById('nav');
+  function checkScroll() {
+    if (window.scrollY > 40) {
+      nav.classList.remove('at-top');
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.add('at-top');
+      nav.classList.remove('scrolled');
+    }
+  }
+  checkScroll();
+  window.addEventListener('scroll', checkScroll, { passive: true });
+})();
+</script>
+
+</body>
+</html>
