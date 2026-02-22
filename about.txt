@@ -85,7 +85,3 @@ Beyond the directors, Valae's team includes AI engineers with backgrounds in NLP
 **Partner / affiliation logo strip.** A separate "Partnered with" or "Featured in" row: Harvard, MIT, Google DeepMind, ElevenLabs, Microsoft, TechEx Global, Academy of Digital Industries, Delft University of Technology.
 
 **City skyline or map graphic.** Something subtle showing London, New York, Amsterdam — reinforcing the international presence without being heavy-handed. Could be as simple as three city names with dots on a minimal world map.
-
----
-
-Anything you want adjusted or expanded?

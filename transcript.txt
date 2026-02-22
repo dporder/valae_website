@@ -1,0 +1,26 @@
+0:00 I know communication can get lost in emails and messages, so I wanted to share a quick video with you to show you what Valet does with companies like Ikea and many more to implement effective AI strategies.
+0:14 Worst case scenario, you might learn something new, best case we can jump on a call and I can discuss in more detail.
+0:20 This diagram may look familiar, maybe you and your team, using AI such as ChatGBT and Claude independently to improve the work that you do, and then between you as a company, you update documents, you send emails, etc.
+0:35 And as you work on those pieces of information, they can be lost in the EFA. You don't know which is the latest version, you don't know who's working on what, and it's hard to contract company knowledge.
+0:44 On top of the people that use tools within a business, the study by MIT last year, tracked 30 billion pounds of spend, employing AI tools, and only 5% of those businesses deployed solutions into production and in a way that benefited their profit and loss.
+1:03 The problem is not the AI, so to speak, it's the workflow fit. So what valet aims to get clients through to deployment with is this initial phase of what we call step zero, and it allows us to create this kind of AI brain which you see in this diagram, which has access to all your information.
+1:21 Dan Porder on the left only is he an AI engineer, but he lectures at universities throughout Europe on AI engineering and strategy, no better person to be at the spearhead of a AI solutions business.
+1:34 Gleb Nan, product manager, the key person from taking a business from project initial scope through to deployment in a way that gives the client what they're expecting from the project.
+1:44 Myself, Daniel Whiteock, in the CEO of a seven-figure business, in the senior leadership of many more, and helped over a thousand businesses adopt new technologies over the past 10 years, which is why I love working with artificial intelligence.
+1:59 A few use cases for you. Mocha museum, 85% of the emails automated. They don't use Zendesk or any ticket in software.
+2:12 This was done deal with very detailed product specs and this allows them to get instant answers while serving a customer so they can be more reactive to making sounds.
+2:23 And then Ikea, we've already closed one project with them, reducing marketing research time by 20% and we are now building their customer face and chat bought across 25 of their country commerce sites.
+2:37 The 5% of successful businesses that deploy AI, it usually comes down to this what we call step zero phase where you get the knowledge base and this AI brain.
+2:47 And that usually comes down to mapping out all of the businesses' activities and where any data may be found. This could be emails, websites, internal chats that the company uses.
+2:58 It could even be things like WhatsApp, phone transcripts. And this is where we specialize. We have an elite team of engineers led by Dan Ordar who create things like knowledge graphs that go beyond me but they are the key kind of framework for successful knowledge-based creation and what I love about
+3:16 these tools, these knowledge bases is they grow with a business as new things happen, new emails come in, new knowledge is shared, then the AI brain learns with the company.
+3:26 This graph on the left, these are different data points that connect with each other. Each of those data points is an email, it's a piece of information on the website, etc.
+3:34 The system connects the relevant pieces together, about uses it as results for the AI brain. And then you can build into it things like this, which is an internal chatbot, where the team was looking for supplier information on cost of product, cost of shipment, et cetera.
+3:49 And then it gives the citations of where it's from. What can you do on top of a knowledge base or an AI brain?
+3:55 You can build things like customer facing AI solutions, email automation, phone call automation, WhatsApp chats, et cetera. response times can be within three seconds and you would be absolutely amazed that how correct these responses are.
+4:12 Coordination, heavy workflows, so if there's a standard operating procedure that you have, we would track that, we would map it out in terms of how that would work with automation and we could build that for you, freeing up your time, internal knowledge and decision-making and then customer-facing interactions
+4:27 , work accuracy and consistency matter. So this is all about tone of voice and branding. So great AI is not really detectable when you're communicating with it.
+4:36 Bad AI is this gives that real life nature to it. Even if you did say virtual assistant in the signature.
+4:46 So that's Valle. We are an AI implementation agency, ran by engineers and we would love the opportunity to discuss with you in more detail about how we might be able to help your business in 2026.
+4:58 We are bringing these enterprise-grade solutions such as the Ikea projects to SMEs and mid-market businesses at much lower cost.
+5:08 So if you're interested, please book in a call. I would love to speak with you.

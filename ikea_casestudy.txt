@@ -1,0 +1,91 @@
+## IKEA — Case Study Brief for Web Copywriter
+
+### Client overview
+
+IKEA needs no introduction. It's the world's largest furniture retailer, operating in 63 countries with billions in annual revenue. Behind the scenes, IKEA runs one of the most ambitious AI chatbot programmes in retail: Billie, a generative AI-powered customer service chatbot that has handled over 3.2 million interactions so far and enabled the reskilling of 8,500 call centre workers into interior design advisors. Billie serves millions of customers across dozens of markets and languages, 24/7.
+
+Valae was brought in to make Billie smarter.
+
+### The problem
+
+Billie is one of retail's most high-profile AI deployments. But scale creates its own problems, and at IKEA's scale, those problems compound fast.
+
+**The chatbot's intelligence needed dedicated ownership.** Billie's behaviour is driven by a layered system of prompts — system prompts, tool-planning prompts, response generation prompts, and quality-checking judge prompts. At the scale of a global chatbot serving 63 markets, these prompt systems grow organically and become increasingly complex. Improving them requires dedicated ownership, rigorous evaluation methods, and a systematic approach to measuring the impact of every change. IKEA had proven internally that focused prompt work could deliver significant containment improvements. The challenge was applying that level of care systematically across all topics and markets.
+
+**Quality infrastructure needed to be connected.** IKEA had built valuable pieces of quality infrastructure — scoring systems, validation tools, monitoring dashboards — but they existed as separate efforts. Connecting them into a continuous feedback loop — where production issues are automatically surfaced, prioritised, fixed, and validated — was the missing piece. At the scale of millions of conversations, that feedback loop is the difference between improving and guessing.
+
+**Classification was leaking value.** When a customer message arrives, the system must decide what the customer wants before it can help them. Misclassification — routing a delivery question into a returns flow, for example — cascades into wrong answers, unnecessary escalations to human agents, confused customers, and contaminated quality data. Getting classification right is foundational to everything else.
+
+**Support conversations were leaving money on the table.** Customers routinely signal purchase intent inside support conversations — asking about product dimensions, kitchen planning services, or "where can I buy this." The chatbot treated these as support queries, resolved them, and moved on. There was no mechanism to detect buying intent, route customers toward conversion, or measure whether the chatbot was driving revenue. Billie was a cost-reduction tool. It hadn't yet become a revenue-generation tool.
+
+**Knowledge at scale was becoming unsustainable.** With content spanning 63 markets, dozens of languages, and years of accumulated documentation, the chatbot's knowledge base was manually maintained and couldn't automatically update when underlying information changed. As more topics went live in more markets, content risked going quietly stale — producing wrong answers that were hard to detect because they used to be right. The knowledge foundation that the chatbot draws from needed the same kind of structuring, monitoring, and continuous care that Valae applies to every AI brain it builds.
+
+### Why Valae
+
+Valae brings deep experience building AI systems for complex, multi-market organisations — and specific technical expertise in the areas IKEA needed most: AI agent engineering, knowledge architecture, evaluation systems, and data science. Valae won a contract to supply AI specialists to the Billie programme, and is now embedded within IKEA's global GenAI chatbot team. Where other case studies show Valae building AI tools from scratch, IKEA shows Valae making an existing, world-class AI system measurably better.
+
+### What Valae is building
+
+**Prompt architecture ownership.** Valae is leading the restructuring of Billie's entire prompt system — auditing all production prompts, mapping interdependencies, documenting conflicts, and rebuilding toward smaller, modular, intent-specific prompts. This is the single biggest lever for chatbot quality: prompts touch everything the customer experiences. The goal is a continuous improvement cycle where production conversations are systematically sampled, failure modes identified, prompts revised, and changes validated before they reach customers.
+
+**Quality evaluation and monitoring systems.** Valae is building the feedback loop that connects monitoring to action. This means productionising conversation clustering and failure-mode detection at scale, creating prioritised fix lists that feed directly into prompt work, and developing quantitative before/after evaluation methods so that every prompt change can be proven better, worse, or neutral before it goes live. The team is also working to improve the AI judges — the quality-checking layer that catches bad answers before they reach customers — by aligning them to human evaluators and exploring faster, lighter models that maintain accuracy at lower latency.
+
+**Conversational commerce: from support to sales.** Valae is building a support-to-sales bridge that detects purchase signals in customer conversations and routes them toward conversion. The approach starts narrow — identifying buying-intent heuristics (product questions, configuration queries, "where can I buy" language), routing to high-conversion pages, logging sales leads for high-value categories like kitchens and home organisation, and measuring chatbot-to-conversion rates in collaboration with IKEA's CRO team. This shifts Billie's narrative from cost centre to revenue engine.
+
+**Voice AI.** Valae is contributing to IKEA's expansion of Billie into voice-based customer service — a new channel that requires different prompting strategies, tighter latency management, and new approaches to making AI sound human.
+
+**Knowledge architecture at scale.** Underlying all of this, Valae is applying its Step Zero methodology to IKEA's knowledge challenge. At enterprise scale, the AI brain isn't built once — it's an ongoing engine. Valae is designing automated pipelines that detect when source content changes, flag stale documents, generate draft updates for human review, and check for terminology drift across markets. This prevents the maintenance cliff that threatens any AI system scaling across 63 countries and dozens of languages, and ensures the foundation the chatbot draws from stays accurate, current, and trustworthy — the same principle that drives every Valae project, applied at a scale few companies ever reach.
+
+**Intent classification with small language models.** Valae has already demonstrated that small, fast language models can dramatically outperform the existing classification system. In early experiments across 1,000 production conversations, Valae achieved over 80% classification accuracy at sub-400ms latency. Better classification means fewer wrong answers, fewer unnecessary escalations, and cleaner data for everything else. This work feeds directly into the broader quality improvement engine.
+
+### Results and impact
+
+- **Prompt architecture overhaul** underway across all production prompts — system, tool planner, response generation, and judge layers
+- **Quality monitoring system** being built to surface failure modes continuously across millions of conversations
+- **Conversational commerce** workstream active, with buying-intent detection and conversion routing in development for high-value categories
+- **80%+ intent classification accuracy** achieved in early SLM experiments — a transformative improvement over the existing system, at sub-400ms latency
+- **Voice AI contribution** supporting IKEA's expansion into voice-based customer service
+- **Knowledge pipelines** designed to keep the AI brain current across 63 markets — automated staleness detection, source change monitoring, and terminology consistency enforcement
+
+### Headline stat for the website card
+
+**From support to sales** (primary headline)
+*Improving the AI chatbot behind 3.2M+ conversations across 63 countries* (subtitle)
+
+### Narrative angles to emphasise
+
+- **The biggest brand on the roster.** This is Valae working on one of the world's most recognised brands, on one of the most high-profile AI chatbot deployments in retail. That alone is a credibility signal that will resonate with every prospective client who reads this.
+
+- **Step Zero at enterprise scale.** At IKEA's scale, the "AI brain" isn't a one-time build — it's a living system that needs continuous structuring, monitoring, and quality management. The same philosophy that drives Mango and Moco drives this work, just at a fundamentally different scale. Valae's Step Zero methodology scales from a 10-person CS team to a global retail operation.
+
+- **From cost centre to revenue engine.** The conversational commerce angle is the most forward-looking and exciting part of the story. It reframes what an AI chatbot can be — not just a tool that saves money, but one that makes money. This is the kind of vision that prospective clients want to hear.
+
+- **Making the best better.** This isn't a greenfield build — it's improving an existing, world-class system. That's a different and arguably harder challenge, and it demonstrates that Valae can operate at the highest level of enterprise AI, not just build from scratch for smaller clients.
+
+- **Contrast with Mango and Moco.** Mango: internal knowledge assistant. Moco: email automation. IKEA: enterprise-scale chatbot optimisation and conversational commerce. Three completely different tools, same underlying philosophy — structure the knowledge, build the intelligence, measure the impact.
+
+### Scope of work tags
+
+**AI Chatbot Optimisation / Prompt Engineering / Conversational Commerce / Data Science**
+
+### Suggested visuals
+
+1. **Scale graphic** — a world map or grid showing Billie's 63-country footprint, with data points on volume (millions of conversations, languages supported). Sets the scale immediately.
+
+2. **Prompt architecture diagram** — a clean visual showing the layers of Billie's prompt system (system prompt → tool planner → response generation → judge layer) with Valae's ownership marked. Shows technical depth without requiring technical knowledge.
+
+3. **Quality feedback loop** — a circular diagram: Monitor conversations → Detect failure modes → Prioritise fixes → Revise prompts → Evaluate impact → Deploy → Monitor again. Shows the systematic approach.
+
+4. **Support-to-sales flow** — Customer asks "How wide is this bed?" → AI detects buying intent → Routes to high-conversion page / Logs sales lead / Hands off to human closer. Shows the vision.
+
+5. **Timeline / phasing graphic** — Immediate: Prompt ownership + Quality monitoring → Active: Conversational commerce → Ongoing: Knowledge architecture at scale. Shows progression and long-term relationship.
+
+### Tone and style notes for copywriter
+
+- This case study should feel weightier than Mango and Moco — bigger brand, bigger scale, bigger ambition
+- Lead with IKEA's scale and Billie's public profile to establish credibility immediately
+- Keep language accessible — avoid jargon like "SLM," "Dialogflow," "Langfuse." Instead: "small, fast AI models," "classification system," "monitoring infrastructure"
+- The tone should be confident and assured — Valae is inside one of the world's biggest AI programmes, not pitching from the outside
+- Don't oversell results — this is an ongoing engagement. Use active present tense ("is building," "is leading," "is designing") and let the scale and brand do the heavy lifting
+- Connect back to the Step Zero / AI brain narrative but don't force it — a sentence or two tying the knowledge work to the broader philosophy is enough
+- Do not include any attributed or anonymous quotes
