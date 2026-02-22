@@ -204,6 +204,20 @@ img { max-width: 100%; height: auto; display: block; }
   box-shadow: 0 0 0 3px rgba(186,217,168,0.08);
 }
 textarea.form-input { resize: vertical; min-height: 100px; }
+.form-error {
+  display: none;
+  font-size: 13px; line-height: 1.5;
+  color: #f87171;
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: rgba(248, 113, 113, 0.08);
+  border: 1px solid rgba(248, 113, 113, 0.2);
+  border-radius: 10px;
+}
+.form-error.visible { display: block; }
+.form-input.error {
+  border-color: rgba(248, 113, 113, 0.5);
+}
 .form-submit {
   width: 100%; padding: 16px;
   background: var(--pistachio); color: var(--forest);
@@ -381,6 +395,7 @@ if (window.innerWidth > 768) {
           <label class="form-label">Biggest operational pain point <span style="font-weight:400;opacity:0.5;">(optional)</span></label>
           <textarea id="formPainPoint" class="form-input" placeholder="Where does your team lose the most time? What's frustrating?"></textarea>
         </div>
+        <p class="form-error" id="formError"></p>
         <button type="submit" class="form-submit">Submit</button>
       </form>
     </div>
@@ -449,8 +464,23 @@ function showPage(page) {
 }
 
 /* Form submission */
+function showFormError(msg) {
+  var el = document.getElementById('formError');
+  if (!el) return;
+  el.textContent = msg;
+  el.classList.add('visible');
+}
+function clearFormError() {
+  var el = document.getElementById('formError');
+  if (!el) return;
+  el.classList.remove('visible');
+  document.getElementById('formEmail').classList.remove('error');
+}
+
 function handleFormSubmit(e) {
   e.preventDefault();
+  clearFormError();
+
   var btn = e.target.querySelector('.form-submit');
   btn.disabled = true;
   btn.textContent = 'Submitting\u2026';
@@ -478,9 +508,23 @@ function handleFormSubmit(e) {
       console.error('Form submission error:', err);
       btn.disabled = false;
       btn.textContent = 'Submit';
-      alert(err.message);
+
+      var msg = err.message || '';
+      if (msg.toLowerCase().indexOf('email') !== -1 || msg.toLowerCase().indexOf('invalid') !== -1) {
+        document.getElementById('formEmail').classList.add('error');
+        showFormError('Please enter a valid email address (e.g. you@company.com).');
+      } else {
+        showFormError('Something went wrong. Please try again or reach us directly at info@valae.ai.');
+      }
     });
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+  var emailInput = document.getElementById('formEmail');
+  if (emailInput) {
+    emailInput.addEventListener('input', clearFormError);
+  }
+});
 
 /* Nav scroll */
 (function() {
