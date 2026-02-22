@@ -1005,15 +1005,15 @@ if (window.innerWidth <= 768) {
     reset();
     steps[0].classList.add('is-visible');
     var d = 0;
-    delay(function() { reveal(steps[1]); }, d += 1800);
-    delay(function() { reveal(steps[2]); }, d += 1200);
+    delay(function() { reveal(steps[1]); }, d += 1500);
+    delay(function() { reveal(steps[2]); }, d += 1000);
     delay(function() {
       steps[2].classList.remove('is-visible');
       reveal(steps[3]);
-    }, d += 1800);
-    delay(function() { reveal(steps[4]); }, d += 800);
-    delay(function() { reveal(steps[5]); }, d += 1200);
-    delay(run, d += 4500);
+    }, d += 900);
+    delay(function() { reveal(steps[4]); }, d += 500);
+    delay(function() { reveal(steps[5]); }, d += 600);
+    delay(run, d += 8000);
   }
 
   if ('IntersectionObserver' in window) {

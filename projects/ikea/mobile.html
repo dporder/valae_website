@@ -166,16 +166,17 @@
       fill: rgba(186,217,168,0.35);
     }
 
-    /* Workstream cards — vertical stack */
+    /* Workstream cards — 2×3 compact grid */
     .m-ws-grid {
-      display: flex; flex-direction: column;
-      gap: 12px; margin-top: 28px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 10px; margin-top: 28px;
     }
     .m-ws-card {
-      padding: 22px 20px; border-radius: 12px;
+      padding: 18px 12px; border-radius: 12px;
       background: rgba(0,48,23,0.04);
       border: 1px solid rgba(0,48,23,0.06);
-      display: flex; gap: 16px; align-items: flex-start;
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      gap: 10px;
     }
     .m-ws-icon {
       width: 38px; height: 38px; border-radius: 10px;
@@ -184,8 +185,8 @@
     }
     .m-ws-icon svg { width: 18px; height: 18px; color: var(--pistachio); }
     .m-ws-text { flex: 1; }
-    .m-ws-title { font-weight: 600; font-size: 15px; color: var(--charcoal); margin-bottom: 4px; }
-    .m-ws-body { font-size: 12.5px; line-height: 1.55; color: rgba(26,29,27,0.55); }
+    .m-ws-title { font-weight: 600; font-size: 13px; color: var(--charcoal); margin-bottom: 0; }
+    .m-ws-body { display: none; }
 
     /* Chatbot mockup — mobile (compact) */
     .billie-mock {
@@ -900,15 +901,15 @@ if (window.innerWidth > 768) {
     reset();
     steps[0].classList.add('is-visible');
     var d = 0;
-    delay(function() { reveal(steps[1]); }, d += 1800);
-    delay(function() { reveal(steps[2]); }, d += 1200);
+    delay(function() { reveal(steps[1]); }, d += 1500);
+    delay(function() { reveal(steps[2]); }, d += 1000);
     delay(function() {
       steps[2].classList.remove('is-visible');
       reveal(steps[3]);
-    }, d += 1800);
-    delay(function() { reveal(steps[4]); }, d += 800);
-    delay(function() { reveal(steps[5]); }, d += 1200);
-    delay(run, d += 4500);
+    }, d += 900);
+    delay(function() { reveal(steps[4]); }, d += 500);
+    delay(function() { reveal(steps[5]); }, d += 600);
+    delay(run, d += 8000);
   }
 
   if ('IntersectionObserver' in window) {
