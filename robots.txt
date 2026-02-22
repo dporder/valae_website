@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /projects/ikea/index.html
+Disallow: /projects/ikea/mobile.html
