@@ -139,7 +139,8 @@
 <script>
 if (window.innerWidth <= 768) {
   document.documentElement.style.visibility = 'hidden';
-  fetch('/projects/mango-mobility/mobile.html')
+  var mobileHtmlUrl = '/projects/mango-mobility/mobile.html?v=20260223-2';
+  fetch(mobileHtmlUrl, { cache: 'no-store' })
     .then(function(r) { return r.text(); })
     .then(function(html) {
       document.open();

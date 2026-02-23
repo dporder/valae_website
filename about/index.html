@@ -801,7 +801,8 @@ img { max-width: 100%; height: auto; display: block; }
 <script>
 if (window.innerWidth <= 768) {
   document.documentElement.style.visibility = 'hidden';
-  fetch('/about/mobile.html')
+  var mobileHtmlUrl = '/about/mobile.html?v=20260223-2';
+  fetch(mobileHtmlUrl, { cache: 'no-store' })
     .then(function(r) { return r.text(); })
     .then(function(html) {
       document.open();
