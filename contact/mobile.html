@@ -343,7 +343,7 @@ if (window.innerWidth > 768) {
 <body>
 
 <!-- NAV -->
-<nav class="nav at-top" id="nav">
+<nav class="nav at-top" id="mainNav">
   <div class="nav-inner">
     <a href="/" class="nav-brand">
       <div class="nav-brand-wordmark">
@@ -532,7 +532,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* Nav scroll */
 (function() {
-  var nav = document.getElementById('nav');
+  var nav = document.getElementById('mainNav');
   function check() {
     if (window.scrollY > 30) {
       nav.classList.remove('at-top');
