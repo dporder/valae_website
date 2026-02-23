@@ -406,18 +406,7 @@ textarea.form-input {
 
 <script>
 if (window.innerWidth <= 768) {
-  document.documentElement.style.visibility = 'hidden';
-  var mobileHtmlUrl = '/contact/mobile.html?v=20260223-2';
-  fetch(mobileHtmlUrl, { cache: 'no-store' })
-    .then(function(r) { return r.text(); })
-    .then(function(html) {
-      document.open();
-      document.write(html);
-      document.close();
-    })
-    .catch(function() {
-      document.documentElement.style.visibility = '';
-    });
+  window.location.replace('/contact/mobile.html?v=20260223-3');
 }
 </script>
 
