@@ -274,6 +274,11 @@ a { text-decoration: none; color: inherit; }
   font-size: 16px; line-height: 1.65; color: rgba(223,220,215,0.7);
   margin: 0 auto 32px; font-weight: 400;
 }
+.hero-stat-line {
+  font-size: 13px; color: rgba(223,220,215,0.55);
+  margin-top: 24px; text-align: center; max-width: 100%; padding: 0 16px;
+  font-weight: 400; line-height: 1.5;
+}
 .btn-primary {
   display: inline-flex; align-items: center; gap: 10px;
   padding: 14px 28px;
@@ -1163,13 +1168,7 @@ if (window.innerWidth > 768) {
 <nav class="nav at-top" id="mainNav">
   <div class="nav-inner">
     <a href="#" class="nav-brand" onclick="showPage('product')">
-      <div class="nav-brand-wordmark">
-        <span class="nav-brand-name">Step Zero</span>
-        <div class="nav-brand-sub-row">
-          <span class="nav-brand-sub">BY</span>
-          <img src="assets/logos/valae_logo.png" alt="Valae Logo" style="height: 14px; transform: translateY(-1px);">
-        </div>
-      </div>
+      <img src="assets/logos/Valae-WM-Pistachio.png" alt="Valae" style="height: 32px; width: auto; object-fit: contain;">
     </a>
     <div class="nav-right">
       <a href="/contact" class="nav-cta" onclick="gtag('event', 'cta_click', { button_name: 'header_book_demo' });">
@@ -1184,6 +1183,7 @@ if (window.innerWidth > 768) {
 </nav>
 <div class="nav-drawer" id="navDrawer">
   <a href="/" class="nav-drawer-link active">Home <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  <a href="/step-zero" class="nav-drawer-link">Step Zero <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
   <a href="/about" class="nav-drawer-link">About <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
   <a href="/contact" class="nav-drawer-link">Contact <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 </div>
@@ -1203,13 +1203,14 @@ if (window.innerWidth > 768) {
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1 class="fade-up fade-up-d1">One <em>AI brain</em>,<br>every AI tool you'll ever need</h1>
-      <p class="hero-sub fade-up fade-up-d2">Step Zero organises your messy docs, spreadsheets, emails and more into an AI brain, then plugs in tools for fast ROI.</p>
+      <p class="hero-sub fade-up fade-up-d2">Valae structures your messy docs, spreadsheets, emails and more into a connected knowledge base, then deploys AI tools on top.</p>
       <div class="fade-up fade-up-d3">
         <a href="/contact" class="btn-primary" onclick="gtag('event', 'cta_click', { button_name: 'hero_book_demo' });" style="text-decoration:none;">
           Book a demo
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
+      <p class="hero-stat-line fade-up fade-up-d4">Moco Museum automated 92% of customer comms. Reply time reduced from 3 days to 3 minutes.</p>
     </div>
   </section>
 
@@ -1242,6 +1243,10 @@ if (window.innerWidth > 768) {
         <div class="section-label">How it works</div>
         <h2 class="section-title">Your files go in.<br><em>Your AI brain comes out</em></h2>
         <p class="section-sub">Your AI tools should know everything about your business. That's why Step Zero converts your files into an AI brain.</p>
+        <a href="/step-zero" class="btn-primary" onclick="gtag('event', 'cta_click', { button_name: 'how_it_works_step_zero' });" style="margin-top: 24px; text-decoration: none; display: inline-flex; align-self: center;">
+          Learn more about Step Zero
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
 
       <div class="pipeline-feature-cards">
@@ -1669,6 +1674,7 @@ Sarah</div>
       <h4 class="footer-heading">Quick Links</h4>
       <nav class="footer-nav">
         <a href="/" class="footer-link">Home</a>
+        <a href="/step-zero" class="footer-link">Step Zero</a>
         <a href="/about" class="footer-link">About Us</a>
         <a href="/contact" class="footer-link">Contact</a>
       </nav>

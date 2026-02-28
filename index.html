@@ -13,7 +13,7 @@
   gtag('config', 'G-SS9FY3PEJM');
 </script>
 <title>Valae - AI brought down to earth</title>
-<meta name="description" content="Step Zero organises your messy docs, spreadsheets, emails and more into an AI-ready foundation, then builds tools for fast ROI. Knowledge assistants, email automation, sales chatbots. Measurable results in weeks, not months.">
+<meta name="description" content="Valae structures your messy docs, spreadsheets, emails, and more, then deploys AI tools on top. Knowledge assistants, email automation, sales chatbots. Measurable results in weeks, not months.">
 <link rel="canonical" href="https://valae.ai">
 
 <meta property="og:type" content="website">
@@ -262,6 +262,11 @@ a { text-decoration: none; color: inherit; }
   display: flex; align-items: center; justify-content: center; gap: 16px;
   flex-wrap: wrap;
 }
+.hero-stat-line {
+  font-size: 14px; color: rgba(223,220,215,0.55);
+  margin-top: 28px; text-align: center; max-width: 520px; margin-left: auto; margin-right: auto;
+  font-weight: 400; line-height: 1.5;
+}
 .btn-primary {
   display: inline-flex; align-items: center; gap: 10px;
   padding: 16px 32px;
@@ -403,6 +408,108 @@ a { text-decoration: none; color: inherit; }
   border-radius: 6px;
   font-size: 13px; font-weight: 500;
   color: var(--forest);
+}
+
+/* --- WHO THIS IS FOR --- */
+.section-audience {
+  padding: 100px 0 132px;
+  background: var(--bg);
+  position: relative; overflow: hidden;
+}
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.audience-grid > :nth-child(2),
+.audience-grid > :nth-child(5) {
+  margin-top: 36px;
+}
+.audience-card {
+  background: var(--white);
+  border-radius: 18px;
+  padding: 34px 28px 30px;
+  position: relative; overflow: hidden;
+  border: 1.5px solid rgba(0,48,23,0.04);
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s var(--ease), border-color 0.4s ease, box-shadow 0.4s ease;
+}
+.audience-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.audience-card:nth-child(1).is-visible { transition-delay: 0s; }
+.audience-card:nth-child(2).is-visible { transition-delay: 0.08s; }
+.audience-card:nth-child(3).is-visible { transition-delay: 0.16s; }
+.audience-card:nth-child(4).is-visible { transition-delay: 0.24s; }
+.audience-card:nth-child(5).is-visible { transition-delay: 0.32s; }
+.audience-card:nth-child(6).is-visible { transition-delay: 0.40s; }
+.audience-card:hover {
+  border-color: rgba(0,48,23,0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 16px 48px rgba(0,48,23,0.06);
+}
+.audience-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 20px; bottom: 20px;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+}
+.audience-card:nth-child(1)::before { background: #7BE0AD; }
+.audience-card:nth-child(2)::before { background: #64B5F6; }
+.audience-card:nth-child(3)::before { background: #FFB74D; }
+.audience-card:nth-child(4)::before { background: #CE93D8; }
+.audience-card:nth-child(5)::before { background: #EF9A9A; }
+.audience-card:nth-child(6)::before { background: #80CBC4; }
+.audience-initial {
+  position: absolute;
+  top: -12px; right: -6px;
+  font-family: var(--font-display);
+  font-size: 110px;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(0,48,23,0.025);
+  pointer-events: none;
+  user-select: none;
+}
+.audience-role {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.audience-card:nth-child(1) .audience-role { color: #5ab88d; }
+.audience-card:nth-child(2) .audience-role { color: #4a9ad8; }
+.audience-card:nth-child(3) .audience-role { color: #c88020; }
+.audience-card:nth-child(4) .audience-role { color: #9a6aaf; }
+.audience-card:nth-child(5) .audience-role { color: #c07070; }
+.audience-card:nth-child(6) .audience-role { color: #4a9a90; }
+.audience-quote {
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--charcoal);
+  margin-bottom: 16px;
+  font-weight: 500;
+  padding-left: 16px;
+  position: relative;
+}
+.audience-quote::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 2px; bottom: 2px;
+  width: 2px;
+  background: rgba(0,48,23,0.06);
+  border-radius: 1px;
+}
+.audience-answer {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(26,29,27,0.42);
 }
 
 /* --- TIERS (Fold 3) --- */
@@ -2195,17 +2302,12 @@ if (window.innerWidth <= 768) {
      ================================================================ -->
 <nav class="nav at-top" id="mainNav">
   <div class="nav-inner">
-    <a href="#" class="nav-brand" onclick="showPage('product')" style="gap: 0;">
-      <div class="nav-brand-wordmark" style="gap: 2px;">
-        <span class="nav-brand-name" style="font-size: 22px;">Step Zero</span>
-        <div style="display: flex; align-items: center; gap: 6px;">
-          <span class="nav-brand-sub" style="font-size: 11px;">BY</span>
-          <img src="assets/logos/valae_logo.png" alt="Valae Logo" style="height: 16px; transform: translateY(-2px);">
-        </div>
-      </div>
+    <a href="#" class="nav-brand" onclick="showPage('product')">
+      <img src="assets/logos/Valae-WM-Pistachio.png" alt="Valae" style="height: 32px; width: auto; object-fit: contain;">
     </a>
     <div class="nav-links">
       <a href="/" class="nav-link active">Home</a>
+      <a href="/step-zero" class="nav-link">Step Zero</a>
       <a href="/about" class="nav-link">About</a>
       <a href="/contact" class="nav-link">Contact</a>
     </div>
@@ -2231,8 +2333,8 @@ if (window.innerWidth <= 768) {
     <div class="hero-overlay"></div>
     <canvas class="hero-static-canvas" id="heroStatic"></canvas>
     <div class="hero-content">
-<h1 class="fade-up fade-up-d1">One <em>AI brain</em>,<br>every AI tool you'll ever need</h1>
-      <p class="hero-sub fade-up fade-up-d2">Step Zero organises your messy docs, spreadsheets, emails and more into an AI brain, then plugs in tools for fast ROI.</p>
+<h1 class="fade-up fade-up-d1">You will be <em>left behind</em> unless you fix your data</h1>
+      <p class="hero-sub fade-up fade-up-d2">Valae structures your messy data into a connected knowledge layer, then deploys AI agents that understand your business fully.</p>
       <div class="hero-cta-wrap fade-up fade-up-d3">
         <a href="/contact" class="btn-primary" onclick="gtag('event', 'cta_click', { button_name: 'hero_book_demo' });">
           Book a demo
@@ -2240,13 +2342,14 @@ if (window.innerWidth <= 768) {
         </a>
         <a href="#how-it-works" class="btn-ghost">See how it works</a>
       </div>
+      <p class="hero-stat-line fade-up fade-up-d4">Moco Museum automated 92% of customer comms. Reply time reduced from 3 days to 3 minutes.</p>
     </div>
   </section>
 
   <!-- TRUSTED BY -->
   <section class="section-trusted">
     <div class="trusted-row">
-      <div class="trusted-label">Our team has supported</div>
+      <div class="trusted-label">We've helped</div>
       <div class="trusted-track-wrap">
         <div class="trusted-track">
           <div class="trusted-track-set">
@@ -2270,8 +2373,12 @@ if (window.innerWidth <= 768) {
       <div class="pipeline-hero">
         <div class="pipeline-hero-text">
           <div class="section-label">How it works</div>
-          <h2 class="section-title">Your files go in.<br><em>Your AI brain comes out</em></h2>
-          <p class="section-sub">Your AI tools should know everything about your business. That's why Step Zero converts your files into an AI brain.</p>
+          <h2 class="section-title">Operational infrastructure for companies that are <em>serious about AI</em></h2>
+          <p class="section-sub">Step Zero (our knowledge engine) reads your files and systems, maps the people, processes, and facts inside them, and connects it all. The result: a deep, permanent infrastructure for AI tools that don't just search your data, but understand how your entire business fits together.</p>
+          <a href="/step-zero" class="btn-primary" onclick="gtag('event', 'cta_click', { button_name: 'how_it_works_step_zero' });" style="margin-top: 24px; text-decoration: none; align-self: flex-start;">
+            Learn more about Step Zero
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
         </div>
         <div class="pipeline-hero-cards">
           <div class="kg-feature-card" style="flex-direction: row; align-items: center; gap: 20px;">
@@ -2363,7 +2470,7 @@ if (window.innerWidth <= 768) {
                     <circle cx="36" cy="66" r="3.5" class="brain-orbit-3"/>
                   </svg>
                 </div>
-                <div class="pipe-brain-name">AI brain</div>
+                <div class="pipe-brain-name">Knowledge graph</div>
                 <div class="pipe-brain-sub">Single source of truth</div>
               </div>
             </div>
@@ -2377,7 +2484,7 @@ if (window.innerWidth <= 768) {
   <section class="section-tools">
     <div class="container">
       <div class="section-label">One foundation. Any tool.</div>
-      <h2 class="section-title">The AI brain powers<br><em>whatever tools you want</em></h2>
+      <h2 class="section-title">Valae's knowledge layer powers<br><em>whatever tools you want</em></h2>
       <p class="section-sub">The foundation is the hard part. Once it's built, every tool you add runs on the same AI brain, faster and cheaper each time.</p>
       <!-- Three interface showcase cards -->
       <div class="tools-showcase">
@@ -2596,6 +2703,53 @@ Sarah</div>
     </div>
   </section>
 
+  <!-- WHO THIS IS FOR -->
+  <section class="section-audience">
+    <div class="container">
+      <div class="section-label">Who this is for</div>
+      <h2 class="section-title">Sound <em>familiar?</em></h2>
+      <p class="section-sub">We built Valae for teams that are tired of AI that doesn't understand their business. If you've said any of these, we should talk.</p>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <span class="audience-initial">S</span>
+          <div class="audience-role">Head of Customer Support</div>
+          <p class="audience-quote">We answer the same 50 questions every day. My team is drowning in tickets.</p>
+          <p class="audience-answer">Valae builds AI that handles 90%+ of routine enquiries — grounded in your actual products, policies, and history. Not generic chatbot fluff.</p>
+        </div>
+        <div class="audience-card">
+          <span class="audience-initial">O</span>
+          <div class="audience-role">COO / Head of Operations</div>
+          <p class="audience-quote">Our processes are documented across 40 systems. Onboarding new people takes weeks.</p>
+          <p class="audience-answer">Valae maps your entire operation into one connected knowledge layer. New hires get real answers in minutes, not weeks of shadowing.</p>
+        </div>
+        <div class="audience-card">
+          <span class="audience-initial">F</span>
+          <div class="audience-role">Founder / CEO</div>
+          <p class="audience-quote">We've tried three AI tools. None of them actually understood our business.</p>
+          <p class="audience-answer">Because they were generic. Valae builds AI on YOUR data, YOUR products, YOUR context. The difference is night and day.</p>
+        </div>
+        <div class="audience-card">
+          <span class="audience-initial">S</span>
+          <div class="audience-role">VP Sales</div>
+          <p class="audience-quote">My team spends more time searching for the right info than actually selling.</p>
+          <p class="audience-answer">Valae gives your sales team an AI that knows every product, deal, and case study by heart — and surfaces exactly what's relevant before each call.</p>
+        </div>
+        <div class="audience-card">
+          <span class="audience-initial">C</span>
+          <div class="audience-role">CTO</div>
+          <p class="audience-quote">I don't want another SaaS subscription. I want infrastructure we actually own.</p>
+          <p class="audience-answer">Valae builds the knowledge layer once and hands you the keys. Your data, your infrastructure, your choice of models. No lock-in.</p>
+        </div>
+        <div class="audience-card">
+          <span class="audience-initial">K</span>
+          <div class="audience-role">Head of Knowledge / L&amp;D</div>
+          <p class="audience-quote">We have a wiki no one reads and a Confluence nobody maintains.</p>
+          <p class="audience-answer">Because wikis store pages. Valae builds understanding. Your team asks questions in plain language and gets real, sourced answers instantly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- FOLD 3: TIERS -->
   <section class="section-tiers">
     <div class="container">
@@ -2641,11 +2795,11 @@ Sarah</div>
         <div class="tier-card featured">
           <div class="tier-step">Stage 2</div>
           <div class="tier-name">Build</div>
-          <div class="tier-desc">We build your AI brain, and deploy tools, and measure ROI.</div>
+          <div class="tier-desc">We run Step Zero on your data, deploy your first AI agent, and measure ROI.</div>
           <ul class="tier-features">
             <li>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.5 8l3 3 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Full Step Zero process
+              Full Step Zero build
             </li>
             <li>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.5 8l3 3 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2667,7 +2821,7 @@ Sarah</div>
         <div class="tier-card">
           <div class="tier-step">Stage 3</div>
           <div class="tier-name">Manage</div>
-          <div class="tier-desc">Your AI brain plugs into all your tools, even ChatGPT. 
+          <div class="tier-desc">Your knowledge graph connects to all your tools — even ChatGPT. 
           </div>
           <ul class="tier-features">
             <li>
@@ -2765,7 +2919,7 @@ Sarah</div>
           <div class="footer-brand">
             <img class="footer-logo-placeholder" src="assets/logos/Valae-WM-Pistachio.png" alt="Valae">
           </div>
-          <p class="footer-description">Valae's Step Zero organises your scattered knowledge into an AI brain, powering assistants, automations, chatbots, and more.</p>
+          <p class="footer-description">Valae turns scattered company knowledge into a structured foundation, powering assistants, automations, chatbots, and more.</p>
           <div class="footer-icons">
             <a href="mailto:info@valae.ai" aria-label="Email">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
@@ -2779,6 +2933,7 @@ Sarah</div>
           <h4 class="footer-heading">Quick Links</h4>
           <nav class="footer-nav">
             <a href="/" class="footer-link">Home</a>
+            <a href="/step-zero" class="footer-link">Step Zero</a>
             <a href="/about" class="footer-link">About Us</a>
             <a href="/contact" class="footer-link">Contact</a>
           </nav>
@@ -3606,6 +3761,21 @@ function showExchange(n) {
     });
   }
   requestAnimationFrame(draw);
+})();
+
+/* Audience cards scroll reveal */
+(function() {
+  var cards = document.querySelectorAll('.audience-card');
+  if (!cards.length) return;
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  cards.forEach(function(c) { obs.observe(c); });
 })();
 </script>
 

@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SS9FY3PEJM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-SS9FY3PEJM');
+</script>
+<title>Step Zero — Knowledge Engine | Valae</title>
+<meta name="description" content="Step Zero reads your enterprise files and systems, maps the people, processes, and facts inside them, and builds an interconnected knowledge graph that powers any AI tool.">
+<link rel="canonical" href="https://valae.ai/step-zero">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://valae.ai/step-zero">
+<meta property="og:title" content="Step Zero — The Knowledge Engine Behind Every AI Tool">
+<meta property="og:description" content="Step Zero reads your enterprise files, discovers the entities and relationships inside them, and builds a knowledge graph that powers assistants, automations, and chatbots.">
+<meta property="og:image" content="https://valae.ai/assets/logos/valae_social_image.jpg">
+<link rel="icon" type="image/png" href="../assets/logos/valaestar_logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@font-face { font-family: 'Brother 1816'; font-weight: 300; font-style: normal; font-display: swap; src: url('../fonts/Brother 1816/Brother-1816-Font/Brother-1816-Light.woff2') format('woff2'); }
+@font-face { font-family: 'Brother 1816'; font-weight: 400; font-style: normal; font-display: swap; src: url('../fonts/Brother 1816/Brother-1816-Font/Brother-1816-Regular.woff2') format('woff2'); }
+@font-face { font-family: 'Brother 1816'; font-weight: 500; font-style: normal; font-display: swap; src: url('../fonts/Brother 1816/Brother-1816-Font/Brother-1816-Medium.woff2') format('woff2'); }
+@font-face { font-family: 'Brother 1816'; font-weight: 600; font-style: normal; font-display: swap; src: url('../fonts/Brother 1816/Brother-1816-Font/Brother-1816-Bold.woff2') format('woff2'); }
+@font-face { font-family: 'Brother 1816'; font-weight: 700; font-style: normal; font-display: swap; src: url('../fonts/Brother 1816/Brother-1816-Font/Brother-1816-Extra-Bold.woff2') format('woff2'); }
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --forest: #003017;
+  --forest-deep: #001a0d;
+  --forest-mid: #002a14;
+  --pistachio: #BAD9A8;
+  --pistachio-light: #d4eac6;
+  --pistachio-dim: rgba(186,217,168,0.15);
+  --offwhite: #DFDCD7;
+  --charcoal: #1A1D1B;
+  --bg: #FAFAF7;
+  --bg-warm: #F5F2ED;
+  --white: #ffffff;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --font-display: 'Unbounded', sans-serif;
+  --font-body: 'Brother 1816', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--charcoal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+a { text-decoration: none; color: inherit; }
+.container { padding: 0 24px; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+@keyframes energyFlow {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 200%; }
+}
+
+.fade-up { opacity: 0; animation: fadeUp 0.8s var(--ease) forwards; }
+.fade-up-d1 { animation-delay: 0.15s; }
+.fade-up-d2 { animation-delay: 0.3s; }
+.fade-up-d3 { animation-delay: 0.45s; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: 0.1s; }
+.reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; }
+.reveal-d4 { transition-delay: 0.4s; }
+
+.grain { position: relative; }
+.grain::after {
+  content: ''; position: absolute; inset: 0; opacity: 0.03; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ================================================================
+   NAV
+   ================================================================ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: env(safe-area-inset-top, 0) 20px 0;
+  transition: all 0.4s ease;
+  background: rgba(0,48,23,0.95);
+  border-bottom: 1px solid rgba(186,217,168,0.15);
+}
+.nav.scrolled {
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between; height: 56px;
+}
+.nav-brand { display: flex; align-items: center; color: var(--pistachio); }
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.nav-cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 16px; border-radius: 8px;
+  background: var(--pistachio); color: var(--forest);
+  font-weight: 600; font-size: 13px; letter-spacing: -0.2px;
+  transition: all 0.3s ease; cursor: pointer; border: none;
+  font-family: var(--font-body);
+}
+.nav-hamburger {
+  display: flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px;
+  background: none; border: 1px solid rgba(186,217,168,0.2);
+  border-radius: 8px; cursor: pointer;
+  flex-direction: column; gap: 4px; padding: 0;
+}
+.nav-hamburger span {
+  display: block; width: 16px; height: 1.5px;
+  background: var(--pistachio); border-radius: 1px;
+  transition: all 0.3s ease;
+}
+.nav-hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(2px, 2px); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(2px, -2px); }
+.nav-drawer {
+  position: fixed; top: calc(56px + env(safe-area-inset-top, 0px)); left: 0; right: 0;
+  background: rgba(0,26,13,0.97);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(186,217,168,0.1);
+  padding: 16px 20px 20px;
+  z-index: 99;
+  display: flex; flex-direction: column;
+  transform: translateY(-100%);
+  opacity: 0; pointer-events: none;
+  transition: transform 0.35s var(--ease), opacity 0.25s ease;
+}
+.nav-drawer.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+.nav-drawer-link {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 0;
+  font-size: 15px; font-weight: 500;
+  color: rgba(186,217,168,0.6);
+  border-bottom: 1px solid rgba(186,217,168,0.06);
+}
+.nav-drawer-link:last-child { border-bottom: none; }
+.nav-drawer-link.active { color: var(--pistachio); font-weight: 600; }
+
+/* ================================================================
+   SHARED
+   ================================================================ */
+.section-label {
+  font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--forest); opacity: 0.5;
+  margin-bottom: 16px;
+}
+.section-label--light { color: var(--pistachio); opacity: 0.5; }
+.section-title {
+  font-family: var(--font-display);
+  font-size: 26px; font-weight: 600; line-height: 1.15;
+  color: var(--charcoal); letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+.section-title em { font-style: italic; color: var(--forest); }
+.section-title--light { color: var(--offwhite); }
+.section-title--light em { color: var(--pistachio); }
+.section-sub {
+  font-size: 15px; line-height: 1.65; color: rgba(26,29,27,0.6);
+  margin-bottom: 32px;
+}
+.section-sub--light { color: rgba(223,220,215,0.6); }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 28px;
+  background: var(--pistachio); color: var(--forest);
+  font-weight: 600; font-size: 16px;
+  border-radius: 12px; border: none; cursor: pointer;
+  transition: all 0.3s var(--ease);
+  letter-spacing: -0.3px;
+  font-family: var(--font-body);
+}
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 24px;
+  background: transparent;
+  border: 1.5px solid rgba(186,217,168,0.25);
+  color: var(--pistachio);
+  font-weight: 500; font-size: 14px;
+  border-radius: 12px; cursor: pointer;
+  font-family: var(--font-body);
+}
+
+/* ================================================================
+   HERO
+   ================================================================ */
+.sz-hero {
+  position: relative; overflow: hidden;
+  min-height: 100vh; min-height: 100dvh;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--forest);
+  padding: calc(80px + env(safe-area-inset-top, 0px)) 0 60px;
+}
+.sz-hero-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: radial-gradient(ellipse at 50% 40%, rgba(0,48,23,0.3) 0%, rgba(0,26,13,0.85) 70%);
+}
+.sz-hero-content {
+  position: relative; z-index: 3;
+  padding: 0 24px; text-align: center;
+}
+.sz-hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 7px 14px 7px 12px;
+  background: rgba(186,217,168,0.08);
+  border: 1px solid rgba(186,217,168,0.15);
+  border-radius: 100px;
+  font-size: 13px; font-weight: 500; color: var(--pistachio);
+  margin-bottom: 28px;
+}
+.sz-hero-badge-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--pistachio); animation: pulse 2s ease infinite;
+}
+.sz-hero h1 {
+  font-family: var(--font-display);
+  font-size: 28px; font-weight: 600; line-height: 1.15;
+  color: var(--offwhite); letter-spacing: -1px;
+  margin-bottom: 20px;
+}
+.sz-hero h1 em { font-style: italic; color: var(--pistachio); }
+.sz-hero-sub {
+  font-size: 16px; line-height: 1.65; color: rgba(223,220,215,0.65);
+  margin: 0 auto 32px; font-weight: 400;
+}
+.sz-hero-cta {
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+}
+
+/* ================================================================
+   PROBLEM
+   ================================================================ */
+.sz-problem { padding: 64px 0; background: var(--bg); }
+.sz-problem-card {
+  background: var(--white);
+  border: 1.5px solid rgba(0,48,23,0.06);
+  border-radius: 16px;
+  padding: 28px 24px;
+  margin-bottom: 16px;
+}
+.sz-problem-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: rgba(186,217,168,0.12);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+}
+.sz-problem-card h3 {
+  font-family: var(--font-display);
+  font-size: 16px; font-weight: 600;
+  color: var(--charcoal); letter-spacing: -0.3px;
+  margin-bottom: 10px;
+}
+.sz-problem-card p {
+  font-size: 15px; line-height: 1.65;
+  color: rgba(26,29,27,0.55);
+}
+.sz-problem-quote {
+  margin-top: 32px;
+  text-align: center;
+  font-size: 16px; font-style: italic; line-height: 1.6;
+  color: rgba(26,29,27,0.4);
+}
+
+/* ================================================================
+   SOLUTION
+   ================================================================ */
+.sz-solution { padding: 64px 0; background: var(--bg-warm); }
+.sz-solution p {
+  font-size: 15px; line-height: 1.7;
+  color: rgba(26,29,27,0.6);
+  margin-bottom: 16px;
+}
+.sz-solution blockquote {
+  font-size: 16px; font-style: italic; line-height: 1.6;
+  color: var(--forest);
+  padding-left: 16px;
+  border-left: 3px solid var(--pistachio);
+  margin-top: 20px;
+}
+
+/* ================================================================
+   PIPELINE
+   ================================================================ */
+.sz-pipeline { padding: 64px 0; background: var(--white); }
+.sz-pipeline-header { text-align: center; margin-bottom: 40px; }
+.sz-timeline {
+  position: relative;
+  padding-left: 52px;
+}
+.sz-timeline::before {
+  content: '';
+  position: absolute;
+  left: 18px; top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom,
+    rgba(186,217,168,0.05),
+    rgba(186,217,168,0.2) 15%,
+    rgba(186,217,168,0.2) 85%,
+    rgba(186,217,168,0.05)
+  );
+}
+.sz-timeline-energy {
+  position: absolute;
+  left: 15px; top: 0; bottom: 0;
+  width: 8px; pointer-events: none; overflow: hidden;
+}
+.sz-timeline-energy::before {
+  content: '';
+  position: absolute;
+  left: 0; top: -100%; width: 100%; height: 200%;
+  background: linear-gradient(to bottom,
+    transparent 0%,
+    rgba(186,217,168,0.3) 45%,
+    rgba(186,217,168,0.5) 50%,
+    rgba(186,217,168,0.3) 55%,
+    transparent 100%
+  );
+  animation: energyFlow 3s linear infinite;
+}
+.sz-step {
+  position: relative;
+  margin-bottom: 32px;
+}
+.sz-step:last-child { margin-bottom: 0; }
+.sz-step-dot {
+  position: absolute;
+  left: -52px; top: 0;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--forest);
+  border: 2px solid rgba(186,217,168,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 12px; font-weight: 600;
+  color: var(--pistachio);
+  z-index: 2;
+}
+.sz-step.is-visible .sz-step-dot {
+  border-color: var(--pistachio);
+  box-shadow: 0 0 12px rgba(186,217,168,0.15);
+}
+.sz-step-content {
+  background: var(--bg);
+  border: 1.5px solid rgba(0,48,23,0.06);
+  border-radius: 14px;
+  padding: 24px 20px;
+}
+.sz-step-title {
+  font-family: var(--font-display);
+  font-size: 16px; font-weight: 600;
+  color: var(--charcoal); letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+.sz-step-desc {
+  font-size: 14px; line-height: 1.65;
+  color: rgba(26,29,27,0.55);
+}
+.sz-step-tags {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-top: 12px;
+}
+.sz-step-tag {
+  padding: 3px 10px;
+  border-radius: 6px;
+  background: rgba(186,217,168,0.1);
+  font-size: 11px; font-weight: 500;
+  color: var(--forest); opacity: 0.7;
+}
+
+/* ================================================================
+   KNOWLEDGE GRAPH (simplified for mobile)
+   ================================================================ */
+.sz-kg { padding: 64px 0; background: var(--forest); }
+.sz-kg-header { text-align: center; margin-bottom: 32px; }
+.sz-kg-visual {
+  background: rgba(0,26,13,0.4);
+  border: 1px solid rgba(186,217,168,0.08);
+  border-radius: 16px;
+  padding: 32px 20px;
+}
+.sz-kg-node-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.sz-kg-node-card {
+  background: rgba(186,217,168,0.04);
+  border: 1px solid rgba(186,217,168,0.1);
+  border-radius: 10px;
+  padding: 14px 12px;
+  display: flex; align-items: center; gap: 10px;
+}
+.sz-kg-node-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.sz-kg-node-card-label {
+  font-size: 12px; font-weight: 600;
+  color: var(--offwhite);
+  line-height: 1.3;
+}
+.sz-kg-node-card-sub {
+  font-size: 10px;
+  color: rgba(223,220,215,0.4);
+  margin-top: 2px;
+}
+.sz-kg-legend {
+  display: flex; flex-wrap: wrap; gap: 16px;
+  justify-content: center;
+  margin-top: 24px;
+}
+.sz-kg-legend-item {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 500;
+  color: rgba(186,217,168,0.5);
+}
+.sz-kg-legend-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+}
+
+/* ================================================================
+   DIFFERENTIATORS
+   ================================================================ */
+.sz-diff { padding: 64px 0; background: var(--bg); }
+.sz-diff-card {
+  background: var(--white);
+  border: 1.5px solid rgba(0,48,23,0.06);
+  border-radius: 16px;
+  padding: 28px 24px;
+  margin-bottom: 16px;
+}
+.sz-diff-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: rgba(186,217,168,0.1);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+}
+.sz-diff-card h3 {
+  font-family: var(--font-display);
+  font-size: 17px; font-weight: 600;
+  color: var(--charcoal); letter-spacing: -0.5px;
+  margin-bottom: 10px;
+}
+.sz-diff-card p {
+  font-size: 15px; line-height: 1.65;
+  color: rgba(26,29,27,0.55);
+}
+
+/* ================================================================
+   ENABLES
+   ================================================================ */
+.sz-enables { padding: 64px 0; background: var(--pistachio-light); }
+.sz-enables-card {
+  background: var(--white);
+  border: 1.5px solid rgba(0,48,23,0.08);
+  border-radius: 16px;
+  padding: 28px 24px;
+  margin-bottom: 16px;
+}
+.sz-enables-card-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: rgba(0,48,23,0.06);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+}
+.sz-enables-card h3 {
+  font-family: var(--font-display);
+  font-size: 16px; font-weight: 600;
+  color: var(--charcoal); letter-spacing: -0.3px;
+  margin-bottom: 8px;
+}
+.sz-enables-card p {
+  font-size: 15px; line-height: 1.65;
+  color: rgba(26,29,27,0.55);
+}
+.sz-enables-card--more {
+  background: rgba(0,48,23,0.04);
+  border-style: dashed;
+}
+
+/* ================================================================
+   TRUST
+   ================================================================ */
+.sz-trust { padding: 64px 0; background: var(--bg-warm); }
+.sz-trust-card {
+  padding: 24px 0;
+  border-top: 2px solid var(--forest);
+  margin-bottom: 8px;
+}
+.sz-trust-card h3 {
+  font-family: var(--font-display);
+  font-size: 16px; font-weight: 600;
+  color: var(--charcoal); letter-spacing: -0.3px;
+  margin-bottom: 10px;
+}
+.sz-trust-card p {
+  font-size: 15px; line-height: 1.65;
+  color: rgba(26,29,27,0.55);
+}
+.sz-trust-chain {
+  margin-top: 32px;
+  display: flex; flex-direction: column; align-items: center; gap: 0;
+}
+.sz-trust-chain-node {
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 20px;
+  background: var(--white);
+  border: 1.5px solid rgba(0,48,23,0.08);
+  border-radius: 12px;
+  width: 100%;
+}
+.sz-trust-chain-node-label {
+  font-size: 13px; font-weight: 600;
+  color: var(--charcoal);
+}
+.sz-trust-chain-node-sub {
+  font-size: 11px;
+  color: rgba(26,29,27,0.4);
+}
+.sz-trust-chain-arrow {
+  padding: 6px 0;
+  color: var(--pistachio); opacity: 0.4;
+  transform: rotate(90deg);
+}
+
+/* ================================================================
+   DATA SOURCES
+   ================================================================ */
+.sz-sources { padding: 64px 0; background: var(--forest); }
+.sz-sources-header { text-align: center; margin-bottom: 32px; }
+.sz-sources-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.sz-source-card {
+  background: rgba(186,217,168,0.04);
+  border: 1px solid rgba(186,217,168,0.1);
+  border-radius: 12px;
+  padding: 20px 16px;
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  text-align: center;
+}
+.sz-source-icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+}
+.sz-source-card h4 {
+  font-size: 13px; font-weight: 600;
+  color: var(--pistachio);
+}
+.sz-source-card p {
+  font-size: 11px; line-height: 1.4;
+  color: rgba(186,217,168,0.4);
+}
+.sz-source-card--more {
+  border-style: dashed;
+  grid-column: span 2;
+  flex-direction: row;
+  justify-content: center;
+}
+.sz-source-card--more h4 {
+  font-size: 13px;
+  color: rgba(186,217,168,0.5);
+}
+
+/* ================================================================
+   CTA
+   ================================================================ */
+.sz-cta {
+  padding: 64px 0; background: var(--forest-deep);
+  text-align: center;
+}
+.sz-cta-title {
+  font-family: var(--font-display);
+  font-size: 26px; font-weight: 600; line-height: 1.15;
+  color: var(--offwhite); letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+.sz-cta-title em { font-style: italic; color: var(--pistachio); }
+.sz-cta-sub {
+  font-size: 15px; line-height: 1.65;
+  color: rgba(223,220,215,0.5);
+  margin-bottom: 32px;
+}
+
+/* ================================================================
+   FOOTER
+   ================================================================ */
+.footer { background: var(--forest); padding: 48px 0 32px; }
+.footer-inner { padding: 0 24px; }
+.footer-brand { margin-bottom: 16px; }
+.footer-logo { height: 28px; width: auto; }
+.footer-description {
+  font-size: 14px; line-height: 1.6;
+  color: rgba(186,217,168,0.35);
+  margin-bottom: 20px;
+}
+.footer-icons { display: flex; gap: 16px; margin-bottom: 32px; }
+.footer-icons a { color: rgba(186,217,168,0.3); }
+.footer-heading {
+  font-family: var(--font-display);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: rgba(186,217,168,0.3);
+  margin-bottom: 12px;
+}
+.footer-nav { display: flex; flex-direction: column; gap: 8px; margin-bottom: 32px; }
+.footer-link { font-size: 14px; color: rgba(186,217,168,0.4); }
+.footer-divider { height: 1px; background: rgba(186,217,168,0.08); margin-bottom: 20px; }
+.footer-bottom { text-align: center; }
+.footer-copyright { font-size: 12px; color: rgba(186,217,168,0.2); margin-bottom: 12px; }
+.footer-legal { display: flex; gap: 16px; justify-content: center; }
+.footer-legal-link { font-size: 12px; color: rgba(186,217,168,0.2); }
+
+/* Sticky CTA */
+.sticky-cta {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
+  padding: 12px 24px;
+  padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  background: rgba(0,48,23,0.95);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(186,217,168,0.15);
+  transform: translateY(100%);
+  transition: transform 0.35s var(--ease);
+  display: flex; justify-content: center;
+}
+.sticky-cta.visible { transform: translateY(0); }
+.sticky-cta .btn-primary {
+  width: 100%; justify-content: center; padding: 14px 24px;
+}
+</style>
+</head>
+<body>
+
+<script>
+if (window.innerWidth > 768) {
+  window.location.replace('index.html');
+}
+</script>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <img src="../assets/logos/Valae-WM-Pistachio.png" alt="Valae" style="height: 32px; width: auto; object-fit: contain;">
+    </a>
+    <div class="nav-right">
+      <a href="/contact" class="nav-cta" onclick="gtag('event', 'cta_click', { button_name: 'sz_m_header_demo' });">
+        Book a demo
+        <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <a href="/" class="nav-drawer-link">Home <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  <a href="/step-zero" class="nav-drawer-link active">Step Zero <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  <a href="/about" class="nav-drawer-link">About <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  <a href="/contact" class="nav-drawer-link">Contact <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+</div>
+
+<!-- HERO -->
+<section class="sz-hero grain">
+  <div class="sz-hero-overlay"></div>
+  <div class="sz-hero-content">
+    <div class="sz-hero-badge fade-up">
+      <span class="sz-hero-badge-dot"></span>
+      Knowledge engine
+    </div>
+    <h1 class="fade-up fade-up-d1">The engine that makes your AI <em>actually work</em></h1>
+    <p class="sz-hero-sub fade-up fade-up-d2">Step Zero reads your files and systems, maps the people, processes, and facts inside them, and builds a connected knowledge layer that powers every AI tool on top.</p>
+    <div class="sz-hero-cta fade-up fade-up-d3">
+      <a href="/contact" class="btn-primary" style="text-decoration:none;">
+        Book a demo
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#pipeline" class="btn-ghost" style="text-decoration:none;">See how it works</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="sz-problem">
+  <div class="container">
+    <div class="section-label reveal">The problem</div>
+    <h2 class="section-title reveal">AI without context is just <em>guessing</em></h2>
+    <p class="section-sub reveal">Most AI tools treat your data like a pile of text to search through. They find words, not meaning.</p>
+    <div class="sz-problem-card reveal">
+      <div class="sz-problem-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="8" height="10" rx="1.5" stroke="#003017" stroke-width="1.5"/><rect x="14" y="3" width="8" height="6" rx="1.5" stroke="#003017" stroke-width="1.5" opacity="0.5"/><rect x="14" y="13" width="8" height="8" rx="1.5" stroke="#003017" stroke-width="1.5" opacity="0.3"/><rect x="2" y="17" width="8" height="4" rx="1.5" stroke="#003017" stroke-width="1.5" opacity="0.4"/></svg>
+      </div>
+      <h3>Scattered knowledge</h3>
+      <p>Your data lives in dozens of disconnected systems. Documents, spreadsheets, emails, chat, CRMs — none of them know about each other.</p>
+    </div>
+    <div class="sz-problem-card reveal reveal-d1">
+      <div class="sz-problem-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#003017" stroke-width="1.5"/><path d="M12 7v5l3 3" stroke="#003017" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <h3>Surface-level understanding</h3>
+      <p>Search finds text matches. It can't tell that "Jane Park", "J. Park", and "the CFO" are the same person.</p>
+    </div>
+    <div class="sz-problem-card reveal reveal-d2">
+      <div class="sz-problem-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#003017" stroke-width="1.5" stroke-linejoin="round"/><path d="M2 17l10 5 10-5" stroke="#003017" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/><path d="M2 12l10 5 10-5" stroke="#003017" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/></svg>
+      </div>
+      <h3>Fragile AI</h3>
+      <p>RAG on unstructured data produces answers that sound confident but aren't grounded. No source chain. No confidence scores.</p>
+    </div>
+    <p class="sz-problem-quote reveal">"Data systems see rows and columns. Knowledge graphs see connections."</p>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="sz-solution">
+  <div class="container">
+    <div class="section-label reveal">The solution</div>
+    <h2 class="section-title reveal">Your files go in. <em>A knowledge graph comes out.</em></h2>
+    <p class="reveal">Step Zero ingests your business data — documents, spreadsheets, emails, chat, databases, recordings — and discovers the entities, relationships, and structure inside it.</p>
+    <p class="reveal">No predefined schema. No manual tagging. No configuration. The entities, relationships, and document types emerge from your data through AI-powered extraction and clustering.</p>
+    <blockquote class="reveal">The ontology isn't an input — it's an output.</blockquote>
+  </div>
+</section>
+
+<!-- PIPELINE -->
+<section class="sz-pipeline" id="pipeline">
+  <div class="container">
+    <div class="sz-pipeline-header">
+      <div class="section-label reveal">Under the hood</div>
+      <h2 class="section-title reveal" style="text-align:center">Six phases. <em>Zero configuration.</em></h2>
+      <p class="section-sub reveal" style="text-align:center">Every step is automated. Every decision is auditable.</p>
+    </div>
+    <div class="sz-timeline">
+      <div class="sz-timeline-energy"></div>
+      <div class="sz-step reveal">
+        <div class="sz-step-dot">01</div>
+        <div class="sz-step-content">
+          <h3 class="sz-step-title">Connect your data</h3>
+          <p class="sz-step-desc">Point Step Zero at your data sources. Any format, any system.</p>
+          <div class="sz-step-tags">
+            <span class="sz-step-tag">Word</span>
+            <span class="sz-step-tag">PDF</span>
+            <span class="sz-step-tag">Excel</span>
+            <span class="sz-step-tag">Email</span>
+            <span class="sz-step-tag">+more</span>
+          </div>
+        </div>
+      </div>
+      <div class="sz-step reveal">
+        <div class="sz-step-dot">02</div>
+        <div class="sz-step-content">
+          <h3 class="sz-step-title">Normalize and chunk</h3>
+          <p class="sz-step-desc">Every file type is parsed into a common representation. Adaptive chunking preserves meaning.</p>
+        </div>
+      </div>
+      <div class="sz-step reveal">
+        <div class="sz-step-dot">03</div>
+        <div class="sz-step-content">
+          <h3 class="sz-step-title">Extract entities</h3>
+          <p class="sz-step-desc">AI identifies people, products, processes, and relationships. Open-ended — no predefined schema constrains what gets found.</p>
+        </div>
+      </div>
+      <div class="sz-step reveal">
+        <div class="sz-step-dot">04</div>
+        <div class="sz-step-content">
+          <h3 class="sz-step-title">Resolve duplicates</h3>
+          <p class="sz-step-desc">"Jane Park", "J. Park", and "the CFO" merge into one entity. Types and categories emerge through AI-powered clustering.</p>
+        </div>
+      </div>
+      <div class="sz-step reveal">
+        <div class="sz-step-dot">05</div>
+        <div class="sz-step-content">
+          <h3 class="sz-step-title">Structure the graph</h3>
+          <p class="sz-step-desc">A coherent knowledge graph crystallizes. Schemas emerge per document type. The ontology is an output, not an input.</p>
+        </div>
+      </div>
+      <div class="sz-step reveal">
+        <div class="sz-step-dot">06</div>
+        <div class="sz-step-content">
+          <h3 class="sz-step-title">Serve your tools</h3>
+          <p class="sz-step-desc">The graph powers assistants, automations, chatbots, and search. Incremental updates keep it current.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KNOWLEDGE GRAPH -->
+<section class="sz-kg grain">
+  <div class="container">
+    <div class="sz-kg-header">
+      <div class="section-label section-label--light reveal">The result</div>
+      <h2 class="section-title section-title--light reveal">A living map of your company's <em>knowledge</em></h2>
+      <p class="section-sub section-sub--light reveal">A connected, queryable representation of your entire business — people, products, processes, and the relationships between them.</p>
+    </div>
+    <div class="sz-kg-visual reveal">
+      <div class="sz-kg-node-grid">
+        <div class="sz-kg-node-card">
+          <div class="sz-kg-node-dot" style="background:#7BE0AD"></div>
+          <div>
+            <div class="sz-kg-node-card-label">Sarah Chen</div>
+            <div class="sz-kg-node-card-sub">CEO</div>
+          </div>
+        </div>
+        <div class="sz-kg-node-card">
+          <div class="sz-kg-node-dot" style="background:#64B5F6"></div>
+          <div>
+            <div class="sz-kg-node-card-label">Enterprise Suite</div>
+            <div class="sz-kg-node-card-sub">94 features</div>
+          </div>
+        </div>
+        <div class="sz-kg-node-card">
+          <div class="sz-kg-node-dot" style="background:#FFB74D"></div>
+          <div>
+            <div class="sz-kg-node-card-label">Onboarding</div>
+            <div class="sz-kg-node-card-sub">12 steps</div>
+          </div>
+        </div>
+        <div class="sz-kg-node-card">
+          <div class="sz-kg-node-dot" style="background:#CE93D8"></div>
+          <div>
+            <div class="sz-kg-node-card-label">Q4 Report</div>
+            <div class="sz-kg-node-card-sub">PDF, 42 pages</div>
+          </div>
+        </div>
+        <div class="sz-kg-node-card">
+          <div class="sz-kg-node-dot" style="background:#7BE0AD"></div>
+          <div>
+            <div class="sz-kg-node-card-label">James Rodriguez</div>
+            <div class="sz-kg-node-card-sub">CTO</div>
+          </div>
+        </div>
+        <div class="sz-kg-node-card">
+          <div class="sz-kg-node-dot" style="background:#FFB74D"></div>
+          <div>
+            <div class="sz-kg-node-card-label">Sprint Planning</div>
+            <div class="sz-kg-node-card-sub">Bi-weekly</div>
+          </div>
+        </div>
+      </div>
+      <div class="sz-kg-legend">
+        <div class="sz-kg-legend-item"><div class="sz-kg-legend-dot" style="background:#7BE0AD"></div> People</div>
+        <div class="sz-kg-legend-item"><div class="sz-kg-legend-dot" style="background:#64B5F6"></div> Products</div>
+        <div class="sz-kg-legend-item"><div class="sz-kg-legend-dot" style="background:#FFB74D"></div> Processes</div>
+        <div class="sz-kg-legend-item"><div class="sz-kg-legend-dot" style="background:#CE93D8"></div> Documents</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFERENTIATORS -->
+<section class="sz-diff">
+  <div class="container">
+    <div class="section-label reveal">Why Step Zero</div>
+    <h2 class="section-title reveal">Built <em>different.</em></h2>
+    <p class="section-sub reveal">Not just another RAG pipeline. A fundamentally different approach.</p>
+    <div class="sz-diff-card reveal">
+      <div class="sz-diff-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2C12.5 5.6 14.4 7.5 18 8 14.4 8.5 12.5 10.4 12 14 11.5 10.4 9.6 8.5 6 8 9.6 7.5 11.5 5.6 12 2Z" fill="#003017"/></svg>
+      </div>
+      <h3>Zero configuration</h3>
+      <p>No predefined schema. No seed data. No domain knowledge. Point it at your files and the structure emerges.</p>
+    </div>
+    <div class="sz-diff-card reveal reveal-d1">
+      <div class="sz-diff-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 20V12M12 12L7 17M12 12l5 5" stroke="#003017" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="2" fill="#003017"/><circle cx="12" cy="4" r="2" stroke="#003017" stroke-width="1.5"/></svg>
+      </div>
+      <h3>Bottom-up intelligence</h3>
+      <p>Entity types and relationships aren't defined up front — they're discovered through AI-powered extraction and clustering.</p>
+    </div>
+    <div class="sz-diff-card reveal reveal-d2">
+      <div class="sz-diff-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="8" y="14" width="8" height="8" rx="1" stroke="#003017" stroke-width="1.5"/><rect x="4" y="8" width="16" height="14" rx="1.5" stroke="#003017" stroke-width="1.5" opacity="0.4"/><rect x="1" y="2" width="22" height="20" rx="2" stroke="#003017" stroke-width="1.5" opacity="0.15"/></svg>
+      </div>
+      <h3>Any scale</h3>
+      <p>20-document pilot or million-document corpus. Same architecture, adaptive parallelism, resume from any failure.</p>
+    </div>
+    <div class="sz-diff-card reveal reveal-d3">
+      <div class="sz-diff-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="2" stroke="#003017" stroke-width="1.5"/><rect x="14" y="3" width="7" height="7" rx="2" stroke="#003017" stroke-width="1.5"/><rect x="3" y="14" width="7" height="7" rx="2" stroke="#003017" stroke-width="1.5"/><rect x="14" y="14" width="7" height="7" rx="2" stroke="#003017" stroke-width="1.5"/></svg>
+      </div>
+      <h3>No vendor lock-in</h3>
+      <p>Your choice of LLMs, embedding models, and graph stores. Swap any component without rebuilding.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ENABLES -->
+<section class="sz-enables grain">
+  <div class="container">
+    <div class="section-label reveal">What it powers</div>
+    <h2 class="section-title reveal">One foundation. <em>Every AI tool.</em></h2>
+    <p class="section-sub reveal">Once the foundation is built, every tool runs on the same knowledge layer.</p>
+    <div class="sz-enables-card reveal">
+      <div class="sz-enables-card-icon">
+        <svg width="18" height="18" viewBox="0 0 22 22" fill="none"><path d="M11 4C11.5 7.6 13.4 9.5 17 10 13.4 10.5 11.5 12.4 11 16 10.5 12.4 8.6 10.5 5 10 8.6 9.5 10.5 7.6 11 4Z" fill="#003017"/></svg>
+      </div>
+      <h3>Knowledge assistant</h3>
+      <p>Ask anything about your business. Get instant, source-cited answers with confidence scores.</p>
+    </div>
+    <div class="sz-enables-card reveal reveal-d1">
+      <div class="sz-enables-card-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M2 6h20v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" stroke="#003017" stroke-width="1.5"/><path d="M2 6l10 7 10-7" stroke="#003017" stroke-width="1.5"/></svg>
+      </div>
+      <h3>Email automation</h3>
+      <p>Automate customer communications with AI that understands your products, policies, and history.</p>
+    </div>
+    <div class="sz-enables-card reveal reveal-d2">
+      <div class="sz-enables-card-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.66 0 3-4.03 3-9s-1.34-9-3-9m0 18c-1.66 0-3-4.03-3-9s1.34-9 3-9m-9 9a9 9 0 019-9" stroke="#003017" stroke-width="1.5"/></svg>
+      </div>
+      <h3>Customer chatbot</h3>
+      <p>Deploy customer-facing AI that answers from your knowledge base. Accurate and always current.</p>
+    </div>
+    <div class="sz-enables-card sz-enables-card--more reveal reveal-d3">
+      <div class="sz-enables-card-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="1.5" fill="#003017"/><circle cx="6" cy="12" r="1.5" fill="#003017" opacity="0.5"/><circle cx="18" cy="12" r="1.5" fill="#003017" opacity="0.5"/></svg>
+      </div>
+      <h3>And everything else</h3>
+      <p>Custom agents, workflow automation, analytics, search — any tool that needs to understand your business.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="sz-trust">
+  <div class="container">
+    <div class="section-label reveal">Trust &amp; governance</div>
+    <h2 class="section-title reveal">Every answer traces back to <em>a source</em></h2>
+    <p class="section-sub reveal">Confidence isn't a feeling. It's a number that propagates through every layer.</p>
+    <div class="sz-trust-card reveal">
+      <h3>Source-cited everything</h3>
+      <p>Every entity, relationship, and answer traces back to specific document chunks with confidence scores.</p>
+    </div>
+    <div class="sz-trust-card reveal reveal-d1">
+      <h3>Complete audit trail</h3>
+      <p>Every merge, split, and classification decision is logged with reasoning. Full reproducibility.</p>
+    </div>
+    <div class="sz-trust-card reveal reveal-d2">
+      <h3>Permission-aware</h3>
+      <p>Respects source-level access controls. Users only see what they're authorized to see.</p>
+    </div>
+    <div class="sz-trust-chain reveal">
+      <div class="sz-trust-chain-node">
+        <svg width="18" height="18" viewBox="0 0 22 22" fill="none"><path d="M11 4C11.5 7.6 13.4 9.5 17 10 13.4 10.5 11.5 12.4 11 16 10.5 12.4 8.6 10.5 5 10 8.6 9.5 10.5 7.6 11 4Z" fill="#003017"/></svg>
+        <div>
+          <span class="sz-trust-chain-node-label">AI Answer</span>
+          <span class="sz-trust-chain-node-sub" style="display:block">Confidence: 0.94</span>
+        </div>
+      </div>
+      <div class="sz-trust-chain-arrow">
+        <svg width="16" height="16" viewBox="0 0 24 12" fill="none"><path d="M0 6h20M16 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div class="sz-trust-chain-node">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#003017" stroke-width="1.5"/><path d="M6 20c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#003017" stroke-width="1.5"/></svg>
+        <div>
+          <span class="sz-trust-chain-node-label">Entity</span>
+          <span class="sz-trust-chain-node-sub" style="display:block">Jane Park (CEO)</span>
+        </div>
+      </div>
+      <div class="sz-trust-chain-arrow">
+        <svg width="16" height="16" viewBox="0 0 24 12" fill="none"><path d="M0 6h20M16 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div class="sz-trust-chain-node">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 2h8l4 4v14a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2z" stroke="#003017" stroke-width="1.5"/><path d="M14 2v4h4" stroke="#003017" stroke-width="1.5"/></svg>
+        <div>
+          <span class="sz-trust-chain-node-label">Document</span>
+          <span class="sz-trust-chain-node-sub" style="display:block">Q4-report.pdf</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DATA SOURCES -->
+<section class="sz-sources grain">
+  <div class="container">
+    <div class="sz-sources-header">
+      <div class="section-label section-label--light reveal">What it reads</div>
+      <h2 class="section-title section-title--light reveal">Any file. <em>Any system.</em></h2>
+      <p class="section-sub section-sub--light reveal" style="text-align:center">Handles every format your business uses.</p>
+    </div>
+    <div class="sz-sources-grid">
+      <div class="sz-source-card reveal reveal-d1">
+        <div class="sz-source-icon" style="background:rgba(100,160,255,0.1);">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M5 2h7l4 4v11a1 1 0 01-1 1H5a1 1 0 01-1-1V3a1 1 0 011-1z" stroke="rgba(100,160,255,0.8)" stroke-width="1.3"/><path d="M12 2v4h4" stroke="rgba(100,160,255,0.8)" stroke-width="1.3"/></svg>
+        </div>
+        <h4>Documents</h4>
+        <p>Word, PDF, TXT</p>
+      </div>
+      <div class="sz-source-card reveal reveal-d2">
+        <div class="sz-source-icon" style="background:rgba(80,200,120,0.1);">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="16" height="16" rx="2" stroke="rgba(80,200,120,0.8)" stroke-width="1.3"/><path d="M2 7h16M7 2v16" stroke="rgba(80,200,120,0.8)" stroke-width="1"/></svg>
+        </div>
+        <h4>Spreadsheets</h4>
+        <p>Excel, CSV</p>
+      </div>
+      <div class="sz-source-card reveal reveal-d1">
+        <div class="sz-source-icon" style="background:rgba(255,170,60,0.1);">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M2 5h16v11a1 1 0 01-1 1H3a1 1 0 01-1-1V5z" stroke="rgba(255,170,60,0.8)" stroke-width="1.3"/><path d="M2 5l8 6 8-6" stroke="rgba(255,170,60,0.8)" stroke-width="1.3"/></svg>
+        </div>
+        <h4>Emails</h4>
+        <p>Any provider</p>
+      </div>
+      <div class="sz-source-card reveal reveal-d2">
+        <div class="sz-source-icon" style="background:rgba(150,120,255,0.1);">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M2 5h16v9a2 2 0 01-2 2H4a2 2 0 01-2-2V5z" stroke="rgba(150,120,255,0.8)" stroke-width="1.3"/><circle cx="5" cy="3" r="1" fill="rgba(150,120,255,0.8)"/><circle cx="10" cy="3" r="1" fill="rgba(150,120,255,0.8)"/><circle cx="15" cy="3" r="1" fill="rgba(150,120,255,0.8)"/></svg>
+        </div>
+        <h4>Chat</h4>
+        <p>Slack, Teams</p>
+      </div>
+      <div class="sz-source-card reveal reveal-d1">
+        <div class="sz-source-icon" style="background:rgba(220,80,80,0.1);">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><ellipse cx="10" cy="6" rx="7" ry="3" stroke="rgba(220,80,80,0.8)" stroke-width="1.3"/><path d="M3 6v4c0 1.66 3.13 3 7 3s7-1.34 7-3V6" stroke="rgba(220,80,80,0.8)" stroke-width="1.3"/><path d="M3 10v4c0 1.66 3.13 3 7 3s7-1.34 7-3v-4" stroke="rgba(220,80,80,0.8)" stroke-width="1.3"/></svg>
+        </div>
+        <h4>Databases</h4>
+        <p>CRM, ERP</p>
+      </div>
+      <div class="sz-source-card reveal reveal-d2">
+        <div class="sz-source-icon" style="background:rgba(80,180,220,0.1);">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><rect x="2" y="3" width="16" height="12" rx="2" stroke="rgba(80,180,220,0.8)" stroke-width="1.3"/><circle cx="10" cy="9" r="3" stroke="rgba(80,180,220,0.8)" stroke-width="1.2"/></svg>
+        </div>
+        <h4>Media</h4>
+        <p>Video, audio</p>
+      </div>
+      <div class="sz-source-card sz-source-card--more reveal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="rgba(186,217,168,0.3)" stroke-width="1.5" stroke-dasharray="3 3"/><path d="M12 8v8M8 12h8" stroke="rgba(186,217,168,0.4)" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <h4>And more — any format, any system</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sz-cta grain">
+  <div class="container">
+    <p class="reveal" style="font-family: var(--font-display); font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--pistachio); opacity: 0.5; margin-bottom: 16px;">Build solid foundations</p>
+    <h2 class="sz-cta-title reveal">Ready to <em>future-proof</em> for the AI era?</h2>
+    <p class="sz-cta-sub reveal">It starts with a 15-minute demo.</p>
+    <div class="reveal">
+      <a href="/contact" class="btn-primary" style="font-size:16px; padding: 16px 36px; text-decoration:none;">
+        Book a demo
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img class="footer-logo" src="../assets/logos/Valae-WM-Pistachio.png" alt="Valae">
+    </div>
+    <p class="footer-description">Valae turns scattered company knowledge into a structured foundation, powering assistants, automations, chatbots, and more.</p>
+    <div class="footer-icons">
+      <a href="mailto:info@valae.ai" aria-label="Email">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/company/valae-ai/" target="_blank" aria-label="LinkedIn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+    </div>
+    <h4 class="footer-heading">Quick Links</h4>
+    <nav class="footer-nav">
+      <a href="/" class="footer-link">Home</a>
+      <a href="/step-zero" class="footer-link">Step Zero</a>
+      <a href="/about" class="footer-link">About Us</a>
+      <a href="/contact" class="footer-link">Contact</a>
+    </nav>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+      <div class="footer-copyright">&copy; 2026 Valae B.V. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="#" class="footer-legal-link">Privacy</a>
+        <a href="#" class="footer-legal-link">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Sticky CTA -->
+<div class="sticky-cta" id="stickyCta">
+  <a href="/contact" class="btn-primary" style="text-decoration:none;">
+    Book a demo
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</div>
+
+<script>
+/* Nav */
+(function() {
+  var ham = document.getElementById('navHamburger');
+  var drawer = document.getElementById('navDrawer');
+  ham.addEventListener('click', function() {
+    ham.classList.toggle('open');
+    drawer.classList.toggle('open');
+  });
+  var nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 20) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+})();
+
+/* Scroll reveal */
+(function() {
+  var els = document.querySelectorAll('.reveal');
+  if (!els.length || !('IntersectionObserver' in window)) {
+    els.forEach(function(el) { el.classList.add('is-visible'); });
+    return;
+  }
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  els.forEach(function(el) { obs.observe(el); });
+})();
+
+/* Sticky CTA */
+(function() {
+  var cta = document.getElementById('stickyCta');
+  var hero = document.querySelector('.sz-hero');
+  if (!cta || !hero) return;
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        cta.classList.remove('visible');
+      } else {
+        cta.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  obs.observe(hero);
+})();
+</script>
+</body>
+</html>
