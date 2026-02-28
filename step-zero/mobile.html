@@ -252,154 +252,117 @@ a { text-decoration: none; color: inherit; }
 /* ================================================================
    PROBLEM
    ================================================================ */
-.sz-problem { padding: 64px 0; background: var(--bg); }
+.sz-problem { padding: 48px 0; background: var(--bg); }
 .sz-problem-card {
   background: var(--white);
   border: 1.5px solid rgba(0,48,23,0.06);
-  border-radius: 16px;
-  padding: 28px 24px;
-  margin-bottom: 16px;
+  border-radius: 14px;
+  padding: 18px 16px;
+  margin-bottom: 10px;
+  display: flex; align-items: flex-start; gap: 14px;
 }
 .sz-problem-icon {
-  width: 44px; height: 44px;
-  border-radius: 12px;
+  width: 40px; height: 40px; flex-shrink: 0;
+  border-radius: 10px;
   background: rgba(186,217,168,0.12);
   display: flex; align-items: center; justify-content: center;
-  margin-bottom: 16px;
 }
+.sz-problem-card-text {}
 .sz-problem-card h3 {
   font-family: var(--font-display);
-  font-size: 16px; font-weight: 600;
+  font-size: 14px; font-weight: 600;
   color: var(--charcoal); letter-spacing: -0.3px;
-  margin-bottom: 10px;
+  margin-bottom: 4px;
 }
 .sz-problem-card p {
-  font-size: 15px; line-height: 1.65;
-  color: rgba(26,29,27,0.55);
+  font-size: 13px; line-height: 1.55;
+  color: rgba(26,29,27,0.5);
 }
 .sz-problem-quote {
-  margin-top: 32px;
+  margin-top: 20px;
   text-align: center;
-  font-size: 16px; font-style: italic; line-height: 1.6;
-  color: rgba(26,29,27,0.4);
+  font-size: 14px; font-style: italic; line-height: 1.6;
+  color: rgba(26,29,27,0.35);
 }
 
 /* ================================================================
    SOLUTION
    ================================================================ */
-.sz-solution { padding: 64px 0; background: var(--bg-warm); }
+.sz-solution { padding: 48px 0; background: var(--bg-warm); }
 .sz-solution p {
-  font-size: 15px; line-height: 1.7;
-  color: rgba(26,29,27,0.6);
-  margin-bottom: 16px;
+  font-size: 14px; line-height: 1.65;
+  color: rgba(26,29,27,0.55);
+  margin-bottom: 12px;
 }
 .sz-solution blockquote {
-  font-size: 16px; font-style: italic; line-height: 1.6;
+  font-size: 15px; font-style: italic; line-height: 1.6;
   color: var(--forest);
-  padding-left: 16px;
+  padding-left: 14px;
   border-left: 3px solid var(--pistachio);
-  margin-top: 20px;
+  margin-top: 16px;
 }
 
 /* ================================================================
    PIPELINE
    ================================================================ */
-.sz-pipeline { padding: 64px 0; background: var(--white); }
-.sz-pipeline-header { text-align: center; margin-bottom: 40px; }
-.sz-timeline {
-  position: relative;
-  padding-left: 52px;
-}
-.sz-timeline::before {
-  content: '';
-  position: absolute;
-  left: 18px; top: 0; bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom,
-    rgba(186,217,168,0.05),
-    rgba(186,217,168,0.2) 15%,
-    rgba(186,217,168,0.2) 85%,
-    rgba(186,217,168,0.05)
-  );
-}
-.sz-timeline-energy {
-  position: absolute;
-  left: 15px; top: 0; bottom: 0;
-  width: 8px; pointer-events: none; overflow: hidden;
-}
-.sz-timeline-energy::before {
-  content: '';
-  position: absolute;
-  left: 0; top: -100%; width: 100%; height: 200%;
-  background: linear-gradient(to bottom,
-    transparent 0%,
-    rgba(186,217,168,0.3) 45%,
-    rgba(186,217,168,0.5) 50%,
-    rgba(186,217,168,0.3) 55%,
-    transparent 100%
-  );
-  animation: energyFlow 3s linear infinite;
+.sz-pipeline { padding: 48px 0; background: var(--white); }
+.sz-pipeline-header { text-align: center; margin-bottom: 28px; }
+.sz-steps-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px;
 }
 .sz-step {
-  position: relative;
-  margin-bottom: 32px;
-}
-.sz-step:last-child { margin-bottom: 0; }
-.sz-step-dot {
-  position: absolute;
-  left: -52px; top: 0;
-  width: 38px; height: 38px;
-  border-radius: 50%;
-  background: var(--forest);
-  border: 2px solid rgba(186,217,168,0.3);
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-display);
-  font-size: 12px; font-weight: 600;
-  color: var(--pistachio);
-  z-index: 2;
-}
-.sz-step.is-visible .sz-step-dot {
-  border-color: var(--pistachio);
-  box-shadow: 0 0 12px rgba(186,217,168,0.15);
-}
-.sz-step-content {
   background: var(--bg);
   border: 1.5px solid rgba(0,48,23,0.06);
-  border-radius: 14px;
-  padding: 24px 20px;
+  border-radius: 12px;
+  padding: 16px 14px;
+}
+.sz-step-header {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 8px;
+}
+.sz-step-dot {
+  width: 28px; height: 28px; flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--forest);
+  border: 1.5px solid rgba(186,217,168,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 10px; font-weight: 600;
+  color: var(--pistachio);
 }
 .sz-step-title {
   font-family: var(--font-display);
-  font-size: 16px; font-weight: 600;
-  color: var(--charcoal); letter-spacing: -0.5px;
-  margin-bottom: 8px;
+  font-size: 13px; font-weight: 600;
+  color: var(--charcoal); letter-spacing: -0.3px;
+  line-height: 1.2;
 }
 .sz-step-desc {
-  font-size: 14px; line-height: 1.65;
-  color: rgba(26,29,27,0.55);
+  font-size: 12px; line-height: 1.55;
+  color: rgba(26,29,27,0.5);
 }
 .sz-step-tags {
-  display: flex; flex-wrap: wrap; gap: 6px;
-  margin-top: 12px;
+  display: flex; flex-wrap: wrap; gap: 4px;
+  margin-top: 8px;
 }
 .sz-step-tag {
-  padding: 3px 10px;
-  border-radius: 6px;
+  padding: 2px 8px;
+  border-radius: 5px;
   background: rgba(186,217,168,0.1);
-  font-size: 11px; font-weight: 500;
+  font-size: 10px; font-weight: 500;
   color: var(--forest); opacity: 0.7;
 }
 
 /* ================================================================
    KNOWLEDGE GRAPH (simplified for mobile)
    ================================================================ */
-.sz-kg { padding: 64px 0; background: var(--forest); }
-.sz-kg-header { text-align: center; margin-bottom: 32px; }
+.sz-kg { padding: 48px 0; background: var(--forest); }
+.sz-kg-header { text-align: center; margin-bottom: 24px; }
 .sz-kg-visual {
   background: rgba(0,26,13,0.4);
   border: 1px solid rgba(186,217,168,0.08);
   border-radius: 16px;
-  padding: 32px 20px;
+  padding: 24px 16px;
 }
 .sz-kg-node-grid {
   display: grid; grid-template-columns: 1fr 1fr;
@@ -445,59 +408,70 @@ a { text-decoration: none; color: inherit; }
 /* ================================================================
    DIFFERENTIATORS
    ================================================================ */
-.sz-diff { padding: 64px 0; background: var(--bg); }
+.sz-diff { padding: 48px 0; background: var(--bg); }
+.sz-diff-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
 .sz-diff-card {
   background: var(--white);
   border: 1.5px solid rgba(0,48,23,0.06);
-  border-radius: 16px;
-  padding: 28px 24px;
-  margin-bottom: 16px;
+  border-radius: 14px;
+  padding: 18px 14px;
 }
 .sz-diff-icon {
-  width: 44px; height: 44px;
-  border-radius: 12px;
+  width: 36px; height: 36px;
+  border-radius: 10px;
   background: rgba(186,217,168,0.1);
   display: flex; align-items: center; justify-content: center;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 .sz-diff-card h3 {
   font-family: var(--font-display);
-  font-size: 17px; font-weight: 600;
-  color: var(--charcoal); letter-spacing: -0.5px;
-  margin-bottom: 10px;
+  font-size: 14px; font-weight: 600;
+  color: var(--charcoal); letter-spacing: -0.3px;
+  margin-bottom: 6px;
 }
 .sz-diff-card p {
-  font-size: 15px; line-height: 1.65;
-  color: rgba(26,29,27,0.55);
+  font-size: 12px; line-height: 1.55;
+  color: rgba(26,29,27,0.5);
 }
 
 /* ================================================================
    ENABLES
    ================================================================ */
-.sz-enables { padding: 64px 0; background: var(--pistachio-light); }
+.sz-enables { padding: 48px 0; background: var(--pistachio-light); }
+.sz-enables .container { padding: 0 24px; }
+.sz-enables-carousel {
+  display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  gap: 10px; padding: 0 24px;
+  scrollbar-width: none;
+}
+.sz-enables-carousel::-webkit-scrollbar { display: none; }
 .sz-enables-card {
+  flex: 0 0 70vw; scroll-snap-align: center;
   background: var(--white);
   border: 1.5px solid rgba(0,48,23,0.08);
   border-radius: 16px;
-  padding: 28px 24px;
-  margin-bottom: 16px;
+  padding: 20px 18px;
 }
 .sz-enables-card-icon {
-  width: 40px; height: 40px;
+  width: 36px; height: 36px;
   border-radius: 10px;
   background: rgba(0,48,23,0.06);
   display: flex; align-items: center; justify-content: center;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 .sz-enables-card h3 {
   font-family: var(--font-display);
-  font-size: 16px; font-weight: 600;
+  font-size: 14px; font-weight: 600;
   color: var(--charcoal); letter-spacing: -0.3px;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 .sz-enables-card p {
-  font-size: 15px; line-height: 1.65;
-  color: rgba(26,29,27,0.55);
+  font-size: 13px; line-height: 1.55;
+  color: rgba(26,29,27,0.5);
 }
 .sz-enables-card--more {
   background: rgba(0,48,23,0.04);
@@ -507,53 +481,57 @@ a { text-decoration: none; color: inherit; }
 /* ================================================================
    TRUST
    ================================================================ */
-.sz-trust { padding: 64px 0; background: var(--bg-warm); }
+.sz-trust { padding: 48px 0; background: var(--bg-warm); }
+.sz-trust-cards {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px; margin-bottom: 24px;
+}
 .sz-trust-card {
-  padding: 24px 0;
+  padding: 14px 12px;
   border-top: 2px solid var(--forest);
-  margin-bottom: 8px;
 }
 .sz-trust-card h3 {
   font-family: var(--font-display);
-  font-size: 16px; font-weight: 600;
-  color: var(--charcoal); letter-spacing: -0.3px;
-  margin-bottom: 10px;
+  font-size: 12px; font-weight: 600;
+  color: var(--charcoal); letter-spacing: -0.2px;
+  margin-bottom: 6px;
 }
 .sz-trust-card p {
-  font-size: 15px; line-height: 1.65;
-  color: rgba(26,29,27,0.55);
+  font-size: 11px; line-height: 1.5;
+  color: rgba(26,29,27,0.5);
 }
 .sz-trust-chain {
-  margin-top: 32px;
-  display: flex; flex-direction: column; align-items: center; gap: 0;
+  display: flex; align-items: center; justify-content: center;
+  gap: 0; overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 4px;
 }
 .sz-trust-chain-node {
-  display: flex; align-items: center; gap: 10px;
-  padding: 14px 20px;
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 12px;
   background: var(--white);
   border: 1.5px solid rgba(0,48,23,0.08);
-  border-radius: 12px;
-  width: 100%;
+  border-radius: 10px;
+  flex-shrink: 0;
 }
 .sz-trust-chain-node-label {
-  font-size: 13px; font-weight: 600;
-  color: var(--charcoal);
+  font-size: 11px; font-weight: 600;
+  color: var(--charcoal); white-space: nowrap;
 }
 .sz-trust-chain-node-sub {
-  font-size: 11px;
-  color: rgba(26,29,27,0.4);
+  font-size: 9px;
+  color: rgba(26,29,27,0.4); white-space: nowrap;
 }
 .sz-trust-chain-arrow {
-  padding: 6px 0;
+  padding: 0 4px; flex-shrink: 0;
   color: var(--pistachio); opacity: 0.4;
-  transform: rotate(90deg);
 }
 
 /* ================================================================
    DATA SOURCES
    ================================================================ */
-.sz-sources { padding: 64px 0; background: var(--forest); }
-.sz-sources-header { text-align: center; margin-bottom: 32px; }
+.sz-sources { padding: 48px 0; background: var(--forest); }
+.sz-sources-header { text-align: center; margin-bottom: 24px; }
 .sz-sources-grid {
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 12px;
@@ -562,7 +540,7 @@ a { text-decoration: none; color: inherit; }
   background: rgba(186,217,168,0.04);
   border: 1px solid rgba(186,217,168,0.1);
   border-radius: 12px;
-  padding: 20px 16px;
+  padding: 14px 12px;
   display: flex; flex-direction: column; align-items: center; gap: 10px;
   text-align: center;
 }
@@ -594,7 +572,7 @@ a { text-decoration: none; color: inherit; }
    CTA
    ================================================================ */
 .sz-cta {
-  padding: 64px 0; background: var(--forest-deep);
+  padding: 48px 0; background: var(--forest-deep);
   text-align: center;
 }
 .sz-cta-title {
@@ -613,7 +591,7 @@ a { text-decoration: none; color: inherit; }
 /* ================================================================
    FOOTER
    ================================================================ */
-.footer { background: var(--forest); padding: 48px 0 32px; }
+.footer { background: var(--forest); padding: 40px 0 28px; }
 .footer-inner { padding: 0 24px; }
 .footer-brand { margin-bottom: 16px; }
 .footer-logo { height: 28px; width: auto; }
@@ -717,24 +695,30 @@ if (window.innerWidth > 768) {
     <p class="section-sub reveal">Most AI tools treat your data like a pile of text to search through. They find words, not meaning.</p>
     <div class="sz-problem-card reveal">
       <div class="sz-problem-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="8" height="10" rx="1.5" stroke="#003017" stroke-width="1.5"/><rect x="14" y="3" width="8" height="6" rx="1.5" stroke="#003017" stroke-width="1.5" opacity="0.5"/><rect x="14" y="13" width="8" height="8" rx="1.5" stroke="#003017" stroke-width="1.5" opacity="0.3"/><rect x="2" y="17" width="8" height="4" rx="1.5" stroke="#003017" stroke-width="1.5" opacity="0.4"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="8" height="10" rx="1.5" stroke="#003017" stroke-width="1.5"/><rect x="14" y="3" width="8" height="6" rx="1.5" stroke="#003017" stroke-width="1.5" opacity="0.5"/><rect x="14" y="13" width="8" height="8" rx="1.5" stroke="#003017" stroke-width="1.5" opacity="0.3"/><rect x="2" y="17" width="8" height="4" rx="1.5" stroke="#003017" stroke-width="1.5" opacity="0.4"/></svg>
       </div>
-      <h3>Scattered knowledge</h3>
-      <p>Your data lives in dozens of disconnected systems. Documents, spreadsheets, emails, chat, CRMs — none of them know about each other.</p>
+      <div class="sz-problem-card-text">
+        <h3>Scattered knowledge</h3>
+        <p>Your data lives in dozens of disconnected systems — none of them know about each other.</p>
+      </div>
     </div>
     <div class="sz-problem-card reveal reveal-d1">
       <div class="sz-problem-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#003017" stroke-width="1.5"/><path d="M12 7v5l3 3" stroke="#003017" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#003017" stroke-width="1.5"/><path d="M12 7v5l3 3" stroke="#003017" stroke-width="1.5" stroke-linecap="round"/></svg>
       </div>
-      <h3>Surface-level understanding</h3>
-      <p>Search finds text matches. It can't tell that "Jane Park", "J. Park", and "the CFO" are the same person.</p>
+      <div class="sz-problem-card-text">
+        <h3>Surface-level understanding</h3>
+        <p>Search finds text matches. It can't tell that "Jane Park", "J. Park", and "the CFO" are the same person.</p>
+      </div>
     </div>
     <div class="sz-problem-card reveal reveal-d2">
       <div class="sz-problem-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#003017" stroke-width="1.5" stroke-linejoin="round"/><path d="M2 17l10 5 10-5" stroke="#003017" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/><path d="M2 12l10 5 10-5" stroke="#003017" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#003017" stroke-width="1.5" stroke-linejoin="round"/><path d="M2 17l10 5 10-5" stroke="#003017" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/><path d="M2 12l10 5 10-5" stroke="#003017" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/></svg>
       </div>
-      <h3>Fragile AI</h3>
-      <p>RAG on unstructured data produces answers that sound confident but aren't grounded. No source chain. No confidence scores.</p>
+      <div class="sz-problem-card-text">
+        <h3>Fragile AI</h3>
+        <p>RAG on unstructured data produces answers that sound confident but aren't grounded.</p>
+      </div>
     </div>
     <p class="sz-problem-quote reveal">"Data systems see rows and columns. Knowledge graphs see connections."</p>
   </div>
@@ -759,56 +743,54 @@ if (window.innerWidth > 768) {
       <h2 class="section-title reveal" style="text-align:center">Six phases. <em>Zero configuration.</em></h2>
       <p class="section-sub reveal" style="text-align:center">Every step is automated. Every decision is auditable.</p>
     </div>
-    <div class="sz-timeline">
-      <div class="sz-timeline-energy"></div>
+    <div class="sz-steps-grid">
       <div class="sz-step reveal">
-        <div class="sz-step-dot">01</div>
-        <div class="sz-step-content">
-          <h3 class="sz-step-title">Connect your data</h3>
-          <p class="sz-step-desc">Point Step Zero at your data sources. Any format, any system.</p>
-          <div class="sz-step-tags">
-            <span class="sz-step-tag">Word</span>
-            <span class="sz-step-tag">PDF</span>
-            <span class="sz-step-tag">Excel</span>
-            <span class="sz-step-tag">Email</span>
-            <span class="sz-step-tag">+more</span>
-          </div>
+        <div class="sz-step-header">
+          <div class="sz-step-dot">01</div>
+          <h3 class="sz-step-title">Connect data</h3>
+        </div>
+        <p class="sz-step-desc">Point Step Zero at your data sources. Any format, any system.</p>
+        <div class="sz-step-tags">
+          <span class="sz-step-tag">Word</span>
+          <span class="sz-step-tag">PDF</span>
+          <span class="sz-step-tag">Excel</span>
+          <span class="sz-step-tag">Email</span>
         </div>
       </div>
       <div class="sz-step reveal">
-        <div class="sz-step-dot">02</div>
-        <div class="sz-step-content">
-          <h3 class="sz-step-title">Normalize and chunk</h3>
-          <p class="sz-step-desc">Every file type is parsed into a common representation. Adaptive chunking preserves meaning.</p>
+        <div class="sz-step-header">
+          <div class="sz-step-dot">02</div>
+          <h3 class="sz-step-title">Normalize</h3>
         </div>
+        <p class="sz-step-desc">Every file type is parsed into a common representation. Adaptive chunking preserves meaning.</p>
       </div>
       <div class="sz-step reveal">
-        <div class="sz-step-dot">03</div>
-        <div class="sz-step-content">
+        <div class="sz-step-header">
+          <div class="sz-step-dot">03</div>
           <h3 class="sz-step-title">Extract entities</h3>
-          <p class="sz-step-desc">AI identifies people, products, processes, and relationships. Open-ended — no predefined schema constrains what gets found.</p>
         </div>
+        <p class="sz-step-desc">AI identifies people, products, processes, and relationships — no schema needed.</p>
       </div>
       <div class="sz-step reveal">
-        <div class="sz-step-dot">04</div>
-        <div class="sz-step-content">
-          <h3 class="sz-step-title">Resolve duplicates</h3>
-          <p class="sz-step-desc">"Jane Park", "J. Park", and "the CFO" merge into one entity. Types and categories emerge through AI-powered clustering.</p>
+        <div class="sz-step-header">
+          <div class="sz-step-dot">04</div>
+          <h3 class="sz-step-title">Resolve</h3>
         </div>
+        <p class="sz-step-desc">"Jane Park", "J. Park", and "the CFO" merge into one entity through AI clustering.</p>
       </div>
       <div class="sz-step reveal">
-        <div class="sz-step-dot">05</div>
-        <div class="sz-step-content">
-          <h3 class="sz-step-title">Structure the graph</h3>
-          <p class="sz-step-desc">A coherent knowledge graph crystallizes. Schemas emerge per document type. The ontology is an output, not an input.</p>
+        <div class="sz-step-header">
+          <div class="sz-step-dot">05</div>
+          <h3 class="sz-step-title">Structure</h3>
         </div>
+        <p class="sz-step-desc">A knowledge graph crystallizes. Schemas emerge per document type.</p>
       </div>
       <div class="sz-step reveal">
-        <div class="sz-step-dot">06</div>
-        <div class="sz-step-content">
-          <h3 class="sz-step-title">Serve your tools</h3>
-          <p class="sz-step-desc">The graph powers assistants, automations, chatbots, and search. Incremental updates keep it current.</p>
+        <div class="sz-step-header">
+          <div class="sz-step-dot">06</div>
+          <h3 class="sz-step-title">Serve tools</h3>
         </div>
+        <p class="sz-step-desc">The graph powers assistants, automations, chatbots, and search.</p>
       </div>
     </div>
   </div>
@@ -883,33 +865,35 @@ if (window.innerWidth > 768) {
     <div class="section-label reveal">Why Step Zero</div>
     <h2 class="section-title reveal">Built <em>different.</em></h2>
     <p class="section-sub reveal">Not just another RAG pipeline. A fundamentally different approach.</p>
-    <div class="sz-diff-card reveal">
-      <div class="sz-diff-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2C12.5 5.6 14.4 7.5 18 8 14.4 8.5 12.5 10.4 12 14 11.5 10.4 9.6 8.5 6 8 9.6 7.5 11.5 5.6 12 2Z" fill="#003017"/></svg>
+    <div class="sz-diff-grid">
+      <div class="sz-diff-card reveal">
+        <div class="sz-diff-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2C12.5 5.6 14.4 7.5 18 8 14.4 8.5 12.5 10.4 12 14 11.5 10.4 9.6 8.5 6 8 9.6 7.5 11.5 5.6 12 2Z" fill="#003017"/></svg>
+        </div>
+        <h3>Zero configuration</h3>
+        <p>No predefined schema. Point it at your files and the structure emerges.</p>
       </div>
-      <h3>Zero configuration</h3>
-      <p>No predefined schema. No seed data. No domain knowledge. Point it at your files and the structure emerges.</p>
-    </div>
-    <div class="sz-diff-card reveal reveal-d1">
-      <div class="sz-diff-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 20V12M12 12L7 17M12 12l5 5" stroke="#003017" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="2" fill="#003017"/><circle cx="12" cy="4" r="2" stroke="#003017" stroke-width="1.5"/></svg>
+      <div class="sz-diff-card reveal reveal-d1">
+        <div class="sz-diff-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 20V12M12 12L7 17M12 12l5 5" stroke="#003017" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="2" fill="#003017"/><circle cx="12" cy="4" r="2" stroke="#003017" stroke-width="1.5"/></svg>
+        </div>
+        <h3>Bottom-up intelligence</h3>
+        <p>Entity types and relationships are discovered, not defined up front.</p>
       </div>
-      <h3>Bottom-up intelligence</h3>
-      <p>Entity types and relationships aren't defined up front — they're discovered through AI-powered extraction and clustering.</p>
-    </div>
-    <div class="sz-diff-card reveal reveal-d2">
-      <div class="sz-diff-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="8" y="14" width="8" height="8" rx="1" stroke="#003017" stroke-width="1.5"/><rect x="4" y="8" width="16" height="14" rx="1.5" stroke="#003017" stroke-width="1.5" opacity="0.4"/><rect x="1" y="2" width="22" height="20" rx="2" stroke="#003017" stroke-width="1.5" opacity="0.15"/></svg>
+      <div class="sz-diff-card reveal reveal-d2">
+        <div class="sz-diff-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="8" y="14" width="8" height="8" rx="1" stroke="#003017" stroke-width="1.5"/><rect x="4" y="8" width="16" height="14" rx="1.5" stroke="#003017" stroke-width="1.5" opacity="0.4"/><rect x="1" y="2" width="22" height="20" rx="2" stroke="#003017" stroke-width="1.5" opacity="0.15"/></svg>
+        </div>
+        <h3>Any scale</h3>
+        <p>20-doc pilot or million-doc corpus. Same architecture, adaptive parallelism.</p>
       </div>
-      <h3>Any scale</h3>
-      <p>20-document pilot or million-document corpus. Same architecture, adaptive parallelism, resume from any failure.</p>
-    </div>
-    <div class="sz-diff-card reveal reveal-d3">
-      <div class="sz-diff-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="2" stroke="#003017" stroke-width="1.5"/><rect x="14" y="3" width="7" height="7" rx="2" stroke="#003017" stroke-width="1.5"/><rect x="3" y="14" width="7" height="7" rx="2" stroke="#003017" stroke-width="1.5"/><rect x="14" y="14" width="7" height="7" rx="2" stroke="#003017" stroke-width="1.5"/></svg>
+      <div class="sz-diff-card reveal reveal-d3">
+        <div class="sz-diff-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="2" stroke="#003017" stroke-width="1.5"/><rect x="14" y="3" width="7" height="7" rx="2" stroke="#003017" stroke-width="1.5"/><rect x="3" y="14" width="7" height="7" rx="2" stroke="#003017" stroke-width="1.5"/><rect x="14" y="14" width="7" height="7" rx="2" stroke="#003017" stroke-width="1.5"/></svg>
+        </div>
+        <h3>No vendor lock-in</h3>
+        <p>Your choice of LLMs, embedding models, and graph stores.</p>
       </div>
-      <h3>No vendor lock-in</h3>
-      <p>Your choice of LLMs, embedding models, and graph stores. Swap any component without rebuilding.</p>
     </div>
   </div>
 </section>
@@ -920,6 +904,8 @@ if (window.innerWidth > 768) {
     <div class="section-label reveal">What it powers</div>
     <h2 class="section-title reveal">One foundation. <em>Every AI tool.</em></h2>
     <p class="section-sub reveal">Once the foundation is built, every tool runs on the same knowledge layer.</p>
+  </div>
+  <div class="sz-enables-carousel">
     <div class="sz-enables-card reveal">
       <div class="sz-enables-card-icon">
         <svg width="18" height="18" viewBox="0 0 22 22" fill="none"><path d="M11 4C11.5 7.6 13.4 9.5 17 10 13.4 10.5 11.5 12.4 11 16 10.5 12.4 8.6 10.5 5 10 8.6 9.5 10.5 7.6 11 4Z" fill="#003017"/></svg>
@@ -927,21 +913,21 @@ if (window.innerWidth > 768) {
       <h3>Knowledge assistant</h3>
       <p>Ask anything about your business. Get instant, source-cited answers with confidence scores.</p>
     </div>
-    <div class="sz-enables-card reveal reveal-d1">
+    <div class="sz-enables-card reveal">
       <div class="sz-enables-card-icon">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M2 6h20v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" stroke="#003017" stroke-width="1.5"/><path d="M2 6l10 7 10-7" stroke="#003017" stroke-width="1.5"/></svg>
       </div>
       <h3>Email automation</h3>
       <p>Automate customer communications with AI that understands your products, policies, and history.</p>
     </div>
-    <div class="sz-enables-card reveal reveal-d2">
+    <div class="sz-enables-card reveal">
       <div class="sz-enables-card-icon">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.66 0 3-4.03 3-9s-1.34-9-3-9m0 18c-1.66 0-3-4.03-3-9s1.34-9 3-9m-9 9a9 9 0 019-9" stroke="#003017" stroke-width="1.5"/></svg>
       </div>
       <h3>Customer chatbot</h3>
       <p>Deploy customer-facing AI that answers from your knowledge base. Accurate and always current.</p>
     </div>
-    <div class="sz-enables-card sz-enables-card--more reveal reveal-d3">
+    <div class="sz-enables-card sz-enables-card--more reveal">
       <div class="sz-enables-card-icon">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="1.5" fill="#003017"/><circle cx="6" cy="12" r="1.5" fill="#003017" opacity="0.5"/><circle cx="18" cy="12" r="1.5" fill="#003017" opacity="0.5"/></svg>
       </div>
@@ -957,41 +943,43 @@ if (window.innerWidth > 768) {
     <div class="section-label reveal">Trust &amp; governance</div>
     <h2 class="section-title reveal">Every answer traces back to <em>a source</em></h2>
     <p class="section-sub reveal">Confidence isn't a feeling. It's a number that propagates through every layer.</p>
-    <div class="sz-trust-card reveal">
-      <h3>Source-cited everything</h3>
-      <p>Every entity, relationship, and answer traces back to specific document chunks with confidence scores.</p>
-    </div>
-    <div class="sz-trust-card reveal reveal-d1">
-      <h3>Complete audit trail</h3>
-      <p>Every merge, split, and classification decision is logged with reasoning. Full reproducibility.</p>
-    </div>
-    <div class="sz-trust-card reveal reveal-d2">
-      <h3>Permission-aware</h3>
-      <p>Respects source-level access controls. Users only see what they're authorized to see.</p>
+    <div class="sz-trust-cards">
+      <div class="sz-trust-card reveal">
+        <h3>Source-cited</h3>
+        <p>Traces back to document chunks with confidence scores.</p>
+      </div>
+      <div class="sz-trust-card reveal reveal-d1">
+        <h3>Audit trail</h3>
+        <p>Every decision logged with reasoning. Fully reproducible.</p>
+      </div>
+      <div class="sz-trust-card reveal reveal-d2">
+        <h3>Permission-aware</h3>
+        <p>Respects source-level access controls.</p>
+      </div>
     </div>
     <div class="sz-trust-chain reveal">
       <div class="sz-trust-chain-node">
-        <svg width="18" height="18" viewBox="0 0 22 22" fill="none"><path d="M11 4C11.5 7.6 13.4 9.5 17 10 13.4 10.5 11.5 12.4 11 16 10.5 12.4 8.6 10.5 5 10 8.6 9.5 10.5 7.6 11 4Z" fill="#003017"/></svg>
+        <svg width="14" height="14" viewBox="0 0 22 22" fill="none"><path d="M11 4C11.5 7.6 13.4 9.5 17 10 13.4 10.5 11.5 12.4 11 16 10.5 12.4 8.6 10.5 5 10 8.6 9.5 10.5 7.6 11 4Z" fill="#003017"/></svg>
         <div>
           <span class="sz-trust-chain-node-label">AI Answer</span>
-          <span class="sz-trust-chain-node-sub" style="display:block">Confidence: 0.94</span>
+          <span class="sz-trust-chain-node-sub" style="display:block">0.94</span>
         </div>
       </div>
       <div class="sz-trust-chain-arrow">
-        <svg width="16" height="16" viewBox="0 0 24 12" fill="none"><path d="M0 6h20M16 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <svg width="14" height="10" viewBox="0 0 24 12" fill="none"><path d="M0 6h20M16 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </div>
       <div class="sz-trust-chain-node">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#003017" stroke-width="1.5"/><path d="M6 20c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#003017" stroke-width="1.5"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#003017" stroke-width="1.5"/><path d="M6 20c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#003017" stroke-width="1.5"/></svg>
         <div>
           <span class="sz-trust-chain-node-label">Entity</span>
-          <span class="sz-trust-chain-node-sub" style="display:block">Jane Park (CEO)</span>
+          <span class="sz-trust-chain-node-sub" style="display:block">Jane Park</span>
         </div>
       </div>
       <div class="sz-trust-chain-arrow">
-        <svg width="16" height="16" viewBox="0 0 24 12" fill="none"><path d="M0 6h20M16 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <svg width="14" height="10" viewBox="0 0 24 12" fill="none"><path d="M0 6h20M16 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </div>
       <div class="sz-trust-chain-node">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 2h8l4 4v14a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2z" stroke="#003017" stroke-width="1.5"/><path d="M14 2v4h4" stroke="#003017" stroke-width="1.5"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 2h8l4 4v14a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2z" stroke="#003017" stroke-width="1.5"/><path d="M14 2v4h4" stroke="#003017" stroke-width="1.5"/></svg>
         <div>
           <span class="sz-trust-chain-node-label">Document</span>
           <span class="sz-trust-chain-node-sub" style="display:block">Q4-report.pdf</span>
